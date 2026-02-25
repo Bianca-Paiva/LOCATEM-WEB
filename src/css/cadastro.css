@@ -1,0 +1,362 @@
+header {
+    width: 100%;
+    height: 90px;
+    /* altura da faixa */
+
+    display: flex;
+    align-items: center;
+    /* centraliza verticalmente */
+
+    padding-left: 30px;
+    /* espaço da logo até a borda */
+
+    background: linear-gradient(to bottom,
+            #FFCA00 0%,
+            /* amarelo forte no topo */
+            #FFE580 70%,
+            /* meio */
+            #ffffff 100%
+            /* degradê suave para branco */
+        );
+}
+
+.logo {
+    height: 40px;
+    /* controla tamanho da logo */
+    object-fit: contain;
+}
+
+main {
+    min-height: calc(100vh - 90px);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #ffffff;
+    padding: 40px 20px;
+}
+
+.topo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.titulo {
+    margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.paragrafo {
+    font-size: 14px;
+    color: #333333d7;
+}
+
+/* ============================= */
+/* CARD */
+/* ============================= */
+
+.card {
+    width: 100%;
+    max-width: 420px;
+
+    padding: 40px 30px;
+
+    border-radius: 20px;
+    background-color: #ffffff;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================= */
+/* TIPO DE CONTA ESTILO CARD */
+/* ============================= */
+
+.tipoConta {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.tipoConta input[type="radio"] {
+    display: none;
+}
+
+.cardTipo {
+    flex: 1;
+    padding: 30px 20px;
+
+    border-radius: 20px;
+    border: 1px solid #dcdcdc;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+    text-align: center;
+
+    cursor: pointer;
+    transition: 0.25s ease;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    background-color: #fafafa;
+}
+
+.cardTipo .icone {
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+    background-color: #eeeeee;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #555;
+}
+
+.cardTipo h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.cardTipo p {
+    font-size: 13px;
+    color: #555;
+}
+
+/* Hover */
+.cardTipo:hover {
+    border-color: #FFCA00;
+    transform: translateY(-3px);
+}
+
+/* Selecionado */
+.tipoConta input[type="radio"]:checked + .cardTipo {
+    border: 2px solid #FFCA00;
+    background-color: #fff9db;
+}
+
+.tipoConta input[type="radio"]:checked + .cardTipo .icone {
+    background-color: #FFCA00;
+    color: white;
+}
+
+/* ============================= */
+/* FORMULÁRIO */
+/* ============================= */
+
+.label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.input {
+    width: 100%;
+    height: 50px;
+
+    padding: 0 16px;
+
+    border-radius: 14px;
+    border: 1px solid #dcdcdc;
+
+    font-size: 14px;
+
+    margin-top: 10px;
+    margin-bottom: 30px;
+
+    background-color: #fff;
+    transition: 0.2s;
+}
+
+.input:focus {
+    outline: none;
+    border: 1px solid #ffcc0060;
+}
+
+/* ============================= */
+/* SENHA */
+/* ============================= */
+/* Remove o botão padrão de mostrar senha*/
+input[type="password"]::-ms-reveal {
+    display: none;
+}
+
+.inputWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.inputWrapper .input {
+    padding-right: 40px;
+}
+
+.eyeBtn {
+    position: absolute;
+    right: 12px;
+    top: 30%;
+
+    background: none;
+    border: none;
+
+    cursor: pointer;
+    color: #333333e5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eyeBtn:hover {
+    color: black;
+}
+
+.olhoAberto {
+    display: none;
+}
+
+.eyeBtn.active .olhoFechado {
+    display: none;
+}
+
+.eyeBtn.active .olhoAberto {
+    display: block;
+}
+
+.input.erro {
+    border: 1px solid #ff4d4d;
+}
+
+.input.sucesso {
+    border: 1px solid #2ecc71;
+}
+
+.erroSenha {
+    font-size: 13px;
+    color: #ff4d4d;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.forcaSenha {
+    font-size: 13px;
+    margin-top: -20px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.fraca {
+    color: #ff4d4d;
+}
+
+.media {
+    color: #f39c12;
+}
+
+.forte {
+    color: #2ecc71;
+}
+
+.requisitos {
+    list-style: none;
+    padding: 0;
+    font-size: 14px;
+
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.3s ease;
+
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.requisitos li {
+    margin-bottom: 4px;
+    margin-left: 4px;
+    color: #333333e5;
+}
+
+.requisitos.ativo {
+    opacity: 1;
+    max-height: 200px;
+}
+
+.requisitos li.ok {
+    color: green;
+}
+
+.requisitos li.ok::before {
+    content: "✔ ";
+}
+
+.requisitos li.erro {
+    color: red;
+}
+
+.requisitos li.erro::before {
+    content: "✖ ";
+}
+
+/* ============================= */
+/* BOTÃO */
+/* ============================= */
+
+.btnCriarConta {
+    width: 100%;
+    height: 55px;
+
+    margin-top: 10px;
+
+    border: none;
+    border-radius: 16px;
+
+    background-color: #FFCA00;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btnCriarConta:hover {
+    background-color: #e6b800;
+}
+
+/* ============================= */
+/* CONTA EXISTENTE */
+/* ============================= */
+
+.contaExistente {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.contaExistente p {
+    color: #333333d7;
+}
+
+.contaExistente a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.contaExistente a:hover {
+    text-decoration: underline;
+}

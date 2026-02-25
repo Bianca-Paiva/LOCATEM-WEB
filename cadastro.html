@@ -1,15 +1,161 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOCATEM</title>
 
-    <link rel="stylesheet" href="./src/css/reset.css">
-    <link rel="stylesheet" href="./src/css/cadastro.css">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOCATEM</title>
+    <link rel="stylesheet" href="./src/css/reset.css" />
+    <link rel="stylesheet" href="./src/css/responsivoLogin.css" />
+    <link rel="stylesheet" href="./src/css/cadastro.css" />
 </head>
+
 <body>
-    
+    <header>
+        <img src="./src/images/Logo com nome.png" alt="Logo LOCATEM" class="logo" />
+    </header>
+
+    <main>
+        <div class="topo">
+            <h1 class="titulo">Crie sua conta</h1>
+            <p class="paragrafo">Escolha como você deseja usar o site</p>
+        </div>
+        <div class="card">
+
+            <div class="tipoConta">
+                <div class="tipoConta">
+
+                    <input type="radio" id="locador" name="tipo" value="locador" checked>
+                    <label for="locador" class="cardTipo">
+                        <div class="icone">
+                            <!-- Ícone ferramentas -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-tools" viewBox="0 0 16 16">
+                                <path
+                                    d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
+                            </svg>
+                        </div>
+                        <h3>Locador</h3>
+                        <p>Quero anunciar imóveis</p>
+                    </label>
+
+                    <input type="radio" id="locatario" name="tipo" value="locatario">
+                    <label for="locatario" class="cardTipo">
+                        <div class="icone">
+                            <!-- Ícone usuário -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person-fill" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                            </svg>
+                        </div>
+                        <h3>Locatário</h3>
+                        <p>Quero alugar imóveis</p>
+                    </label>
+
+                </div>
+            </div>
+
+            <form action="#" method="post">
+                <div>
+                    <label for="nome" class="label">Nome completo</label>
+                    <input type="text" id="nome" name="nomeCompleto" placeholder="Digite seu nome completo" required
+                        class="input" />
+                </div>
+
+                <div>
+                    <label for="email" class="label">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" required class="input" />
+                </div>
+
+                <div class="campoSenha">
+                    <label for="senha" class="label">Senha</label>
+
+                    <div class="inputWrapper">
+                        <input type="password" id="senha" name="senha" placeholder="Crie uma senha segura" required
+                            class="input senhaInput" />
+                        <button type="button" class="eyeBtn">
+                            <span class="olhoAberto"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                                    <path
+                                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+                                </svg></span>
+                            <span class="olhoFechado"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
+                                    <path
+                                        d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z" />
+                                    <path
+                                        d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829" />
+                                    <path
+                                        d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z" />
+                                </svg></span>
+                        </button>
+                    </div>
+
+                    <small id="forcaSenha" class="forcaSenha"></small>
+
+                    <!-- LISTA DE REQUISITOS PARA SENHA FORTE -->
+                    <ul id="requisitosSenha" class="requisitos">
+                        <li id="reqTamanho">Mínimo 8 caracteres</li>
+                        <li id="reqMinuscula">Letra minúscula</li>
+                        <li id="reqMaiuscula">Letra maiúscula</li>
+                        <li id="reqNumero">Número</li>
+                        <li id="reqEspecial">Caractere especial</li>
+                    </ul>
+                </div>
+
+                <div class="campoSenha">
+                    <label for="confirmarSenha" class="label">Confirmar senha</label>
+
+                    <div class="inputWrapper">
+                        <input type="password" id="confirmarSenha" name="confirmarSenha"
+                            placeholder="Digite a senha novamente" required class="input senhaInput" />
+                        <button type="button" class="eyeBtn">
+                            <span class="olhoAberto"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                                    <path
+                                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+                                </svg></span>
+                            <span class="olhoFechado"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
+                                    <path
+                                        d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z" />
+                                    <path
+                                        d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829" />
+                                    <path
+                                        d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z" />
+                                </svg></span>
+                        </button>
+                    </div>
+
+                    <small id="erroSenha" class="erroSenha"></small>
+                </div>
+
+                <div>
+                    <label for="cpf" class="label">CPF</label>
+                    <input type="text" inputmode="numeric" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" id="cpf" name="cpf"
+                        placeholder="000.000.000-00" required class="input" />
+                </div>
+
+                <div>
+                    <label for="endereco" class="label">Endereço</label>
+                    <input type="text" id="endereco" name="endereco" placeholder="Digite seu endereço completo" required
+                        class="input" />
+                </div>
+
+                <button type="submit" id="btnCriarConta" class="btnCriarConta" disabled>Criar conta</button>
+            </form>
+
+            <div class="contaExistente">
+                <p>Já tem uma conta?</p>
+                <a href="#">Entrar</a>
+            </div>
+        </div>
+    </main>
 </body>
 <script src="./src/js/cadastro.js"></script>
+
 </html>
