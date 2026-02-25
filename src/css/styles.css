@@ -123,7 +123,7 @@ input[type="password"]::-ms-reveal {
 .eyeBtn {
     position: absolute;
     right: 10px;
-    top: 50%;
+    top: 37px;
     transform: translateY(-50%);
 
     background: none;
