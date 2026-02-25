@@ -1,46 +1,49 @@
+/* ============================= */
+/* HEADER */
+/* ============================= */
+
 header {
-    width: 100%;
-    height: 90px;
-    /* altura da faixa */
+    width: 100%;                /* ocupa toda largura da tela */
+    height: 90px;               /* altura fixa da faixa superior */
 
     display: flex;
-    align-items: center;
-    /* centraliza verticalmente */
+    align-items: center;        /* centraliza conteúdo verticalmente */
 
-    padding-left: 30px;
-    /* espaço da logo até a borda */
+    padding-left: 30px;         /* espaço da logo até a borda esquerda */
 
+    /* Degradê do amarelo para branco */
     background: linear-gradient(to bottom,
-            #FFCA00 0%,
-            /* amarelo forte no topo */
-            #FFE580 70%,
-            /* meio */
-            #ffffff 100%
-            /* degradê suave para branco */
+            #FFCA00 0%,          /* amarelo forte no topo */
+            #FFE580 70%,         /* transição suave */
+            #ffffff 100%        /* termina branco */
         );
 }
 
 .logo {
-    height: 40px;
-    /* controla tamanho da logo */
-    object-fit: contain;
+    height: 40px;               /* controla o tamanho da logo */
+    object-fit: contain;        /* mantém proporção sem distorcer */
 }
 
+
+/* ============================= */
+/* MAIN (CORPO DA PÁGINA) */
+/* ============================= */
+
 main {
-    min-height: calc(100vh - 90px);
+    min-height: calc(100vh - 90px); /* ocupa tela inteira descontando o header */
     
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: center;        /* centraliza horizontal */
+    justify-content: center;    /* centraliza vertical */
 
     background-color: #ffffff;
-    padding: 40px 20px;
+    padding: 40px 20px;         /* respiro interno */
 }
 
 .topo {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 40px;        /* espaço antes do card */
 }
 
 .titulo {
@@ -51,39 +54,42 @@ main {
 
 .paragrafo {
     font-size: 14px;
-    color: #333333d7;
+    color: #333333d7;           /* leve transparência */
 }
 
+
 /* ============================= */
-/* CARD */
+/* CARD PRINCIPAL */
 /* ============================= */
 
 .card {
     width: 100%;
-    max-width: 800px;
+    max-width: 800px;           /* limita largura em telas grandes */
 
     padding: 40px 30px;
 
     border-radius: 20px;
     background-color: #ffffff;
 
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* sombra elegante */
 
     display: flex;
     flex-direction: column;
 }
 
+
 /* ============================= */
-/* TIPO DE CONTA ESTILO CARD */
+/* TIPO DE CONTA (RADIO CUSTOMIZADO) */
 /* ============================= */
 
 .tipoConta {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 20px;                  /* espaço entre os cards */
     margin-bottom: 30px;
 }
 
+/* Esconde o radio padrão */
 .tipoConta input[type="radio"] {
     display: none;
 }
@@ -99,7 +105,7 @@ main {
     text-align: center;
 
     cursor: pointer;
-    transition: 0.25s ease;
+    transition: 0.25s ease;     /* animação suave */
 
     display: flex;
     flex-direction: column;
@@ -110,6 +116,7 @@ main {
     background-color: #fafafa;
 }
 
+/* Ícone circular dentro do card */
 .cardTipo .icone {
     width: 60px;
     height: 60px;
@@ -134,16 +141,17 @@ main {
     color: #555;
 }
 
-/* Selecionado */
+/* Estado selecionado (radio marcado) */
 .tipoConta input[type="radio"]:checked + .cardTipo {
     border: 2px solid #FFCA00;
-    background-color: #fff9db;
+    background-color: #fff9db; /* leve destaque */
 }
 
 .tipoConta input[type="radio"]:checked + .cardTipo .icone {
     background-color: #FFCA00;
     color: white;
 }
+
 
 /* ============================= */
 /* FORMULÁRIO */
@@ -172,28 +180,34 @@ main {
     transition: 0.2s;
 }
 
+/* Efeito ao focar no campo */
 .input:focus {
     outline: none;
     border: 1px solid #ffcc0060;
 }
 
+
 /* ============================= */
 /* SENHA */
 /* ============================= */
-/* Remove o botão padrão de mostrar senha*/
+
+/* Remove botão padrão de mostrar senha no Edge/IE */
 input[type="password"]::-ms-reveal {
     display: none;
 }
 
+/* Wrapper para posicionar o botão de olho */
 .inputWrapper {
     position: relative;
     width: 100%;
 }
 
+/* Espaço extra para o botão */
 .inputWrapper .input {
     padding-right: 40px;
 }
 
+/* Botão de mostrar/ocultar senha */
 .eyeBtn {
     position: absolute;
     right: 12px;
@@ -214,6 +228,7 @@ input[type="password"]::-ms-reveal {
     color: black;
 }
 
+/* Alternância dos ícones */
 .olhoAberto {
     display: none;
 }
@@ -226,6 +241,8 @@ input[type="password"]::-ms-reveal {
     display: block;
 }
 
+
+/* Estados visuais de erro e sucesso */
 .input.erro {
     border: 1px solid #ff4d4d;
 }
@@ -234,6 +251,7 @@ input[type="password"]::-ms-reveal {
     border: 1px solid #2ecc71;
 }
 
+/* Mensagem de erro */
 .erroSenha {
     font-size: 13px;
     color: #ff4d4d;
@@ -242,6 +260,7 @@ input[type="password"]::-ms-reveal {
     display: block;
 }
 
+/* Indicador de força */
 .forcaSenha {
     font-size: 13px;
     margin-top: -20px;
@@ -249,24 +268,22 @@ input[type="password"]::-ms-reveal {
     display: block;
 }
 
-.fraca {
-    color: #ff4d4d;
-}
+/* Cores da força */
+.fraca { color: #ff4d4d; }
+.media { color: #f39c12; }
+.forte { color: #2ecc71; }
 
-.media {
-    color: #f39c12;
-}
 
-.forte {
-    color: #2ecc71;
-}
+/* ============================= */
+/* LISTA DE REQUISITOS */
+/* ============================= */
 
 .requisitos {
     list-style: none;
     padding: 0;
     font-size: 14px;
 
-    opacity: 0;
+    opacity: 0;             /* escondido por padrão */
     max-height: 0;
     overflow: hidden;
     transition: 0.3s ease;
@@ -281,11 +298,13 @@ input[type="password"]::-ms-reveal {
     color: #333333e5;
 }
 
+/* Mostra com animação */
 .requisitos.ativo {
     opacity: 1;
     max-height: 200px;
 }
 
+/* Requisito válido */
 .requisitos li.ok {
     color: green;
 }
@@ -294,6 +313,7 @@ input[type="password"]::-ms-reveal {
     content: "✔ ";
 }
 
+/* Requisito inválido */
 .requisitos li.erro {
     color: red;
 }
@@ -301,6 +321,7 @@ input[type="password"]::-ms-reveal {
 .requisitos li.erro::before {
     content: "✖ ";
 }
+
 
 /* ============================= */
 /* BOTÃO */
@@ -326,11 +347,12 @@ input[type="password"]::-ms-reveal {
 }
 
 .btnCriarConta:hover {
-    background-color: #e6b800;
+    background-color: #e6b800; /* leve escurecida */
 }
 
+
 /* ============================= */
-/* CONTA EXISTENTE */
+/* LINK DE CONTA EXISTENTE */
 /* ============================= */
 
 .contaExistente {

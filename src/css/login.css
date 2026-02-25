@@ -4,52 +4,68 @@
 
 header {
     width: 100%;
+    /* Ocupa toda a largura da tela */
+
     height: 90px;
-    /* altura da faixa */
+    /* Altura fixa da faixa superior */
 
     display: flex;
     align-items: center;
-    /* centraliza verticalmente */
+    /* Centraliza a logo verticalmente */
 
     padding-left: 30px;
-    /* espaço da logo até a borda */
+    /* Espaço entre a logo e a borda esquerda */
 
     background: linear-gradient(to bottom,
-            #FFCA00 0%,
-            /* amarelo forte no topo */
-            #FFE580 70%,
-            /* meio */
-            #ffffff 100%
-            /* degradê suave para branco */
+            #FFCA00 0%,     /* Amarelo forte no topo */
+            #FFE580 70%,    /* Transição suave */
+            #ffffff 100%    /* Branco na parte inferior */
         );
+    /* Cria um degradê vertical */
 }
 
 .logo {
     height: 40px;
-    /* controla tamanho da logo */
+    /* Define a altura da logo */
+
     object-fit: contain;
+    /* Mantém proporção sem distorcer */
 }
 
+/* ============================= */
+/* MAIN (CONTEÚDO PRINCIPAL) */
+/* ============================= */
+
 main {
-    min-height: calc(100vh - 90px); /* ocupa a tela menos o header */
-    
+    min-height: calc(100vh - 90px);
+    /* Ocupa toda a tela menos a altura do header */
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* centraliza vertical */
-    
+    justify-content: center;
+    /* Centraliza o conteúdo verticalmente */
+
     background-color: #ffffff;
 }
 
+/* ============================= */
+/* BLOCO SUPERIOR */
+/* ============================= */
+
 .topo {
     text-align: center;
-    margin-bottom: 40px; /* aqui você controla a distância */
+    /* Centraliza textos */
+
+    margin-bottom: 40px;
+    /* Espaço entre o topo e o card */
 }
 
 .titulo {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     margin-top: 20px;
     margin-bottom: 10px;
 }
@@ -60,21 +76,33 @@ main {
     align-items: center;
 }
 
+/* ============================= */
+/* CARD PRINCIPAL */
+/* ============================= */
+
 .card {
     width: 100%;
     max-width: 420px;
+    /* Limita largura em telas grandes */
 
     padding: 40px 30px;
+    /* Espaçamento interno */
 
     border-radius: 20px;
+    /* Bordas arredondadas */
 
     background-color: #ffffff;
 
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.397);
+    /* Sombra para efeito de elevação */
 
     display: flex;
     flex-direction: column;
 }
+
+/* ============================= */
+/* INPUTS E LABELS */
+/* ============================= */
 
 .label {
     font-size: 14px;
@@ -86,6 +114,7 @@ main {
     height: 50px;
 
     padding: 0 16px;
+    /* Espaço interno horizontal */
 
     border-radius: 14px;
     border: 1px solid #dcdcdc;
@@ -98,24 +127,35 @@ main {
     background-color: #fff;
 }
 
+/* Estilo quando o input está selecionado */
 .input:focus {
     outline: none;
+    /* Remove borda azul padrão do navegador */
+
     border: 1px solid #ffcc0060;
+    /* Destaca com amarelo suave */
 }
 
-/* Remove o botão padrão de mostrar senha*/
+/* Remove botão padrão de mostrar senha no Edge/IE */
 input[type="password"]::-ms-reveal {
     display: none;
 }
 
+/* ============================= */
+/* CAMPO SENHA */
+/* ============================= */
+
 .inputWrapper {
-    position: relative;   /* ESSENCIAL */
+    position: relative;
+    /* Permite posicionar o botão dentro do input */
+
     width: 100%;
 }
 
 .inputWrapper .input {
     width: 100%;
-    padding-right: 40px; /* espaço para o botão */
+    padding-right: 40px;
+    /* Espaço para não sobrepor o botão do olho */
 }
 
 .eyeBtn {
@@ -123,21 +163,28 @@ input[type="password"]::-ms-reveal {
     right: 10px;
     top: 37px;
     transform: translateY(-50%);
+    /* Centraliza verticalmente */
 
     background: none;
-    color: #333333e5;
     border: none;
+
+    color: #333333e5;
+
     cursor: pointer;
 
     padding: 5px;
+
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+/* Ícone olho aberto começa oculto */
 .olhoAberto {
     display: none;
 }
 
+/* Quando botão tem classe "active" */
 .eyeBtn.active .olhoFechado {
     display: none;
 }
@@ -146,9 +193,14 @@ input[type="password"]::-ms-reveal {
     display: block;
 }
 
+/* Efeito hover no botão */
 .eyeBtn:hover {
     color: black;
 }
+
+/* ============================= */
+/* BOTÃO ENTRAR */
+/* ============================= */
 
 .btnEntrar {
     width: 100%;
@@ -167,46 +219,70 @@ input[type="password"]::-ms-reveal {
     cursor: pointer;
 
     transition: 0.3s;
+    /* Suaviza efeito hover */
 }
 
 .btnEntrar:hover {
     background-color: #e6b800;
+    /* Escurece no hover */
 }
+
+/* ============================= */
+/* LINKS */
+/* ============================= */
 
 .recuperarSenha {
     display: flex;
     justify-content: flex-end;
+    /* Alinha à direita */
+
     font-size: 14px;
+
     text-decoration: none;
+
     margin-bottom: 10px;
+
     color: #333333e5;
+
     font-weight: 550;
 }
 
+/* Hover em links dentro do formulário */
 form a:hover {
     text-decoration: underline;
     color: black;
 }
 
+/* ============================= */
+/* CRIAR CONTA */
+/* ============================= */
+
 .criarConta {
     display: flex;
     flex-direction: row;
-    text-align: center;
+
     justify-content: center;
-    gap: 6px; 
+
+    gap: 6px;
+    /* Espaço entre texto e link */
+
     margin-top: 20px;
+
     font-size: 14px;
 }
 
+/* Cor padrão dos textos dentro do main */
 main p {
     color: #333333d7;
 }
 
+/* Estilo padrão dos links */
 main a {
     color: black;
     text-decoration: none;
 }
 
+/* Hover geral dos links */
 main a:hover {
     text-decoration: underline;
 }
