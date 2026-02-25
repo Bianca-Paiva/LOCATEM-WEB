@@ -1,19 +1,52 @@
-// ================= CPF =================
-const cpfInput = document.getElementById("cpf");
+// ================= CPF / CNPJ DINÂMICO =================
 
-cpfInput.addEventListener("input", function (e) {
-    let valor = e.target.value;
+const radioLocador = document.getElementById("locador");
+const radioLocatario = document.getElementById("locatario");
+const documentoInput = document.getElementById("documento");
+const labelDocumento = document.getElementById("labelDocumento");
 
-    valor = valor.replace(/\D/g, "");
-    valor = valor.substring(0, 11);
-
+function aplicarMascaraCPF(valor) {
+    valor = valor.replace(/\D/g, "").substring(0, 11);
     valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
     valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
     valor = valor.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+    return valor;
+}
 
-    e.target.value = valor;
+function aplicarMascaraCNPJ(valor) {
+    valor = valor.replace(/\D/g, "").substring(0, 14);
+    valor = valor.replace(/^(\d{2})(\d)/, "$1.$2");
+    valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
+    valor = valor.replace(/\.(\d{3})(\d)/, ".$1/$2");
+    valor = valor.replace(/(\d{4})(\d)/, "$1-$2");
+    return valor;
+}
+
+function atualizarTipoDocumento() {
+    documentoInput.value = "";
+
+    if (radioLocador.checked) {
+        labelDocumento.textContent = "CNPJ";
+        documentoInput.placeholder = "00.000.000/0000-00";
+    } else {
+        labelDocumento.textContent = "CPF";
+        documentoInput.placeholder = "000.000.000-00";
+    }
+}
+
+documentoInput.addEventListener("input", (e) => {
+    if (radioLocador.checked) {
+        e.target.value = aplicarMascaraCNPJ(e.target.value);
+    } else {
+        e.target.value = aplicarMascaraCPF(e.target.value);
+    }
 });
 
+radioLocador.addEventListener("change", atualizarTipoDocumento);
+radioLocatario.addEventListener("change", atualizarTipoDocumento);
+
+// garante estado inicial correto
+atualizarTipoDocumento();
 
 // ================= MOSTRAR/OCULTAR SENHA =================
 const eyeButtons = document.querySelectorAll(".eyeBtn");
