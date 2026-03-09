@@ -1,113 +1,144 @@
-/* ===== ESTILOS PARA TELAS MENORES (TABLET E MOBILE) ===== */
-@media (max-width: 1024px) {
+@media (max-width:768px) {
 
-    /* Diminui o tamanho do título principal */
-    .header{
-        height: auto;
-        padding: 24px;
+    .header {
+        padding: 20px;
     }
 
     .header-top {
-        flex-wrap: wrap;
-        height: auto;
         gap: 16px;
     }
 
     .logo {
-        width: 260px;
-        height: auto;
-        margin-right: 0;
+        height: 32px;
     }
 
     .search-bar {
-        width: 100%;
-        order: 3;
-        margin: 0;
-    }
-
-    .chat {
-        margin-left: auto;
-    }
-
-    .menu {
-        flex-wrap: wrap;
-        gap: 24px;
-    }
-
-    .carrossel {
-        max-width: 100%;
-        height: 300px;
-    }
-
-    .ferramentas {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-
-    .header-top {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .logo {
-        width: 220px;
-    }
-
-    .search-bar {
-        height: 42px;
+        height: 36px;
         padding: 0 16px;
     }
 
+    .chat {
+        width: 24px;
+        height: 24px;
+    }
+
     .menu {
+        flex-wrap: wrap;
         gap: 16px;
-        font-size: 14px;
-    }
-
-    .menu a {
-        gap: 8px;
-    }
-
-    .menu img {
-        width: 14px;
-        height: 14px;
-    }
-
-    .carrossel {
-        height: 240px;
-        border-radius: 12px;
-    }
-
-    .seta-btn {
-        width: 32px;
-        height: 32px;
-    }
-}
-
-@media (max-width: 480px) {
-
-    .menu {
         justify-content: center;
-        gap: 12px;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .menu a {
-        font-size: 12px;
-    }
-
-    .search-bar input {
-        font-size: 13px;
     }
 
     .carrossel {
         height: 200px;
+        margin: 20px;
     }
 
-    .carrossel-indicador {
-        width: 5px;
-        height: 5px;
+    .container {
+        padding: 40px 20px;
+    }
+
+    .subtitulo {
+        margin-top: 0;
+    }
+
+    .ferramentas {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        overflow: visible;
+        padding: 0;
+    }
+
+    .ferramenta-card {
+        min-width: auto;
+        height: auto;
+    }
+
+    .categorias-ferramentas {
+        flex-wrap: wrap;
+        overflow: visible;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 28px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100vh;
+
+        background: rgba(0, 0, 0, 0.5);
+
+        display: flex;
+        justify-content: flex-start;
+
+        opacity: 0;
+        pointer-events: none;
+
+        transition: 0.3s;
+    }
+
+    .menu.ativo {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .menu-content {
+
+        width: 260px;
+        height: 100%;
+
+        background: white;
+
+        padding: 30px 20px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        transform: translateX(-100%);
+        transition: 0.3s;
+
+    }
+
+    .menu.ativo .menu-content {
+        transform: translateX(0);
+    }
+
+    .menu a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        font-size: 16px;
+        font-weight: 600;
+
+        text-decoration: none;
+        color: #000;
+    }
+
+}
+
+@media (min-width:1024px) {
+
+    .ferramentas {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 24px;
+        overflow: visible;
+        padding: 0;
+    }
+
+    .ferramenta-card {
+        min-width: auto;
     }
 }

@@ -22,9 +22,6 @@
    CABEÇALHO (HEADER)
    ====================================================== */
 .header {
-    /* Altura total do header */
-    height: 172px;
-
     /* Espaçamento interno bem controlado
        para alinhar logo, busca e menu */
     padding: 33px 40px 30px 39px;
@@ -35,13 +32,9 @@
     display: flex;
     /* layout em linha */
     align-items: center;
-    /* centraliza verticalmente */
     justify-content: space-between;
     gap: 40px;
     /* controla espaço entre os itens */
-
-    height: 61px;
-    /* altura exata da faixa superior */
 }
 
 /* Logo */
@@ -68,7 +61,9 @@
    BARRA DE PESQUISA
 ====================================================== */
 .search-bar {
-    min-width: 919px;
+    flex: 1;
+    min-width: 200px;
+    max-width: 900px;
     height: 43px;
 
     /* Flex para alinhar input + botão */
@@ -76,8 +71,10 @@
     align-items: center;
 
     background: #fff;
-    border-radius: 999px;
+
     /* formato pill */
+    border-radius: 999px;
+
     padding: 0 24px;
 }
 
@@ -146,16 +143,9 @@
    CONTEÚDO PRINCIPAL
    ====================================================== */
 .container {
-    /* Padding superior grande
-       para “empurrar” o conteúdo
-       abaixo do header + carrossel */
-    padding-top: 211px;
-
-    padding-left: 51px;
-    padding-right: 51px;
-
-    /* Mantido automático para flexibilidade */
-    padding-bottom: auto;
+    padding: 0px 10px;
+    max-width: 1200px;
+    margin: auto;
 }
 
 /* ======================================================
@@ -165,10 +155,11 @@
     position: relative;
     /* base para setas e indicadores */
 
+    width: 100%;
     max-width: 1200px;
     height: 300px;
 
-    margin: 20px auto;
+    margin: 40px auto;
     /* centralizado */
 
     border-radius: 16px;
@@ -291,9 +282,7 @@
 
     margin-bottom: 20px;
 
-    /* Puxa o título para cima,
-       sobrepondo a área do carrossel */
-    margin-top: -200px;
+    margin-top: 0;
 }
 
 /* ======================================================
@@ -428,4 +417,12 @@
 /* Esconde scrollbar (Chrome / Edge) */
 .ferramentas::-webkit-scrollbar {
     display: none;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
