@@ -4,18 +4,19 @@
 .faixa-topo {
     /* Gradiente vertical: amarelo → branco
        usado para dar destaque visual no topo */
-    background: linear-gradient(
-        to bottom,
-        #FFCA00 0%,    /* amarelo forte no topo */
-        #FFE580 35%,   /* amarelo claro no meio */
-        #FFFFFF 50%    /* branco antes de chegar no conteúdo */
-    );
+    background: linear-gradient(to bottom,
+            #ffca00 0%,
+            /* amarelo forte no topo */
+            #ffe580 35%,
+            /* amarelo claro no meio */
+            #ffffff 50%
+            /* branco antes de chegar no conteúdo */
+        );
 
     /* Define até onde o gradiente “escorre”
        evitando invadir o conteúdo abaixo */
     padding-bottom: 30px;
 }
-
 
 /* ======================================================
    CABEÇALHO (HEADER)
@@ -31,12 +32,16 @@
 
 /* Área superior do header (logo + busca + chat) */
 .header-top {
-    display: flex;              /* layout em linha */
-    align-items: center; /* centraliza verticalmente */
-    justify-content:space-between;
-    gap: 40px; /* controla espaço entre os itens */
+    display: flex;
+    /* layout em linha */
+    align-items: center;
+    /* centraliza verticalmente */
+    justify-content: space-between;
+    gap: 40px;
+    /* controla espaço entre os itens */
 
-    height: 61px; /* altura exata da faixa superior */
+    height: 61px;
+    /* altura exata da faixa superior */
 }
 
 /* Logo */
@@ -71,13 +76,15 @@
     align-items: center;
 
     background: #fff;
-    border-radius: 999px;       /* formato pill */
+    border-radius: 999px;
+    /* formato pill */
     padding: 0 24px;
 }
 
 /* Campo de texto da busca */
 .search-bar input {
-    flex: 1; /* ocupa todo espaço disponível */
+    flex: 1;
+    /* ocupa todo espaço disponível */
     border: none;
     outline: none;
     font-size: 14px;
@@ -103,7 +110,6 @@
     height: 25px;
 }
 
-
 /* ======================================================
    MENU DE NAVEGAÇÃO
    ====================================================== */
@@ -111,15 +117,18 @@
     margin-top: 28px;
 
     display: flex;
-    justify-content: center;    /* centraliza horizontalmente */
-    gap: 41px;                  /* espaço entre links */
+    justify-content: center;
+    /* centraliza horizontalmente */
+    gap: 41px;
+    /* espaço entre links */
 }
 
 /* Links do menu */
 .menu a {
     display: flex;
     align-items: center;
-    gap: 12px;                  /* espaço entre ícone e texto */
+    gap: 12px;
+    /* espaço entre ícone e texto */
 
     font-size: 16px;
     font-weight: 600;
@@ -132,7 +141,6 @@
     width: 16px;
     height: 16px;
 }
-
 
 /* ======================================================
    CONTEÚDO PRINCIPAL
@@ -150,20 +158,22 @@
     padding-bottom: auto;
 }
 
-
 /* ======================================================
    CARROSSEL
 ====================================================== */
 .carrossel {
-    position: relative; /* base para setas e indicadores */
+    position: relative;
+    /* base para setas e indicadores */
 
     max-width: 1200px;
     height: 300px;
 
-    margin: 20px auto;        /* centralizado */
+    margin: 20px auto;
+    /* centralizado */
 
     border-radius: 16px;
-    overflow: hidden;  /* esconde slides fora da área */
+    overflow: hidden;
+    /* esconde slides fora da área */
 }
 
 .carrossel-imagens {
@@ -175,9 +185,12 @@
 /* Cada slide do carrossel */
 .carrossel_item {
     position: absolute;
-    inset: 0;                   /* Ocupa todo o espaço (top, right, bottom, left) */
-    opacity: 0;                 /* Escondido por padrão */
-    transition: opacity 0.5s ease-in-out;                  /* ocupa todo o carrossel */
+    inset: 0;
+    /* Ocupa todo o espaço (top, right, bottom, left) */
+    opacity: 0;
+    /* Escondido por padrão */
+    transition: opacity 0.5s ease-in-out;
+    /* ocupa todo o carrossel */
 }
 
 /* Slide ativo */
@@ -196,10 +209,10 @@
 .anuncio-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover;          /* evita distorção */
+    object-fit: cover;
+    /* evita distorção */
     display: block;
 }
-
 
 /* ======================================================
    SETAS DO CARROSSEL
@@ -219,11 +232,12 @@
 
 /* Botões das setas */
 .seta-btn {
-    font-size: 24px;   /* tamanho da seta */
+    font-size: 24px;
+    /* tamanho da seta */
 
     width: 10px;
     height: 10px;
-    
+
     border-radius: 50%;
     border: none;
 
@@ -238,7 +252,6 @@
 
     transition: 0.2s;
 }
-
 
 /* ======================================================
    INDICADORES (BOLINHAS)
@@ -269,7 +282,6 @@
     background: #fff;
 }
 
-
 /* ======================================================
    TÍTULO DA SEÇÃO
    ====================================================== */
@@ -284,7 +296,6 @@
     margin-top: -200px;
 }
 
-
 /* ======================================================
    CATEGORIAS (ROLAGEM HORIZONTAL)
    ====================================================== */
@@ -294,7 +305,8 @@
 
     margin-bottom: 32px;
 
-    overflow-x: auto; /* ativa scroll horizontal */
+    overflow-x: auto;
+    /* ativa scroll horizontal */
     scroll-snap-type: x mandatory;
 }
 
@@ -312,7 +324,8 @@
     background: #d9d9d95a;
     border-radius: 999px;
 
-    flex-shrink: 0;             /* impede esmagamento */
+    flex-shrink: 0;
+    /* impede esmagamento */
     scroll-snap-align: start;
 
     cursor: pointer;
@@ -327,7 +340,6 @@
 .categorias-ferramentas::-webkit-scrollbar {
     display: none;
 }
-
 
 /* ======================================================
    CARDS DE FERRAMENTAS (ROLAGEM HORIZONTAL)
@@ -349,65 +361,63 @@
    CARD DE FERRAMENTA
 ====================================================== */
 
-.ferramenta-card{
-    min-width:260px;
-    height:320px;
+.ferramenta-card {
+    min-width: 260px;
+    height: 320px;
 
-    background:#ffffff;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    border-radius:8px;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
 
-    flex-shrink:0;
-    scroll-snap-align:start;
+    flex-shrink: 0;
+    scroll-snap-align: start;
 
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
 
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.card-img{
-    height:180px;
+.card-img {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
+    padding: 20px;
 }
 
-.card-img img{
-    max-width:100%;
-    max-height:100%;
-    object-fit:contain;
+.card-img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
-.card-info{
-    padding:12px 16px;
+.card-info {
+    padding: 12px 16px;
 }
 
-.nome{
-    font-size:14px;
-    font-weight:400;
-    color:#333;
+.nome {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
 
-    margin-bottom:8px;
+    margin-bottom: 8px;
 }
 
-.preco{
-    font-size:22px;
-    font-weight:600;
-    color:#000;
+.preco {
+    font-size: 22px;
+    font-weight: 600;
+    color: #000;
 }
 
-.preco span{
-    font-size:12px;
-    color:#037233;
+.preco span {
+    font-size: 12px;
+    color: #037233;
 }
 
-.ferramenta-card:hover{
-    
-    transition:0.2s;
+.ferramenta-card:hover {
+    transition: 0.2s;
 }
 
 /* Esconde scrollbar (Firefox) */
