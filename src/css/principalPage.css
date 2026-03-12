@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body {
     font-family: Arial, sans-serif;
     background-color: #fff;
@@ -141,212 +140,10 @@ section {
     /* JS mostra o ativo */
 }
 
-=======
-/* ======================================================
-   FAIXA DO TOPO COM GRADIENTE
-   ====================================================== */
-.faixa-topo {
-    /* Gradiente vertical: amarelo → branco
-       usado para dar destaque visual no topo */
-    background: linear-gradient(to bottom,
-            #ffca00 0%,
-            /* amarelo forte no topo */
-            #ffe580 35%,
-            /* amarelo claro no meio */
-            #ffffff 50%
-            /* branco antes de chegar no conteúdo */
-        );
-
-    /* Define até onde o gradiente “escorre”
-       evitando invadir o conteúdo abaixo */
-    padding-bottom: 30px;
-}
-
-/* ======================================================
-   CABEÇALHO (HEADER)
-   ====================================================== */
-.header {
-    /* Espaçamento interno bem controlado
-       para alinhar logo, busca e menu */
-    padding: 33px 40px 30px 39px;
-}
-
-/* Área superior do header (logo + busca + chat) */
-.header-top {
-    display: flex;
-    /* layout em linha */
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    /* controla espaço entre os itens */
-}
-
-/* Logo */
-.header-top .logo {
-    height: 40px;
-    width: auto;
-    object-fit: contain;
-    display: block;
-    transform: translateY(2px);
-}
-
-/* Ícone de chat */
-.header-top .chat {
-    width: 30px;
-    height: 30px;
-
-    display: block;
-    object-fit: contain;
-
-    cursor: pointer;
-}
-
-/* ======================================================
-   BARRA DE PESQUISA
-====================================================== */
-.search-bar {
-    flex: 1;
-    min-width: 200px;
-    max-width: 900px;
-    height: 43px;
-
-    /* Flex para alinhar input + botão */
-    display: flex;
-    align-items: center;
-
-    background: #fff;
-
-    /* formato pill */
-    border-radius: 999px;
-
-    padding: 0 24px;
-}
-
-/* Campo de texto da busca */
-.search-bar input {
-    flex: 1;
-    /* ocupa todo espaço disponível */
-    border: none;
-    outline: none;
-    font-size: 14px;
-}
-
-/* Botão da lupa */
-.search-bar button {
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-/* Ícone da lupa */
-.search-bar img {
-    width: 25px;
-    height: 25px;
-}
-
-/* ======================================================
-   MENU DE NAVEGAÇÃO
-   ====================================================== */
-.menu {
-    margin-top: 28px;
-
-    display: flex;
-    justify-content: center;
-    /* centraliza horizontalmente */
-    gap: 41px;
-    /* espaço entre links */
-}
-
-/* Links do menu */
-.menu a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    /* espaço entre ícone e texto */
-
-    font-size: 16px;
-    font-weight: 600;
-    color: #000;
-    text-decoration: none;
-}
-
-/* Ícones do menu */
-.menu img {
-    width: 16px;
-    height: 16px;
-}
-
-/* ======================================================
-   CONTEÚDO PRINCIPAL
-   ====================================================== */
-.container {
-    padding: 0px 10px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-/* ======================================================
-   CARROSSEL
-====================================================== */
-.carrossel {
-    position: relative;
-    /* base para setas e indicadores */
-
-    width: 100%;
-    max-width: 1200px;
-    height: 300px;
-
-    margin: 40px auto;
-    /* centralizado */
-
-    border-radius: 16px;
-    overflow: hidden;
-    /* esconde slides fora da área */
-}
-
-.carrossel-imagens {
-    display: flex;
-    height: 100%;
-    width: 100%;
-}
-
-/* Cada slide do carrossel */
-.carrossel_item {
-    position: absolute;
-    inset: 0;
-    /* Ocupa todo o espaço (top, right, bottom, left) */
-    opacity: 0;
-    /* Escondido por padrão */
-    transition: opacity 0.5s ease-in-out;
-    /* ocupa todo o carrossel */
-}
-
-/* Slide ativo */
-.carrossel_item.ativo {
-    opacity: 1;
-    z-index: 1;
-}
-
-/* Container da imagem */
-.anuncio-img {
-    width: 100%;
-    height: 100%;
-}
-
-/* Imagem do anúncio */
->>>>>>> 1a0af4d0bbf82dbe57969e6332471e43021f350b
 .anuncio-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-<<<<<<< HEAD
     /* preenche sem distorcer */
     display: block;
 }
@@ -362,36 +159,19 @@ section {
     color: #555;
 }
 
-=======
-    /* evita distorção */
-    display: block;
-}
-
-/* ======================================================
-   SETAS DO CARROSSEL
-   ====================================================== */
->>>>>>> 1a0af4d0bbf82dbe57969e6332471e43021f350b
 .setas {
     position: absolute;
     top: 50%;
     left: 25px;
     right: 25px;
-<<<<<<< HEAD
     display: flex;
     justify-content: space-between;
-=======
-
-    display: flex;
-    justify-content: space-between;
-
->>>>>>> 1a0af4d0bbf82dbe57969e6332471e43021f350b
     transform: translateY(-50%);
     z-index: 10;
 }
 
 /* Botões das setas */
 .seta-btn {
-<<<<<<< HEAD
     font-size: 15px;
     /* tamanho da seta */
     width: 10px;
@@ -401,43 +181,10 @@ section {
     background: transparent;
     cursor: pointer;
     position: relative;
-=======
-    font-size: 24px;
-    /* tamanho da seta */
-
-    width: 10px;
-    height: 10px;
-
-    border-radius: 50%;
-    border: none;
-
-    background: transparent;
-    color: #000;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-/* ======================================================
-   INDICADORES (BOLINHAS)
-   ====================================================== */
-.carrossel-indicadores {
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
->>>>>>> 1a0af4d0bbf82dbe57969e6332471e43021f350b
 }
 
 .indicadores {
     display: flex;
-<<<<<<< HEAD
     gap: 6px;
     margin-top: 130px;
     position: relative;
@@ -513,115 +260,6 @@ main h2 {
     display: flex;
     flex-direction: column;
     padding: 10px;
-=======
-    gap: 8px;
-}
-
-/* Bolinhas */
-.carrossel-indicador {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.6);
-}
-
-/* Indicador ativo */
-.carrossel-indicador.ativo {
-    background: #fff;
-}
-
-/* ======================================================
-   TÍTULO DA SEÇÃO
-   ====================================================== */
-.subtitulo {
-    font-size: 22px;
-    font-weight: 800;
-
-    margin-bottom: 20px;
-
-    margin-top: 0;
-}
-
-/* ======================================================
-   CATEGORIAS (ROLAGEM HORIZONTAL)
-   ====================================================== */
-.categorias-ferramentas {
-    display: flex;
-    gap: 16px;
-
-    margin-bottom: 32px;
-
-    overflow-x: auto;
-    /* ativa scroll horizontal */
-    scroll-snap-type: x mandatory;
-}
-
-/* Pills das categorias */
-.categoria {
-    font-size: 14px;
-
-    min-width: 130px;
-    height: 27px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #d9d9d95a;
-    border-radius: 999px;
-
-    flex-shrink: 0;
-    /* impede esmagamento */
-    scroll-snap-align: start;
-
-    cursor: pointer;
-}
-
-/* Esconde scrollbar (Firefox) */
-.categorias-ferramentas {
-    scrollbar-width: none;
-}
-
-/* Esconde scrollbar (Chrome / Edge) */
-.categorias-ferramentas::-webkit-scrollbar {
-    display: none;
-}
-
-/* ======================================================
-   CARDS DE FERRAMENTAS (ROLAGEM HORIZONTAL)
-   ====================================================== */
-.ferramentas {
-    display: flex;
-    gap: 24px;
-
-    overflow-x: auto;
-    padding-bottom: 12px;
-
-    /* isso cria o corte visual */
-    padding: 0 48px 16px;
-    scroll-snap-type: x mandatory;
-}
-
-/* Card individual */
-/* ======================================================
-   CARD DE FERRAMENTA
-====================================================== */
-
-.ferramenta-card {
-    min-width: 260px;
-    height: 320px;
-
-    background: #ffffff;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    border-radius: 8px;
-
-    flex-shrink: 0;
-    scroll-snap-align: start;
-
-    display: flex;
-    flex-direction: column;
-
->>>>>>> 1a0af4d0bbf82dbe57969e6332471e43021f350b
     cursor: pointer;
 }
 
@@ -630,7 +268,6 @@ main h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-<<<<<<< HEAD
     padding: 10px;
 }
 
@@ -650,10 +287,6 @@ main h2 {
     content: 'imagem';
     font-size: 28px;
     color: #bbb;
-=======
-
-    padding: 20px;
->>>>>>> 1a0af4d0bbf82dbe57969e6332471e43021f350b
 }
 
 .card-img img {
@@ -666,7 +299,6 @@ main h2 {
     padding: 12px 16px;
 }
 
-<<<<<<< HEAD
 .card-info h3 {
     font-size: 14px;
     font-weight: 400;
@@ -675,32 +307,16 @@ main h2 {
 }
 
 .card-info p {
-=======
-.nome {
-    font-size: 14px;
-    font-weight: 400;
-    color: #333;
-
-    margin-bottom: 8px;
-}
-
-.preco {
->>>>>>> 1a0af4d0bbf82dbe57969e6332471e43021f350b
     font-size: 22px;
     font-weight: 600;
     color: #000;
 }
 
-<<<<<<< HEAD
 .card-info span {
-=======
-.preco span {
->>>>>>> 1a0af4d0bbf82dbe57969e6332471e43021f350b
     font-size: 12px;
     color: #037233;
 }
 
-<<<<<<< HEAD
 /* BOTTOM NAV */
 .navegacaoMobile {
     position: fixed;
@@ -731,26 +347,4 @@ main h2 {
 
 .navegacaoMobile a.ativo {
     color: #FFD600;
-=======
-.ferramenta-card:hover {
-    transition: 0.2s;
-}
-
-/* Esconde scrollbar (Firefox) */
-.ferramentas {
-    scrollbar-width: none;
-}
-
-/* Esconde scrollbar (Chrome / Edge) */
-.ferramentas::-webkit-scrollbar {
-    display: none;
-}
-
-.menu-toggle {
-    display: none;
-    font-size: 26px;
-    background: none;
-    border: none;
-    cursor: pointer;
->>>>>>> 1a0af4d0bbf82dbe57969e6332471e43021f350b
 }
