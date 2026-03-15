@@ -3,27 +3,33 @@
 /* ============================= */
 
 header {
-    width: 100%;                /* ocupa toda largura da tela */
-    height: 90px;               /* altura fixa da faixa superior */
+    width: 100%; /* ocupa toda largura da tela */
+    height: 90px; /* altura fixa da faixa superior */
 
     display: flex;
-    align-items: center;        /* centraliza conteúdo verticalmente */
+    align-items: center; /* centraliza conteúdo verticalmente */
+    
+    padding-left: 30px; /* espaço da logo até a borda esquerda */
 
-    padding-left: 30px;         /* espaço da logo até a borda esquerda */
-
+    gap: 6px;
     /* Degradê do amarelo para branco */
     background: linear-gradient(to bottom,
-            #FFCA00 0%,          /* amarelo forte no topo */
-            #FFE580 70%,         /* transição suave */
-            #ffffff 100%        /* termina branco */
+            #FFCA00 0%, /* amarelo forte no topo */
+            #FFE580 70%, /* transição suave */
+            #ffffff 100% /* termina branco */
         );
 }
 
 .logo {
-    height: 40px;               /* controla o tamanho da logo */
-    object-fit: contain;        /* mantém proporção sem distorcer */
+    height: 40px; /* controla o tamanho da logo */
+    object-fit: contain; /* mantém proporção sem distorcer */
 }
 
+header h3 {
+    font-weight: bold;
+    font-size: clamp(16px, 5vw, 20px);
+    color: #000;
+}
 
 /* ============================= */
 /* MAIN (CORPO DA PÁGINA) */
@@ -34,16 +40,16 @@ main {
     
     display: flex;
     flex-direction: column;
-    align-items: center;        /* centraliza horizontal */
-    justify-content: center;    /* centraliza vertical */
+    align-items: center; /* centraliza horizontal */
+    justify-content: center; /* centraliza vertical */
 
     background-color: #ffffff;
-    padding: 40px 20px;         /* respiro interno */
+    padding: 40px 20px; /* respiro interno */
 }
 
 .topo {
     text-align: center;
-    margin-bottom: 40px;        /* espaço antes do card */
+    margin-bottom: 40px; /* espaço antes do card */
 }
 
 .titulo {
@@ -54,7 +60,7 @@ main {
 
 .paragrafo {
     font-size: 14px;
-    color: #333333d7;           /* leve transparência */
+    color: #333333d7; /* leve transparência */
 }
 
 
@@ -64,7 +70,7 @@ main {
 
 .card {
     width: 100%;
-    max-width: 800px;           /* limita largura em telas grandes */
+    max-width: 800px; /* limita largura em telas grandes */
 
     padding: 40px 30px;
 
@@ -85,7 +91,7 @@ main {
 .tipoConta {
     display: flex;
     justify-content: center;
-    gap: 20px;                  /* espaço entre os cards */
+    gap: 20px; /* espaço entre os cards */
     margin-bottom: 30px;
 }
 
@@ -105,7 +111,7 @@ main {
     text-align: center;
 
     cursor: pointer;
-    transition: 0.25s ease;     /* animação suave */
+    transition: 0.25s ease; /* animação suave */
 
     display: flex;
     flex-direction: column;
@@ -225,7 +231,7 @@ input[type="password"]::-ms-reveal {
 }
 
 .eyeBtn:hover {
-    color: black;
+    color: #000000;
 }
 
 /* Alternância dos ícones */
@@ -281,7 +287,7 @@ input[type="password"]::-ms-reveal {
 .requisitos {
     list-style: none;
     padding: 0;
-    font-size: 14px;
+    font-size: 13px;
 
     opacity: 0;             /* escondido por padrão */
     max-height: 0;
@@ -306,7 +312,7 @@ input[type="password"]::-ms-reveal {
 
 /* Requisito válido */
 .requisitos li.ok {
-    color: green;
+    color: #2ecc71;
 }
 
 .requisitos li.ok::before {
@@ -315,7 +321,7 @@ input[type="password"]::-ms-reveal {
 
 /* Requisito inválido */
 .requisitos li.erro {
-    color: red;
+    color: #ff4d4d;
 }
 
 .requisitos li.erro::before {
@@ -350,6 +356,10 @@ input[type="password"]::-ms-reveal {
     background-color: #e6b800; /* leve escurecida */
 }
 
+.btnCriarConta:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
 
 /* ============================= */
 /* LINK DE CONTA EXISTENTE */
@@ -370,7 +380,7 @@ input[type="password"]::-ms-reveal {
 
 .contaExistente a {
     text-decoration: none;
-    color: black;
+    color: #000000;
     font-weight: 500;
 }
 

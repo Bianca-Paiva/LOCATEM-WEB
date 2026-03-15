@@ -6,7 +6,7 @@ body {
 .app {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(to bottom, #FFD600 0%, #FFD600 10%, #ffffff 20%);
+    background: linear-gradient(to bottom, #FFD600 0%, #FFD600 8%, #ffffff 16%);
     padding-bottom: 70px;
 }
 
@@ -247,7 +247,7 @@ main h2 {
 /* GRID DE ANÚNCIOS */
 .anuncios {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: clamp(10px, 3vw, 14px);
     margin-top: 8px;
     list-style: none;
@@ -333,7 +333,7 @@ main h2 {
 
 .navegacaoMobile img {
     width: 100%;
-    height: 25px;
+    height: 24px;
 }
 
 .navegacaoMobile a {

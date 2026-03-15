@@ -3,29 +3,20 @@
 
 <head>
     <meta charset="UTF-8" />
-    <!-- Define codificação UTF-8 (suporta acentos e caracteres especiais) -->
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Responsividade para dispositivos móveis -->
-
     <title>LOCATEM</title>
-    <!-- Título exibido na aba do navegador -->
-
-    <!-- Reset CSS (remove estilos padrão do navegador) -->
+    <link rel="shortcut icon" href="./src/images/LogoIcon.png" type="image/x-icon"/>
     <link rel="stylesheet" href="./src/css/reset.css" />
-
-    <!-- CSS de responsividade -->
     <link rel="stylesheet" href="./src/css/responsivoLogin.css" />
-
-    <!-- CSS específico da página de cadastro -->
     <link rel="stylesheet" href="./src/css/cadastro.css" />
 </head>
 
 <body>
     <!-- HEADER COM LOGO -->
     <header>
-        <img src="./src/images/Logo com nome.png" alt="Logo LOCATEM" class="logo" />
+        <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" class="logo" />
         <!-- alt melhora acessibilidade -->
+        <h3>LOCATEM</h3>
     </header>
 
     <main>
@@ -203,7 +194,7 @@
                 </div>
 
                 <!-- BOTÃO CRIAR CONTA -->
-                <button type="submit" id="btnCriarConta" class="btnCriarConta">
+                <button type="submit" id="btnCriarConta" class="btnCriarConta" disabled>
                     Criar conta
                 </button>
             </form>

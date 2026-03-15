@@ -204,11 +204,10 @@ function validarFormulario() {
     const senhaForte = verificarForcaSenha(senha.value);
     const senhasIguais = senha.value === confirmarSenha.value;
 
-    // Se senha não for forte
-    if (!senhaForte) {
-        erroSenha.textContent = "A senha precisa ser mais forte";
-        confirmarSenha.classList.remove("sucesso");
-        confirmarSenha.classList.add("erro");
+    // Se campo confirmar estiver vazio
+    if (confirmarSenha.value.length === 0) {
+        erroSenha.textContent = "";
+        confirmarSenha.classList.remove("erro", "sucesso");
         btnCriarConta.disabled = true;
         return;
     }
@@ -222,10 +221,11 @@ function validarFormulario() {
         return;
     }
 
-    // Se campo confirmar estiver vazio
-    if (confirmarSenha.value.length === 0) {
-        erroSenha.textContent = "";
-        confirmarSenha.classList.remove("erro", "sucesso");
+    // Se senha não for forte
+    if (!senhaForte) {
+        erroSenha.textContent = "A senha precisa ser mais forte";
+        confirmarSenha.classList.remove("sucesso");
+        confirmarSenha.classList.add("erro");
         btnCriarConta.disabled = true;
         return;
     }

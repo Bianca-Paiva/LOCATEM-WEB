@@ -50,7 +50,7 @@
 
     .search-bar-desktop {
         flex: 1;
-        min-width: 200px;
+        min-width: 600px;
         height: 43px;
 
         /* Flex para alinhar input + botão */
@@ -94,13 +94,6 @@
         height: 25px;
     }
 
-    /* Search bar aparece e ocupa o espaço central */
-    .header .search-bar-desktop {
-        display: flex;
-        flex: 1;
-        max-width: 700px;
-    }
-
     /* ÍCONE CHAT */
     .chat {
         width: 40px;
@@ -110,9 +103,10 @@
     /* Nav desktop aparece abaixo do header */
     .navegacaoDesktop {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        gap: 60px;
+        gap: clamp(15px, 2vw, 40px);
         padding: 0 40px;
         max-width: 1200px;
         margin: 0 auto 25px;
@@ -121,7 +115,7 @@
     .navegacaoDesktop a {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 7px;
         font-size: 15px;
         font-weight: 600;
         color: #000;
@@ -134,16 +128,25 @@
         height: auto;
     }
 
+    main {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 
     /* BANNER */
     section {
         padding: 14px 40px 0;
+        display: flex;
+        justify-content: center;
     }
 
     .banner {
-        height: clamp(200px, 35vw, 420px);
-        /* altura maior */
+        width: 100%;
+        max-width: 1200px;
+        height: clamp(220px, 28vw, 420px);
         border-radius: 16px;
+        overflow: hidden;
+        position: relative;
     }
 
     .seta-btn {
@@ -153,8 +156,13 @@
     }
 
     .setas {
-        left: 20px;
-        right: 20px;
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        right: 16px;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
     }
 
     .indicadores {
@@ -178,12 +186,19 @@
     /* CATEGORIAS FERRAMENTAS */
     .categorias {
         padding: 20px 20px;
-        font-size: clamp(13px, 3.2vw, 15px); 
+        font-size: clamp(13px, 3.2vw, 15px);
     }
 
     /* CARD DE ANUNCIO DE FERRAMENTA */
     .anuncios {
         padding: 0 20px;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    } 
+        display: grid;
+        gap: clamp(12px, 2vw, 20px);
+    }
+
+    .anuncio-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 }
