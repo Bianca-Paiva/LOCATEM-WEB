@@ -10,9 +10,7 @@
     /* Remove espaçamentos internos padrão */
 
     box-sizing: border-box;
-    /* Faz com que padding e border sejam incluídos
-       dentro da largura e altura total do elemento
-       (facilita controle de layout) */
+    /* Faz com que padding e border sejam incluídos dentro da largura e altura total do elemento (facilita controle de layout) */
 
     font-family: "Montserrat", sans-serif;
     /* Define a fonte padrão do projeto */

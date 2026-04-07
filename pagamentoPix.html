@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOCATEM - Pagamento via Pix</title>
+    <link rel="stylesheet" href="./src/css/reset.css">
+    <link rel="stylesheet" href="./src/css/pagamentoPix.css">
+</head>
+
+<body>
+    <div class="app">
+
+        <!-- HEADER -->
+        <header class="topo">
+
+            <div class="linha-topo">
+                <div class="logo">
+                    <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM">
+                    LOCATEM
+                </div>
+
+                <button class="chat">
+                    <img src="./src/images/chat.png" alt="Chat">
+                </button>
+            </div>
+
+            <form class="search-bar">
+                <input type="search" placeholder="Buscar ferramentas...">
+                <button type="submit">
+                    <img src="./src/images/lupa.png" alt="Buscar">
+                </button>
+            </form>
+
+        </header>
+
+        <!-- CONTEÚDO -->
+        <main class="pagamento-container">
+
+            <section class="titulo-pagina">
+                <button class="btn-voltar" aria-label="Voltar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5" />
+                    </svg>
+                </button>
+                <h1>Pagamento via Pix</h1>
+            </section>
+
+            <div class="pagamento-layout">
+
+                <!-- COLUNA ESQUERDA -->
+                <div class="coluna-esquerda">
+
+                    <!-- ITENS -->
+                    <section class="card">
+                        <h2>Itens do Pedido</h2>
+
+                        <div class="item-pedido">
+                            <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira Elétrica">
+                            <div class="item-info">
+                                <div class="item-topo">
+                                    <h3>Furadeira Elétrica de Impacto</h3>
+                                    <span>R$ 175,00</span>
+                                </div>
+                                <p>7 dias de aluguel</p>
+                                <small>R$ 25,00/dia × 7 dias</small>
+                            </div>
+                        </div>
+
+                        <div class="item-pedido">
+                            <img src="./src/images/serraCircularProfissional.png" alt="Serra Circular Profissional">
+                            <div class="item-info">
+                                <div class="item-topo">
+                                    <h3>Serra Circular Profissional</h3>
+                                    <span>R$ 105,00</span>
+                                </div>
+                                <p>3 dias de aluguel</p>
+                                <small>R$ 35,00/dia × 3 dias</small>
+                            </div>
+                        </div>
+
+                        <div class="item-pedido">
+                            <img src="./src/images/lixadeiraEletrica.png" alt="Lixadeira Orbital Elétrica">
+                            <div class="item-info">
+                                <div class="item-topo">
+                                    <h3>Lixadeira Orbital</h3>
+                                    <span>R$ 100,00</span>
+                                </div>
+                                <p>5 dias de aluguel</p>
+                                <small>R$ 20,00/dia × 5 dias</small>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- PAGAMENTO -->
+                    <section class="card card-pagamento">
+                        <h2>Forma de Pagamento</h2>
+
+                        <div class="metodos-pagamento">
+                            <button type="button">Cartão de Crédito</button>
+                            <button type="button">Cartão de Débito</button>
+                            <button type="button" class="ativo">PIX</button>
+                        </div>
+                    </section>
+
+                    <!-- ÁREA PIX -->
+                    <section class="card area-pix">
+                        <div class="tempo-expiracao">Expira em 14:59</div>
+                        <!-- o QR Code deve expirar em 15 minutos -->
+
+                        <div class="qr-box">
+                            <img src="./src/images/qrCodeFake.png" alt="QR Code">
+                        </div>
+
+                        <p class="texto-qr">
+                            Escaneie o QR Code com seu app bancário
+                        </p>
+
+                        <div class="divisor">
+                            <hr>
+                            <span>ou</span>
+                            <hr>
+                        </div>
+
+                        <div class="campo-pix">
+                            <label for="codigoPix">Código Pix Copia e Cola</label>
+                            <div class="input-com-icone">
+                                <input id="codigoPix" type="text" readonly
+                                    value="00020126580014br.gov.bcb.pix0136a1b2c3d4-e5f6-7890-abcd-ef1234567890520400005303986540380.005802BR5913LOCATEM LTDA6009SAO PAULO62070503***63041D3D" />
+                                <button type="button" aria-label="Copiar código">
+                                    <img src="./src/images/copiarBtn.svg" alt="Copiar código">
+                                </button>
+                            </div>
+                        </div>
+
+                        <button class="btn-copiar-pix" type="button">
+                            Copiar Código PIX
+                        </button>
+
+                        <div class="instrucoes-pix">
+                            <h3>Como pagar com PIX:</h3>
+
+                            <div class="instrucao">
+                                <div class="numero">1</div>
+                                <p>Abra o app do seu banco e escolha pagar com PIX</p>
+                            </div>
+
+                            <div class="instrucao">
+                                <div class="numero">2</div>
+                                <p>Escaneie o QR Code ou cole o código copiado</p>
+                            </div>
+
+                            <div class="instrucao">
+                                <div class="numero">3</div>
+                                <p>Confirme o pagamento no app do seu banco</p>
+                            </div>
+                        </div>
+
+                        <div class="aguardando-pagamento">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9" />
+                                <path fill-rule="evenodd"
+                                    d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z" />
+                            </svg>
+                            <span>Aguardando pagamento...</span>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- COLUNA DIREITA -->
+                <aside class="coluna-direita">
+                    <section class="card resumo-pedido">
+                        <h2>Resumo do Pedido</h2>
+
+                        <div class="linha-resumo">
+                            <span>Subtotal</span>
+                            <span>R$ 380,00</span>
+                        </div>
+
+                        <div class="linha-resumo">
+                            <span>Frete</span>
+                            <span class="gratis">Grátis</span>
+                        </div>
+
+                        <div class="linha-total">
+                            <span>Total</span>
+                            <span>R$ 380,00</span>
+                        </div>
+
+                        <div class="cupom-box">
+                            <input type="text" placeholder="Inserir código de cupom">
+                        </div>
+
+                        <button class="btn-confirmar" type="button">
+                            Confirmar Pagamento
+                        </button>
+
+                        <div class="seguranca">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-lock-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4m0 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3" />
+                            </svg>
+                            <p>Pagamento 100% seguro</p>
+                        </div>
+                    </section>
+                </aside>
+
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
