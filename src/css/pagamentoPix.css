@@ -1,0 +1,575 @@
+/* ============================= */
+/* BASE GERAL */
+/* ============================= */
+body {
+    background-color: #F9FAFB;
+    color: #222;
+}
+
+.app {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to bottom,
+            #FFD600 0%,
+            #ffe97a 3%,
+            #fff3b0 5%,
+            #F9FAFB 8%);
+}
+
+/* ============================= */
+/* HEADER */
+/* ============================= */
+.topo {
+    padding: 14px 16px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.linha-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 795;
+    font-size: clamp(16px, 5vw, 20px);
+    color: #000;
+    flex-shrink: 0;
+}
+
+.logo img {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.chat {
+    background: transparent;
+    border-radius: 50%;
+    padding: 6px;
+    border: none;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.chat img {
+    width: auto;
+    height: 22px;
+    display: block;
+    object-fit: contain;
+}
+
+/* ============================= */
+/* SEARCH */
+/* ============================= */
+.search-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    left: 16px;
+    right: 16px;
+    background: #F9FAFB;
+    border-radius: 999px;
+    padding: 0 16px;
+    flex: 1;
+    min-width: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.search-bar input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    padding: 11px 10px;
+    border: none;
+    background-color: transparent;
+    font-size: clamp(12px, 3.5vw, 14px);
+    outline: none;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+/* ============================= */
+/* CONTEÚDO */
+/* ============================= */
+.pagamento-container {
+    padding: 0 16px 32px;
+}
+
+.titulo-pagina {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0 20px;
+}
+
+.titulo-pagina h1 {
+    font-size: clamp(22px, 4vw, 28px);
+    font-weight: bold;
+    margin: 0;
+}
+
+.btn-voltar {
+    border: none;
+    background: transparent;
+    font-size: 30px;
+    cursor: pointer;
+    color: #000;
+}
+
+.btn-voltar svg {
+    width: auto;
+    height: 30px;
+    object-fit: contain;
+    display: block;
+}
+
+/* ============================= */
+/* LAYOUT */
+/* ============================= */
+.pagamento-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+/* ============================= */
+/* CARD PADRÃO */
+/* ============================= */
+.card {
+    background-color: #ffffff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.card h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+/* ============================= */
+/* ITENS DO PEDIDO */
+/* ============================= */
+.item-pedido {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.item-pedido img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: contain;
+    flex-shrink: 0;
+    background: #f0f0f0;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.item-topo h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.item-topo span {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    white-space: nowrap;
+}
+
+.item-info p {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.item-info small {
+    font-size: 12px;
+    color: #999;
+}
+
+/* ============================= */
+/* MÉTODOS DE PAGAMENTO */
+/* ============================= */
+.metodos-pagamento {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.metodos-pagamento button {
+    width: 100%;
+    height: 42px;
+    padding: 6px 4px;
+
+    background-color: #fff;
+    border: 1px solid #d4d4d4;
+    border-radius: 8px;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    text-align: center;
+    cursor: pointer;
+}
+
+.metodos-pagamento button:not(.ativo):hover {
+    background-color: #f3f3f3;
+    transform: scale(1.01);
+}
+
+.metodos-pagamento .ativo {
+    border: 2px solid #FFD600;
+    background-color: #fff8cc;
+    font-weight: 600;
+}
+
+/* ============================= */
+/* ÁREA PIX */
+/* ============================= */
+.area-pix {
+    text-align: center;
+}
+
+.tempo-expiracao {
+    display: inline-block;
+    background-color: #eaf3ff;
+    color: #2764c8;
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.qr-box img {
+    width: 190px;
+    height: 190px;
+}
+
+.texto-qr {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.divisor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.divisor hr {
+    flex: 1;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+.divisor span {
+    font-size: 11px;
+    color: #999;
+    text-transform: lowercase;
+}
+
+.campo-pix {
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+.campo-pix label {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.input-com-icone {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.input-com-icone input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 12px 0px 12px 14px;
+    outline: none;
+    font-size: 12px;
+    color: #555;
+}
+
+.input-com-icone button {
+    background: transparent;
+    border: none;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.btn-copiar-pix {
+    width: 100%;
+    background-color: #FFD600;
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    margin-bottom: 26px;
+}
+
+.btn-copiar-pix:hover {
+    background-color: #f2cb00;
+}
+
+/* ============================= */
+/* INSTRUÇÕES PIX */
+/* ============================= */
+.instrucoes-pix {
+    text-align: left;
+}
+
+.instrucoes-pix h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 14px;
+}
+
+.instrucao {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.numero {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #FFD600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.instrucao p {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.45;
+    margin: 0;
+}
+
+.aguardando-pagamento {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: #888;
+    font-size: 12px;
+}
+
+.icone-aguardando {
+    display: inline-block;
+    animation: girar 1s linear infinite;
+}
+
+/* ============================= */
+/* RESUMO DO PEDIDO */
+/* ============================= */
+.resumo-pedido {
+    position: sticky;
+    top: 20px;
+}
+
+.linha-resumo,
+.linha-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.linha-resumo {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+.linha-total {
+    border-top: 1px solid #eee;
+    margin-top: 18px;
+    padding-top: 18px;
+    margin-bottom: 24px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
+
+.gratis {
+    color: #037233;
+    font-weight: bold;
+}
+
+.cupom-box {
+    margin-bottom: 18px;
+}
+
+.cupom-box input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+}
+
+.btn-confirmar {
+    width: 100%;
+    background-color: #FDE68A;
+    color: #666;
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: not-allowed;
+    margin-bottom: 14px;
+}
+
+.seguranca {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: #999;
+    font-size: 12px;
+}
+
+.seguranca svg {
+    width: auto;
+    height: 12px;
+    object-fit: contain;
+    color: #777;
+}
+
+/* ============================= */
+/* RESPONSIVIDADE */
+/* ============================= */
+@media (max-width: 900px) {
+    .pagamento-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .resumo-pedido {
+        position: static;
+    }
+}
+
+@media (max-width: 700px) {
+    .topo {
+        flex-wrap: wrap;
+    }
+
+    .search-bar {
+        order: 3;
+        width: 100%;
+        flex: 0 0 100%;
+    }
+
+    .metodos-pagamento {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo-pagina h1 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pagamento-container {
+        padding: 0 12px 24px;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .item-pedido {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .item-pedido img {
+        width: 100%;
+        height: 180px;
+    }
+
+    .item-topo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .qr-fake {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+/* ============================= */
+/* ANIMAÇÃO */
+/* ============================= */
+/* @keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+} */
