@@ -40,6 +40,7 @@ body {
     font-size: clamp(16px, 5vw, 20px);
     color: #000;
     flex-shrink: 0;
+    text-decoration: none;
 }
 
 .logo img {
@@ -152,6 +153,53 @@ body {
     grid-template-columns: 2fr 1fr;
     gap: 20px;
     align-items: start;
+}
+
+/* ============================= */
+/* FEEDBACK FLUTUANTE */
+/* ============================= */
+.feedback-flutuante {
+    position: fixed;
+    z-index: 9999;
+    min-width: 180px;
+    max-width: 260px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+    border: 1px solid transparent;
+    animation: aparecerFeedback 0.2s ease;
+}
+
+.feedback-flutuante.sucesso {
+    background-color: #eefaf0;
+    border-color: #b7e4c0;
+    color: #1f7a36;
+}
+
+.feedback-flutuante.erro {
+    background-color: #fff1f1;
+    border-color: #f1b5b5;
+    color: #b42318;
+}
+
+.feedback-flutuante.aviso {
+    background-color: #fff9e8;
+    border-color: #f4d98b;
+    color: #9a6700;
+}
+
+@keyframes aparecerFeedback {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ============================= */
@@ -421,6 +469,85 @@ body {
 }
 
 /* ============================= */
+/* ESTADOS DA ÁREA DE PAGAMENTO */
+/* ============================= */
+.estado-pagamento {
+    display: block;
+}
+
+.estado-pagamento.escondido {
+    display: none;
+}
+
+.estado-pagamento-centralizado {
+    text-align: center;
+}
+
+.area-pix .escondido {
+    display: none;
+}
+
+.estado-icone {
+    width: 78px;
+    height: 78px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.estado-icone-expirado {
+    background-color: #FBE4E4;
+}
+
+.icone-expirado-svg {
+    width: auto;
+    height: 40px;
+    color: #ef1111;
+    display: block;
+}
+
+.estado-icone-sucesso {
+    background-color: #eaf8ee;
+    color: #1f7a36;
+}
+
+.icone-concluido-svg {
+    width: auto;
+    height: 36px;
+    color: #1f7a36;
+    display: block;
+}
+
+.estado-icone-erro {
+    background-color: #fff1f1;
+    color: #b42318;
+}
+
+.icone-erro-svg {
+    width: auto;
+    height: 37px;
+    color: #b42318;
+    display: block;
+}
+
+.titulo-estado {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.descricao-estado {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+/* ============================= */
 /* RESUMO DO PEDIDO */
 /* ============================= */
 .resumo-pedido {
@@ -433,6 +560,15 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.linha-desconto {
+    color: #d14343;
+    font-weight: 500;
+}
+
+.escondido {
+    display: none;
 }
 
 .linha-resumo {
@@ -460,13 +596,73 @@ body {
     margin-bottom: 18px;
 }
 
-.cupom-box input {
+.cupom-container {
+    display: flex;
+    gap: 8px;
+}
+
+.input-com-icone-cupom {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    background-color: #ffffff;
+    border: 1px solid #D1D5DC;
+    border-radius: 10px;
+    padding: 0 12px;
+}
+
+.input-com-icone-cupom:focus-within {
+    border-color: #e7d163;
+}
+
+.icone-cupom {
+    width: 16px;
+    height: 16px;
+    color: #888;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.input-com-icone-cupom input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 12px 0;
+    font-size: 14px;
+    outline: none;
+}
+
+.cupom-container input {
     width: 100%;
-    padding: 12px 14px;
-    border: 1px solid #ddd;
+    flex: 1;
+    padding: 12px 1px;
     border-radius: 10px;
     font-size: 14px;
     outline: none;
+}
+
+#inputCupom {
+    text-transform: uppercase;
+}
+
+.cupom-container button {
+    padding: 0 16px;
+    background-color: #ffd500d4;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.cupom-container button:hover {
+    background-color: #f2cb00;
+}
+
+#btnAplicarCupom:disabled {
+    background-color: #FDE68A;
+    color: #666;
+    cursor: not-allowed;
 }
 
 .btn-confirmar {

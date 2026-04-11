@@ -16,10 +16,10 @@
         <header class="topo">
 
             <div class="linha-topo">
-                <div class="logo">
+                <a href="./principalPage.html" class="logo">
                     <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM">
                     LOCATEM
-                </div>
+                </a>
 
                 <button class="chat">
                     <img src="./src/images/chat.png" alt="Chat">
@@ -108,67 +108,120 @@
 
                     <!-- ÁREA PIX -->
                     <section class="card area-pix">
-                        <div class="tempo-expiracao">Expira em 14:59</div>
-                        <!-- o QR Code deve expirar em 15 minutos -->
 
-                        <div class="qr-box">
-                            <img src="./src/images/qrCodeFake.png" alt="QR Code">
-                        </div>
+                        <!-- ESTADO: AGUARDANDO PAGAMENTO -->
+                        <div id="estadoAguardandoPagamento" class="estado-pagamento">
+                            <div id="tempoExpiracao" class="tempo-expiracao">Expira em 15:00</div>
 
-                        <p class="texto-qr">
-                            Escaneie o QR Code com seu app bancário
-                        </p>
+                            <div class="qr-box">
+                                <img id="imagemQrCode" src="./src/images/qrCodeFake.png" alt="QR Code">
+                            </div>
 
-                        <div class="divisor">
-                            <hr>
-                            <span>ou</span>
-                            <hr>
-                        </div>
+                            <p class="texto-qr">
+                                Escaneie o QR Code com seu app bancário
+                            </p>
 
-                        <div class="campo-pix">
-                            <label for="codigoPix">Código Pix Copia e Cola</label>
-                            <div class="input-com-icone">
-                                <input id="codigoPix" type="text" readonly
-                                    value="00020126580014br.gov.bcb.pix0136a1b2c3d4-e5f6-7890-abcd-ef1234567890520400005303986540380.005802BR5913LOCATEM LTDA6009SAO PAULO62070503***63041D3D" />
-                                <button type="button" aria-label="Copiar código">
-                                    <img src="./src/images/copiarBtn.svg" alt="Copiar código">
-                                </button>
+                            <div class="divisor">
+                                <hr>
+                                <span>ou</span>
+                                <hr>
+                            </div>
+
+                            <div class="campo-pix">
+                                <label for="codigoPix">Código Pix Copia e Cola</label>
+                                <div class="input-com-icone">
+                                    <input id="codigoPix" type="text" readonly
+                                        value="00020126580014br.gov.bcb.pix0136a1b2c3d4-e5f6-7890-abcd-ef1234567890520400005303986540380.005802BR5913LOCATEM LTDA6009SAO PAULO62070503***63041D3D" />
+                                    <button id="btnCopiarIcone" type="button" aria-label="Copiar código">
+                                        <img src="./src/images/copiarBtn.svg" alt="Copiar código">
+                                    </button>
+                                </div>
+                            </div>
+
+                            <button class="btn-copiar-pix" id="btnCopiarPix" type="button">
+                                Copiar Código PIX
+                            </button>
+
+                            <div class="instrucoes-pix">
+                                <h3>Como pagar com PIX:</h3>
+
+                                <div class="instrucao">
+                                    <div class="numero">1</div>
+                                    <p>Abra o app do seu banco e escolha pagar com PIX</p>
+                                </div>
+
+                                <div class="instrucao">
+                                    <div class="numero">2</div>
+                                    <p>Escaneie o QR Code ou cole o código copiado</p>
+                                </div>
+
+                                <div class="instrucao">
+                                    <div class="numero">3</div>
+                                    <p>Confirme o pagamento no app do seu banco</p>
+                                </div>
+                            </div>
+
+                            <div class="aguardando-pagamento">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9" />
+                                    <path fill-rule="evenodd"
+                                        d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z" />
+                                </svg>
+                                <span>Aguardando pagamento...</span>
                             </div>
                         </div>
 
-                        <button class="btn-copiar-pix" type="button">
-                            Copiar Código PIX
-                        </button>
-
-                        <div class="instrucoes-pix">
-                            <h3>Como pagar com PIX:</h3>
-
-                            <div class="instrucao">
-                                <div class="numero">1</div>
-                                <p>Abra o app do seu banco e escolha pagar com PIX</p>
+                        <!-- ESTADO: PIX EXPIRADO -->
+                        <div id="estadoPixExpirado" class="estado-pagamento escondido">
+                            <div class="estado-icone estado-icone-expirado">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="icone-expirado-svg" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                    <path
+                                        d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+                                </svg>
                             </div>
-
-                            <div class="instrucao">
-                                <div class="numero">2</div>
-                                <p>Escaneie o QR Code ou cole o código copiado</p>
-                            </div>
-
-                            <div class="instrucao">
-                                <div class="numero">3</div>
-                                <p>Confirme o pagamento no app do seu banco</p>
-                            </div>
+                            <h2 class="titulo-estado">Tempo Expirado</h2>
+                            <p class="descricao-estado">O código PIX expirou. Gere um novo código para continuar.</p>
+                            <button id="btnGerarNovoQrCode" class="btn-copiar-pix" type="button">
+                                Gerar Novo QR Code
+                            </button>
                         </div>
 
-                        <div class="aguardando-pagamento">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-arrow-repeat" viewBox="0 0 16 16">
-                                <path
-                                    d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9" />
-                                <path fill-rule="evenodd"
-                                    d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z" />
-                            </svg>
-                            <span>Aguardando pagamento...</span>
+                        <!-- ESTADO: PAGAMENTO APROVADO -->
+                        <div id="estadoPagamentoAprovado" class="estado-pagamento escondido">
+                            <div class="estado-icone estado-icone-sucesso">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="icone-concluido-svg" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                    <path
+                                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                                </svg>
+                            </div>
+                            <h2 class="titulo-estado">Pagamento Aprovado</h2>
+                            <p class="descricao-estado">Seu pagamento foi confirmado com sucesso.</p>
                         </div>
+
+                        <!-- ESTADO: ERRO AO GERAR PAGAMENTO -->
+                        <div id="estadoErroPagamento" class="estado-pagamento escondido">
+                            <div class="estado-icone estado-icone-erro">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="icone-erro-svg" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                    <path
+                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                </svg>
+                            </div>
+                            <h2 class="titulo-estado">Erro ao gerar pagamento</h2>
+                            <p class="descricao-estado">Não foi possível gerar o código PIX no momento. Tente novamente.
+                            </p>
+                            <button id="btnTentarNovamente" class="btn-copiar-pix" type="button">
+                                Tentar novamente
+                            </button>
+                        </div>
+
                     </section>
                 </div>
 
@@ -179,21 +232,40 @@
 
                         <div class="linha-resumo">
                             <span>Subtotal</span>
-                            <span>R$ 380,00</span>
+                            <span id="subtotal" data-valor="380">R$ 380,00</span>
+                        </div>
+
+                        <div id="linhaDesconto" class="linha-resumo linha-desconto escondido">
+                            <span>Desconto</span>
+                            <span id="desconto">R$ 0,00</span>
                         </div>
 
                         <div class="linha-resumo">
                             <span>Frete</span>
-                            <span class="gratis">Grátis</span>
+                            <span class="gratis" id="frete" data-valor="0">Grátis</span>
                         </div>
 
                         <div class="linha-total">
                             <span>Total</span>
-                            <span>R$ 380,00</span>
+                            <span id="total">R$ 380,00</span>
                         </div>
 
                         <div class="cupom-box">
-                            <input type="text" placeholder="Inserir código de cupom">
+                            <div class="cupom-container">
+
+                                <div class="input-com-icone-cupom">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icone-cupom" viewBox="0 0 16 16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0" />
+                                        <path
+                                            d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z" />
+                                    </svg>
+                                    <input id="inputCupom" type="text" placeholder="Inserir cupom de desconto">
+                                </div>
+
+                                <button id="btnAplicarCupom" type="button" disabled>Aplicar</button>
+                            </div>
                         </div>
 
                         <button class="btn-confirmar" type="button">
@@ -210,10 +282,12 @@
                         </div>
                     </section>
                 </aside>
-
             </div>
         </main>
     </div>
+
+    <script src="./src/js/pagamentoPix.js"></script>
+
 </body>
 
 </html>

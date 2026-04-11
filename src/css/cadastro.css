@@ -23,6 +23,7 @@ header {
 .logo {
     height: 40px; /* controla o tamanho da logo */
     object-fit: contain; /* mantém proporção sem distorcer */
+    text-decoration: none;
 }
 
 header h3 {
