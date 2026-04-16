@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOCATEM - Pagamento via Pix</title>
+    <title>LOCATEM</title>
     <link rel="stylesheet" href="./src/css/reset.css">
     <link rel="stylesheet" href="./src/css/pagamentoPix.css">
 </head>
@@ -26,13 +26,12 @@
                 </button>
             </div>
 
-            <form class="search-bar">
+            <!-- <form class="search-bar">
                 <input type="search" placeholder="Buscar ferramentas...">
                 <button type="submit">
                     <img src="./src/images/lupa.png" alt="Buscar">
                 </button>
-            </form>
-
+            </form> -->
         </header>
 
         <!-- CONTEÚDO -->
@@ -51,60 +50,26 @@
 
             <div class="pagamento-layout">
 
+                <!-- COLUNA DIREITA -->
+                <aside class="coluna-direita">
+                    <section class="card resumo-pedido">
+                        <div class="linha-total">
+                            <span>Pagamento Total</span>
+                            <span id="total">R$ 380,00</span>
+                        </div>
+
+                        <div class="linha-prazo">
+                            <p class="prazo-label">Pague em até</p>
+                            <div class="prazo-info">
+                                <span class="prazo-tempo">23:54:45</span>
+                                <span class="prazo-vencimento">17 de abril de 2026, 15:44</span>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+
                 <!-- COLUNA ESQUERDA -->
                 <div class="coluna-esquerda">
-
-                    <!-- ITENS -->
-                    <section class="card">
-                        <h2>Itens do Pedido</h2>
-
-                        <div class="item-pedido">
-                            <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira Elétrica">
-                            <div class="item-info">
-                                <div class="item-topo">
-                                    <h3>Furadeira Elétrica de Impacto</h3>
-                                    <span>R$ 175,00</span>
-                                </div>
-                                <p>7 dias de aluguel</p>
-                                <small>R$ 25,00/dia × 7 dias</small>
-                            </div>
-                        </div>
-
-                        <div class="item-pedido">
-                            <img src="./src/images/serraCircularProfissional.png" alt="Serra Circular Profissional">
-                            <div class="item-info">
-                                <div class="item-topo">
-                                    <h3>Serra Circular Profissional</h3>
-                                    <span>R$ 105,00</span>
-                                </div>
-                                <p>3 dias de aluguel</p>
-                                <small>R$ 35,00/dia × 3 dias</small>
-                            </div>
-                        </div>
-
-                        <div class="item-pedido">
-                            <img src="./src/images/lixadeiraEletrica.png" alt="Lixadeira Orbital Elétrica">
-                            <div class="item-info">
-                                <div class="item-topo">
-                                    <h3>Lixadeira Orbital</h3>
-                                    <span>R$ 100,00</span>
-                                </div>
-                                <p>5 dias de aluguel</p>
-                                <small>R$ 20,00/dia × 5 dias</small>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- PAGAMENTO -->
-                    <section class="card card-pagamento">
-                        <h2>Forma de Pagamento</h2>
-
-                        <div class="metodos-pagamento">
-                            <button type="button">Cartão de Crédito</button>
-                            <button type="button">Cartão de Débito</button>
-                            <button type="button" class="ativo">PIX</button>
-                        </div>
-                    </section>
 
                     <!-- ÁREA PIX -->
                     <section class="card area-pix">
@@ -139,37 +104,31 @@
                             </div>
 
                             <button class="btn-copiar-pix" id="btnCopiarPix" type="button">
-                                Copiar Código PIX
+                                Copiar Código Pix
                             </button>
 
                             <div class="instrucoes-pix">
-                                <h3>Como pagar com PIX:</h3>
+                                <h3>Por favor, siga as instruções de pagamento:</h3>
 
                                 <div class="instrucao">
                                     <div class="numero">1</div>
-                                    <p>Abra o app do seu banco e escolha pagar com PIX</p>
+                                    <p>Copie o código Pix acima</p>
                                 </div>
 
                                 <div class="instrucao">
                                     <div class="numero">2</div>
-                                    <p>Escaneie o QR Code ou cole o código copiado</p>
+                                    <p>Acesse o app do seu banco ou internet banking de preferência.</p>
                                 </div>
 
                                 <div class="instrucao">
                                     <div class="numero">3</div>
-                                    <p>Confirme o pagamento no app do seu banco</p>
+                                    <p>Escolha pagar com Pix, cole o código e finalize o pagamento.</p>
                                 </div>
-                            </div>
 
-                            <div class="aguardando-pagamento">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-arrow-repeat" viewBox="0 0 16 16">
-                                    <path
-                                        d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9" />
-                                    <path fill-rule="evenodd"
-                                        d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z" />
-                                </svg>
-                                <span>Aguardando pagamento...</span>
+                                <div class="instrucao">
+                                    <div class="numero">4</div>
+                                    <p>Seu pagamento será confirmado em alguns segundos.</p>
+                                </div>
                             </div>
                         </div>
 
@@ -190,20 +149,6 @@
                             </button>
                         </div>
 
-                        <!-- ESTADO: PAGAMENTO APROVADO -->
-                        <div id="estadoPagamentoAprovado" class="estado-pagamento escondido">
-                            <div class="estado-icone estado-icone-sucesso">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="icone-concluido-svg" viewBox="0 0 16 16">
-                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                    <path
-                                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
-                                </svg>
-                            </div>
-                            <h2 class="titulo-estado">Pagamento Aprovado</h2>
-                            <p class="descricao-estado">Seu pagamento foi confirmado com sucesso.</p>
-                        </div>
-
                         <!-- ESTADO: ERRO AO GERAR PAGAMENTO -->
                         <div id="estadoErroPagamento" class="estado-pagamento escondido">
                             <div class="estado-icone estado-icone-erro">
@@ -214,7 +159,7 @@
                                         d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
                                 </svg>
                             </div>
-                            <h2 class="titulo-estado">Erro ao gerar pagamento</h2>
+                            <h2 class="titulo-estado">Erro ao gerar código Pix</h2>
                             <p class="descricao-estado">Não foi possível gerar o código PIX no momento. Tente novamente.
                             </p>
                             <button id="btnTentarNovamente" class="btn-copiar-pix" type="button">
@@ -225,63 +170,15 @@
                     </section>
                 </div>
 
-                <!-- COLUNA DIREITA -->
-                <aside class="coluna-direita">
-                    <section class="card resumo-pedido">
-                        <h2>Resumo do Pedido</h2>
+                <div class="seguranca">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-lock-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4m0 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3" />
+                    </svg>
+                    <p>Pagamento 100% seguro</p>
+                </div>
 
-                        <div class="linha-resumo">
-                            <span>Subtotal</span>
-                            <span id="subtotal" data-valor="380">R$ 380,00</span>
-                        </div>
-
-                        <div id="linhaDesconto" class="linha-resumo linha-desconto escondido">
-                            <span>Desconto</span>
-                            <span id="desconto">R$ 0,00</span>
-                        </div>
-
-                        <div class="linha-resumo">
-                            <span>Frete</span>
-                            <span class="gratis" id="frete" data-valor="0">Grátis</span>
-                        </div>
-
-                        <div class="linha-total">
-                            <span>Total</span>
-                            <span id="total">R$ 380,00</span>
-                        </div>
-
-                        <div class="cupom-box">
-                            <div class="cupom-container">
-
-                                <div class="input-com-icone-cupom">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icone-cupom" viewBox="0 0 16 16"
-                                        fill="currentColor">
-                                        <path
-                                            d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0" />
-                                        <path
-                                            d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z" />
-                                    </svg>
-                                    <input id="inputCupom" type="text" placeholder="Inserir cupom de desconto">
-                                </div>
-
-                                <button id="btnAplicarCupom" type="button" disabled>Aplicar</button>
-                            </div>
-                        </div>
-
-                        <button class="btn-confirmar" type="button">
-                            Confirmar Pagamento
-                        </button>
-
-                        <div class="seguranca">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-lock-fill" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4m0 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3" />
-                            </svg>
-                            <p>Pagamento 100% seguro</p>
-                        </div>
-                    </section>
-                </aside>
             </div>
         </main>
     </div>
