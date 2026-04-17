@@ -1,12 +1,183 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/css/pagamentoDebito.css" />
     <link rel="stylesheet" href="./src/css/reset.css">
     <title>LOCATEM</title>
 </head>
+
 <body>
-    
+    <div class="app">
+
+        <!-- HEADER -->
+        <header class="topo">
+            <div class="linha-topo">
+                <a href="#" class="logo">
+                    <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+                    <span>LOCATEM</span>
+                </a>
+
+                <form class="search-bar">
+                    <img src="./src/images/lupa.png" alt="" class="search-icon" />
+                    <input type="search" placeholder="Buscar ferramentas..." />
+                </form>
+
+                <button class="chat" type="button" aria-label="Abrir chat">
+                    <img src="./src/images/chat.png" alt="Chat" />
+                </button>
+            </div>
+        </header>
+
+        <!-- CONTEÚDO -->
+        <main class="pagamento-container">
+            <section class="titulo-pagina">
+                <button class="btn-voltar" type="button" aria-label="Voltar">
+                    &#8592;
+                </button>
+                <h1>Pagamento</h1>
+            </section>
+
+            <!-- ITENS -->
+            <section class="card">
+                <h2>Itens do Pedido</h2>
+
+                <div class="item-pedido">
+                    <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira Elétrica de Impacto" />
+                    <div class="item-info">
+                        <div class="item-topo">
+                            <h3>Furadeira Elétrica de Impacto</h3>
+                            <span>R$ 175,00</span>
+                        </div>
+                        <p>7 dias de aluguel</p>
+                        <small>R$ 25.00/dia × 7 dias</small>
+                    </div>
+                </div>
+
+                <div class="item-pedido">
+                    <img src="./src/images/serraCircularProfissional.png" alt="Serra Circular Profissional" />
+                    <div class="item-info">
+                        <div class="item-topo">
+                            <h3>Serra Circular Profissional</h3>
+                            <span>R$ 105,00</span>
+                        </div>
+                        <p>3 dias de aluguel</p>
+                        <small>R$ 35.00/dia × 3 dias</small>
+                    </div>
+                </div>
+
+                <div class="item-pedido sem-margem">
+                    <img src="./src/images/lixadeiraEletrica.png" alt="Lixadeira Orbital Elétrica" />
+                    <div class="item-info">
+                        <div class="item-topo">
+                            <h3>Lixadeira Orbital Elétrica</h3>
+                            <span>R$ 100,00</span>
+                        </div>
+                        <p>5 dias de aluguel</p>
+                        <small>R$ 20.00/dia × 5 dias</small>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FORMA DE PAGAMENTO -->
+            <section class="card">
+                <h2>Forma de Pagamento</h2>
+
+                <div class="metodos-pagamento">
+                    <button type="button">Cartão de Crédito</button>
+                    <button type="button" class="ativo">Cartão de Débito</button>
+                    <button type="button">PIX</button>
+                </div>
+            </section>
+
+            <!-- BANCOS -->
+            <section class="card">
+                <h2>Selecione seu Banco</h2>
+
+                <div class="grid-bancos">
+                    <button type="button">Nubank</button>
+                    <button type="button">Itaú</button>
+                    <button type="button">Bradesco</button>
+                    <button type="button">Santander</button>
+                    <button type="button">Banco do Brasil</button>
+                    <button type="button">Caixa</button>
+                </div>
+            </section>
+
+            <!-- DADOS DO CARTÃO -->
+            <section class="card">
+                <div class="card-header">
+                    <h2>Dados do Cartão de Débito</h2>
+                    <span class="card-icon">💳</span>
+                </div>
+
+                <form class="form-cartao">
+                    <div class="campo">
+                        <label for="numeroCartao">Número do Cartão</label>
+                        <input id="numeroCartao" type="text" placeholder="0000 0000 0000 0000" />
+                    </div>
+
+                    <div class="campo">
+                        <label for="nomeTitular">Nome do Titular</label>
+                        <input id="nomeTitular" type="text" placeholder="NOME COMO ESTÁ NO CARTÃO" />
+                    </div>
+
+                    <div class="linha-campos">
+                        <div class="campo">
+                            <label for="validade">Validade</label>
+                            <input id="validade" type="text" placeholder="MM/AA" />
+                        </div>
+
+                        <div class="campo">
+                            <label for="cvv">CVV</label>
+                            <input id="cvv" type="text" placeholder="123" />
+                        </div>
+                    </div>
+
+                    <div class="aviso-banco">
+                        <span class="info-icon">i</span>
+                        <p>Você será redirecionado para autenticação do seu banco para confirmar o pagamento</p>
+                    </div>
+                </form>
+            </section>
+
+            <!-- RESUMO -->
+            <section class="card resumo-pedido">
+                <h2>Resumo do Pedido</h2>
+
+                <div class="linha-resumo">
+                    <span>Subtotal</span>
+                    <span>R$ 380,00</span>
+                </div>
+
+                <div class="linha-resumo">
+                    <span>Frete</span>
+                    <span class="gratis">Grátis</span>
+                </div>
+
+                <div class="linha-total">
+                    <span>Total</span>
+                    <span>R$ 380,00</span>
+                </div>
+
+                <div class="cupom-box">
+                    <div class="input-cupom">
+                        <span class="cupom-icon">🏷</span>
+                        <input type="text" placeholder="Inserir código de cupom" />
+                    </div>
+                </div>
+
+                <button class="btn-pagar" type="button">Pagar com Débito</button>
+
+                <div class="seguranca">
+                    <span>🔒</span>
+                    <p>Pagamento 100% seguro</p>
+                </div>
+            </section>
+        </main>
+    </div>
 </body>
+
 </html>

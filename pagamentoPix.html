@@ -50,28 +50,8 @@
 
             <div class="pagamento-layout">
 
-                <!-- COLUNA DIREITA -->
-                <aside class="coluna-direita">
-                    <section class="card resumo-pedido">
-                        <div class="linha-total">
-                            <span>Pagamento Total</span>
-                            <span id="total">R$ 380,00</span>
-                        </div>
-
-                        <div class="linha-prazo">
-                            <p class="prazo-label">Pague em até</p>
-                            <div class="prazo-info">
-                                <span class="prazo-tempo">23:54:45</span>
-                                <span class="prazo-vencimento">17 de abril de 2026, 15:44</span>
-                            </div>
-                        </div>
-                    </section>
-                </aside>
-
                 <!-- COLUNA ESQUERDA -->
                 <div class="coluna-esquerda">
-
-                    <!-- ÁREA PIX -->
                     <section class="card area-pix">
 
                         <!-- ESTADO: AGUARDANDO PAGAMENTO -->
@@ -142,8 +122,11 @@
                                         d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
                                 </svg>
                             </div>
+
                             <h2 class="titulo-estado">Tempo Expirado</h2>
+
                             <p class="descricao-estado">O código PIX expirou. Gere um novo código para continuar.</p>
+
                             <button id="btnGerarNovoQrCode" class="btn-copiar-pix" type="button">
                                 Gerar Novo QR Code
                             </button>
@@ -159,30 +142,49 @@
                                         d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
                                 </svg>
                             </div>
+
                             <h2 class="titulo-estado">Erro ao gerar código Pix</h2>
+
                             <p class="descricao-estado">Não foi possível gerar o código PIX no momento. Tente novamente.
                             </p>
+
                             <button id="btnTentarNovamente" class="btn-copiar-pix" type="button">
                                 Tentar novamente
                             </button>
                         </div>
-
                     </section>
                 </div>
 
-                <div class="seguranca">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-lock-fill" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4m0 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3" />
-                    </svg>
-                    <p>Pagamento 100% seguro</p>
-                </div>
+                <!-- COLUNA DIREITA -->
+                <aside class="coluna-direita">
+                    <section class="card resumo-pedido">
+                        <div class="linha-total">
+                            <span>Pagamento Total</span>
+                            <span id="total">R$ 380,00</span>
+                        </div>
 
+                        <div class="linha-prazo">
+                            <p class="prazo-label">Pague em até</p>
+                            <div class="prazo-info">
+                                <span class="prazo-tempo">23:54:45</span>
+                                <span class="prazo-vencimento">17 de abril de 2026, 15:44</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="seguranca">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-lock-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4m0 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3" />
+                        </svg>
+                        <p>Pagamento 100% seguro</p>
+                    </div>
+                </aside>
             </div>
         </main>
     </div>
-
+    
     <script src="./src/js/pagamentoPix.js"></script>
 
 </body>
