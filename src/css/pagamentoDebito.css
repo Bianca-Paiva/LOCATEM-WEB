@@ -1,216 +1,143 @@
 :root {
-  --color-primary: #ffd600;
+  /* ============================= */
+  /* CORES PRINCIPAIS */
+  /* ============================= */
+  --color-primary: #FFD600;
   --color-primary-hover: #f2cb00;
   --color-primary-light: #ffe97a;
   --color-primary-soft: #fff3b0;
 
-  --color-bg-main: #f3f4f6;
+  /* ============================= */
+  /* BACKGROUNDS */
+  /* ============================= */
+  --color-bg-main: #F9FAFB;
   --color-bg-card: #ffffff;
-  --color-bg-input: #f9fafb;
-  --color-bg-info: #eef4ff;
+  --color-bg-input: #f8f8f8;
 
-  --color-text-primary: #1f2937;
-  --color-text-secondary: #6b7280;
-  --color-text-dark: #111827;
-  --color-text-muted: #9ca3af;
-  --color-text-success: #16a34a;
-  --color-text-info: #3156d3;
+  /* ============================= */
+  /* TEXTOS */
+  /* ============================= */
+  --color-text-primary: #222;
+  --color-text-secondary: #666;
+  --color-text-terciary: #555 --color-text-security: #777 --color-text-muted: #999;
+  --color-text-dark: #000;
 
-  --color-border: #d1d5db;
-  --color-border-soft: #e5e7eb;
-  --color-border-info: #b9d1ff;
+  /* ============================= */
+  /* BORDAS */
+  /* ============================= */
+  --color-border-light: #ddd;
+  --color-border-soft: #e5e5e5;
 
-  --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.08);
-
-  --radius-card: 16px;
-  --radius-input: 12px;
-  --radius-full: 999px;
+  /* ============================= */
+  /* SOMBRAS */
+  /* ============================= */
+  --shadow-card: 0 5px 10px rgba(0, 0, 0, 0.12);
+  --shadow-feedback: 0 6px 18px rgba(0, 0, 0, 0.14);
 }
 
-/* BASE */
-* {
-  box-sizing: border-box;
-}
 
+/* ============================= */
+/* BASE GERAL */
+/* ============================= */
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--color-bg-main);
-  color: var(--color-text-primary);
+    background-color: var(--color-bg-main);
+    color: var(--color-text-primary);
 }
 
-img {
-  max-width: 100%;
-  display: block;
-}
-
-button,
-input {
-  font: inherit;
-}
-
-/* APP */
 .app {
-  min-height: 100vh;
-  background: linear-gradient(
-    to bottom,
-    var(--color-primary) 0%,
-    var(--color-primary-light) 4%,
-    var(--color-primary-soft) 7%,
-    var(--color-bg-main) 11%
-  );
+    width: 100%;
+    max-width: 1280px;
+    min-height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        var(--color-primary) 0%,
+        var(--color-primary-light) 3%,
+        var(--color-primary-soft) 5%,
+        var(--color-bg-main) 8%
+    );
 }
 
+/* ============================= */
 /* HEADER */
+/* ============================= */
 .topo {
-  padding: 14px 20px 26px;
+    padding: 14px 16px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .linha-topo {
-  display: flex;
-  align-items: center;
-  gap: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-width: max-content;
-  color: #000;
-  text-decoration: none;
-  font-weight: 800;
-  font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 795;
+    font-size: clamp(16px, 5vw, 20px);
+    color: var(--color-text-dark);
+    flex-shrink: 0;
+    text-decoration: none;
 }
 
 .logo img {
-  height: 30px;
-  width: auto;
-}
-
-.search-bar {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #f5f5f5;
-  border-radius: var(--radius-full);
-  padding: 0 18px;
-  min-height: 44px;
-}
-
-.search-bar input {
-  flex: 1;
-  border: none;
-  background: transparent;
-  outline: none;
-  font-size: 16px;
-  color: var(--color-text-primary);
-}
-
-.search-bar input::placeholder {
-  color: var(--color-text-secondary);
-}
-
-.search-icon {
-  width: 18px;
-  height: 18px;
-  opacity: 0.6;
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+    display: block;
 }
 
 .chat {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
+    background: transparent;
+    border-radius: 50%;
+    padding: 6px;
+    border: none;
+    flex-shrink: 0;
+    cursor: pointer;
 }
 
 .chat img {
-  height: 26px;
-  width: auto;
+    width: auto;
+    height: 25px;
+    display: block;
+    object-fit: contain;
 }
 
+/* ============================= */
 /* CONTEÚDO */
+/* ============================= */
 .pagamento-container {
-  padding: 0 22px 32px;
+    padding: 0 16px 32px;
 }
 
 .titulo-pagina {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 8px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0 20px;
 }
 
 .titulo-pagina h1 {
-  margin: 0;
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--color-text-dark);
+    font-size: clamp(22px, 4vw, 28px);
+    font-weight: bold;
+    margin: 0;
 }
 
 .btn-voltar {
-  border: none;
-  background: transparent;
-  color: var(--color-text-dark);
-  font-size: 36px;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0;
+    border: none;
+    background: transparent;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--color-text-dark);
 }
 
-/* CARD */
-.card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border-soft);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-  padding: 22px;
-  margin-bottom: 22px;
-}
-
-.card h2 {
-  margin: 0 0 18px;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--color-text-dark);
-}
-
-/* ITENS */
-.item-pedido {
-  display: flex;
-  gap: 14px;
-  margin-bottom: 14px;
-}
-
-.item-pedido.sem-margem {
-  margin-bottom: 0;
-}
-
-.item-pedido img {
-  width: 74px;
-  height: 74px;
-  border-radius: 12px;
-  object-fit: cover;
-  background: #f0f0f0;
-  flex-shrink: 0;
-}
-
-.item-info {
-  flex: 1;
-}
-
-.item-topo {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  align-items: flex-start;
-  margin-bottom: 6px;
-}
-
-.item-topo h3 {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--color-text-primary);
+.btn-voltar svg {
+    width: auto;
+    height: 30px;
+    object-fit: contain;
+    display: block;
 }
