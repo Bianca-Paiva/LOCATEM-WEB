@@ -4,91 +4,96 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LOCATEM</title> 
-    <link rel="shortcut icon" href="./src/images/LogoIcon.png" type="image/x-icon"/>
+    <title>LOCATEM</title>
+    <link rel="shortcut icon" href="./src/images/LogoIcon.png" type="image/x-icon" />
     <link rel="stylesheet" href="./src/css/reset.css" />
     <link rel="stylesheet" href="./src/css/responsivoLogin.css" />
     <link rel="stylesheet" href="./src/css/login.css" />
 </head>
 
 <body>
-    <!-- HEADER COM LOGO -->
-    <header>
-        <!-- Logo do sistema -->
-        <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" class="logo"/>
-        <h3>LOCATEM</h3>
-    </header>
-
-    <main>
-        <!-- BLOCO SUPERIOR COM TÍTULO -->
-        <div class="topo">
-            <h1 class="titulo">Entre na sua conta</h1>
-        </div>
-
-        <!-- CARD CENTRAL DO LOGIN -->
-        <div class="card">
-
-            <!-- FORMULÁRIO DE LOGIN -->
-            <form action="#" method="post">
-                <!-- action="#" ainda não envia para backend -->
-                <!-- method="post" indica envio seguro de dados -->
-
-                <!-- CAMPO EMAIL -->
-                <div>
-                    <label for="email" class="label">E-mail</label>
-                    <!-- 'for' conecta label ao input (acessibilidade) -->
-
-                    <input type="email" id="email" name="email" placeholder="seu@email.com" required class="input" />
-                    <!-- type="email" valida formato automaticamente -->
-                    <!-- required impede envio vazio -->
-                </div>
-
-                <!-- CAMPO SENHA -->
-                <div class="campoSenha">
-                    <label for="senha" class="label">Senha</label>
-
-                    <!-- Wrapper para posicionar o botão do olho -->
-                    <div class="inputWrapper">
-                        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required
-                            class="input" />
-                        <!-- type="password" oculta caracteres -->
-
-                        <!-- BOTÃO MOSTRAR / OCULTAR SENHA -->
-                        <button type="button" class="eyeBtn">
-                            <!-- type="button" evita envio do formulário -->
-
-                            <!-- Ícone olho aberto -->
-                            <span class="olhoAberto">
-                                <!-- Aparece quando senha está visível -->
-                                <img src="./src/images/olhoAberto.svg"></img>
-                            </span>
-
-                            <!-- Ícone olho fechado -->
-                            <span class="olhoFechado">
-                                <!-- Aparece quando senha está oculta -->
-                                <img src="./src/images/olhoFechado.svg">
-                            </span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- LINK DE RECUPERAÇÃO DE SENHA -->
-                <a href="#" class="recuperarSenha">Esqueci minha senha</a>
-
-                <!-- BOTÃO DE ENVIO DO FORMULÁRIO -->
-                <button type="button" class="btnEntrar" onclick="window.location.href='./principalPage.html'">
-                    Entrar
-                </button>
-            </form>
-
-            <!-- BLOCO PARA CRIAR CONTA -->
-            <div class="criarConta">
-                <p>Não tem uma conta?</p>
-                <a href="./cadastro.html">Criar uma conta</a>
-                <!-- Redireciona para página de cadastro -->
+    <div class="app">
+        <header class="topo">
+            <div class="linha-topo">
+                <a href="./principalPage.html" class="logo">
+                    <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM">
+                    LOCATEM
+                </a>
             </div>
-        </div>
-    </main>
+        </header>
+
+        <main>
+            <!-- BLOCO SUPERIOR COM TÍTULO -->
+            <div>
+                <h1 class="titulo">Entre na sua conta</h1>
+            </div>
+
+            <!-- CARD CENTRAL DO LOGIN -->
+            <div class="card">
+
+                <!-- FORMULÁRIO DE LOGIN -->
+                <form action="#" method="post">
+                    <!-- action="#" ainda não envia para backend -->
+                    <!-- method="post" indica envio seguro de dados -->
+
+                    <!-- CAMPO EMAIL -->
+                    <div>
+                        <label for="email" class="label">E-mail</label>
+                        <!-- 'for' conecta label ao input (acessibilidade) -->
+
+                        <input type="email" id="email" name="email" placeholder="seu@email.com" required
+                            class="input" />
+                        <!-- type="email" valida formato automaticamente -->
+                        <!-- required impede envio vazio -->
+                    </div>
+
+                    <!-- CAMPO SENHA -->
+                    <div class="campoSenha">
+                        <label for="senha" class="label">Senha</label>
+
+                        <!-- Wrapper para posicionar o botão do olho -->
+                        <div class="inputWrapper">
+                            <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required
+                                class="input" />
+                            <!-- type="password" oculta caracteres -->
+
+                            <!-- BOTÃO MOSTRAR / OCULTAR SENHA -->
+                            <button type="button" class="eyeBtn">
+                                <!-- type="button" evita envio do formulário -->
+
+                                <!-- Ícone olho aberto -->
+                                <span class="olhoAberto">
+                                    <!-- Aparece quando senha está visível -->
+                                    <img src="./src/images/olhoAberto.svg"></img>
+                                </span>
+
+                                <!-- Ícone olho fechado -->
+                                <span class="olhoFechado">
+                                    <!-- Aparece quando senha está oculta -->
+                                    <img src="./src/images/olhoFechado.svg">
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- LINK DE RECUPERAÇÃO DE SENHA -->
+                    <a href="#" class="recuperarSenha">Esqueci minha senha</a>
+
+                    <!-- BOTÃO DE ENVIO DO FORMULÁRIO -->
+                    <button type="button" class="btnEntrar" onclick="window.location.href='./principalPage.html'">
+                        Entrar
+                    </button>
+                </form>
+
+                <!-- BLOCO PARA CRIAR CONTA -->
+                <div class="criarConta">
+                    <p>Não tem uma conta?</p>
+                    <a href="./cadastro.html">Criar uma conta</a>
+                    <!-- Redireciona para página de cadastro -->
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
 <script src="./src/js/login.js"></script>
 

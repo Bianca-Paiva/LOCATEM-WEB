@@ -1,43 +1,94 @@
+:root {
+    /* ============================= */
+    /* CORES PRINCIPAIS */
+    /* ============================= */
+    --color-primary: #FFD600;
+    --color-primary-hover: #f2cb00;
+    --color-primary-light: #ffe97a;
+    --color-primary-soft: #fff3b0;
+
+    /* ============================= */
+    /* BACKGROUNDS */
+    /* ============================= */
+    --color-bg-main: #F9FAFB;
+    --color-bg-card: #ffffff;
+    --color-bg-input: #f8f8f8;
+
+    /* ============================= */
+    /* TEXTOS */
+    /* ============================= */
+    --color-text-primary: #222;
+    --color-text-secondary: #666;
+    --color-text-terciary: #555
+    --color-text-security: #777
+    --color-text-muted: #999;
+    --color-text-dark: #000;
+
+    /* ============================= */
+    /* BORDAS */
+    /* ============================= */
+    --color-border-light: #ddd;
+    --color-border-soft: #e5e5e5;
+
+    /* ============================= */
+    /* SOMBRAS */
+    /* ============================= */
+    --shadow-card: 0 5px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================= */
+/* BASE GERAL */
+/* ============================= */
+body {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-primary);
+}
+
+.app {
+    width: 100%;
+    max-width: 1280px;
+    min-height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        var(--color-primary) 0%,
+        var(--color-primary-light) 3%,
+        var(--color-primary-soft) 5%,
+        var(--color-bg-main) 8%
+    );
+}
+
 /* ============================= */
 /* HEADER */
 /* ============================= */
-
-header {
-    width: 100%;
-    /* Ocupa toda a largura da tela */
-
-    height: 90px;
-    /* Altura fixa da faixa superior */
-
+.topo {
+    padding: 14px 16px 30px;
     display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.linha-topo {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    /* Centraliza a logo verticalmente */
-
-    padding-left: 30px;
-    /* Espaço entre a logo e a borda esquerda */
-
-    gap: 6px;
-
-    background: linear-gradient(to bottom,
-            #FFCA00 0%,     /* Amarelo forte no topo */
-            #FFE580 70%,    /* Transição suave */
-            #ffffff 100%    /* Branco na parte inferior */
-        );
-    /* Cria um degradê vertical */
 }
 
 .logo {
-    height: 40px;
-    /* Define a altura da logo */
-
-    object-fit: contain;
-    /* Mantém proporção sem distorcer */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 795;
+    font-size: clamp(16px, 5vw, 20px);
+    color: var(--color-text-dark);
+    flex-shrink: 0;
+    text-decoration: none;
 }
 
-header h3 {
-    font-weight: bold;
-    font-size: clamp(16px, 5vw, 20px);
-    color: #000;
+.logo img {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+    display: block;
 }
 
 /* ============================= */
@@ -54,7 +105,7 @@ main {
     justify-content: center;
     /* Centraliza o conteúdo verticalmente */
 
-    background-color: #ffffff;
+    background-color: var(--color-bg-main);
 }
 
 /* ============================= */
@@ -73,9 +124,9 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     font-size: 30px;
-    margin-top: 20px;
-    margin-bottom: 5px;
+    padding: 30px;
 }
 
 
@@ -86,19 +137,10 @@ main {
 .card {
     width: 100%;
     max-width: 420px;
-    /* Limita largura em telas grandes */
-
     padding: 40px 30px;
-    /* Espaçamento interno */
-
     border-radius: 20px;
-    /* Bordas arredondadas */
-
-    background-color: #ffffff;
-
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.397);
-    /* Sombra para efeito de elevação */
-
+    background-color: var(--color-bg-card);
+    box-shadow: var(--shadow-card);
     display: flex;
     flex-direction: column;
 }
@@ -115,19 +157,13 @@ main {
 .input {
     width: 100%;
     height: 50px;
-
     padding: 0 16px;
-    /* Espaço interno horizontal */
-
     border-radius: 14px;
     border: 1px solid #dcdcdc;
-
     font-size: 14px;
-
     margin-top: 10px;
     margin-bottom: 30px;
-
-    background-color: #fff;
+    background-color: var(--color-bg-input);
 }
 
 /* Estilo quando o input está selecionado */
