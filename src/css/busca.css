@@ -3,6 +3,8 @@
   --color-primary-hover: #f2cb00;
   --color-primary-light: #ffe97a;
   --color-primary-soft: #fff3b0;
+  --color-secondary: #d9d9d9;
+  --color-secondary-soft: #f7f7f7;
 
   --color-bg-main: #f3f4f6;
   --color-bg-card: #ffffff;
@@ -155,18 +157,63 @@ a img {
     right: 10px;
     width: 250px;
     height: 100%;
-    background-color: var(--color-bg-card);
+    background-color: var(--color-secondary-soft);
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-card);
-    padding: 20px;
+    padding: 20px; 
 }
+
 
 .filtro {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 12px;
-    padding: 20px;
+    padding: 0px;
+    
+    
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--color-text-primary);
+    text-align: center;
+}
+    ul{
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    li{
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 500;
+        gap: 8px;
+    }
+}
+.filtroMarca {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     
 }
+.filtroMarca form {
+   display: flex;
+   gap: 10px;
+}
+.filtroMarca button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+}
+
+.filtroMarca img {
+    width: 10px;
+    height: 10px;
+    opacity: 0.6;
+}
+
+
 
