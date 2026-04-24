@@ -56,13 +56,13 @@
            </div>
         </header>
 
-     
+        <main>
         <aside class="sidebar">
             <div class="filtro">
                 <h2>Filtros</h2>
-               
-                <div class="filtro-categoria">
-                    <hr>
+                <hr>
+                <div class="filtro-padrao">
+                   
                      <h3>Categoria</h3>
                     <ul>
                         <li>
@@ -78,9 +78,10 @@
                             <input type="checkbox" id="categoria4"><label for="categoria4">Máquinas Pesadas</label>
                         </li>
                     </ul>
+                     <hr>
                 </div>
                 <div class="filtroMarca">
-                    <hr>
+                   
                     <h3>Marca</h3>
                     <ul>
                         <form id="buscaMarca" action="#" method="get">
@@ -104,9 +105,11 @@
                             <input type="checkbox" id="marca4">
                             <label for="marca4">Black & Decker</label></li>
                     </ul>
+                     <hr>
                 </div>
     
-                <div class="filtro-preco">
+                <div class="filtro-padrao">
+                   
                     <h3>Faixa de Preço</h3>
                     <ul>
                         <li>
@@ -123,12 +126,66 @@
                             <label for="preco4">R$201+</label>
                         </li>
                     </ul>
+                    <hr>
                 </div>
-                <div>
-                <button class="aplicar-filtros" onclick="AplicarFiltros">Pesquisar</button>
+                <div class="filtro-padrao">
+                    
+                    <h3>Formas de Pagamento</h3>
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="pagamento1">
+                            <label for="pagamento1">Cartão de Crédito</label></li>
+                        <li>
+                            <input type="checkbox" id="pagamento2">
+                            <label for="pagamento2">Boleto Bancário</label></li>
+                        <li>
+                            <input type="checkbox" id="pagamento3">
+                            <label for="pagamento3">Pix</label></li>
+                        <li>
+                            <input type="checkbox" id="pagamento4">
+                            <label for="pagamento4">Transferência Bancária</label></li>
+                    </ul>
+                    <hr>
+                </div>
+                <div class="filtro-padrao">
+                    
+                    <h3>Disponibilidade</h3>
+                    <ul>
+                        <li>
+                            <input type="radio" name="Disponibilidade" value="1" id="disponibilidade">
+                            <label for="disponibilidade">Disponível para Aluguel</label></li>
+                        <li>
+                            <input type="radio" name="Disponibilidade" value="2" id="Indisponivel">
+                            <label for="Indisponivel">Indisponível para Aluguel</label></li>
+                    </ul>
+                    <hr>
+                </div>
+                <div class="filtro-padrao">  
+                   
+                    <h3>Avaliação</h3>
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="avaliacao1">
+                            <label for="avaliacao1">4 estrelas ou mais</label></li>
+                        <li>
+                            <input type="checkbox" id="avaliacao2">
+                            <label for="avaliacao2">3 estrelas ou mais</label></li>
+                        <li>
+                            <input type="checkbox" id="avaliacao3">
+                            <label for="avaliacao3">2 estrelas ou mais</label></li>
+                        <li>
+                            <input type="checkbox" id="avaliacao4">
+                            <label for="avaliacao4">1 estrela ou mais</label></li>
+                    </ul>
+
+                </div>
+                <div class="botoesFiltro">
+                <button class="aplicar-filtros" onclick="AplicarFiltros">Filtrar</button>
+                <button class="limpar-filtros" onclick="LimparFiltros">Limpar Filtros</button>
                 </div>
             </div>
             </aside>
+       
         <!-- BANNER -->
          <section>
             <div aria-label="Banner de anúncio">
@@ -138,27 +195,189 @@
                     </div>
                 </div>
             </div>
-         </section>
-        <main>
-              <div class="produtosPesquisa">
-            <div class="ordenar">
-                <h2>
+        
+        
+            <div class="produtosPesquisa">
+                <div class="ordenar">
+                    <h2>
 
-                </h2>
+                    </h2>
+                </div>
+                <div class="grid-produtos">
+                <ul>
+                    <li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+                    </li>
+                     <li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+                    </li>
+                     <li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+                    </li>
+                     <li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+                    </li>
+                     <li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+                    </li>
+                    <li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+                    </li>
+                     <li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+                    </li>
+                     <li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+                    </li>
+                     <li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+                    </li>
+                     <li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+                    </li><li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+                    </li>
+                     <li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+                    </li>
+                     <li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+                    </li>
+                     <li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+                    </li>
+                     <li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+                    </li>
+                     <li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+                    </li>
+                     <li class="anuncio-card">     
+                            <div class="card-img">
+                                <img src="./src/images/parafusadeira-furadeira-WAP.webp" alt="Furadeira">
+                            </div>
+
+                            <div class="card-info">
+                                <h3>Furadeira de Impacto WAP</h3>
+                                <p>R$45,00<span>/dia</span></p>
+                            </div>
+
+                </ul>
+                </div>
             </div>
-            <ul class="grid-produtos">
-                 <li class="anuncio-card">
-                    <div class="card-img">
-                        <img src="./src/images/parafusadeira-furadeira-WAP.png" alt="Furadeira">
-                    </div>
-
-                    <div class="card-info">
-                        <h3>Furadeira de Impacto WAP</h3>
-                        <p>R$45,00<span>/dia</span></p>
-                    </div>
-                </li>
-            </ul>
-         </div>
+        </section>
         </main>
 
       
