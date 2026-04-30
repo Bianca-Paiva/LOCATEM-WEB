@@ -353,6 +353,9 @@ main {
     cursor: pointer;
     height: 30px;
 }
+.ordenar select:hover {
+    background-color: var(--color-primary-soft);
+}
 
 /*================== grid de produtos =================*/
 .grid-produtos {
@@ -450,7 +453,33 @@ main {
     font-size: 12px;
     color: #037233;
 }
+/*================== paginacao ============= */
+.paginacao {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0;
+    font-weight: 500;
+}
 
+.paginacao button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background: white;
+    font-size: 15px;
+     transition: all 0.3s ease;
+}
+
+.paginacao button.ativo {
+    background: #3483fa;
+    color: white;
+    font-weight: bold;
+}
+.paginacao button:hover:not(.ativo) {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+}
 /*==================== footer ==================*/
 
 footer {
