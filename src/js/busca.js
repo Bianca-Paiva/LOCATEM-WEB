@@ -2,8 +2,8 @@ let paginaAtual = 1;
 let pesquisa="";
 let DadosSalvos =[];
 
-const busca = document.querySelector('#searchInput');
-const form = document.getElementById("searchForm");
+const busca = document.querySelector('#searchInput') || document.querySelector('#searchInputMobile'); // Seleciona o campo de busca, seja na versão desktop ou mobile
+const form = document.getElementById("searchForm") || document.getElementById("searchFormMobile"); // Seleciona o formulário, seja na versão desktop ou mobile
 
 form.addEventListener('submit', buscarProduto);
 
@@ -220,6 +220,7 @@ function pegarFiltros() {
     avaliacao: [],
     disponibilidade: null
   };
+  
 
   document.querySelectorAll('input[name="preco"]:checked')
     .forEach(el => filtros.preco.push(el.value));
@@ -283,4 +284,9 @@ function limparFiltros() {
     .forEach(el => el.checked = false);
 
      renderizar(dadosSalvos); // volta ao normal
+}
+
+function mostrarFiltros() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('aberta');
 }
