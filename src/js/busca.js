@@ -1,21 +1,60 @@
 let paginaAtual = 1;
 let pesquisa="";
-let DadosSalvos =[];
+let dadosSalvos =[];
 
-const busca = document.querySelector('#searchInput') || document.querySelector('#searchInputMobile'); // Seleciona o campo de busca, seja na versão desktop ou mobile
-const form = document.getElementById("searchForm") || document.getElementById("searchFormMobile"); // Seleciona o formulário, seja na versão desktop ou mobile
 
-form.addEventListener('submit', buscarProduto);
+const busca = [
+    document.querySelector('#searchInput'),
+    document.querySelector('#searchInputMobile')
+]
+const form = [
+    document.getElementById("searchForm"),
+    document.getElementById("searchFormMobile")
+]; // Seleciona o formulário, seja na versão desktop ou mobile
 
+form.forEach(form => {
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+        pesquisa = busca.value.trim();
+
+        if (pesquisa) {
+            window.location.href = `busca.html?search=${encodeURIComponent(pesquisa)}`;
+        }
+    });
+}
+});
+
+function IrparaBuscar() {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const searchQuery = urlParams.get('search');
+    const page = urlParams.get('page');
+
+    if (searchQuery) {
+        busca.value = searchQuery;
+        pesquisa = searchQuery;
+    }
+
+    if (page) {
+        paginaAtual = Number(page);
+    }
+
+    if (pesquisa) {
+        buscarProduto();
+    }
+}
 
 async function buscarProduto(e) {
     if (e) e.preventDefault(); // Previne o comportamento padrão do formulário, mas permite que a função seja chamada sem um evento (para carregar mais resultados), usando da tecla Enter ou clicando no botão "Carregar mais"
+
 
     // realiza a pesquisa
     if (e) {
     pesquisa = busca.value.trim();
     paginaAtual = 1; // reset quando for nova busca
 }
+
     if (!pesquisa) return; // Verifica se a pesquisa não está vazia
 
     const lista = document.getElementById("grid-anuncios");
@@ -33,7 +72,7 @@ async function buscarProduto(e) {
             return;
         }
 
-        DadosSalvos = dados.Search;
+        dadosSalvos = dados.Search;
       
         // Cria os cards para os filmes encontrados
         // let cards = "";
@@ -61,14 +100,16 @@ async function buscarProduto(e) {
         // });
         
         // lista.innerHTML = cards;
-        renderizarLista(DadosSalvos);
+        renderizarLista(dadosSalvos);
 
-      const totalPaginas = Math.ceil(dados.totalResults / 10); // A API retorna 20 resultados por página, então calculamos o total de páginas
+      const totalPaginas = Math.ceil(dados.totalResults / 10); // A API retorna 10 resultados por página, então calculamos o total de páginas
       
         const totalResultados = document.getElementById("totalResultados");
         totalResultados.textContent = `${dados.totalResults} resultados encontrados`;
         criarPaginacao(totalPaginas);
-    
+
+        const novaURL = `?search=${encodeURIComponent(pesquisa)}&page=${paginaAtual}`;
+        window.history.pushState({}, "", novaURL);
 
     } catch (error) {
         lista.innerHTML = "<p>Ocorreu um erro ao buscar os filmes. Tente novamente.</p>";
@@ -82,7 +123,7 @@ async function buscarProduto(e) {
 function ordenarComo() {
     const ordenar = document.getElementById("ordenar").value;
 
-    let listaOrdenada = [...DadosSalvos]; //copia a lista
+    let listaOrdenada = [...dadosSalvos]; //copia a lista
 
     if (ordenar === "1") {
         // a, b = servem para comparar os objetos
@@ -283,10 +324,14 @@ function limparFiltros() {
   document.querySelectorAll('input[type="checkbox"], input[type="radio"]')
     .forEach(el => el.checked = false);
 
-     renderizar(dadosSalvos); // volta ao normal
+     renderizarLista(dadosSalvos); // volta ao normal
 }
 
 function mostrarFiltros() {
     const sidebar = document.querySelector('.sidebar');
     sidebar.classList.toggle('aberta');
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    IrparaBuscar();
+});
