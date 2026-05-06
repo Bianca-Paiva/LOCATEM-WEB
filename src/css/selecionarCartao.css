@@ -1,0 +1,462 @@
+:root {
+    /* CORES PRINCIPAIS */
+    --color-primary:        #FFCA00;
+    --color-primary-light:  #ffe97a;
+    --color-primary-soft:   #fff6c7;
+    --color-terciary:       #FFD600;
+    --color-secondary:      #f0c000c0;
+
+    /* BACKGROUNDS */
+    --color-bg-main:        #F9FAFB;
+    --color-bg-card:        #ffffff;
+    --color-bg-icon:        #E7E8E9;
+
+    /* TEXTOS */
+    --color-text-dark:       #0A0A0A;
+    --color-text-gray:       #4A5565;
+    --color-text-desativado: #A0A0A0;
+    --color-text-add-card:     #705D00;
+
+    /* BORDA */
+    --color-border-card:    #e5e7eb;
+    --color-border-focus:   #FFCA00;
+    --color-input-radio: #D0C6AB;
+
+    /* SOMBRA */
+    --shadow-card:          0 1px 3px rgba(0, 0, 0, 0.184);
+    --shadow-card-hover:    0 4px 12px rgba(0, 0, 0, 0.12);
+
+    /* RAIOS DE BORDA */
+    --radius-card:          14px;
+    --radius-btn:           14px;
+    --radius-icon:          10px;
+
+    /* ESPAÇAMENTOS BASE (escala 4px) */
+    --space-xs:  4px;
+    --space-sm:  8px;
+    --space-md:  16px;
+    --space-lg:  24px;
+    --space-xl:  32px;
+
+    /* TIPOGRAFIA */
+    --text-sm:    0.875rem;   /* 14px */
+    --text-base:  1rem;       /* 16px */
+    --text-h1:    1.5rem;     /* 24px */
+    --text-h3:    0.9375rem;  /* 15px */
+
+    /* TRANSIÇÕES */
+    --transition-fast:   0.15s ease;
+    --transition-normal: 0.25s ease;
+}
+
+/* ============================= */
+/* BASE GERAL                    */
+/* ============================= */
+
+body {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-dark);
+}
+
+/* Wrapper raiz da aplicação — aplica gradiente de identidade */
+.app {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        var(--color-primary)       0%,
+        var(--color-primary-light) 6.5%,
+        var(--color-primary-soft)  9.5%,
+        var(--color-bg-main)       12.5%
+    );
+}
+
+/* ============================= */
+/* HEADER                        */
+/* ============================= */
+
+.header {
+    width: 100%;
+    padding: 15px 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ============================= */
+/* LOGO                          */
+/* ============================= */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--color-text-dark);
+    text-decoration: none;
+    font-size: clamp(16px, 4vw, 18px);
+    font-weight: 750;
+    letter-spacing: -0.5px;
+}
+
+.logo img {
+    height: 25px;
+    object-fit: contain;
+}
+
+/* ============================= */
+/* BOTÃO CHAT                    */
+/* ============================= */
+
+.chat {
+    width:  clamp(36px, 9vw, 48px);
+    height: clamp(36px, 9vw, 48px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: opacity var(--transition-fast);
+}
+
+.chat:hover  { opacity: 0.7; }
+.chat:active { opacity: 0.5; }
+
+.chat img {
+    height: 23px;
+    object-fit: contain;
+}
+
+/* ============================= */
+/* MAIN — LAYOUT PRINCIPAL       */
+/* ============================= */
+
+.main-mobile {
+    width: 100%;
+    min-height: calc(100vh - 64px); /* desconta altura do header */
+    margin: 0 auto;
+    padding: 35px 18px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+/* ── Cabeçalho textual ── */
+.cabecalho {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding: 0 10px;
+}
+
+.cabecalho > h1 {
+    font-size: var(--text-h1);
+    font-weight: 750;
+    letter-spacing: -0.5px;
+    color: var(--color-text-dark);
+    line-height: 1.2;
+}
+
+.cabecalho > p {
+    font-size: var(--text-sm);
+    color: var(--color-text-gray);
+    line-height: 1.5;
+}
+
+/* ============================= */
+/* FORMULÁRIO                    */
+/* ============================= */
+
+/* Remove borda/legenda padrão do fieldset */
+.formulario-cartao {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.grupo-cartao {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+/* ============================= */
+/* CARD DE CARTÃO (label)        */
+/* ============================= */
+
+.cartao {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    background-color: var(--color-bg-card);
+    border: 1.5px solid var(--color-border-card);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+    transition:
+        border-color     var(--transition-fast),
+        box-shadow       var(--transition-fast),
+        transform        var(--transition-fast);
+}
+
+/* Feedback visual de pressão */
+.cartao:active {
+    transform: scale(0.985);
+}
+
+/* ============================= */
+/* ÍCONE DO CARTÃO               */
+/* ============================= */
+
+.cartao-icone {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg-icon);
+    border-radius: var(--radius-icon);
+}
+
+.cartao-icone img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+/* ============================= */
+/* INFORMAÇÕES DO CARTÃO         */
+/* ============================= */
+
+.cartao-info {
+    flex: 1; /* ocupa espaço restante, empurra o radio para o fim */
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.cartao-info > h3 {
+    font-size: var(--text-h3);
+    font-weight: 600;
+    color: var(--color-text-dark);
+    letter-spacing: -0.2px;
+}
+
+.cartao-info > p {
+    font-size: var(--text-sm);
+    font-weight: 400;
+    color: var(--color-text-desativado);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+/* ============================= */
+/* RADIO CUSTOMIZADO             */
+/* ============================= */
+
+/* Esconde o nativo mantendo acessibilidade */
+.cartao input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-input-radio);
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    transition:
+        border-color     var(--transition-fast),
+        background-color var(--transition-fast);
+    margin-left: auto;
+}
+
+/* Círculo interno branco via box-shadow inset */
+.cartao input[type="radio"]:checked {
+    background-color: var(--color-input-radio);
+    box-shadow: inset 0 0 0 4px var(--color-bg-card);
+}
+
+/* ============================= */
+/* BOTÃO ADICIONAR CARTÃO        */
+/* ============================= */
+
+.btn-adicionar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    width: 100%;
+    background-color: var(--color-bg-card);
+    border: 1.5px solid var(--color-border-card);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+    text-align: left;
+    transition:
+        border-color var(--transition-fast),
+        box-shadow   var(--transition-fast),
+        transform    var(--transition-fast);
+}
+
+.btn-adicionar:active {
+    transform: scale(0.985);
+}
+
+/* Círculo cinza do ícone "+" */
+.icone-add {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg-icon);
+    border-radius: 999px;
+}
+
+.icone-add > span {
+    font-size: 1.75rem;
+    font-weight: 300;
+    color: var(--color-text-black);
+    line-height: 1;
+    margin-top: -2px; /* ajuste óptico do símbolo "+" */
+}
+
+/* Texto dourado do botão */
+.btn-adicionar > span {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text-add-card);
+    letter-spacing: -0.2px;
+}
+
+/* ============================= */
+/* BOTÃO PRINCIPAL — SUBMIT      */
+/* ============================= */
+
+.btn-pagamento {
+    width: 100%;
+    padding: 17px var(--space-md);
+    background-color: var(--color-terciary);
+    color: var(--color-text-dark);
+    font-family: var(--font-base);
+    font-size: var(--text-base);
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    border: none;
+    border-radius: var(--radius-btn);
+    cursor: pointer;
+    /* Fica "colado" no fundo da viewport em mobile */
+    position: sticky;
+    bottom: var(--space-lg);
+    box-shadow: 0 4px 16px rgba(255, 202, 0, 0.45);
+    transition:
+        background-color var(--transition-fast),
+        box-shadow       var(--transition-fast),
+        transform        var(--transition-fast);
+}
+
+.btn-pagamento:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px rgba(255, 202, 0, 0.4);
+}
+
+/* Foco por teclado */
+.btn-pagamento:focus-visible {
+    outline: 3px solid var(--color-text-dark);
+    outline-offset: 3px;
+}
+
+/* ============================= */
+/* DESKTOP — 1024px em diante    */
+/* ============================= */
+
+@media (min-width: 1024px) {
+
+  /* ── Gradiente: faixa amarela menor em telas grandes ── */
+  .app {
+    background: linear-gradient(
+      to bottom,
+      var(--color-primary)       0%,
+      var(--color-primary-light) 4%,
+      var(--color-primary-soft)  6.5%,
+      var(--color-bg-main)       9%
+    );
+  }
+
+  /* ── Header: padding generoso + limita largura interna ── */
+  .header {
+    padding: 18px 48px;
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* ── Logo: tamanho fixo no desktop ── */
+  .logo {
+    font-size: 18px;
+  }
+
+  .logo img {
+    height: 28px;
+  }
+
+  /* ── Main: coluna central com max-width ── */
+  .main-mobile {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 0 80px;
+    gap: 32px;
+  }
+
+  /* ── Cabeçalho textual: sem padding lateral extra ── */
+  .cabecalho {
+    padding: 0;
+    gap: 6px;
+  }
+
+  .cabecalho > h1 {
+    font-size: 1.75rem; /* 28px */
+  }
+
+  .cabecalho > p {
+    font-size: 0.9375rem; /* 15px */
+  }
+
+  /* ── Cards: hover refinado para mouse ── */
+  .cartao:hover {
+    border-color: var(--color-border-focus);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-1px);
+  }
+
+  /* ── Botão adicionar cartão: hover para mouse ── */
+  .btn-adicionar:hover {
+    border-color: var(--color-border-focus);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-1px);
+  }
+
+  /* ── Botão submit: sai do sticky, fica no fluxo ── */
+  .btn-pagamento {
+    position: static;
+    margin-top: 8px;
+    padding: 18px var(--space-md);
+    border-radius: var(--radius-btn);
+  }
+
+  .btn-pagamento:hover {
+    background-color: var(--color-primary);
+    box-shadow: 0 6px 20px rgba(255, 202, 0, 0.55);
+    transform: translateY(-1px);
+  }
+
+}

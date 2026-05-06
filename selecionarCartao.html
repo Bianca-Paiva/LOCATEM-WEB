@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Familia tipografica Inter — usada em toda a interface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet" />
+
+    <!-- Reset de estilos -->
+    <link rel="stylesheet" href="./src/css/reset.css" />
+    <!-- Estilos exclusivos da pagina de selecionarCartao -->
+    <link rel="stylesheet" href="./src/css/selecionarCartao.css" />
+
+    <title>LOCATEM</title>
+</head>
+
+<body>
+    <div class="app">
+        <!-- ============== -->
+        <!--     HEADER     -->
+        <!-- ============== -->
+        <header class="header">
+            <a href="./principalPage.html" class="logo">
+                <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+                LOCATEM
+            </a>
+            <button class="chat">
+                <img src="./src/images/chat.png" alt="Chat" />
+            </button>
+        </header>
+
+        <!-- ============== -->
+        <!--      MAIN      -->
+        <!-- ============== -->
+        <main class="main-mobile">
+            <div class="cabecalho">
+                <h1>Selecionar cartão</h1>
+                <p>Escolha o cartão que deseja utilizar para realizar o pagamento.</p>
+            </div>
+
+            <form class="formulario-cartao">
+                <fieldset class="grupo-cartao">
+                    <label class="cartao" for="cartao-visa">
+                        <div class="cartao-icone">
+                            <img src="./src/images/cartao.svg" alt="Ícone de Cartão" />
+                        </div>
+                        <div class="cartao-info">
+                            <h3>Visa - Final 1234</h3>
+                            <p>JOÃO SILVA</p>
+                        </div>
+                        <!-- Alterado para Radio -->
+                        <input type="radio" id="cartao-visa" name="cartaoSelecionado" value="visa-1234" />
+                    </label>
+
+                    <label class="cartao" for="cartao-master">
+                        <div class="cartao-icone">
+                            <img src="./src/images/cartao.svg" alt="Ícone de Cartão" />
+                        </div>
+                        <div class="cartao-info">
+                            <h3>Mastercard - Final 5678</h3>
+                            <p>JOÃO SILVA</p>
+                        </div>
+                        <input type="radio" id="cartao-master" name="cartaoSelecionado" value="master-5678" />
+                    </label>
+
+                    <button class="btn-adicionar" type="button">
+                        <div class="icone-add">
+                            <span>+</span>
+                        </div>
+                        <span>Adicionar novo cartão</span>
+                    </button>
+                </fieldset>
+
+                <button class="btn-pagamento" type="submit">
+                    Usar este cartão
+                </button>
+            </form>
+        </main>
+    </div>
+</body>
+
+</html>
