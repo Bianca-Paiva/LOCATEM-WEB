@@ -242,7 +242,7 @@ body {
 /* ============================= */
 /* MAIN (ÁREA PRINCIPAL) */
 /* ============================= */
-.main-mobile {
+.main {
     width: 100%;
     min-height: 100vh;
     margin: 0 auto;
@@ -588,36 +588,6 @@ body {
     color: var(--color-text-desativado);
 }
 
-/* ============================= */
-/* VALIDAÇÃO INLINE — CEP        */
-/* ============================= */
-
-.resumo-linha .campo-obrigatorio {
-    color: var(--color-text-red);
-    font-weight: 700;
-}
-
-.campo-cep--erro {
-    border-color: var(--color-text-red) !important;
-}
-
-.erro-cep {
-    display: block;
-    font-size: 0.8125rem;
-    color: var(--color-text-red);
-    font-weight: 500;
-    min-height: 0;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height .2s ease, opacity .2s ease;
-}
-
-.erro-cep--visivel {
-    max-height: 40px;
-    opacity: 1;
-}
-
 .btn-usar {
     height: 100%;
     padding: 0 14px;
@@ -709,20 +679,31 @@ body {
 }
 
 .btn-remover-cupom {
-    color: red;
+    color: var(--color-text-red);
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.campo-cupom--erro {
-    border-color: var(--color-text-red) !important;
+
+/* ================================ */
+/* VALIDAÇÃO INLINE — CEP E CUPOM   */
+/* ================================ */
+
+.resumo-linha .campo-obrigatorio {
+    color: var(--color-text-red);
+    font-weight: 700;
 }
 
-.erro-cupom {
+.campo-cupom--erro,
+.campo-cep--erro {
+    border-color: var(--color-text-red) !important; 
+}
+
+.erro-cupom,
+.erro-cep {
     display: block;
     font-size: 0.8125rem;
-    color: var(--color-text-red);
     font-weight: 500;
     min-height: 0;
     max-height: 0;
@@ -731,10 +712,30 @@ body {
     transition: max-height .2s ease, opacity .2s ease;
 }
 
-.erro-cupom--visivel {
+.erro-cupom--erro,
+.erro-cep--erro {
+    color: var(--color-text-red);
+}
+
+.erro-cupom--sucesso,
+.erro-cep--sucesso {
+    color: #22c55e;
+}
+
+.erro-cupom--visivel,
+.erro-cep--visivel {
+    display: block;
     max-height: 40px;
     opacity: 1;
 }
+
+.campo-cep--sucesso,
+.campo-cupom--sucesso {
+    border-color: #22c55e;
+}
+
+
+
 
 /* Total */
 .resumo-total {
@@ -815,7 +816,7 @@ body {
         font-size: 14px;
     }
 
-    .main-mobile {
+    .main {
         padding: 8px 10px;
     }
 
@@ -1061,7 +1062,7 @@ body {
     /* MAIN DESKTOP              */
     /* ========================= */
 
-    .main-mobile {
+    .main {
         max-width: 1100px;
         margin: 40px auto;
         padding: 0 40px;

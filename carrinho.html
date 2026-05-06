@@ -1,44 +1,83 @@
 <!doctype html>
+<!--
+    ============================================================
+    LOCATEM — PAGINA DE CARRINHO
+    Arquivo: carrinho.html
+
+    VISAO GERAL:
+    Esta pagina representa a etapa de carrinho do fluxo de compra
+    (checkout). O usuario visualiza os produtos que adicionou,
+    ajusta quantidades e dias de aluguel, calcula frete por CEP,
+    aplica cupons de desconto e avanca para o pagamento.
+
+    DEPENDENCIAS EXTERNAS:
+    - Google Fonts (Inter) via CDN
+    - reset.css     — zera estilos padrao do navegador
+    - carrinho.css  — estilos especificos desta pagina
+    - carrinho.js   — toda a logica de interacao (carregado ao final do body)
+
+    LAYOUT RESPONSIVO:
+    A pagina possui DOIS headers distintos (mobile e desktop),
+    controlados por CSS. Apenas um deles fica visivel por vez.
+    O mesmo padrao se aplica ao menu de navegacao lateral,
+    que so aparece no breakpoint desktop.
+    ============================================================
+-->
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Familia tipografica Inter — usada em toda a interface -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet" />
 
+    <!-- Reset de estilos -->
     <link rel="stylesheet" href="./src/css/reset.css" />
+    <!-- Estilos exclusivos da pagina de carrinho -->
     <link rel="stylesheet" href="./src/css/carrinho.css" />
 
     <title>LOCATEM</title>
 </head>
 
 <body>
+    <!-- CONTAINER RAIZ
+        A classe "app" envolve toda a pagina. Permite aplicar estilos globais de layout (ex: flex column) sem poluir o body diretamente. -->
     <div class="app">
 
-        <!-- ============== -->
-        <!-- HEADER MOBILE  -->
-        <!-- ============== -->
+        <!-- ================================================================================================================= -->
+        <!-- SECAO: HEADER MOBILE                                                                                              -->
+        <!-- Exibido apenas em telas pequenas (controlado por CSS).                                                            -->
+        <!-- Contem: botao de menu hamburguer, logo, icone de carrinho e barra de pesquisa dedicada (linha separada do topo).  -->
+        <!-- ================================================================================================================= -->
         <header class="header-mobile">
             <div class="linha-topo-mobile">
                 <div class="lado-esquerdo">
+                    <!-- Botao que abre o menu lateral (drawer) em mobile -->
                     <button class="menu-btn">
                         <img src="./src/images/menuHamburguer.png" alt="Menu" />
                     </button>
+                    <!-- Logo clicavel — redireciona para a pagina principal -->
                     <a href="./principalPage.html" class="logo">
                         <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
                         LOCATEM
                     </a>
                 </div>
-                <a href="#" class="carrinho-btn">
+
+                <!-- Icone do carrinho com badge de quantidade.
+                    ATENCAO: valor hardcoded neste HTML de demonstracao. -->
+                <a href="./carrinho.html" class="carrinho-btn">
                     <img src="./src/images/carrinho.svg" alt="Carrinho" />
                     <span class="quantidade-carrinho">2</span>
                 </a>
             </div>
+
+            <!-- Barra de pesquisa exclusiva do header mobile.
+                O input usa type="search" para ativar o botao de limpar nativo do navegador (X) em mobile. -->
             <form class="barra-pesquisa-mobile">
                 <img src="./src/images/lupa.png" alt="Buscar" />
                 <input type="search" placeholder="Qual ferramenta você precisa hoje?"
@@ -46,15 +85,20 @@
             </form>
         </header>
 
-        <!-- =============== -->
-        <!-- HEADER DESKTOP  -->
-        <!-- =============== -->
+        <!-- ============================================================ -->
+        <!-- SECAO: HEADER DESKTOP                                         -->
+        <!-- Exibido apenas em telas maiores (controlado por CSS).         -->
+        <!-- Contem: logo, barra de pesquisa central e botao de chat.      -->
+        <!-- ============================================================ -->
         <header class="header-desktop">
             <div class="linha-topo-desktop">
+                <!-- Logo clicavel — redireciona para a pagina principal -->
                 <a href="./principalPage.html" class="logo">
                     <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
                     LOCATEM
                 </a>
+
+                <!-- Barra de pesquisa central do desktop. -->
                 <form class="barra-pesquisa">
                     <button type="submit" class="lupa-btn">
                         <img src="./src/images/lupa.png" alt="Buscar" />
@@ -62,18 +106,25 @@
                     <input type="search" placeholder="Qual ferramenta você precisa hoje?"
                         aria-label="Pesquisar ferramentas" />
                 </form>
+
+                <!-- Botao de acesso ao chat de suporte (comportamento via JS) -->
                 <button class="chat">
                     <img src="./src/images/chat.png" alt="Chat" />
                 </button>
             </div>
         </header>
 
-        <!-- Nav desktop -->
+        <!-- ============================================================ -->
+        <!-- SECAO: NAVEGACAO LATERAL (DESKTOP)                            -->
+        <!-- Menu de navegacao principal visivel apenas no desktop.        -->
+        <!-- Cada link contem um icone + label de texto.                   -->
+        <!-- Links com href="#" sao placeholders — funcionalidade pendente. -->
+        <!-- ============================================================ -->
         <nav class="menu-navegacao-desktop">
             <a href="./principalPage.html">
                 <img src="./src/images/home.png" alt="Ícone Início" />Início
             </a>
-            <a href="#">
+            <a href="./carrinho.html">
                 <img src="./src/images/carrinho.svg" alt="Ícone Carrinho" />Carrinho
             </a>
             <a href="#">
@@ -96,30 +147,51 @@
             </a>
         </nav>
 
-        <!-- ============== -->
-        <!--      MAIN      -->
-        <!-- ============== -->
-        <main class="main-mobile">
+        <!-- ============================================================ -->
+        <!-- SECAO: CONTEUDO PRINCIPAL (MAIN)                             -->
+        <!-- Criada a partir do conceito de mobile-first, envolve:        -->
+        <!-- cabecalho interno com titulo, lista de produtos agrupados    -->
+        <!-- por loja e o painel lateral de resumo do pedido.             -->
+        <!-- ============================================================ -->
+        <main class="main">
 
+            <!-- Contém o botao "voltar" (seta) e o titulo "Carrinho". -->
             <div class="cabecalho">
+                <!-- Seta de voltar: leva de volta para a pagina principal -->
                 <a href="./principalPage.html" class="icon-voltar" aria-label="Voltar">
                     <img src="./src/images/setaVoltar.png" alt="Ícone Voltar">
                 </a>
                 <h1>Carrinho</h1>
             </div>
 
+            <!-- CONTAINER DE CHECKOUT
+                Wrapper que agrupa os dois paineis lado a lado (em desktop):
+                - coluna-produtos: lista de todos os grupos de lojas e produtos
+                - card-resumo: painel lateral com subtotal, frete, cupom e total
+                Em mobile esses dois paineis empilham verticalmente. -->
             <div class="checkout-container">
 
-                <!-- ====================== -->
-                <!-- COLUNA DE PRODUTOS     -->
-                <!-- ====================== -->
+                <!-- ======================================================== -->
+                <!-- COLUNA DE PRODUTOS                                       -->
+                <!-- Agrupa todos os cards de loja (grupo-loja).              -->
+                <!-- O JS usa a classe "coluna-produtos" como ponto de        -->
+                <!-- delegacao de eventos — UM unico listener no container    -->
+                <!-- captura cliques de TODOS os botoes de todos os produtos. -->
+                <!-- REFERENCIA JS: refs.colunaProdutos                       -->
+                <!-- ======================================================== -->
                 <div class="coluna-produtos">
 
-                    <!-- ========================= -->
-                    <!-- GRUPO 1 – JB Ferramentas  -->
-                    <!-- ========================= -->
+                    <!-- ========================================================= -->
+                    <!-- GRUPO DE LOJA 1 — JB Ferramentas                          -->
+                    <!-- Cada "grupo-loja" representa produtos de um mesmo         -->
+                    <!-- vendedor/loja. Quando todos os produtos de um grupo       -->
+                    <!-- sao removidos, o grupo inteiro e removido do DOM pelo JS. -->
+                    <!-- ========================================================= -->
                     <article class="card grupo-loja">
 
+                        <!-- CABECALHO DO GRUPO DE LOJA
+                            Exibe o nome do vendedor e o selo de loja oficial.
+                            O icone "verificado" indica parceiro certificado. -->
                         <div class="grupo-loja-header">
                             <h2>Produto de JB Ferramentas</h2>
                             <div class="loja-oficial">
@@ -128,30 +200,79 @@
                             </div>
                         </div>
 
+                        <!-- LISTA DE PRODUTOS DO GRUPO
+                            Contém um ou mais "card-produto".
+                            O JS verifica se esta lista ficou vazia após
+                            uma remoção para decidir se remove o grupo inteiro. -->
                         <div class="lista-produtos">
 
-                            <!-- Produto 1
-                                    IMPORTANTE: data-preco-dia é a fonte canônica do preço por dia.
-                                    Não dependa do texto renderizado no DOM para calcular valores. -->
-                            <div class="card-produto" data-preco-dia="15">
+                            <!-- ========================================================= -->
+                            <!-- CARD DE PRODUTO 1 — Furadeira Eletrica The Black Tools    -->
+                            <!-- ATRIBUTOS DATA-* (fonte de verdade para o JS):            -->
+                            <!--   data-preco-dia: preco unitário por dia de aluguel       -->
+                            <!--                  O JS lê este valor via getPrecoDia().    -->
+                            <!--   data-estoque:  quantidade disponível em estoque.        -->
+                            <!--                  O JS usa para travar o botao "+" de      -->
+                            <!--                  unidades ao atingir o limite.            -->
+                            <!--                                                           -->
+                            <!-- ATRIBUTOS GERENCIADOS PELO JS (adicionados em runtime):   -->
+                            <!--   data-dias:      número atual de dias selecionados.      -->
+                            <!--   data-unidades:  número atual de unidades selecionadas.  -->
+                            <!-- ========================================================= -->
+                            <div class="card-produto" data-preco-dia="15" data-estoque="3">
+
+                                <!-- LINHA SUPERIOR DO CARD
+                                    Contém a imagem do produto e o bloco de informacoes textuais. -->
                                 <div class="produto-linha-topo">
                                     <img src="./src/images/Furadeira1.webp" alt="Furadeira" class="produto-imagem">
+
                                     <div class="produto-infos">
                                         <div class="produto_nome-row">
                                             <span class="produto_nome">Furadeira Elétrica The Black Tools</span>
+
+                                            <!-- BOTAO DE REMOCAO DO PRODUTO
+                                                O atributo data-action="remover" e a chave que o JS
+                                                usa na delegação de eventos para identificar este botão.
+                                                O JS captura o clique no ancestor ".coluna-produtos"
+                                                e verifica btn.dataset.action === 'remover'. -->
                                             <button class="btn-lixeira" aria-label="Remover produto"
                                                 data-action="remover">
                                                 <img src="./src/images/lixo.svg" alt="Remover produto">
                                             </button>
                                         </div>
+
+                                        <!-- Texto informativo do periodo de aluguel (estatico neste HTML) -->
                                         <span class="produto-aluguel">2 dias de aluguel</span>
+
+                                        <!-- BLOCO DE VALORES
+                                            Estes textos sao REESCRITOS pelo JS a cada atualizacao.
+                                            Os valores iniciais servem apenas como estado de exibicao
+                                            antes da primeira renderizacao do JS.
+
+                                            Funcoes JS responsaveis: 
+                                            - .produto_preco → atualizado em atualizarCardProduto()
+                                            - .produto_total → atualizado em atualizarCardProduto() -->
                                         <div class="produto_valores">
                                             <span class="produto_preco">R$15,00/dia × 2 dias</span>
                                             <span class="produto_total">Total: R$30,00</span>
                                         </div>
                                     </div>
-                                </div>
+                                </div><!-- /produto-linha-topo -->
+
+                                <!-- CONTROLES DE QUANTIDADE
+                                    Dois grupos de controle: dias e unidades.
+                                    O JS identifica o tipo de cada grupo pelo atributo data-type, que é INJETADO em runtime pela função inicializarProdutos() com base na classe CSS:
+                                    - "controle-unidade" → data-type="unidades"
+                                    - sem essa classe    → data-type="dias"
+
+                                    Os botões "−" e "+" usam data-action="decrement" e data-action="increment" para a delegação de eventos. -->
                                 <div class="produto-controles">
+
+                                    <!-- CONTROLE DE DIAS
+                                        Permite selecionar entre DIAS_MIN (1) e DIAS_MAX (30).
+                                        O JS limita e valida os valores via setDias().
+                                        O texto ".controle-valor" e atualizado pelo JS
+                                        para refletir singular/plural ("1 dia" / "2 dias"). -->
                                     <div class="controle-grupo">
                                         <button class="btn-controle" aria-label="Diminuir dias"
                                             data-action="decrement">−</button>
@@ -159,7 +280,15 @@
                                         <button class="btn-controle" aria-label="Aumentar dias"
                                             data-action="increment">+</button>
                                     </div>
+
+                                    <!-- Texto informativo do limite maximo de dias -->
                                     <span class="controle-label-max">Máx. 30</span>
+
+                                    <!-- CONTROLE DE UNIDADES
+                                        Permite selecionar entre UNID_MIN (1) e UNID_MAX (10),
+                                        mas também limitado pelo data-estoque do card.
+                                        A classe "controle-unidade" e usada pelo JS para
+                                        identificar este grupo como tipo "unidades". -->
                                     <div class="controle-grupo controle-unidade">
                                         <button class="btn-controle" aria-label="Diminuir unidades"
                                             data-action="decrement">−</button>
@@ -167,12 +296,24 @@
                                         <button class="btn-controle" aria-label="Aumentar unidades"
                                             data-action="increment">+</button>
                                     </div>
-                                    <span class="controle-label-disp">+50 disponíveis</span>
-                                </div>
-                            </div><!-- /Produto 1 -->
 
-                            <!-- Produto 2 -->
-                            <div class="card-produto" data-preco-dia="12">
+                                    <!-- LABEL DE DISPONIBILIDADE
+                                        Exibe quantas unidades ainda estão disponíveis no estoque.
+                                        O JS calcula e reescreve este texto em atualizarCardProduto():
+                                        disponível = data-estoque - unidades_selecionadas -->
+                                    <span class="controle-label-disp">+50 disponíveis</span>
+                                </div><!-- /produto-controles -->
+
+                            </div><!-- /card-produto (Produto 1) -->
+
+
+                            <!-- ======================================================== -->
+                            <!-- CARD DE PRODUTO 2 — Pistola de Pintura Profissional       -->
+                            <!-- Segue a mesma estrutura do Produto 1.                    -->
+                            <!-- data-preco-dia="12" → R$12,00 por dia de aluguel.        -->
+                            <!-- data-estoque="5"    → 5 unidades disponiveis no estoque. -->
+                            <!-- ======================================================== -->
+                            <div class="card-produto" data-preco-dia="12" data-estoque="5">
                                 <div class="produto-linha-topo">
                                     <img class="produto-imagem" src="./src/images/pistolaPintura.png"
                                         alt="Pistola de Pintura">
@@ -187,12 +328,14 @@
                                         </div>
                                         <span class="produto-aluguel">2 dias de aluguel</span>
                                         <div class="produto_valores">
+                                            <!-- Valores iniciais — sobrescritos pelo JS apos inicializacao -->
                                             <span class="produto_preco">R$12,00/dia × 1 dia</span>
                                             <span class="produto_total">Total: R$12,00</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="produto-controles">
+                                    <!-- Controle de dias (tipo identificado pelo JS via ausencia de "controle-unidade") -->
                                     <div class="controle-grupo">
                                         <button class="btn-controle" aria-label="Diminuir dias"
                                             data-action="decrement">−</button>
@@ -201,6 +344,7 @@
                                             data-action="increment">+</button>
                                     </div>
                                     <span class="controle-label-max">Máx. 30</span>
+                                    <!-- Controle de unidades (tipo identificado pelo JS via classe "controle-unidade") -->
                                     <div class="controle-grupo controle-unidade">
                                         <button class="btn-controle" aria-label="Diminuir unidades"
                                             data-action="decrement">−</button>
@@ -208,12 +352,17 @@
                                         <button class="btn-controle" aria-label="Aumentar unidades"
                                             data-action="increment">+</button>
                                     </div>
+                                    <!-- Disponibilidade reescrita em runtime pelo JS -->
                                     <span class="controle-label-disp">+50 disponíveis</span>
                                 </div>
-                            </div><!-- /Produto 2 -->
+                            </div><!-- /card-produto (Produto 2) -->
 
-                            <!-- Produto 3 -->
-                            <div class="card-produto" data-preco-dia="28">
+
+                            <!-- ======================================================== -->
+                            <!-- CARD DE PRODUTO 3 — Parafusadeira Furadeira Hanabi       -->
+                            <!-- Segue a mesma estrutura dos produtos anteriores.         -->
+                            <!-- ======================================================== -->
+                            <div class="card-produto" data-preco-dia="28" data-estoque="5">
                                 <div class="produto-linha-topo">
                                     <img class="produto-imagem" src="./src/images/Furadeira3.webp" alt="Parafusadeira">
                                     <div class="produto-infos">
@@ -226,6 +375,7 @@
                                         </div>
                                         <span class="produto-aluguel">2 dias de aluguel</span>
                                         <div class="produto_valores">
+                                            <!-- Valores iniciais — sobrescritos pelo JS apos inicializacao -->
                                             <span class="produto_preco">R$28,00/dia × 2 dias</span>
                                             <span class="produto_total">Total: R$56,00</span>
                                         </div>
@@ -249,15 +399,17 @@
                                     </div>
                                     <span class="controle-label-disp">+50 disponíveis</span>
                                 </div>
-                            </div><!-- /Produto 3 -->
+                            </div><!-- /card-produto (Produto 3) -->
 
                         </div><!-- /lista-produtos -->
-                    </article><!-- /Grupo 1 -->
+                    </article><!-- /grupo-loja 1 -->
 
 
-                    <!-- ========================= -->
-                    <!-- GRUPO 2 – JB Ferramentas  -->
-                    <!-- ========================= -->
+                    <!-- ======================================================== -->
+                    <!-- GRUPO DE LOJA 2 — JB Ferramentas                         -->
+                    <!-- Segundo agrupamento de produtos, mesmo vendedor.         -->
+                    <!-- Estrutura identica ao Grupo 1.                           -->
+                    <!-- ======================================================== -->
                     <article class="card grupo-loja">
 
                         <div class="grupo-loja-header">
@@ -270,8 +422,10 @@
 
                         <div class="lista-produtos">
 
-                            <!-- Produto 4 -->
-                            <div class="card-produto" data-preco-dia="18">
+                            <!-- ======================================================== -->
+                            <!-- CARD DE PRODUTO 4 — Furadeira Eletrica WAP               -->
+                            <!-- ======================================================== -->
+                            <div class="card-produto" data-preco-dia="18" data-estoque="10">
                                 <div class="produto-linha-topo">
                                     <img class="produto-imagem" src="./src/images/Furadeira4.webp" alt="Furadeira WAP">
                                     <div class="produto-infos">
@@ -284,6 +438,7 @@
                                         </div>
                                         <span class="produto-aluguel">2 dias de aluguel</span>
                                         <div class="produto_valores">
+                                            <!-- Valores iniciais — sobrescritos pelo JS apos inicializacao -->
                                             <span class="produto_preco">R$18,00/dia × 2 dias</span>
                                             <span class="produto_total">Total: R$36,00</span>
                                         </div>
@@ -307,10 +462,12 @@
                                     </div>
                                     <span class="controle-label-disp">+50 disponíveis</span>
                                 </div>
-                            </div><!-- /Produto 4 -->
+                            </div><!-- /card-produto (Produto 4) -->
 
-                            <!-- Produto 5 -->
-                            <div class="card-produto" data-preco-dia="25">
+                            <!-- ======================================================== -->
+                            <!-- CARD DE PRODUTO 5 — Serra Circular Profissional          -->
+                            <!-- ======================================================== -->
+                            <div class="card-produto" data-preco-dia="25" data-estoque="7">
                                 <div class="produto-linha-topo">
                                     <img class="produto-imagem" src="./src/images/serraCircularProfissional.png"
                                         alt="Serra Circular">
@@ -324,6 +481,7 @@
                                         </div>
                                         <span class="produto-aluguel">2 dias de aluguel</span>
                                         <div class="produto_valores">
+                                            <!-- Valores iniciais — sobrescritos pelo JS apos inicializacao -->
                                             <span class="produto_preco">R$25,00/dia × 2 dias</span>
                                             <span class="produto_total">Total: R$50,00</span>
                                         </div>
@@ -347,77 +505,172 @@
                                     </div>
                                     <span class="controle-label-disp">+50 disponíveis</span>
                                 </div>
-                            </div><!-- /Produto 5 -->
+                            </div><!-- /card-produto (Produto 5) -->
 
                         </div><!-- /lista-produtos -->
-                    </article><!-- /Grupo 2 -->
+                    </article><!-- /grupo-loja 2 -->
 
                 </div><!-- /coluna-produtos -->
 
 
-                <!-- ============================= -->
-                <!-- CARD RESUMO DO PEDIDO         -->
-                <!-- ============================= -->
+                <!-- ======================================================== -->
+                <!-- PAINEL LATERAL — RESUMO DO PEDIDO                         -->
+                <!-- Exibido ao lado da lista de produtos (em desktop) ou      -->
+                <!-- abaixo dela (em mobile).                                  -->
+                <!-- Este bloco e o alvo das atualizacoes do JS:               -->
+                <!-- - Subtotal    → refs.elSubtotal (.resumo-linha strong)    -->
+                <!-- - Valor frete → refs.elFreteTopo (.resumo-frete-topo)     -->
+                <!-- - Total final → refs.elTotal (.resumo-total strong)       -->
+                <!-- - Desconto    → injetado dinamicamente por                -->
+                <!--                 renderizarLinhaDesconto()                 -->
+                <!-- REFERENCIA JS: refs.cardResumo                            -->
+                <!-- ======================================================== -->
                 <aside class="card card-resumo">
                     <h3>Resumo do Pedido</h3>
 
+                    <!-- LINHA DE SUBTOTAL
+                        O <strong> é a referencia capturada em refs.elSubtotal.
+                        Seu conteúdo e sobrescrito pelo JS em atualizarResumo().
+                        ATENÇÃO: o JS captura apenas o PRIMEIRO ".resumo-linha strong"
+                        da pagina — esta posicao não deve ser alterada. -->
                     <div class="resumo-linha">
                         <span>Subtotal</span>
                         <strong>R$ 184,00</strong>
                     </div>
 
+                    <!-- LINHA DE FRETE
+                        O <strong> com classe "resumo-frete-topo" e refs.elFreteTopo.
+                        O JS preenche com:
+                            - "Grátis"           → quando cupom de frete esta ativo
+                            - formatarMoeda(x)   → quando CEP foi validado e frete calculado
+                            - "--"               → estado inicial (sem CEP informado)
+                        O asterisco (*) indica campo obrigatorio para prosseguir. -->
                     <div class="resumo-linha">
                         <span>Frete <span class="campo-obrigatorio" aria-hidden="true">*</span></span>
                         <strong class="resumo-frete-topo"></strong>
                     </div>
 
+                    <!-- ÁREA DE CALCULO DE FRETE POR CEP
+                        Composta por: campo de input + botao "Usar" + link de ajuda.
+                        O JS formata o CEP automaticamente (00000-000) durante a digitação.
+
+                        ELEMENTOS RELEVANTES PARA O JS:
+                        - .input-cep       → refs.inputCep (leitura do valor digitado)
+                        - .btn-usar        → refs.btnUsar (dispara handleCalcularFrete)
+                        - .campo-cep       → refs.campoCep (recebe classes de erro/sucesso)
+                        - #erro-cep        → refs.erroCep (exibe mensagem inline de erro/sucesso)
+
+                        REGRA DE NEGÓCIO:
+                        O CEP deve ter exatamente 8 digitos numéricos.
+                        Enquanto não validado, o botão "Continuar para Pagamento" trava. -->
                     <div class="linha-cep">
                         <div class="linha-cep-controles">
                             <div class="campo-cep">
+                                <!--
+                                    Input de CEP:
+                                    - maxlength="9" → suporta formato mascarado "00000-000"
+                                    - inputmode="numeric" → teclado numérico em mobile
+                                    - required → atributo semântico (validação real esta no JS)
+                                -->
                                 <input class="input-cep" type="text" placeholder="Informe um CEP" maxlength="9"
                                     inputmode="numeric" aria-label="CEP para cálculo de frete" required />
+                                <!-- Dispara handleCalcularFrete() via refs.btnUsar -->
                                 <button class="btn-usar" type="button">Usar</button>
                             </div>
 
+                            <!-- Link de ajuda externo para consulta de CEP (href pendente) -->
                             <a href="#" class="link-cep">Não sei o meu CEP</a>
                         </div>
 
+                        <!--
+                            ÁREA DE MENSAGEM DE ERRO/SUCESSO DO CEP
+                            Gerenciada pelas funções setCepErro() e setCepSucesso() no JS.
+                            role="alert" e aria-live="assertive" garantem que leitores de tela anunciem as mensagens imediatamente ao aparecerem. -->
                         <span class="erro-cep" id="erro-cep" role="alert" aria-live="assertive"></span>
-                    </div>
+                    </div><!-- /linha-cep -->
 
+                    <!-- ÁREA DE CUPOM DE DESCONTO
+                        Composta por: icone decorativo, input de texto, botão de remover e botão aplicar.
+
+                        ELEMENTOS RELEVANTES PARA O JS:
+                        - .input-cupom      → refs.inputCupom (leitura do codigo digitado)
+                        - .btn-remover-cupom → refs.btnRemover (dispara handleRemoverCupom)
+                                Inicia oculto (hidden); JS exibe apos cupom aplicado
+                        - .btn-aplicar      → refs.btnAplicar (dispara handleAplicarCupom)
+                        - .campo-cupom      → refs.campoCupom (recebe classes de erro/sucesso)
+                        - #erro-cupom       → refs.erroCupom (exibe mensagem inline)
+
+                        REGRA DE NEGOCIO:
+                        Só e permitido um cupom ativo por vez. O JS converte o input para maiusculas automaticamente. -->
                     <div class="linha-cupom">
                         <div class="campo-cupom">
+                            <!-- Icone decorativo de etiqueta — não interativo -->
                             <img class="icone-cupom" src="./src/images/etiqueta.png" alt="Icone de etiqueta">
+
                             <input class="input-cupom" type="text" placeholder="Inserir código de cupom"
                                 aria-label="Código de cupom" autocomplete="off" />
+
+                            <!-- Botão de remover cupom.
+                                O atributo "hidden" o mantém oculto por padrão.
+                                O JS o exibe (style.display = 'inline-block') após
+                                um cupom ser aplicado com sucesso, e o volta a ocultar
+                                (style.display = 'none') ao remover o cupom. -->
                             <button class="btn-remover-cupom" type="button" aria-label="Remover cupom" hidden>×</button>
+
+                            <!-- Dispara handleAplicarCupom() via refs.btnAplicar -->
                             <button class="btn-aplicar" type="button">Aplicar</button>
                         </div>
 
+                        <!-- ÁREA DE MENSAGEM DE ERRO/SUCESSO DO CUPOM
+                            Gerenciada pelas funções setCupomErro() e setCupomSucesso() no JS.
+                            role="alert" garante anuncio por leitores de tela. -->
                         <span class="erro-cupom" id="erro-cupom" role="alert"></span>
-                    </div>
+                    </div><!-- /linha-cupom -->
 
+                    <!-- LINHA DIVISORIA
+                        Separa visualmente os campos de entrada (frete/cupom) do total final. O JS usa esta linha como referencia de posição para injetar a linha de desconto: renderizarLinhaDesconto()
+                        insere o elemento de desconto ANTES deste <hr>. -->
                     <hr class="linha-divisoria" />
 
+                    <!-- LINHA DE TOTAL FINAL
+                        O <strong> e a referencia capturada em refs.elTotal.
+                        Calculado como: subtotal + frete - desconto (minimo 0).
+                        Atualizado em atualizarResumo() a cada interação do usuario. -->
                     <div class="resumo-total">
                         <span>Total</span>
                         <strong>R$ 184,00</strong>
                     </div>
 
+                    <!-- BOTÃO DE AVANÇO PARA PAGAMENTO
+                        Capturado como refs.btnContinuar e dispara handleContinuarPagamento().
+
+                        REGRAS DE VALIDACAO (no JS):
+                        1. Não pode haver cupom digitado mas não aplicado
+                        2. O CEP deve estar preenchido (8 digitos)
+                        3. O frete deve ter sido calculado (estado.cepValidado === true)
+                        Se todas as condições forem satisfeitas, redireciona para /metodoPagamento.html -->
                     <button class="btn-continuar" type="button">
                         Continuar para Pagamento
                     </button>
                 </aside><!-- /card-resumo -->
 
             </div><!-- /checkout-container -->
-        </main>
+        </main><!-- /main-mobile -->
 
     </div><!-- /app -->
 
-    <!--
-    Região live para anúncios de acessibilidade (toasts).
-    Fica fora do fluxo visual; leitores de tela anunciam mudanças automaticamente.
-    -->
+    <!-- REGIÃO DE AVISOS ACESSIVEIS (TOAST GLOBAL)
+        Elemento fora do fluxo visual principal.
+        O JS escreve mensagens neste elemento via refs.avisoGlobal
+        para exibir toasts(avisos) flutuantes de feedback.
+
+        role="status" e aria-live="polite" → leitores de tela anunciam
+        as mensagens quando o usuário não esta no meio de outra interação.
+        aria-atomic="true" → o anuncio lera o conteúdo completo do elemento,
+        não apenas as partes que mudaram.
+
+        Os estilos de posicionamento e animação deste elemento
+        são injetados dinamicamente pelo JS em injetarEstilosJS(). -->
     <div id="aviso-global" role="status" aria-live="polite" aria-atomic="true"></div>
 
     <script src="./src/js/carrinho.js"></script>
