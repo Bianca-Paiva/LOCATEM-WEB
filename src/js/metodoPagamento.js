@@ -11,16 +11,16 @@
 //  1. REFERÊNCIAS AO DOM
 // ============================================================
 
-const botoes         = document.querySelectorAll('.btn-metodo');
-const btnContinuar   = document.querySelector('.btn-pagamento');
+const botoes = document.querySelectorAll('.btn-metodo');
+const btnContinuar = document.querySelector('.btn-pagamento');
 
 // Elementos do resumo do pedido
 // Seletores baseados em classes específicas para evitar dependência de ordem no HTML
-const elSubtotal       = document.querySelector('.resumo-subtotal');
-const elFrete          = document.querySelector('.resumo-frete-topo');
-const elTotal          = document.querySelector('.resumo-total-valor');
-const elLinhaDesconto  = document.getElementById('linha-desconto');
-const elDesconto       = document.querySelector('.resumo-desconto-valor');
+const elSubtotal = document.querySelector('.resumo-subtotal');
+const elFrete = document.querySelector('.resumo-frete-topo');
+const elTotal = document.querySelector('.resumo-total-valor');
+const elLinhaDesconto = document.getElementById('linha-desconto');
+const elDesconto = document.querySelector('.resumo-desconto-valor');
 
 
 // =======================================================
@@ -91,20 +91,18 @@ function formatarMoeda(valor) {
 */
 function atualizarResumo() {
     const subtotal = lerValorLocalStorage('subtotal');
-    const frete    = lerValorLocalStorage('frete');
+    const frete = lerValorLocalStorage('frete');
     const desconto = lerValorLocalStorage('desconto');
-    const total    = subtotal + frete - desconto;
+    const total    = Math.max(0, subtotal + frete - desconto);
 
-    // Atualiza os elementos no DOM
-    elSubtotal.textContent = formatarMoeda(subtotal);
-    elFrete.textContent    = frete === 0 ? 'Grátis' : formatarMoeda(frete);
-    elTotal.textContent    = formatarMoeda(total);
+    if (elSubtotal) elSubtotal.textContent = formatarMoeda(subtotal);
+    if (elFrete) elFrete.textContent = frete === 0 ? 'Grátis' : formatarMoeda(frete);
+    if (elTotal) elTotal.textContent = formatarMoeda(total);
 
-    // Exibe a linha de desconto apenas quando houver desconto ativo
-    if (desconto > 0) {
-        elDesconto.textContent        = `− ${formatarMoeda(desconto)}`;
+    if (desconto > 0 && elDesconto && elLinhaDesconto) {
+        elDesconto.textContent = `− ${formatarMoeda(desconto)}`;
         elLinhaDesconto.style.display = '';
-    } else {
+    } else if (elLinhaDesconto) {
         elLinhaDesconto.style.display = 'none';
     }
 }
@@ -144,9 +142,9 @@ function processarContinuarPagamento() {
 
     // Mapeamento de método → rota de destino
     const rotas = {
-        credito : '/selecionarCartao.html',
-        debito  : '/selecionarCartao.html',
-        pix     : '/pagamentoPix.html'
+        credito: '/selecionarCartao.html',
+        debito: '/selecionarCartao.html',
+        pix: '/pagamentoPix.html'
     };
 
     const destino = rotas[metodo];
@@ -162,13 +160,6 @@ function processarContinuarPagamento() {
     }
 }
 
+atualizarResumo();
 // Associa o clique no botão "Continuar Pagamento"
 btnContinuar.addEventListener('click', processarContinuarPagamento);
-
-
-// ===============================================
-//  7. INICIALIZAÇÃO
-//  Executa assim que o script é carregado
-// ===============================================
-
-atualizarResumo();

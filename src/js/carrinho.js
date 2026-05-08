@@ -10,16 +10,15 @@
     ARQUITETURA GERAL:
     O código segue uma separação de responsabilidades em tres camadas:
 
-      ESTADO
+    ESTADO
         - Global (objeto `estado`): frete e cupom (valem para o pedido todo)
-        - Por produto (dataset do elemento HTML): dias e unidades
-          O elemento HTML IS a fonte de verdade — não ha array de produtos em memória.
+        - Por produto (dataset do elemento HTML): dias e unidades O elemento HTML IS a fonte de verdade — não ha array de produtos em memória.
 
-      LÓGICA (funções puras)
+    LÓGICA (funções puras)
         - calcularSubtotal, calcularDesconto, calcularTotalCard
         - Recebem dados, devolvem números, não tocam no DOM
 
-      DOM (output)
+    DOM (output)
         - atualizarCardProduto, atualizarResumo
         - Usam `refs` para escrever; nunca calculam nada
 
@@ -283,11 +282,6 @@ function calcularDesconto(subtotal) {
 /* cupomAtualIsFreteGratis()
     Verifica se o cupom ativo e do tipo 'frete'.
 
-    DECISAO TECNICA:
-    Antes: `estado.cupomCodigo === 'FRETEGRATIS'` — acoplado ao nome.
-    Agora: consulta o campo `tipo` no objeto CUPONS — desacoplado.
-    Beneficio: se o cupom for renomeado, apenas a tabela CUPONS muda.
-
     FUNÇÃO PURA — sem side effects.
 
     @returns {boolean} true se o cupom ativo e do tipo 'frete' */
@@ -302,15 +296,12 @@ const cupomAtualIsFreteGratis = () =>
 /* inicializarProdutos()
     Lê o estado inicial dos cards a partir do HTML e popula os data-attributes de cada produto, em seguida renderiza todos.
 
-    PROBLEMA RESOLVIDO (separacao em passos):
-    Se a renderizacao fosse feita dentro do mesmo loop que popula os datasets, a funcao atualizarCardProduto chamaria totalUnidadesCarrinho com datasets incompletos (alguns cards ainda sem data-unidades definido), gerando totais errados.
-
     SOLUÇÃO EM TRÊS PASSOS:
         Passo 1 → popula os datasets de TODOS os cards primeiro
         Passo 2 → calcula totalGlobal UMA VEZ com todos os dados prontos
         Passo 3 → renderiza todos os cards com o totalGlobal exato
 
-    Side effect: altera datasets dos cards e atualiza o DOM. */
+        Side effect: altera datasets dos cards e atualiza o DOM. */
 function inicializarProdutos() {
     const cards = getTodosCards();
 
@@ -380,7 +371,7 @@ const formatarMoeda = (valor) =>
     Atualiza todos os elementos visuais de um card de produto: texto de dias, texto de unidades, preco detalhado, total do card e estado dos botoes (habilitado/desabilitado).
 
     DECISAO DE PERFORMANCE:
-    O parametro `totalGlobal` e passado pelo CHAMADOR, que o calcula UMA vez antes do loop. Antes, esta funcao chamava totalUnidadesCarrinho(todosCards) internamente para cada card, resultando em O(N^2) operacoes. Com o parametro, o custo e O(N).
+    O parametro `totalGlobal` e passado pelo CHAMADOR, que o calcula UMA vez antes do loop. 
 
     Side effect: altera textContent e atributos de elementos do DOM.
 
@@ -532,9 +523,9 @@ function atualizarResumo() {
     Cria, atualiza ou remove a linha de desconto no painel de resumo.
 
     LÓGICA:
-      - Se desconto <= 0: remove a linha (se existir) e retorna
-      - Se desconto > 0 e linha nao existe: cria e insere ANTES do <hr>
-      - Se desconto > 0 e linha ja existe: atualiza o valor
+        - Se desconto <= 0: remove a linha (se existir) e retorna
+        - Se desconto > 0 e linha nao existe: cria e insere ANTES do <hr>
+        - Se desconto > 0 e linha ja existe: atualiza o valor
 
     O ponto de insercao e a referencia `.linha-divisoria` dentro de refs.cardResumo, garantindo que a linha de desconto fique sempre acima do divisor e abaixo dos campos de frete/cupom.
 

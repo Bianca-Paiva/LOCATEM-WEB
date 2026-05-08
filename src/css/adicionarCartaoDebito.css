@@ -115,7 +115,10 @@ body {
 
 .titulo-pagina {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  margin: 0 0 0 8px;
   gap: 12px;
 }
 
@@ -124,21 +127,13 @@ body {
   font-weight: 700;
 }
 
-.btn-voltar {
-  border: none;
-  background: transparent;
-  font-size: 30px;
-  cursor: pointer;
-  color: var(--color-text-primary);
+.titulo-pagina p {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
 }
 
-.btn-voltar svg {
-  width: auto;
-  height: 30px;
-  object-fit: contain;
-  display: block;
-  color: var(--color-text-primary);
-}
+
 
 /* =========================== */
 /* CARD COMPONENT */
