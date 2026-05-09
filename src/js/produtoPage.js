@@ -1,5 +1,8 @@
-//Carrossel
-// Navega entre itens com botões, indicadores e swipe touch
+'use strict';
+
+// ==================== CARROSSEL ====================
+// Controla a navegação entre slides do produto.
+// Suporta: botões de seta, clique nos indicadores e swipe touch.
 const initCarrossel = () => {
   const lista    = document.querySelector('.carrossel-lista');
   const itens    = document.querySelectorAll('.carrossel-item');
@@ -7,10 +10,14 @@ const initCarrossel = () => {
   const btnAntes = document.querySelector('.btn-anterior');
   const btnProx  = document.querySelector('.btn-proximo');
 
+  // Aborta se o carrossel não existir na página
   if (!lista || itens.length === 0) return;
 
   let indexAtual = 0;
 
+  // Remove a classe "ativo" do slide atual, navega para o novo índice
+  // e aplica "ativo" no próximo slide e no indicador correspondente.
+  // O módulo garante navegação cíclica (do último volta ao primeiro).
   const irPara = (novoIndex) => {
     itens[indexAtual].classList.remove('ativo');
     circulos[indexAtual]?.classList.remove('ativo');
@@ -22,7 +29,9 @@ const initCarrossel = () => {
   btnAntes?.addEventListener('click', () => irPara(indexAtual - 1));
   btnProx?.addEventListener('click',  () => irPara(indexAtual + 1));
 
-  // Swipe touch
+  // ── SWIPE TOUCH ──
+  // Detecta a direção do arrasto e navega de acordo.
+  // threshold de 40px evita ativação por toques acidentais.
   let touchStartX = 0;
   lista.addEventListener('touchstart', (e) => {
     touchStartX = e.changedTouches[0].clientX;
@@ -32,28 +41,29 @@ const initCarrossel = () => {
     if (Math.abs(diff) > 40) irPara(diff > 0 ? indexAtual + 1 : indexAtual - 1);
   }, { passive: true });
 
-  // Clique nos indicadores
+  // Clique direto nos indicadores (pontos) navega para o slide correspondente
   circulos.forEach((circulo, i) => {
     circulo.addEventListener('click', () => irPara(i));
   });
 };
 
-//================================
-//Favoritar
-//================================
-
+// ==================== FAVORITAR ====================
+// Alterna o estado favoritado do produto.
+// Atualiza aria-pressed, aria-label e filtro visual do ícone.
 const initFavoritar = () => {
   const btn = document.querySelector('.btn-favoritar');
   if (!btn) return;
 
   let favoritado = btn.dataset.favoritado === 'true';
 
+  // Sincroniza o visual e atributos de acessibilidade com o estado atual
   const atualizar = () => {
     btn.setAttribute('aria-pressed', favoritado);
     btn.setAttribute('aria-label', favoritado
       ? 'Remover dos favoritos' : 'Adicionar aos favoritos');
     btn.classList.toggle('ativo', favoritado);
 
+    // Aplica filtro CSS para colorir o ícone quando favoritado
     const img = btn.querySelector('img');
     if (img) img.style.filter = favoritado
       ? 'invert(50%) sepia(100%) saturate(500%) hue-rotate(330deg)' : '';
@@ -63,9 +73,9 @@ const initFavoritar = () => {
   atualizar();
 };
 
-//================================
-//Voltagem
-//================================
+// ==================== VOLTAGEM ====================
+// Seleção exclusiva de voltagem (127V / 220V / Bivolt).
+// Apenas um botão pode estar ativo por vez.
 const initVoltagem = () => {
   const botoes = document.querySelectorAll('.btn-voltagem');
   if (!botoes.length) return;
@@ -78,9 +88,10 @@ const initVoltagem = () => {
   });
 };
 
-//================================
-//quantidade
-//================================
+// ==================== QUANTIDADE ====================
+// Controla o incremento e decremento da quantidade do produto.
+// Respeita os limites mínimo (1) e máximo (99).
+// O botão de decrementar é desabilitado ao atingir o mínimo.
 const initQuantidade = () => {
   const grupo = document.querySelector('.controle-grupo');
   if (!grupo) return;
@@ -91,6 +102,7 @@ const initQuantidade = () => {
   const MIN = 1, MAX = 99;
   let quantidade = parseInt(valorSpan?.textContent, 10) || 1;
 
+  // Atualiza o display e o estado do botão de decremento
   const atualizar = () => {
     if (valorSpan) valorSpan.textContent = quantidade;
     if (btnDecr) btnDecr.disabled = quantidade <= MIN;
@@ -101,9 +113,13 @@ const initQuantidade = () => {
   atualizar();
 };
 
-//================================
-//Expansíveis
-//================================
+// ==================== SEÇÕES EXPANSÍVEIS ====================
+// Controla o expand/collapse das seções de Descrição e Especificações.
+// A animação usa max-height + opacity para transição suave.
+//
+// ATENÇÃO: O seletor inclui tanto '.card-secao' quanto '.especificacoes-produto'
+// porque a seção de especificações herda os dois — garantir que ambos continuem
+// sendo selecionados ao refatorar o HTML.
 const initExpandiveis = () => {
   const secoes = document.querySelectorAll('.card-secao, .especificacoes-produto');
 
@@ -114,13 +130,16 @@ const initExpandiveis = () => {
 
     let aberto = btn.classList.contains('aberto');
 
+    // Aplica max-height e opacity conforme o estado.
+    // Na inicialização (animado=false) não aplica transition para evitar
+    // animação indesejada no carregamento da página.
     const aplicarEstado = (animado = false) => {
       if (animado) conteudo.style.transition = 'max-height 0.3s ease, opacity 0.3s ease';
       conteudo.style.maxHeight = aberto ? conteudo.scrollHeight + 'px' : '0';
       conteudo.style.opacity   = aberto ? '1' : '0';
       conteudo.style.overflow  = aberto ? 'visible' : 'hidden';
       btn.classList.toggle('aberto', aberto);
-      btn.setAttribute('aria-expanded', aberto);
+      btn.setAttribute('aria-expanded', String(aberto));
     };
 
     btn.addEventListener('click', () => { aberto = !aberto; aplicarEstado(true); });
@@ -128,18 +147,20 @@ const initExpandiveis = () => {
   });
 };
 
-//================================
-//Foi util
-//================================
+// ==================== FEEDBACK "FOI ÚTIL" ====================
+// Permite ao usuário marcar um comentário como útil uma única vez por sessão.
+// Ao votar: destaca o botão, impede novo voto e incrementa o contador.
 const initFeedbackUtil = () => {
   document.querySelectorAll('.btn-util').forEach((btn) => {
     btn.addEventListener('click', () => {
-      if (btn.dataset.votou === 'true') return; // evita múltiplos votos
+      // Impede múltiplos votos no mesmo comentário
+      if (btn.dataset.votou === 'true') return;
 
       btn.dataset.votou     = 'true';
       btn.style.borderColor = 'var(--color-primary)';
       btn.style.color       = 'var(--color-primary-dark)';
 
+      // Extrai o número atual do texto e incrementa em 1
       const contagem = btn.closest('.feedback-util')?.querySelector('.contagem-util');
       if (contagem) {
         const match = contagem.textContent.match(/\d+/);
@@ -150,9 +171,9 @@ const initFeedbackUtil = () => {
   });
 };
 
-//================================
-//ver mais comentários
-//================================
+// ==================== VER MAIS COMENTÁRIOS ====================
+// Alterna a visibilidade dos comentários marcados como ".comentario--oculto".
+// Atualiza o texto e a seta do botão conforme o estado.
 const initVerMais = () => {
   const btn = document.querySelector('.btn-ver-mais');
   if (!btn) return;
@@ -163,39 +184,35 @@ const initVerMais = () => {
     expandido = !expandido;
     const span = btn.querySelector('span');
 
+    // Exibe ou oculta todos os comentários com a classe de ocultação
     document.querySelectorAll('.comentario--oculto').forEach((el) => {
       el.style.display = expandido ? 'flex' : 'none';
     });
 
+    // Atualiza texto e rotação da seta conforme o estado
     if (span) span.textContent = expandido ? 'Ver menos' : 'Ver mais';
     const seta = btn.querySelector('img');
     if (seta) seta.style.transform = expandido ? 'rotate(180deg)' : '';
   });
 };
 
-//================================
-//inicialização
-//================================
+// ==================== INICIALIZAÇÃO ====================
+// Chama todos os módulos em sequência.
+// Aguarda o DOM estar pronto antes de executar, caso o script
+// seja carregado de forma síncrona no <head> (não é o caso atual,
+// mas o guard garante segurança em refatorações futuras).
+const init = () => {
+  initCarrossel();
+  initFavoritar();
+  initVoltagem();
+  initQuantidade();
+  initExpandiveis();
+  initFeedbackUtil();
+  initVerMais();
+};
 
-(() => {
-  'use strict';
-
-  // ... (todas as funções acima aqui dentro)
-
-  const init = () => {
-    initCarrossel();
-    initFavoritar();
-    initVoltagem();
-    initQuantidade();
-    initExpandiveis();
-    initFeedbackUtil();
-    initVerMais();
-  };
-
-  // Aguarda DOM pronto
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-})();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}

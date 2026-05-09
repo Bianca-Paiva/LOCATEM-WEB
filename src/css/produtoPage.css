@@ -1,25 +1,30 @@
 /*==================== ROOT ====================*/
+/*
+  Tokens de design globais do projeto Locatem.
+  Todas as cores, espaçamentos, sombras e tipografia
+  são centralizados aqui para facilitar manutenção e consistência.
+*/
 :root {
-  /* ── CORES PRINCIPAIS (seu design system) ── */
+  /* ── CORES PRINCIPAIS ── */
   --color-primary:          #FFCA00;
   --color-primary-light:    #ffe97a;
   --color-primary-soft:     #fff6c7;
   --color-secondary:        #f0c000c0;
-  --color-primary-dark:     #c99b00;   /* hover/active derivado */
- 
+  --color-primary-dark:     #c99b00;
+
   /* ── BACKGROUNDS ── */
   --color-bg-main:          #F9FAFB;
   --color-bg-card:          #ffffff;
   --color-white:            #ffffff;
- 
+
   /* ── TEXTOS ── */
   --color-text-dark:        #0A0A0A;
   --color-text-secondary:   #8e8e93;
   --color-text-muted:       #7a7a7a;
   --color-text-desativado:  #A0A0A0;
   --color-text-link:        #3A83FA;
- 
-  /* aliases usados no CSS abaixo */
+
+  /* Aliases semânticos — facilitam a leitura no CSS sem precisar memorizar hex */
   --color-black:            var(--color-text-dark);
   --color-dark:             #1F2937;
   --color-gray-700:         #374151;
@@ -28,192 +33,206 @@
   --color-gray-100:         var(--color-bg-main);
   --color-gold:             #FFD700;
   --color-verified:         #705D00;
- 
+
   /* ── BORDAS ── */
   --color-border-card:      #e5e7eb;
   --color-linha-divisoria:  #a0a0a09a;
- 
-  /* ── RADIUS ── */
+
+  /* ── BORDER RADIUS ── */
   --card-radius:            14px;
   --radius-sm:              6px;
   --radius-md:              var(--card-radius);
   --radius-lg:              16px;
   --radius-full:            9999px;
- 
+
   /* ── SOMBRAS ── */
   --card-shadow:            0 1px 3px rgba(0, 0, 0, 0.08);
   --shadow-sm:              var(--card-shadow);
   --shadow-md:              0 4px 12px rgba(0,0,0,.12);
- 
+
   /* ── TIPOGRAFIA ── */
   --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
- 
+
   /* ── ESPAÇAMENTOS ── */
   --spacing-xs:  4px;
   --spacing-sm:  8px;
   --spacing-md:  16px;
   --spacing-lg:  24px;
   --spacing-xl:  32px;
+
+  /* ── LAYOUT ── */
+  --max-width: 1280px;
+  --header-height-desktop: 64px;
+  --nav-height-desktop: 52px;
 }
 
-
-/* ============================= */
-/* BASE GERAL */
-/* ============================= */
+/* ========================================
+   BASE GERAL
+   ======================================== */
 body {
-    background-color: var(--color-bg-main);
-    /* Fundo padrão da aplicação */
-    color: var(--color-text-primary);
-    /* Cor padrão dos textos */
-        
-
-  
+  background-color: var(--color-bg-main);
+  color: var(--color-text-dark);
+  font-family: var(--font-sans);
 }
 
-/* ============================= */
-/* HEADER / CABEÇALHO */
-/* ============================= */
+/* ========================================
+   APP WRAPPER
+   Gradiente de fundo que vai do amarelo primário
+   até o cinza claro, criando a identidade visual do topo da página.
+   ======================================== */
 .app {
-    width: 100%;
-    min-height: 100vh;
-        background: linear-gradient(to bottom,
-            var(--color-primary) 0%,
-            var(--color-primary-light) 2%,
-            var(--color-primary-soft) 3.5%,
-            var(--color-bg-main) 4.5%);
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to bottom,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 2%,
+    var(--color-primary-soft) 3.5%,
+    var(--color-bg-main) 4.5%);
 }
 
-
-/* ======CONFIGURAÇÕES DO CABEÇALHO PARA MOBILE ======== */
-
+/* ========================================
+   HEADER — MOBILE (base)
+   Layout em coluna: linha superior + barra de pesquisa empilhadas.
+   No desktop, este componente é reestruturado para linha única via media query.
+   ======================================== */
 .header-mobile {
-    width: 100%;
-    padding: 22px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 26px;
+  width: 100%;
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
 }
 
-/* Linha com menu, logo e carrinho */
+/* Linha superior: distribui logo (esq), pesquisa (centro/desktop) e ações (dir) */
 .linha-topo-mobile {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* AGRUPA MENU + LOGO */
+/* Agrupa o botão menu + logo no lado esquerdo */
 .lado-esquerdo {
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-/* ============================= */
-/* LOGO */
-/* ============================= */
-
+/* ── LOGO ── */
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    color: var(--color-text-dark);
-    text-decoration: none;
-    font-size: clamp(16px, 4vw, 20px);
-    font-weight: 750;
-    letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--color-text-dark);
+  text-decoration: none;
+  font-size: clamp(16px, 4vw, 20px); /* Responsivo entre 16px e 20px */
+  font-weight: 750;
+  letter-spacing: -0.5px;
 }
-
 .logo img {
-    height: 30px;
-    object-fit: contain;
+  height: 30px;
+  object-fit: contain;
 }
 
-/* ============================= */
-/* BOTÕES DO HEADER */
-/* ============================= */
-
+/* ── BOTÕES DO HEADER (menu, carrinho, chat) ── */
 .menu-btn,
-.carrinho-btn {
-    width: 42px;
-    height: 42px;
-    border: none;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+.carrinho-btn,
+.btn-chat {
+  width: 42px;
+  height: 42px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
-
 .menu-btn img,
 .carrinho-btn img {
-    width: 25px;
-    height: 25px;
-    object-fit: contain;
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
 }
 
-/* Carrinho com badge */
+/* Carrinho com posicionamento relativo para o badge de quantidade */
 .carrinho-btn {
-    position: relative;
-    text-decoration: none;
+  position: relative;
+  text-decoration: none;
 }
 
+/* Badge de quantidade sobre o ícone do carrinho */
 .quantidade-carrinho {
-    position: absolute;
-    top: -4px;
-    right: 0;
-    min-width: 18px;
-    height: 18px;
-    padding: 0 5px;
-    border-radius: 999px;
-    background-color: var(--color-secondary);
-    color: var(--color-text-dark);
-    font-size: clamp(10px, 2.5vw, 12px);
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  top: -4px;
+  right: 0;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background-color: var(--color-secondary);
+  color: var(--color-text-dark);
+  font-size: clamp(10px, 2.5vw, 12px);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ============================= */
-/* BARRA DE PESQUISA */
-/* ============================= */
+/* Agrupa carrinho e chat com espaçamento */
+.header-acoes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
 
+/* Chat e barra desktop: ocultos no mobile — exibidos no breakpoint desktop */
+.btn-chat {
+  display: none;
+}
+.barra-pesquisa-desktop {
+  display: none;
+}
+
+/* ── BARRA DE PESQUISA MOBILE ── */
 .barra-pesquisa-mobile {
-    width: 100%;
-    height: 54px;
-    background-color: var(--color-bg-card);
-    border-radius: 999px;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    box-shadow: var(--shadow-search);
+  width: 100%;
+  height: 54px;
+  background-color: var(--color-bg-card);
+  border-radius: 999px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
 }
-
 .barra-pesquisa-mobile img {
-    width: 22px;
-    height: 22px;
-    opacity: 0.65;
+  width: 22px;
+  height: 22px;
+  opacity: 0.65;
 }
-
 .barra-pesquisa-mobile input {
-    width: 100%;
-    border: none;
-    outline: none;
-    background: transparent;
-    color: var(--color-text-dark);
-    font-size: 15px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--color-text-dark);
+  font-size: 15px;
 }
-
 .barra-pesquisa-mobile input::placeholder {
-    color: var(--color-text-muted);
+  color: var(--color-text-muted);
 }
 
-/* ================================
+/* ========================================
+   NAV DESKTOP
+   Oculto no mobile; ativado a partir de 1024px.
+   ======================================== */
+.nav-desktop {
+  display: none;
+}
+
+/* ========================================
    MAIN
-   ================================ */
+   ======================================== */
 main {
   width: 100%;
   margin: 0 auto;
@@ -222,15 +241,19 @@ main {
   flex-direction: column;
   gap: 0;
 }
- 
-/* ================================
-   SEÇÃO: PRODUTO
-   ================================ */
-.produto {
+
+/* ========================================
+   HERO DO PRODUTO
+   Mobile: coluna única (carrossel + info empilhados).
+   Desktop: grid de 2 colunas via media query.
+   ======================================== */
+.produto-hero {
+  display: flex;
+  flex-direction: column;
   padding: 0 0 var(--spacing-md);
 }
- 
-/* ---------- CARROSSEL ---------- */
+
+/* ── CARROSSEL ── */
 .carrossel-produto {
   position: relative;
   background: var(--color-gray-100);
@@ -238,7 +261,8 @@ main {
   overflow: hidden;
   margin-bottom: var(--spacing-md);
 }
- 
+
+/* Botão de favoritar posicionado sobre o carrossel (canto superior direito) */
 .btn-favoritar {
   position: absolute;
   top: var(--spacing-md);
@@ -252,15 +276,18 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .btn-favoritar img { width: 18px; height: 18px; }
- 
+
+/* Container das setas de navegação + lista de slides */
 .carrossel {
   display: flex;
   align-items: center;
   position: relative;
 }
- 
+
+/* Setas de navegação: posicionadas absolutamente sobre o carrossel */
 .btn-anterior,
 .btn-proximo {
   position: absolute;
@@ -273,22 +300,24 @@ main {
   align-items: center;
   justify-content: center;
   border: none;
+  cursor: pointer;
   top: 50%;
   transform: translateY(-50%);
 }
 .btn-anterior { left: var(--spacing-sm); }
 .btn-proximo  { right: var(--spacing-sm); }
- 
+
+/* Área de overflow do carrossel — esconde slides inativos */
 .carrossel-container {
   width: 100%;
   overflow: hidden;
 }
- 
 .carrossel-lista {
   display: flex;
   transition: transform .35s ease;
 }
- 
+
+/* Cada slide ocupa 100% da largura; apenas o ".ativo" é exibido (via JS) */
 .carrossel-item {
   min-width: 100%;
   display: none;
@@ -298,14 +327,13 @@ main {
   min-height: 220px;
 }
 .carrossel-item.ativo { display: flex; }
- 
 .carrossel-item img {
   max-height: 200px;
   object-fit: contain;
   margin: 0 auto;
 }
- 
-/* Indicadores (bolinhas) */
+
+/* ── INDICADORES DE SLIDE (pontos) ── */
 .indicadores {
   display: flex;
   justify-content: center;
@@ -319,25 +347,24 @@ main {
   background: var(--color-gray-300);
   transition: background .2s;
 }
+/* Ponto ativo sincronizado com o slide atual via JS */
 .circulo.ativo { background: var(--color-primary); }
- 
-/* ---------- DESCRIÇÃO DO PRODUTO (preço / avaliação) ---------- */
+
+/* ── INFORMAÇÕES DO PRODUTO (mobile) ── */
 .descricao-produto {
-  padding: 0 20px 0 15px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
 }
- 
-/* h1 */
 .descricao-produto h1 {
   font-size: 1rem;
   font-weight: 700;
   color: var(--color-black);
   line-height: 1.4;
 }
- 
-/* avaliação */
+
+/* Linha de avaliação: estrela + nota + total */
 .avaliacao {
   display: flex;
   align-items: center;
@@ -347,8 +374,20 @@ main {
   color: var(--color-black);
 }
 .avaliacao span { font-weight: 400; color: var(--color-gray-500); }
- 
-/* preço */
+
+/* Preço principal do produto */
+.preco-produto {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--color-black);
+}
+.preco-produto span {
+  font-size: .9rem;
+  font-weight: 400;
+  color: var(--color-gray-500);
+}
+
+/* Alias legado: mantém compatibilidade com markup sem .produto-info-desktop como pai */
 .descricao-produto > p {
   font-size: 1.45rem;
   font-weight: 800;
@@ -359,150 +398,174 @@ main {
   font-weight: 400;
   color: var(--color-gray-500);
 }
- 
-/* ---------- VOLTAGEM ---------- */
+
+/* ── SELEÇÃO DE VOLTAGEM ── */
 .voltagem {
   display: flex;
   gap: 12px;
-  padding: 16px 1px;
+  padding: 16px 0px;
   flex-wrap: nowrap;
 }
- 
 .btn-voltagem {
   border: 1.5px solid var(--color-dark);
   border-radius: var(--radius-sm);
-  
-  /* PADINGS */
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 20px;  /* Esquerda */
-  padding-right: 19px; /* Direita */
-
+  padding: 5px 20px 5px 19px;
   font-size: .8rem;
   font-weight: 600;
   color: var(--color-dark);
   background: var(--color-white);
+  cursor: pointer;
   transition: border-color .15s, background .15s, color .15s;
-  margin-right: 13px;
 }
-
+/* Estado ativo: botão selecionado recebe destaque amarelo (controlado via JS) */
 .btn-voltagem.selecionado {
-  background-color: var(--color-primary); /* fundo amarelo */
-  border-color: var(--color-primary-dark); /* borda um tom mais escuro */
-  color: var(--color-text-dark); /* texto escuro para contrastar */
+  background-color: var(--color-primary);
+  border-color: var(--color-primary-dark);
+  color: var(--color-text-dark);
   font-weight: 700;
 }
 
-
- 
-/* ---------- TEMPO + QUANTIDADE ---------- */
+/* ── SELETORES DE TEMPO E QUANTIDADE ── */
 .container-seletores {
   display: flex;
-  flex-direction: row;
-  align-items: flex-end; /* alinha pela base dos controles */
-  gap: 16px;
-  padding: 16px 1px;
+  gap: 20px;
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 20px;
 }
-
 .seletor-item {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 8px;
 }
-
 .label-btn {
-  display: flex;
-  align-items: center;
-  padding: 0 0 6px 0;
   font-size: 0.875rem;
+  font-weight: 500;
   color: var(--color-text-dark);
 }
 
-/* ── SELECT ── */
+/* Select customizado: seta nativa removida, substituída pelo .btn-tempo decorativo */
 .select-wrapper {
   position: relative;
-  display: inline-flex;
-  align-items: center;
+  width: 100%;
+  max-width: 100%;
 }
-
 .select-wrapper select {
-  width: 147px;
-  height: 44px;
+  width: 100%;
+  height: 48px;
+  appearance: none; /* Remove a seta padrão do navegador */
+  background: #ffffff;
   border: 1px solid var(--color-text-dark);
-  border-radius: 8px;
-  padding: 0 36px 0 12px;
-  font-size: 0.75rem;
-  color: var(--color-text-dark);
-  background: var(--color-white);
-  outline: none;
-  -webkit-appearance: none;
-  appearance: none;
+  border-radius: 12px;
+  padding: 0 40px 0 12px;
+  font-size: 0.9rem;
+  color: #111827;
   cursor: pointer;
 }
 
+/*
+  Ícone de seta decorativo posicionado sobre o select.
+  pointer-events: none garante que o clique passe para o <select> real.
+*/
 .btn-tempo {
   position: absolute;
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
+  background: none;
+  border: none;
+  pointer-events: none;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  padding: 0;
-  pointer-events: none;
 }
 
-/* ── QUANTIDADE ── */
+/* Controle de quantidade: botões nas pontas, valor centralizado */
 .controle-grupo {
   display: flex;
   align-items: center;
-  height: 44px;
+  justify-content: space-between;
+  height: 48px;
+  width: 100%;
+  background: #ffffff;
   border: 1px solid var(--color-text-dark);
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
 }
-
 .btn-controle {
-  width: 50px;
+  width: 44px;
   height: 100%;
   border: none;
   background: transparent;
+  font-size: 1.2rem;
   color: var(--color-text-dark);
-  font-size: 1.1rem;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: background .15s;
+  transition: background 0.2s;
+  flex-shrink: 0;
 }
-
-.btn-controle:hover {
-  background: var(--color-bg-main);
-}
-
-/* separador visual entre botão e valor */
-.controle-grupo .btn-controle:first-child {
-  border: none;
-}
-.controle-grupo .btn-controle:last-child {
-  border: none;
-}
-
+.btn-controle:hover { background: var(--color-bg-main); }
 .controle-valor {
-  min-width: 36px;
+  flex: 1;
   text-align: center;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-text-dark);
-  padding: 0 8px;
+  /* padding: 0 8px; */
 }
 
- 
-/* ================================
-   SEÇÃO: LOJA DO PRODUTO
-   ================================ */
+/* ── BOTÕES DE AÇÃO PRINCIPAL ── */
+.acoes-produto {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 26px;
+  margin-bottom: 25px;
+}
+
+/* Estilos base compartilhados pelos dois botões de ação */
+.btn-locar,
+.btn-adicionar-carrinho {
+  width: 100%;
+  height: 52px;
+  border-radius: var(--radius-full);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Botão primário: fundo amarelo sólido */
+.btn-locar {
+  background-color: var(--color-primary);
+  border: none;
+  color: var(--color-text-dark);
+}
+.btn-locar:hover { background-color: var(--color-primary-dark); }
+.btn-locar:active { transform: scale(0.98); }
+
+/* Botão secundário: fundo amarelo suave com borda */
+.btn-adicionar-carrinho {
+  background-color: var(--color-primary-soft);
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-text-dark);
+}
+.btn-adicionar-carrinho:hover {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary-dark);
+}
+.btn-adicionar-carrinho:active { transform: scale(0.98); }
+
+/* ========================================
+   CARD DA LOJA
+   Mobile: exibido como seção separada abaixo do produto.
+   Desktop: migrado para a sidebar (.col-lateral).
+   ======================================== */
 .loja-produto {
   display: flex;
   align-items: center;
@@ -511,7 +574,18 @@ main {
   border-top: 8px solid var(--color-gray-100);
   border-bottom: 8px solid var(--color-gray-100);
 }
- 
+
+/* Versão desktop (sidebar): oculta no mobile */
+.col-lateral .loja-produto {
+  display: none;
+}
+
+/* Versão mobile: visível por padrão, ocultada no desktop */
+.loja-produto--mobile {
+  display: flex;
+}
+
+/* Logo quadrado da loja */
 .logo-loja {
   width: 48px;
   height: 48px;
@@ -524,7 +598,7 @@ main {
   justify-content: center;
 }
 .logo-loja img { width: 100%; height: 100%; object-fit: cover; }
- 
+
 .nome-loja {
   flex: 1;
   display: flex;
@@ -536,7 +610,13 @@ main {
   font-weight: 700;
   color: var(--color-black);
 }
- 
+.loja-locacoes {
+  font-size: 0.75rem;
+  color: var(--color-gray-500);
+  margin-top: 2px;
+}
+
+/* Linha de avaliação da loja com badge "Locador Verificado" */
 .avaliacao-loja {
   display: flex;
   align-items: center;
@@ -550,29 +630,21 @@ main {
   font-size: 0.75rem;
   color: var(--color-gray-500);
 }
- 
+
 .btn-ir-loja {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  text-decoration: none;
 }
-.btn-ir-loja img { width: 20.09px; height: 18px; }
- 
-/* ================================
-   SEÇÃO: DESCRIÇÃO (expandível)
-   ================================ */
-/* Remove o estilo antigo da section descrição */
-section .descricao-produto {
-  padding: 0;
-  border-bottom: none;
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
+.btn-ir-loja img { width: 20px; height: 18px; }
 
-/* Card branco genérico — reutilizável em outras seções */
+/* ========================================
+   CARD GENÉRICO
+   Classe utilitária aplicada a seções que precisam
+   de fundo branco, borda arredondada e sombra.
+   ======================================== */
 .card-secao {
   background: var(--color-bg-card);
   border-radius: var(--card-radius);
@@ -581,22 +653,29 @@ section .descricao-produto {
   margin-bottom: var(--spacing-sm);
 }
 
+/* ========================================
+   SEÇÃO: DESCRIÇÃO DO PRODUTO
+   Expansível via JS — o botão .btn-expandir
+   controla a visibilidade do .descricao-conteudo.
+   ======================================== */
+.descricao-secao {
+  /* herda card-secao */
+}
 .descricao-cabecalho {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: var(--spacing-sm);
 }
-
 .descricao-cabecalho h2 {
   font-size: 1rem;
   font-weight: 600;
   color: var(--color-text-dark);
-  
 }
 
-
-/* seta: aponta para cima quando .aberto, para baixo quando fechado */
+/* Botão de expandir/recolher seções.
+   A classe ".aberto" mantém o SVG na posição padrão (apontando para cima).
+   Sem ".aberto", o SVG rotaciona 180° (apontando para baixo). */
 .btn-expandir {
   padding: var(--spacing-xs);
   display: flex;
@@ -606,29 +685,31 @@ section .descricao-produto {
   cursor: pointer;
   transition: transform .2s;
 }
-.btn-expandir svg { transform: rotate(0deg); transition: transform .2s; 
-}
-
-.btn-expandir:not(.aberto) svg { transform: rotate(180deg); 
-}
+.btn-expandir svg { transform: rotate(0deg); transition: transform .2s; }
+.btn-expandir:not(.aberto) svg { transform: rotate(180deg); }
 
 .descricao-conteudo p {
   font-size: 0.9rem;
   color: var(--color-text-dark);
   line-height: 1.65;
 }
- 
-/* ================================
+
+/* overflow: hidden necessário para a animação de collapse funcionar corretamente */
+.descricao-conteudo,
+.especificacoes-conteudo {
+  overflow: hidden;
+}
+
+/* ========================================
    SEÇÃO: ESPECIFICAÇÕES TÉCNICAS
-   ================================ */
+   Lista de definições (dt/dd) com separadores entre itens.
+   ======================================== */
 .especificacoes-produto {
-  padding: var(--spacing-md);
-  border-bottom: 8px solid var(--color-gray-100);
+  /* herda card-secao */
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
 }
- 
 .especificacoes-cabecalho {
   display: flex;
   align-items: center;
@@ -639,13 +720,13 @@ section .descricao-produto {
   font-weight: 600;
   color: var(--color-text-dark);
 }
- 
 .lista-especificacoes {
   display: flex;
   flex-direction: column;
   gap: 0;
 }
- 
+
+/* Cada par dt/dd em linha, com borda inferior como divisória */
 .lista-especificacoes > div {
   display: flex;
   align-items: flex-start;
@@ -655,7 +736,6 @@ section .descricao-produto {
   gap: var(--spacing-md);
 }
 .lista-especificacoes > div:last-child { border-bottom: none; }
- 
 .lista-especificacoes dt {
   font-size: 1rem;
   color: var(--color-gray-500);
@@ -669,10 +749,10 @@ section .descricao-produto {
   text-align: right;
   flex: 1;
 }
- 
-/* ================================
+
+/* ========================================
    SEÇÃO: AVALIAÇÕES
-   ================================ */
+   ======================================== */
 .avaliacoes-produto {
   padding: var(--spacing-md);
   border-bottom: 8px solid var(--color-gray-100);
@@ -680,20 +760,18 @@ section .descricao-produto {
   flex-direction: column;
   gap: var(--spacing-lg);
 }
- 
 .avaliacoes-produto > header h2 {
   font-size: 1.725rem;
   font-weight: 700;
   color: var(--color-black);
 }
- 
-/* Resumo */
+
+/* Resumo: nota geral (esq) + gráfico de barras (dir) */
 .avaliacoes-resumo {
   display: flex;
   align-items: center;
   gap: var(--spacing-lg);
 }
- 
 .nota-geral {
   display: flex;
   flex-direction: column;
@@ -712,8 +790,8 @@ section .descricao-produto {
   color: var(--color-gray-500);
   white-space: nowrap;
 }
- 
-/* Gráfico de barras */
+
+/* Gráfico de barras: lista de 5 a 1 estrelas */
 .avaliacoes-grafico {
   flex: 1;
   display: flex;
@@ -732,10 +810,12 @@ section .descricao-produto {
   text-align: right;
   flex-shrink: 0;
 }
+
+/* Barra de fundo cinza + preenchimento amarelo proporcional à nota */
 .barra-fundo {
   flex: 1;
   height: 6px;
-  background: var(--color-gray-200, #E5E7EB);
+  background: var(--color-gray-300);
   border-radius: var(--radius-full);
   overflow: hidden;
 }
@@ -744,21 +824,20 @@ section .descricao-produto {
   background: var(--color-gold);
   border-radius: var(--radius-full);
 }
- 
-/* Preencher barras com widths representativos */
+
+/* Larguras das barras por quantidade de estrelas (dados estáticos — ajustar ao integrar com backend) */
 .avaliacoes-grafico li:nth-child(1) .barra-preenchimento { width: 78%; }
 .avaliacoes-grafico li:nth-child(2) .barra-preenchimento { width: 15%; }
 .avaliacoes-grafico li:nth-child(3) .barra-preenchimento { width: 5%; }
 .avaliacoes-grafico li:nth-child(4) .barra-preenchimento { width: 1%; }
 .avaliacoes-grafico li:nth-child(5) .barra-preenchimento { width: 1%; }
- 
-/* ---------- COMENTÁRIOS ---------- */
+
+/* ── LISTA DE COMENTÁRIOS ── */
 .lista-comentarios {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
 }
- 
 .comentario {
   display: flex;
   flex-direction: column;
@@ -767,47 +846,33 @@ section .descricao-produto {
   border-bottom: 1px solid var(--color-gray-100);
 }
 .comentario:last-child { border-bottom: none; padding-bottom: 0; }
- 
-/* topo do comentário */
+
+/* Cabeçalho do comentário: avatar + nome + estrelas + data */
 .comentario-topo {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
 }
- 
 .comentario-topo > img {
   width: 40px;
   height: 40px;
   border-radius: var(--radius-full);
-  background: var(--color-gray-100);
+  background: var(--color-gray-100); /* Placeholder enquanto a foto não carrega */
   object-fit: cover;
   flex-shrink: 0;
 }
- 
-.comentario-usuario {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-.comentario-usuario h3 {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--color-black);
-}
-.comentario-usuario time {
-  font-size: .75rem;
-  color: var(--color-gray-500);
-}
- 
-/* texto */
+.comentario-usuario { display: flex; flex-direction: column; gap: 1px; }
+.comentario-usuario h3 { font-size: 0.75rem; font-weight: 700; color: var(--color-black); }
+.comentario-usuario time { font-size: .75rem; color: var(--color-gray-500); }
+
 .comentario > p,
 .comentario-conteudo > p {
   font-size: .85rem;
   color: var(--color-gray-700);
   line-height: 1.55;
 }
- 
-/* imagem no comentário */
+
+/* Comentário com foto anexada: texto + imagem em coluna */
 .comentario-conteudo {
   display: flex;
   flex-direction: column;
@@ -819,8 +884,8 @@ section .descricao-produto {
   object-fit: cover;
   border-radius: var(--radius-md);
 }
- 
-/* feedback útil */
+
+/* Feedback de utilidade: botão "Foi útil?" + contagem */
 .feedback-util {
   display: flex;
   align-items: center;
@@ -836,16 +901,15 @@ section .descricao-produto {
   border: 1px solid var(--color-gray-300);
   border-radius: var(--radius-full);
   padding: 4px 10px;
+  background: transparent;
+  cursor: pointer;
   transition: border-color .15s, color .15s;
 }
 .btn-util img { width: 14px; height: 14px; }
 .btn-util:hover { border-color: var(--color-primary); color: var(--color-primary-dark); }
-.contagem-util {
-  font-size: .75rem;
-  color: var(--color-gray-500);
-}
- 
-/* btn ver mais */
+.contagem-util { font-size: .75rem; color: var(--color-gray-500); }
+
+/* Botão "Ver mais": revela comentários ocultos (.comentario--oculto) via JS */
 .btn-ver-mais {
   display: flex;
   align-items: center;
@@ -858,51 +922,85 @@ section .descricao-produto {
   border-radius: var(--radius-full);
   padding: 10px var(--spacing-xl);
   width: 100%;
+  background: transparent;
+  cursor: pointer;
   transition: border-color .15s, color .15s;
 }
 .btn-ver-mais img { width: 10px; height: 6.17px; }
- 
-/* ================================
-   SEÇÃO: FERRAMENTAS SEMELHANTES
-   ================================ */
+
+/* Comentários ocultos por padrão — revelados pelo "Ver mais" via JS */
+.comentario--oculto { display: none; }
+
+/* ========================================
+   FERRAMENTAS SEMELHANTES
+   Mobile: grid de 2 colunas.
+   Desktop: grid de 4 colunas (via media query).
+   A versão "--topo" usa scroll horizontal no desktop.
+   ======================================== */
 .ferramentas-semelhantes {
-  padding: var(--spacing-md);
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
- 
-.ferramentas-semelhantes > header h3 {
+.ferramentas-semelhantes h3 {
   font-size: .95rem;
   font-weight: 700;
   color: var(--color-black);
 }
- 
-/* grid 2 colunas */
+
+/* Versão de topo (scroll horizontal): oculta no mobile, ativada no desktop */
+.ferramentas-semelhantes--topo {
+  display: none;
+}
+
+/* Grid padrão: 2 colunas no mobile */
 .grid-produtos {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-
-}
-
-.grid-produtos li{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
   list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
- 
-/* card produto */
+.grid-produtos li { list-style: none; }
+
+/* Grade com scroll horizontal (usada na seção de topo do desktop) */
+.grid-produtos--scroll {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* Scroll suave em iOS */
+  padding-bottom: 8px;
+  scrollbar-width: none; /* Oculta scrollbar no Firefox */
+}
+.grid-produtos--scroll::-webkit-scrollbar { display: none; } /* Oculta scrollbar no Chrome/Safari */
+.grid-produtos--scroll li {
+  flex: 0 0 140px;
+  scroll-snap-align: start;
+}
+
+/* ── CARD DE PRODUTO ── */
 .card-produto {
   border: 1px solid var(--color-gray-100);
   border-radius: var(--radius-md);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  width: 100%;
   box-shadow: var(--shadow-sm);
   transition: box-shadow .2s;
-  
+  background: var(--color-bg-card);
+  box-sizing: border-box;
 }
 .card-produto:hover { box-shadow: var(--shadow-md); }
- 
+
+/* Área da imagem do produto */
 .produto-foto {
   background: var(--color-gray-100);
   display: flex;
@@ -916,14 +1014,16 @@ section .descricao-produto {
   object-fit: contain;
   margin: 0 auto;
 }
- 
+
+/* Área de texto do card: nome, loja e rodapé */
 .produto-info {
-  padding: var(--spacing-sm);
+  padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  flex: 1;
 }
+
+/* Título truncado em 2 linhas para manter a altura uniforme dos cards */
 .produto-info h3 {
   font-size: 0.675rem;
   font-weight: 700;
@@ -942,96 +1042,565 @@ section .descricao-produto {
   color: var(--color-gray-500);
 }
 .produto-info > p img { width: 12px; height: 12px; }
- 
+
+/* Rodapé do card: preço (esq) e avaliação (dir) */
 .produto-footer {
   display: flex;
   align-items: center;
-  gap: 4px;
+  justify-content: space-between;
   margin-top: auto;
-  padding-top: 4px;
+  padding-top: 8px;
+  width: 100%;
 }
-.preco {
-  font-size: 0.5rem;
+
+/* Agrupamento de estrela + nota no rodapé do card */
+.avaliacao-card {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.avaliacao-card img {
+  width: 10px;
+  height: 10px;
+}
+
+.preco { 
+  font-size: 0.75rem; 
   font-weight: 800;
-  color: var(--color-black);
+  color: var(--color-black); 
 }
 .preco span {
-  font-size: 0.5rem;
-  font-weight: 400;
+  font-size: 0.6rem; 
+  font-weight: 400; 
   color: var(--color-gray-500);
 }
-.produto-footer img { width: 12px; height: 12px; }
-.nota {
-  font-size: 0.5rem;
-  font-weight: 600;
+.nota { 
+  font-size: 0.7rem; 
+  font-weight: 700; 
   color: var(--color-dark);
 }
- 
-/* Expansíveis: garante colapso correto */
-.descricao-conteudo,
-.especificacoes-conteudo {
-  overflow: hidden;
-}
- 
-/* Comentários extras ocultos até "Ver mais" */
-.comentario--oculto {
+
+/* ========================================
+   BANNER LATERAL
+   Oculto no mobile; exibido na sidebar do desktop.
+   ======================================== */
+.banner-lateral {
   display: none;
 }
 
-/* ================================
-   BOTÕES DE AÇÃO (LOCAR + CARRINHO)
-   ================================ */
-.acoes-produto {
+/* ========================================
+   WRAPPER DE 2 COLUNAS (desktop)
+   No mobile, comporta-se como coluna única.
+   O grid de 2 colunas é ativado no breakpoint 1024px.
+   ======================================== */
+.desktop-two-col {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-top: 26px;
-  margin-bottom: 25px;
-  /* padding-left: 20px;
-  padding-right: 19px; */
 }
-
-.btn-locar,
-.btn-adicionar-carrinho {
-  width: 100%;
-  height: 52px;
-  border-radius: var(--radius-full);
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.1s;
+.col-principal {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+}
+.col-lateral {
+  display: flex;
+  flex-direction: column;
 }
 
-/* Botão primário – Locar */
-.btn-locar {
-  background-color: var(--color-primary);
-  border: none;
-  color: var(--color-text-dark);
+/* ============================================================
+   BREAKPOINT: TABLET — 768px
+   Ajustes intermediários de tamanho e layout.
+   ============================================================ */
+@media (min-width: 768px) {
+
+  /* Gradiente de fundo mais suave no tablet */
+  .app {
+    background: linear-gradient(to bottom,
+      var(--color-primary) 0%,
+      var(--color-primary-light) 1.5%,
+      var(--color-primary-soft) 2.5%,
+      var(--color-bg-main) 3.5%);
+  }
+
+  .header-mobile {
+    padding: 20px 32px;
+    gap: 20px;
+  }
+
+  .barra-pesquisa-mobile {
+    height: 50px;
+  }
+
+  main {
+    padding: 16px 32px;
+  }
+
+  /* Carrossel mais alto no tablet */
+  .carrossel-item {
+    min-height: 300px;
+  }
+  .carrossel-item img {
+    max-height: 280px;
+  }
+
+  .descricao-produto h1 {
+    font-size: 1.15rem;
+  }
+
+  .preco-produto,
+  .descricao-produto > p {
+    font-size: 1.6rem;
+  }
+
+  /* Grid de ferramentas semelhantes: 4 colunas no tablet */
+  .grid-produtos {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .grid-produtos--scroll li {
+    flex: 0 0 160px;
+  }
+
+  /* Ajustes de tamanho nos cards */
+  .produto-foto { height: 130px; }
+  .produto-foto img { max-height: 110px; }
+  .produto-info h3 { font-size: 0.75rem; }
+  .produto-info > p { font-size: 0.65rem; }
+  .preco { font-size: 0.65rem; }
+  .preco span { font-size: 0.65rem; }
+  .nota { font-size: 0.65rem; }
+
+  /* Seletores lado a lado com largura fixa — evita esticar ao infinito */
+  .container-seletores {
+    display: flex; 
+    justify-content: flex-start;
+    gap: 15px;
+    width: auto;
+  }
+  .seletor-item {
+    flex: none; 
+    width: 180px;
+  }
+  .select-wrapper { width: 180px; }
+  .select-wrapper select {
+    width: 100%;
+    padding: 0 35px 0 12px;
+  }
+  .controle-grupo {
+    width: 180px;
+  }
+
+  .avaliacoes-produto > header h2 {
+    font-size: 1.875rem;
+  }
+
+  /* Comentários em 2 colunas no tablet */
+  .lista-comentarios {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+  .comentario { padding-bottom: 0; border-bottom: none; }
 }
 
-.btn-locar:hover {
-  background-color: var(--color-primary-dark);
+/* ============================================================
+   BREAKPOINT: DESKTOP — 1024px
+   Layout principal de 2 colunas, nav desktop, sidebar e todos
+   os ajustes de escala para telas maiores.
+   ============================================================ */
+@media (min-width: 1024px) {
+
+  /* Gradiente mais suave e extendido no desktop */
+  .app {
+    background: linear-gradient(to bottom,
+      var(--color-primary) 0%,
+      var(--color-primary-light) 3.5%,
+      var(--color-primary-soft) 5%,
+      var(--color-bg-main) 10%);
+  }
+
+  /* ── HEADER DESKTOP ──
+     Reestrutura para linha única horizontal com altura fixa.
+  */
+  .header-mobile {
+    padding: 0 clamp(32px, 5vw, 80px);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height-desktop);
+    gap: 0;
+    position: static;
+    top: auto;
+    z-index: 100;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 1000;
+    white-space: nowrap;
+  }
+
+  /* Barra mobile oculta; barra desktop exibida */
+  .barra-pesquisa-mobile {
+    display: none;
+  }
+  .barra-pesquisa-desktop {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    max-width: 560px;
+    margin: 0 clamp(16px, 3vw, 40px);
+    height: 42px;
+    background: var(--color-white);
+    border-radius: var(--radius-full);
+    padding: 0 18px;
+    box-shadow: var(--shadow-sm);
+  }
+  .barra-pesquisa-desktop img {
+    width: 18px;
+    height: 18px;
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+  .barra-pesquisa-desktop input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: var(--color-text-dark);
+  }
+  .barra-pesquisa-desktop input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  /* Menu hamburguer: oculto no desktop */
+  .menu-btn {
+    display: none;
+  }
+
+  /* Botão de chat: exibido no desktop */
+  .btn-chat {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-chat img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  /* Ações do header com espaçamento maior no desktop */
+  .header-acoes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Ícone e badge do carrinho ocultos no desktop (navegação via nav-desktop) */
+  .carrinho-btn img, .quantidade-carrinho  {
+    display: none;
+  }
+
+  /* ── NAV DESKTOP ── */
+  .nav-desktop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    height: var(--nav-height-desktop);
+    padding: 0 clamp(32px, 5vw, 80px);
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-desktop ul {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: var(--max-width);
+    justify-content: center;
+  }
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 0.82rem;
+    font-weight: 900;
+    color: var(--color-dark);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  .nav-link img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  /* ── MAIN DESKTOP ── */
+  main {
+    padding: 32px clamp(32px, 5vw, 80px);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* ── HERO: GRID DE 2 COLUNAS ──
+     Coluna esquerda fixa em 420px (carrossel); direita flexível (info).
+  */
+  .produto-hero {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 40px;
+    align-items: start;
+    padding: 0 0 var(--spacing-xl);
+  }
+
+  .carrossel-produto {
+    border-radius: var(--radius-lg);
+    margin-bottom: 0;
+  }
+  .carrossel-item {
+    min-height: 320px;
+  }
+  .carrossel-item img {
+    max-height: 300px;
+  }
+
+  /* Coluna de informações do produto alinhada à esquerda */
+  .produto-info-desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 20px;
+    gap: 12px;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .descricao-produto {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .descricao-produto h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-black);
+    line-height: 1.3;
+  }
+
+  .preco-produto {
+    font-size: 1.75rem;
+    margin-top: 8px;
+  }
+
+  .voltagem {
+    padding: 10px 0;
+    gap: 12px;
+  }
+  .btn-voltagem {
+    font-size: 0.875rem;
+    padding: 8px 30px;
+    flex: 1;
+    max-width: 120px;
+  }
+
+  /* Seletores em linha, cada um ocupando metade do espaço disponível */
+  .container-seletores {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 0;
+  }
+  .seletor-item {
+    flex: 1;
+  }
+  .select-wrapper select {
+    width: 100%;
+    max-width: none;
+  }
+
+  /* Botões de ação empilhados, ocupando largura total da coluna */
+  .acoes-produto {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 20px;
+  }
+  .btn-locar,
+  .btn-adicionar-carrinho {
+    width: 100%;
+    max-width: 100%; 
+    height: 52px;
+    font-size: 1.1rem;
+  }
+
+  /* ── FERRAMENTAS SEMELHANTES — TOPO (scroll horizontal) ── */
+  .ferramentas-semelhantes--topo {
+    display: flex;
+    padding: 0 0 var(--spacing-xl);
+  }
+  .ferramentas-semelhantes--topo h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .grid-produtos--scroll {
+    gap: 14px;
+  }
+  .grid-produtos--scroll li {
+    flex: 0 0 150px;
+  }
+
+  /* Tamanho dos cards no scroll horizontal */
+  .grid-produtos--scroll .produto-foto { height: 120px; }
+  .grid-produtos--scroll .produto-foto img { max-height: 100px; }
+  .grid-produtos--scroll .produto-info h3 { font-size: 0.7rem; }
+  .grid-produtos--scroll .produto-info > p { font-size: 0.6rem; }
+  .grid-produtos--scroll .preco { font-size: 0.6rem; }
+  .grid-produtos--scroll .preco span { font-size: 0.6rem; }
+  .grid-produtos--scroll .nota { font-size: 0.6rem; }
+
+  /* ── LAYOUT DE 2 COLUNAS (col principal + sidebar) ── */
+  .desktop-two-col {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 24px;
+    align-items: start;
+  }
+
+  /* ── CARD DA LOJA: troca mobile pela versão sidebar ── */
+  .loja-produto--mobile {
+    display: none;
+  }
+  .col-lateral .loja-produto {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top: none;
+    border-bottom: none;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+  }
+  .col-lateral .loja-produto .logo-loja {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 4px;
+    align-self: center;
+  }
+  .col-lateral .loja-produto .nome-loja {
+    align-self: stretch;
+  }
+  .col-lateral .loja-produto .btn-ir-loja {
+    align-self: center;
+  }
+
+  /* ── BANNER LATERAL ── */
+  .banner-lateral {
+    display: flex;
+    width: 100%;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    margin-top: var(--spacing-sm);
+    box-shadow: var(--card-shadow);
+  }
+  .img-banner-render {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── AVALIAÇÕES NO DESKTOP ── */
+  .avaliacoes-produto {
+    border-bottom: none;
+    border-radius: var(--card-radius);
+    background: var(--color-bg-card);
+    box-shadow: var(--card-shadow);
+    padding: var(--spacing-lg);
+  }
+
+  /* Comentários voltam para 1 coluna dentro da col principal */
+  .lista-comentarios {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+  .comentario {
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+
+  /* ── FERRAMENTAS SEMELHANTES — RODAPÉ (grid 4 colunas) ── */
+  .ferramentas-semelhantes:not(.ferramentas-semelhantes--topo) {
+    padding: var(--spacing-xl) 0 0;
+  }
+  .ferramentas-semelhantes:not(.ferramentas-semelhantes--topo) h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .ferramentas-semelhantes:not(.ferramentas-semelhantes--topo) .grid-produtos {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  /* Cards maiores no desktop */
+  .produto-foto { height: 140px; }
+  .produto-foto img { max-height: 120px; }
+  .produto-info h3 { font-size: 0.8rem; }
+  .produto-info > p { font-size: 0.7rem; }
+  .preco { font-size: 0.75rem; }
+  .preco span { font-size: 0.75rem; }
+  .nota { font-size: 0.75rem; }
 }
 
-.btn-locar:active {
-  transform: scale(0.98);
-}
+/* ============================================================
+   BREAKPOINT: DESKTOP LARGO — 1280px
+   Pequenos ajustes para telas grandes: carrossel mais alto,
+   sidebar um pouco mais larga e cards de scroll maiores.
+   ============================================================ */
+@media (min-width: 1280px) {
 
-/* Botão secundário – Adicionar ao carrinho */
-.btn-adicionar-carrinho {
-  background-color: var(--color-primary-soft);
-  border: 1.5px solid var(--color-primary);
-  color: var(--color-text-dark);
-}
+  /* Coluna do carrossel mais larga */
+  .produto-hero {
+    grid-template-columns: 500px 1fr;
+    gap: 56px;
+  }
 
-.btn-adicionar-carrinho:hover {
-  background-color: var(--color-primary-light);
-  border-color: var(--color-primary-dark);
-}
+  .carrossel-item {
+    min-height: 380px;
+  }
+  .carrossel-item img {
+    max-height: 360px;
+  }
 
-.btn-adicionar-carrinho:active {
-  transform: scale(0.98);
+  /* Sidebar ligeiramente mais larga */
+  .desktop-two-col {
+    grid-template-columns: 1fr 360px;
+    gap: 32px;
+  }
+
+  /* Cards do scroll horizontal maiores */
+  .grid-produtos--scroll li {
+    flex: 0 0 170px;
+  }
+  .grid-produtos--scroll .produto-foto { height: 130px; }
+  .grid-produtos--scroll .produto-foto img { max-height: 110px; }
 }
