@@ -7,12 +7,14 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"/>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet" />
 
     <!-- RESET E ESTILO DA TELA PIX -->
     <link rel="stylesheet" href="./src/css/reset.css">
     <link rel="stylesheet" href="./src/css/pagamentoPix.css">
-    
+
     <title>LOCATEM</title>
 </head>
 
@@ -20,21 +22,14 @@
     <div class="app">
 
         <!-- HEADER -->
-        <header class="topo">
-            <div class="linha-topo">
-
-                <!-- Logo da LOCATEM com link para a página principal -->
-                <a href="./principalPage.html" class="logo">
-                    <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM">
-                    LOCATEM
-                </a>
-
-                <!-- Botão de acesso ao chat -->
-                <button class="chat">
-                    <img src="./src/images/chat.png" alt="Chat">
-                </button>
-            </div>
-
+        <header class="header">
+            <a href="./principalPage.html" class="logo">
+                <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+                LOCATEM
+            </a>
+            <button class="chat">
+                <img src="./src/images/chat.png" alt="Chat" />
+            </button>
         </header>
 
         <!-- CONTEÚDO GERAL -->
@@ -191,25 +186,29 @@
                     </section>
                 </div>
 
-                <!-- ============================= -->
-                <!-- COLUNA DIREITA - RESUMO -->
-                <!-- ============================= -->
-                <aside class="card resumo-pedido">
-                    <h2>Resumo do Pedido</h2>
+                <aside class="card card-resumo">
+                    <h3>Resumo do Pedido</h3>
 
-                    <!-- VALOR TOTAL -->
-                    <div class="linha-total">
-                        <span>Total</span>
-                        <span id="total">R$ 380,00</span>
+                    <div class="resumo-linha">
+                        <span>Subtotal</span>
+                        <strong class="resumo-subtotal"></strong>
                     </div>
 
-                    <!-- PRAZO DE PAGAMENTO -->
-                    <div class="linha-prazo">
-                        <p class="prazo-label">Pague em até</p>
-                        <div class="prazo-info">
-                            <span class="prazo-tempo">23:54:45</span>
-                            <span class="prazo-vencimento">17 de abril de 2026, 15:44</span>
-                        </div>
+                    <div class="resumo-linha">
+                        <span>Frete</span>
+                        <strong class="resumo-frete-topo"></strong>
+                    </div>
+
+                    <div class="resumo-linha resumo-linha--desconto" id="linha-desconto" style="display:none;">
+                        <span>Desconto</span>
+                        <strong class="resumo-desconto-valor"></strong>
+                    </div>
+
+                    <hr class="linha-divisoria" />
+
+                    <div class="resumo-total">
+                        <span>Total</span>
+                        <strong class="resumo-total-valor"></strong>
                     </div>
 
                     <!-- INDICADOR DE SEGURANÇA -->
@@ -222,7 +221,7 @@
 
                         <p>Pagamento 100% seguro</p>
                     </div>
-                </aside>
+                </aside><!-- /card-resumo -->
             </div>
         </main>
     </div>

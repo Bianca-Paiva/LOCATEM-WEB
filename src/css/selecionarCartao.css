@@ -93,16 +93,20 @@ body {
     display: flex;
     align-items: center;
     gap: 7px;
+
     color: var(--color-text-dark);
     text-decoration: none;
-    font-size: clamp(16px, 4vw, 18px);
+
+    font-size: clamp(16px, 4vw, 20px);
+    /* Responsivo */
     font-weight: 750;
     letter-spacing: -0.5px;
 }
 
 .logo img {
-    height: 25px;
+    height: 30px;
     object-fit: contain;
+    /* Mantém proporção */
 }
 
 /* ============================= */
@@ -110,27 +114,22 @@ body {
 /* ============================= */
 
 .chat {
-    width: clamp(36px, 9vw, 48px);
-    height: clamp(36px, 9vw, 48px);
+    background: transparent;
+    border: 2px solid var(--color-text-dark);
+    border-radius: 50%;
+    width: clamp(36px, 3vw, 48px);
+    height: clamp(36px, 3vw, 48px);
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    background: transparent;
-    border: none;
+    justify-content: center;
+    flex-shrink: 0;
     cursor: pointer;
-    transition: opacity var(--transition-fast);
-}
-
-.chat:hover {
-    opacity: 0.7;
-}
-
-.chat:active {
-    opacity: 0.5;
+    border: none;
 }
 
 .chat img {
-    height: 23px;
+    width: 60%;
+    height: 60%;
     object-fit: contain;
 }
 
@@ -395,38 +394,61 @@ body {
 
     /* ── Gradiente: faixa amarela menor em telas grandes ── */
     .app {
+        width: 100%;
+        min-height: 100vh;
         background: linear-gradient(to bottom,
                 var(--color-primary) 0%,
-                var(--color-primary-light) 6%,
-                var(--color-primary-soft) 8.5%,
-                var(--color-bg-main) 11%);
+                var(--color-primary-light) 7%,
+                var(--color-primary-soft) 9.2%,
+                var(--color-bg-main) 14%);
     }
 
     /* ── Header: padding generoso + limita largura interna ── */
     .header {
-        padding: 15px 48px;
-        width: min(100%, clamp(1024px, 80vw, 1280px));
-        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        justify-content: space-between;
         margin: 0 auto;
-        box-sizing: border-box;
+        width: 100%;
+        padding: 20px 40px 16px;
     }
 
-    /* ── Logo: tamanho fixo no desktop ── */
     .logo {
-        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        font-weight: 800;
+        font-size: clamp(20px, 1.6vw, 26px);
+        color: var(--color-text-dark);
+        flex-shrink: 0;
+        text-decoration: none;
     }
 
     .logo img {
-        height: 28px;
+        height: 30px;
+        object-fit: contain;
+    }
+
+    .chat {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .chat img {
+        height: 22px;
+        object-fit: contain;
     }
 
     /* ── Main: coluna central com max-width ── */
     .main-mobile {
-        width: min(100%, clamp(900px, 75vw, 1200px));
         width: 100%;
+        max-width: 960px;
         margin: 0 auto;
-        padding: 15px 48px;
-        gap: 32px;
+        padding: 48px 20px 64px;
     }
 
     /* ── Cabeçalho textual: sem padding lateral extra ── */

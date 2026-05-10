@@ -59,7 +59,13 @@ const cartoesPadrao = [
 
 // Lê cartões persistidos no localStorage (cadastrados pelo usuário).
 // Mantém os dados padrão como fallback enquanto não há cartões salvos.
-const cartoesSalvos = JSON.parse(localStorage.getItem('cartoes')) || cartoesPadrao;
+// const cartoesSalvos = JSON.parse(localStorage.getItem('cartoes')) || cartoesPadrao;
+
+const cartoesSalvos = JSON.parse(localStorage.getItem('cartoes')) 
+    ?? (() => {
+        localStorage.setItem('cartoes', JSON.stringify(cartoesPadrao));
+        return cartoesPadrao;
+    })();
 
 
 // ============================================================

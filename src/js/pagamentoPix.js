@@ -29,6 +29,46 @@ let intervaloExpiracao = null;
 
 
 // ========================================
+// LEITURA DO RESUMO VIA localStorage
+// ========================================
+
+function lerValorLocalStorage(chave) {
+    const valor = localStorage.getItem(chave);
+    if (valor === null || valor === '') return 0;
+    const numero = parseFloat(valor.replace(',', '.'));
+    return isNaN(numero) ? 0 : numero;
+}
+
+function formatarMoeda(valor) {
+    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
+function atualizarResumoPix() {
+    const subtotal = lerValorLocalStorage('subtotal');
+    const frete    = lerValorLocalStorage('frete');
+    const desconto = lerValorLocalStorage('desconto');
+    const total    = Math.max(0, subtotal + frete - desconto);
+
+    const elSubtotal      = document.querySelector('.resumo-subtotal');
+    const elFrete         = document.querySelector('.resumo-frete-topo');
+    const elTotal         = document.querySelector('.resumo-total-valor');
+    const elLinhaDesconto = document.getElementById('linha-desconto');
+    const elDesconto      = document.querySelector('.resumo-desconto-valor');
+
+    if (elSubtotal) elSubtotal.textContent = formatarMoeda(subtotal);
+    if (elFrete)    elFrete.textContent    = frete === 0 ? 'Grátis' : formatarMoeda(frete);
+    if (elTotal)    elTotal.textContent    = formatarMoeda(total);
+
+    if (desconto > 0 && elDesconto && elLinhaDesconto) {
+        elDesconto.textContent        = `− ${formatarMoeda(desconto)}`;
+        elLinhaDesconto.style.display = '';
+    } else if (elLinhaDesconto) {
+        elLinhaDesconto.style.display = 'none';
+    }
+}
+
+
+// ========================================
 // FUNÇÕES DE FEEDBACK VISUAL
 // ========================================
 
@@ -258,5 +298,6 @@ if (btnTentarNovamente) {
 
 trocarEstadoTela("aguardando");
 iniciarTimerExpiracao();
+atualizarResumoPix();
 // trocarEstadoTela("erro");
 // pagamentoAprovado();

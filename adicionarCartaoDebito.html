@@ -7,8 +7,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"/>
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet" />
+
     <link rel="stylesheet" href="./src/css/adicionarCartaoDebito.css" />
     <link rel="stylesheet" href="./src/css/reset.css">
     <title>LOCATEM</title>
@@ -18,32 +20,26 @@
     <div class="app">
 
         <!-- HEADER -->
-        <header class="topo">
-            <div class="linha-topo">
-                
-                <!-- Logo da LOCATEM com link para a página principal -->
-                <a href="./principalPage.html" class="logo">
-                    <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM">
-                    LOCATEM
-                </a>
-
-                <!-- Botão de acesso ao chat -->
-                <button class="chat">
-                    <img src="./src/images/chat.png" alt="Chat">
-                </button>
-            </div>
+        <header class="header">
+            <a href="./principalPage.html" class="logo">
+                <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+                LOCATEM
+            </a>
+            <button class="chat">
+                <img src="./src/images/chat.png" alt="Chat" />
+            </button>
         </header>
 
         <!-- CONTEÚDO GERAL -->
         <main class="pagamento-container">
 
-            <section class="titulo-pagina"> 
+            <section class="titulo-pagina">
                 <h1>Pagamento com Cartão de Débito</h1>
                 <p>Insira os dados do seu cartão para continuar o pagamento.</p>
             </section>
 
             <div class="cards-wrapper">
-                
+
                 <!-- CARD DE DADOS DO CARTÃO -->
                 <section class="card">
 
@@ -66,7 +62,7 @@
 
                         <!-- Campo do número do cartão com ícone dinâmico da bandeira -->
                         <div class="campo">
-                            <label for="numeroCartao">Número do Cartão</label> 
+                            <label for="numeroCartao">Número do Cartão</label>
 
                             <div class="input-cartao">
                                 <input id="numeroCartao" type="text" placeholder="0000 0000 0000 0000" required />
@@ -115,25 +111,46 @@
                 </section>
 
                 <!-- RESUMO -->
-                <section class="card resumo-pedido">
-                    <h2>Resumo do Pedido</h2>
+                <aside class="card card-resumo">
+                    <h3>Resumo do Pedido</h3>
 
-                    <div class="linha-total">
-                        <span>Total</span>
-                        <span>R$ 15,00</span>
+                    <div class="resumo-linha">
+                        <span>Subtotal</span>
+                        <strong class="resumo-subtotal"></strong>
                     </div>
 
-                    <button class="btn-pagar" type="button">Confirmar Pagamento</button>
+                    <div class="resumo-linha">
+                        <span>Frete</span>
+                        <strong class="resumo-frete-topo"></strong>
+                    </div>
 
+                    <div class="resumo-linha resumo-linha--desconto" id="linha-desconto" style="display:none;">
+                        <span>Desconto</span>
+                        <strong class="resumo-desconto-valor"></strong>
+                    </div>
+
+                    <hr class="linha-divisoria" />
+
+                    <div class="resumo-total">
+                        <span>Total</span>
+                        <strong class="resumo-total-valor"></strong>
+                    </div>
+
+                    <button class="btn-pagamento" type="button">
+                        Continuar Pagamento
+                    </button>
+
+                    <!-- INDICADOR DE SEGURANÇA -->
                     <div class="seguranca">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-lock-fill" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                                 d="M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4m0 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3" />
                         </svg>
+
                         <p>Pagamento 100% seguro</p>
                     </div>
-                </section>
+                </aside><!-- /card-resumo -->
             </div>
         </main>
     </div>

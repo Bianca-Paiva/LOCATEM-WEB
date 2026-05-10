@@ -4,6 +4,7 @@
     --color-primary-hover: #f5cc00;
     --color-primary-light: #ffe97a;
     --color-primary-soft: #fff3b0;
+    --color-secondary: #f0c000c0;
 
     /* BACKGROUNDS */
     --color-bg-main: #F9FAFB;
@@ -23,6 +24,7 @@
     /* BORDAS */
     --color-border-light: #e8e8e8;
     --color-border-input: #D1D5DC;
+    --color-linha-divisoria: #a0a0a09a;
 
     /* SOMBRAS */
     --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.05);
@@ -31,7 +33,7 @@
     /* BORDER RADIUS */
     --radius-card: 16px;
     --radius-input: 10px;
-    --radius-btn: 10px;
+    --radius-btn: 8px;
 }
 
 /* ============================= */
@@ -45,62 +47,62 @@ body {
 /* GRADIENTE AMARELO */
 .app {
     width: 100%;
-    max-width: 100%;
     min-height: 100vh;
     background: linear-gradient(to bottom,
             var(--color-primary) 0%,
-            var(--color-primary-light) 4%,
-            var(--color-primary-soft) 6%,
-            var(--color-bg-main) 9%);
+            var(--color-primary-light) 4.5%,
+            var(--color-primary-soft) 6.5%,
+            var(--color-bg-main) 9.5%);
 }
 
 /* ============================= */
 /* HEADER */
 /* ============================= */
-.topo {
-    padding: 14px 16px 38px;
+.header {
+    width: 100%;
+    padding: 15px 20px 24px;
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.linha-topo {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-weight: 795;
-    font-size: clamp(16px, 5vw, 20px);
+    gap: 7px;
+
     color: var(--color-text-dark);
-    flex-shrink: 0;
     text-decoration: none;
+
+    font-size: clamp(16px, 4vw, 20px);
+    /* Responsivo */
+    font-weight: 750;
+    letter-spacing: -0.5px;
 }
 
 .logo img {
     height: 30px;
-    width: auto;
     object-fit: contain;
-    display: block;
+    /* Mantém proporção */
 }
 
 .chat {
     background: transparent;
+    border: 2px solid var(--color-text-dark);
     border-radius: 50%;
-    padding: 6px;
-    border: none;
+    width: clamp(36px, 3vw, 48px);
+    height: clamp(36px, 3vw, 48px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
     cursor: pointer;
+    border: none;
 }
 
 .chat img {
-    width: auto;
-    height: 25px;
-    display: block;
+    width: 60%;
+    height: 60%;
     object-fit: contain;
 }
 
@@ -119,7 +121,7 @@ body {
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    margin: 0 0 0 8px;
+    margin: 30px 0 0 8px;
     gap: 12px;
 }
 
@@ -331,12 +333,29 @@ body {
 
 /* Animação suave para chamar atenção no erro */
 @keyframes shake {
-    0% { transform: translateX(0); }
-    20% { transform: translateX(-4px); }
-    40% { transform: translateX(4px); }
-    60% { transform: translateX(-3px); }
-    80% { transform: translateX(3px); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-4px);
+    }
+
+    40% {
+        transform: translateX(4px);
+    }
+
+    60% {
+        transform: translateX(-3px);
+    }
+
+    80% {
+        transform: translateX(3px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
 /* ================================== */
@@ -379,66 +398,99 @@ body {
 /* =========================== */
 /* RESUMO DO PEDIDO */
 /* =========================== */
-.card.resumo-pedido {
+.card-resumo h3 {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+
+    margin-bottom: 16px;
+}
+
+/* Linha subtotal */
+.resumo-linha {
     display: flex;
-    flex-direction: column;
-    gap: 24px;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 16px;
 }
 
-.resumo-pedido h2 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
+.resumo-linha span {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
 }
 
-.linha-total {
+.resumo-linha strong {
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+}
+
+/* Campo CEP */
+.linha-cep {
     display: flex;
     align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.linha-divisoria {
+    border: none;
+    border-top: 1px solid var(--color-linha-divisoria);
+    margin: 0 0 16px;
+}
+
+/* Total */
+.resumo-total {
+    display: flex;
     justify-content: space-between;
-    padding: 24px 0 18px;
-    border-top: 1px solid var(--color-border-light);
+    align-items: center;
+    margin-bottom: 30px;
 }
 
-.linha-total span:first-child {
-    font-size: 1.0625rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
-}
-
-.linha-total span:last-child {
-    font-size: 1.125rem;
+.resumo-total span {
+    font-size: 1rem;
     font-weight: 700;
-    color: var(--color-text-primary);
+    color: var(--color-text-dark);
 }
 
-/* =========================== */
-/* BOTÃO CONFIRMAR */
-/* =========================== */
-.btn-pagar {
+.resumo-total strong {
+    font-size: 1.1875rem;
+    font-weight: 800;
+    color: var(--color-text-dark);
+    letter-spacing: -0.5px;
+}
+
+/* ============================= */
+/* BOTÃO PRINCIPAL (PAGAMENTO) */
+/* ============================= */
+.btn-pagamento {
     width: 100%;
-    padding: 16px;
-    background-color: var(--color-primary);
-    color: var(--color-text-secondary);
+    height: 54px;
+
     border: none;
     border-radius: var(--radius-btn);
+
+    background-color: var(--color-primary);
+    color: var(--color-text-dark);
+
+    margin-bottom: 15px;
+
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
+
+    transition: background .2s, transform .1s;
     cursor: pointer;
-    transition:
-        background-color 0.2s ease,
-        transform 0.15s ease,
-        box-shadow 0.2s ease;
 }
 
-.btn-pagar:hover {
-    background-color: var(--color-primary-hover);
-    box-shadow: var(--shadow-btn);
-    transform: translateY(-1px);
+/* Hover */
+.btn-pagamento:hover {
+    background-color: var(--color-secondary);
 }
 
-.btn-pagar:active {
-    transform: translateY(0);
-    box-shadow: none;
+/* Clique */
+.btn-pagamento:active {
+    transform: scale(.98);
 }
 
 /* =========================== */
@@ -449,14 +501,14 @@ body {
     Estado aplicado quando o usuário confirma o pagamento.
     Impede novo clique e mostra feedback visual de carregamento.
 */
-.btn-pagar.carregando {
+.btn-pagamento.carregando {
     cursor: wait;
     opacity: 0.8;
     pointer-events: none;
 }
 
 /* Spinner (circulo de carregamento) exibido ao lado do texto do botão */
-.btn-pagar.carregando::after {
+.btn-pagamento.carregando::after {
     content: "";
     display: inline-block;
     width: 14px;
@@ -475,20 +527,20 @@ body {
     }
 }
 
-/* ===========================
-    SEGURANÇA
-=========================== */
+/* ============================= */
+/* SEGURANÇA */
+/* ============================= */
 .seguranca {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    color: var(--color-text-subtle);
+    color: var(--color-text-muted);
 }
 
 .seguranca svg {
     width: auto;
-    height: 13.5px;
+    height: 12.5px;
     flex-shrink: 0;
 }
 
@@ -497,8 +549,9 @@ body {
     font-weight: 500;
 }
 
+
 /* ===========================
-  RESPONSIVE
+    RESPONSIVIDADE
 =========================== */
 @media (max-width: 360px) {
     .pagamento-container {
@@ -561,29 +614,6 @@ body {
         gap: 10px;
     }
 
-    /* RESUMO */
-    .resumo-pedido h2 {
-        font-size: 0.9375rem;
-        /* 15px */
-    }
-
-    .linha-total span:first-child {
-        font-size: 0.875rem;
-        /* 14px */
-    }
-
-    .linha-total span:last-child {
-        font-size: 0.9375rem;
-        /* 15px */
-    }
-
-    /* BOTÃO */
-    .btn-pagar {
-        font-size: 0.875rem;
-        /* 14px */
-        padding: 13px;
-    }
-
     /* SEGURANÇA */
     .seguranca p {
         font-size: 0.625rem;
@@ -633,33 +663,7 @@ body {
     }
 
     /* RESUMO */
-    .resumo-pedido h2 {
-        font-size: 1rem;
-        /* 16px */
-    }
 
-    .linha-campos {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-    }
-
-    /* LINHA TOTAL */
-    .linha-total span:first-child {
-        font-size: 0.9375rem;
-        /* 15px */
-    }
-
-    .linha-total span:last-child {
-        font-size: 1rem;
-        /* 16px */
-    }
-
-    /* BOTÃO */
-    .btn-pagar {
-        font-size: 0.9375rem;
-        /* 15px */
-        padding: 14px;
-    }
 
     /* SEGURANÇA */
     .seguranca p {
@@ -669,18 +673,56 @@ body {
 }
 
 @media (min-width: 1024px) {
+
+    /* ── Gradiente: faixa amarela menor em telas grandes ── */
     .app {
+        width: 100%;
+        min-height: 100vh;
         background: linear-gradient(to bottom,
                 var(--color-primary) 0%,
                 var(--color-primary-light) 7%,
-                var(--color-primary-soft) 9%,
-                var(--color-bg-main) 13%);
+                var(--color-primary-soft) 9.2%,
+                var(--color-bg-main) 14%);
     }
 
-    .topo {
-        padding: 20px 40px 48px;
-        max-width: 1440px;
+    /* ── Header: padding generoso + limita largura interna ── */
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        justify-content: space-between;
         margin: 0 auto;
+        width: 100%;
+        padding: 20px 40px 16px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        font-weight: 800;
+        font-size: clamp(20px, 1.6vw, 26px);
+        color: var(--color-text-dark);
+        flex-shrink: 0;
+        text-decoration: none;
+    }
+
+    .logo img {
+        height: 30px;
+        object-fit: contain;
+    }
+
+    .chat {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .chat img {
+        height: 22px;
+        object-fit: contain;
     }
 
     .pagamento-container {
@@ -694,8 +736,13 @@ body {
         font-size: 1.25rem;
     }
 
-    .chat img {
-        height: 28px;
+    .logo img {
+        height: 30px;
+        object-fit: contain;
+    }
+
+    .titulo-pagina {
+        margin: 50px 0 0;
     }
 
     .pagamento-container {
@@ -713,12 +760,7 @@ body {
         flex: 1;
     }
 
-    .resumo-pedido {
-        width: 360px;
-        flex-shrink: 0;
-        position: sticky;
-        top: 24px;
-    }
+
 }
 
 @media (min-width: 2560px) {
@@ -778,26 +820,7 @@ body {
         padding: 18px 20px;
     }
 
-    .resumo-pedido {
-        width: 480px;
-    }
 
-    .resumo-pedido h2 {
-        font-size: 1.375rem;
-    }
-
-    .linha-total span:first-child {
-        font-size: 1.25rem;
-    }
-
-    .linha-total span:last-child {
-        font-size: 1.375rem;
-    }
-
-    .btn-pagar {
-        font-size: 1.125rem;
-        padding: 20px;
-    }
 
     .seguranca p {
         font-size: 0.875rem;

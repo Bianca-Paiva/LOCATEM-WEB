@@ -22,6 +22,7 @@
     --color-border-light: #e8e8e8;
     --color-border-soft: #e5e5e5;
     --color-border-input: #D1D5DC;
+    --color-linha-divisoria: #a0a0a09a;
 
     /* SOMBRAS */
     --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.05);
@@ -69,62 +70,62 @@ body {
 /* GRADIENTE AMARELO */
 .app {
     width: 100%;
-    max-width: 100%;
     min-height: 100vh;
     background: linear-gradient(to bottom,
             var(--color-primary) 0%,
-            var(--color-primary-light) 3%,
-            var(--color-primary-soft) 4.5%,
-            var(--color-bg-main) 7%);
+            var(--color-primary-light) 4.5%,
+            var(--color-primary-soft) 6.5%,
+            var(--color-bg-main) 9.5%);
 }
 
 /* ============================= */
 /* HEADER */
 /* ============================= */
-.topo {
-    padding: 14px 16px 38px;
+.header {
+    width: 100%;
+    padding: 15px 20px 24px;
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.linha-topo {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-weight: 795;
-    font-size: clamp(16px, 5vw, 20px);
+    gap: 7px;
+
     color: var(--color-text-dark);
-    flex-shrink: 0;
     text-decoration: none;
+
+    font-size: clamp(16px, 4vw, 20px);
+    /* Responsivo */
+    font-weight: 750;
+    letter-spacing: -0.5px;
 }
 
 .logo img {
     height: 30px;
-    width: auto;
     object-fit: contain;
-    display: block;
+    /* Mantém proporção */
 }
 
 .chat {
     background: transparent;
+    border: 2px solid var(--color-text-dark);
     border-radius: 50%;
-    padding: 6px;
-    border: none;
+    width: clamp(36px, 3vw, 48px);
+    height: clamp(36px, 3vw, 48px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
     cursor: pointer;
+    border: none;
 }
 
 .chat img {
-    width: auto;
-    height: 25px;
-    display: block;
+    width: 60%;
+    height: 60%;
     object-fit: contain;
 }
 
@@ -132,10 +133,10 @@ body {
 /* CONTEÚDO */
 /* ============================= */
 .pagamento-container {
-    padding: 0 16px 32px;
+    padding: 16px clamp(16px, 4vw, 24px);
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 25px;
 }
 
 .titulo-pagina {
@@ -145,7 +146,7 @@ body {
 }
 
 .titulo-pagina h1 {
-    font-size: clamp(14px, 4vw, 24px);
+    font-size: 24px;
     font-weight: 700;
 }
 
@@ -460,77 +461,70 @@ body {
     line-height: 1.5;
 }
 
-/* ============================= */
+/* =========================== */
 /* RESUMO DO PEDIDO */
-/* ============================= */
-.resumo-pedido {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-}
-
-.resumo-pedido h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    border-bottom: 1px solid var(--color-border-light);
-    padding-bottom: 10px;
-}
-
-.linha-total {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 0;
-}
-
-.linha-total span:first-child {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
-}
-
-.linha-total span:last-child {
+/* =========================== */
+.card-resumo h3 {
     font-size: 1.0625rem;
     font-weight: 700;
-    color: var(--color-text-primary);
+    color: var(--color-text-dark);
+
+    margin-bottom: 16px;
 }
 
-.linha-prazo {
+/* Linha subtotal */
+.resumo-linha {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+
+    margin-bottom: 16px;
 }
 
-.prazo-label {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    margin: 0;
-    white-space: nowrap;
+.resumo-linha span {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
 }
 
-.prazo-info {
+.resumo-linha strong {
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+}
+
+/* Campo CEP */
+.linha-cep {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    text-align: right;
-    gap: 2px;
-    margin-left: 3px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
 }
 
-.prazo-tempo {
-    font-size: 0.9375rem;
-    font-weight: 500;
-    color: #f59e0b;
-    line-height: 1.3;
+.linha-divisoria {
+    border: none;
+    border-top: 1px solid var(--color-linha-divisoria);
+    margin: 0 0 16px;
 }
 
-.prazo-vencimento {
-    font-size: 0.9375rem;
-    color: var(--color-text-subtle);
-    line-height: 1.3;
+/* Total */
+.resumo-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.resumo-total span {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+.resumo-total strong {
+    font-size: 1.1875rem;
+    font-weight: 800;
+    color: var(--color-text-dark);
+    letter-spacing: -0.5px;
 }
 
 /* ============================= */
@@ -541,12 +535,12 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    color: var(--color-text-subtle);
+    color: var(--color-text-muted);
 }
 
 .seguranca svg {
     width: auto;
-    height: 13.5px;
+    height: 12.5px;
     flex-shrink: 0;
 }
 
@@ -558,9 +552,9 @@ body {
 /* =========================== */
 /* RESPONSIVO */
 /* =========================== */
-@media (max-width: 360px) {
+@media (min-width: 320px) {
     .pagamento-container {
-        padding: 16px 12px 32px;
+        padding: 16px 12px;
         gap: 12px;
     }
 
@@ -573,7 +567,7 @@ body {
     }
 
     .titulo-pagina h1 {
-        font-size: 0.9375rem;
+        font-size: 1.25rem;
     }
 
     .btn-voltar svg {
@@ -581,7 +575,7 @@ body {
     }
 
     .card h2 {
-        font-size: 0.9375rem;
+        font-size: 1.0625rem;
     }
 
     .btn-copiar-pix {
@@ -589,32 +583,36 @@ body {
         padding: 13px;
     }
 
-    .seguranca p {
-        font-size: 0.625rem;
-    }
-}
+    /* RESUMO */
 
-@media (max-width: 560px) {
-    .pagamento-container {
-        padding: 20px 16px 40px;
-        gap: 16px;
-    }
-
-    .card {
-        padding: 20px;
-    }
-
-    .titulo-pagina h1 {
-        font-size: 1.125rem;
-    }
-
-    .card h2 {
-        font-size: 1rem;
-    }
-
-    .btn-copiar-pix {
+    .card-resumo h3 {
         font-size: 0.9375rem;
-        padding: 14px;
+        margin-bottom: 12px;
+    }
+
+    .resumo-linha {
+        margin-bottom: 12px;
+    }
+
+    .resumo-linha span,
+    .resumo-linha strong {
+        font-size: 0.875rem;
+    }
+
+    .resumo-total {
+        margin-bottom: 22px;
+    }
+
+    .resumo-total span {
+        font-size: 0.9375rem;
+    }
+
+    .resumo-total strong {
+        font-size: 1.0625rem;
+    }
+
+    .seguranca {
+        gap: 6px;
     }
 
     .seguranca p {
@@ -623,12 +621,34 @@ body {
 }
 
 @media (min-width: 768px) {
+    .pagamento-container {
+        padding: 0 24px 10px;
+        gap: 20px;
+    }
+
     .resumo-pedido {
         top: 24px;
     }
 
     .resumo-pedido h2 {
         font-size: 1.2rem;
+    }
+
+    .linha-total span:first-child {
+        font-size: 1rem;
+    }
+
+    .linha-total span:last-child {
+        font-size: 0.975rem;
+    }
+
+    .linha-prazo span:first-child {
+        font-size: 1rem;
+    }
+
+    .linha-prazo span:last-child {
+        font-size: 0.875rem;
+        white-space: normal;
     }
 }
 
@@ -711,55 +731,61 @@ body {
         font-size: 0.8125rem;
     }
 
-    /* RESUMO DO PEDIDO — escala moderada (~15%) */
-    .resumo-pedido h2 {
-        font-size: 1.25rem;
+    /* ── Card resumo ─────────────────────────────── */
+    .card-resumo {
+        padding: 28px 26px 24px;
     }
 
-    .linha-total span:first-child {
-        font-size: 1.1875rem;
-    }
-
-    .linha-total span:last-child {
-        font-size: 1.25rem;
-    }
-
-    .prazo-label {
-        font-size: 1.1875rem;
-    }
-
-    .prazo-tempo {
+    .card-resumo h3 {
         font-size: 1.125rem;
+        margin-bottom: 20px;
     }
 
-    .prazo-vencimento {
-        font-size: 1.125rem;
+    .resumo-linha span,
+    .resumo-linha strong {
+        font-size: 1rem;
     }
 
+    .resumo-total {
+        margin-bottom: 32px;
+    }
+
+    .resumo-total span {
+        font-size: 1.0625rem;
+    }
+
+    .resumo-total strong {
+        font-size: 1.3125rem;
+        letter-spacing: -0.6px;
+    }
+
+    /* ── Segurança ───────────────────────────────── */
     .seguranca p {
         font-size: 0.8125rem;
     }
 
     .estado-icone {
-    width: 90px;
-    height: 90px;
-}
+        width: 90px;
+        height: 90px;
+    }
 
-.icone-expirado-svg {
-    height: 46px;
-}
+    .icone-expirado-svg {
+        height: 46px;
+    }
 
-.icone-erro-svg {
-    height: 43px;
-}
+    .icone-erro-svg {
+        height: 43px;
+    }
 
-.titulo-estado {
-    font-size: 1.5rem;      /* 22px → 24px */
-}
+    .titulo-estado {
+        font-size: 1.5rem;
+        /* 22px → 24px */
+    }
 
-.descricao-estado {
-    font-size: 1.125rem;    /* 16px → 18px */
-}
+    .descricao-estado {
+        font-size: 1.125rem;
+        /* 16px → 18px */
+    }
 }
 
 @media (min-width: 2560px) {
@@ -804,27 +830,6 @@ body {
 
     .card {
         padding: 36px;
-    }
-
-    .card h2 {
-        font-size: 1.375rem;
-    }
-
-    .linha-total span:first-child {
-        font-size: 1.25rem;
-    }
-
-    .linha-total span:last-child {
-        font-size: 1.375rem;
-    }
-
-    .btn-copiar-pix {
-        font-size: 1.25rem;
-        padding: 20px;
-    }
-
-    .seguranca p {
-        font-size: 0.875rem;
     }
 
     /* CARD PIX — escala ampla (~40%) */
@@ -884,10 +889,6 @@ body {
 
     .prazo-label {
         font-size: 1.375rem;
-    }
-
-    .prazo-tempo {
-        font-size: 1.25rem;
     }
 
     .prazo-vencimento {

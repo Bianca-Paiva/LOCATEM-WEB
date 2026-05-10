@@ -63,11 +63,11 @@ body {
 
 .header {
     width: 100%;
-    padding: 15px 20px 24px;
+    padding: 22px 20px 34px;
 
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
 }
 
 /* ============================= */
@@ -82,35 +82,38 @@ body {
     color: var(--color-text-dark);
     text-decoration: none;
 
-    font-size: clamp(16px, 4vw, 18px);
+    font-size: clamp(16px, 4vw, 20px);
+    /* Responsivo */
     font-weight: 750;
     letter-spacing: -0.5px;
 }
 
 .logo img {
-    height: 25px;
+    height: 30px;
     object-fit: contain;
+    /* Mantém proporção */
 }
 
 /* ============================= */
 /* CHAT */
 /* ============================= */
 .chat {
+    background: transparent;
+    border: 2px solid var(--color-text-dark);
+    border-radius: 50%;
     width: clamp(36px, 3vw, 48px);
     height: clamp(36px, 3vw, 48px);
-
     display: flex;
     align-items: center;
-    justify-content: end;
-
-    background: transparent;
-    border: none;
-
+    justify-content: center;
+    flex-shrink: 0;
     cursor: pointer;
+    border: none;
 }
 
 .chat img {
-    height: 23px;
+    width: 60%;
+    height: 60%;
     object-fit: contain;
 }
 
@@ -462,11 +465,13 @@ body {
 
 @media (min-width: 1024px) {
     .app {
+        width: 100%;
+        min-height: 100vh;
         background: linear-gradient(to bottom,
                 var(--color-primary) 0%,
                 var(--color-primary-light) 7%,
-                var(--color-primary-soft) 12.2%,
-                var(--color-bg-main) 16%);
+                var(--color-primary-soft) 9.2%,
+                var(--color-bg-main) 14%);
     }
 
     /* ── Header ─────────────────────────────────── */
@@ -474,20 +479,22 @@ body {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
         margin: 0 auto;
+        width: 100%;
         padding: 20px 40px 16px;
     }
 
     .logo {
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 6px;
-        font-size: clamp(18px, 1.5vw, 24px);
         font-weight: 800;
-        letter-spacing: -0.5px;
-        text-decoration: none;
+        font-size: clamp(20px, 1.6vw, 26px);
         color: var(--color-text-dark);
         flex-shrink: 0;
+        text-decoration: none;
     }
 
     .logo img {

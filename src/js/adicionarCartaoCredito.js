@@ -9,7 +9,7 @@ const validade = document.getElementById("validade");
 const cvv = document.getElementById("cvv");
 const parcelamento = document.getElementById("parcelamento");
 
-const btnPagar = document.querySelector(".btn-pagar");
+const btnPagar = document.querySelector(".btn-pagamento");
 
 /*
     Controla se o pagamento já está sendo processado.
@@ -21,7 +21,7 @@ let pagamentoEmProcessamento = false;
     Valor total usado para calcular as parcelas.
     Futuramente esse valor pode vir do carrinho ou da API.
 */
-const valorTotal = 20.00;
+const valorTotal = atualizarResumoCartao();
 
 /* =========================================================
     MAPA DE BANDEIRAS
@@ -56,6 +56,49 @@ const mensagensErro = {
 
     parcelamento: "Escolha uma opção de parcelamento."
 };
+
+
+// =========================================================
+//  LEITURA DO RESUMO VIA localStorage
+// =========================================================
+
+function lerValorLocalStorage(chave) {
+    const valor = localStorage.getItem(chave);
+    if (valor === null || valor === '') return 0;
+    const numero = parseFloat(valor.replace(',', '.'));
+    return isNaN(numero) ? 0 : numero;
+}
+
+function formatarMoeda(valor) {
+    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
+function atualizarResumoCartao() {
+    const subtotal = lerValorLocalStorage('subtotal');
+    const frete    = lerValorLocalStorage('frete');
+    const desconto = lerValorLocalStorage('desconto');
+    const total    = Math.max(0, subtotal + frete - desconto);
+
+    const elSubtotal      = document.querySelector('.resumo-subtotal');
+    const elFrete         = document.querySelector('.resumo-frete-topo');
+    const elTotal         = document.querySelector('.resumo-total-valor');
+    const elLinhaDesconto = document.getElementById('linha-desconto');
+    const elDesconto      = document.querySelector('.resumo-desconto-valor');
+
+    if (elSubtotal) elSubtotal.textContent = formatarMoeda(subtotal);
+    if (elFrete)    elFrete.textContent    = frete === 0 ? 'Grátis' : formatarMoeda(frete);
+    if (elTotal)    elTotal.textContent    = formatarMoeda(total);
+
+    if (desconto > 0 && elDesconto && elLinhaDesconto) {
+        elDesconto.textContent        = `− ${formatarMoeda(desconto)}`;
+        elLinhaDesconto.style.display = '';
+    } else if (elLinhaDesconto) {
+        elLinhaDesconto.style.display = 'none';
+    }
+
+    return total; // retorna para usar no cálculo de parcelas
+}
+
 
 /* =========================================================
     NÚMERO DO CARTÃO
@@ -306,6 +349,79 @@ function limparErro(input) {
     erro.textContent = "";
 }
 
+// =========================================================
+//  SALVAR CARTÃO — localStorage
+// =========================================================
+
+const checkboxSalvar = document.querySelector('.salvar-cartao input[type="checkbox"]');
+
+// Ao carregar a página, verifica se há cartão salvo e preenche os campos
+function carregarCartaoSalvo() {
+    // Se o usuário veio para ADICIONAR um cartão novo, não pré-preenche
+    const veioDeTela = localStorage.getItem('tipoNovoCartao');
+    if (veioDeTela) {
+        localStorage.removeItem('tipoNovoCartao'); // limpa o sinalizador após usar
+        return; // interrompe — página deve ficar em branco
+    }
+    
+    const cartao = localStorage.getItem('cartaoCredito');
+    if (!cartao) return;
+
+    const dados = JSON.parse(cartao);
+
+    numeroCartao.value = dados.numero ?? '';
+    nomeTitular.value = dados.nome ?? '';
+    validade.value = dados.validade ?? '';
+    // CVV nunca é salvo — o usuário sempre precisa redigitar
+
+    // Detecta e exibe a bandeira com base no número recuperado
+    const bandeira = detectarBandeira(dados.numero.replace(/\s/g, ''));
+    if (bandeira && mapaBandeiras[bandeira]) {
+        iconeBandeira.src = mapaBandeiras[bandeira];
+        iconeBandeira.classList.add('ativo');
+    }
+
+    // Marca o checkbox para indicar que há um cartão salvo
+    if (checkboxSalvar) checkboxSalvar.checked = true;
+}
+
+function salvarCartao() {
+    // Lê cartões existentes ou usa os padrão
+    const cartoesExistentes = JSON.parse(localStorage.getItem('cartoes')) || [];
+
+    const tipo = localStorage.getItem('tipoNovoCartao') || 'credito'; // 'credito' ou 'debito'
+
+    const novoCartao = {
+        id: Date.now(), // ID único baseado no timestamp
+        metodoPagamento: tipo,
+        bandeira: detectarBandeiraNome(numeroCartao.value),
+        final: numeroCartao.value.replace(/\s/g, '').slice(-4),
+        titular: nomeTitular.value,
+    };
+
+    cartoesExistentes.push(novoCartao);
+    localStorage.setItem('cartoes', JSON.stringify(cartoesExistentes));
+}
+
+function detectarBandeiraNome(numero) {
+    const codigo = detectarBandeira(numero.replace(/\s/g, ''));
+    const nomes = {
+        VISA:     'Visa',
+        MASTER:   'Mastercard',
+        AMEX:     'American Express',
+        ELO:      'Elo',
+        DISCOVER: 'Discover',
+        DINERS:   'Diners',
+    };
+    return nomes[codigo] || 'Cartão';
+}
+
+function removerCartaoSalvo() {
+    localStorage.removeItem('cartaoCredito');
+}
+
+carregarCartaoSalvo();
+
 /* =========================================================
     CONFIRMAR PAGAMENTO
     - Valida todos os campos
@@ -356,6 +472,13 @@ btnPagar.addEventListener("click", () => {
     btnPagar.classList.add("carregando");
     btnPagar.textContent = "Processando pagamento";
 
+    // Salva ou remove o cartão conforme o estado do checkbox
+    if (checkboxSalvar?.checked) {
+        salvarCartao();
+    } else {
+        removerCartaoSalvo();
+    }
+    
     setTimeout(() => {
         window.location.href = "./pagamentoAprovado.html";
     }, 1500);
