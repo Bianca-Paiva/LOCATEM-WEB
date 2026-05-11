@@ -1,3 +1,12 @@
+:root {
+
+    /* BACKGROUNDS */
+    --color-bg-main: #F9FAFB;
+    --color-bg-card: #ffffff;
+
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
 /* =========================================================
    ESTRUTURA PRINCIPAL
 ========================================================= */
@@ -5,7 +14,7 @@
     width: 100%;
     min-height: 100vh;
     margin: 0 auto;
-    background-color: #f5f5f5;
+    background-color: var(--color-bg-main);
     overflow: hidden;
 }
 
@@ -18,7 +27,7 @@
         #f7d300 0%,
         #f2de65 38%,
         #ece5bf 68%,
-        #f5f5f5 100%
+        var(--color-bg-main) 100%
     );
     text-align: center;
     padding: 48px 28px 34px;
@@ -29,7 +38,7 @@
     height: 100px;
     margin: 0 auto 28px;
     border-radius: 50%;
-    background-color: #ffffff;
+    background-color: var(--color-bg-card);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -149,19 +158,32 @@
    CARD DO PRODUTO
 ========================================================= */
 .product-card {
+    background-color: var(--color-bg-card);
+    border-radius: 14px;
+    box-shadow: var(--card-shadow);
+    padding: 18px 16px;
+    margin: 0 0 15px;
     display: flex;
     align-items: center;
     gap: 14px;
     padding: 16px;
-    margin-bottom: 50px;
-    background-color: #eeeeee;
-    border-radius: 16px;
+    margin-bottom: 20px;
 }
+
+/* .product-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    background-color: #eeeeee;
+    margin-bottom: 20px;
+    border-radius: 16px;
+} */
 
 .product-card img {
     width: 78px;
     height: 78px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 12px;
     flex-shrink: 0;
 }
@@ -204,6 +226,7 @@
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.10);
     transition: 0.2s ease;
     text-decoration: none;
+    margin-top: 20px;
 }
 
 .btn-primary:hover {

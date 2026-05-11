@@ -608,7 +608,7 @@ function salvarResumoNoLocalStorage(subtotal, frete, total, desconto) {
     localStorage.setItem('subtotal', formatarParaStorage(subtotal));
     localStorage.setItem('frete',    formatarParaStorage(frete));
     localStorage.setItem('total',    formatarParaStorage(total));
-    localStorage.setItem('desconto', formatarParaStorage(desconto))
+    localStorage.setItem('desconto', formatarParaStorage(desconto));
 }
 
 
@@ -1341,6 +1341,31 @@ function registrarListenersResumo() {
     12. CONTINUAR PARA PAGAMENTO
 ======================================================== */
 
+/**
+    * Serializa os produtos do carrinho para o localStorage.
+    * Cada card é lido pelo DOM e convertido num objeto simples,
+    * que é então armazenado como JSON.
+    *
+    * Salvo em: 'produtos' → array de objetos com nome, imagem, dias e unidades.
+    * Chamado uma única vez, imediatamente antes de navegar — garante que o
+    * snapshot reflete o estado final escolhido pelo usuário.
+*/
+function salvarProdutosNoLocalStorage() {
+    const produtos = getTodosCards().map((card) => ({
+        nome:      card.querySelector('.produto_nome')?.textContent.trim() ?? '',
+        imagem:    card.querySelector('.produto-imagem')?.src             ?? '',
+        dias:      getDias(card),
+        unidades:  getUnidades(card),
+    }));
+
+    localStorage.setItem('produtos', JSON.stringify(produtos));
+}
+
+
+/* ========================================================
+    13. CONTINUAR PARA PAGAMENTO
+======================================================== */
+
 /* handleContinuarPagamento()
     Valida o estado do carrinho antes de redirecionar para o pagamento.
 
@@ -1380,6 +1405,8 @@ function handleContinuarPagamento() {
         return;
     }
 
+    salvarProdutosNoLocalStorage();
+    
     /* Todas as validacoes passaram — limpa erros e redireciona */
     setCepErro(false);
     window.location.href = '/metodoPagamento.html';

@@ -140,6 +140,9 @@ function processarContinuarPagamento() {
     // dependência do texto visual exibido no botão
     const metodo = metodoAtivo.dataset.metodo;
 
+    // Persiste o método escolhido para a página de confirmação
+    localStorage.setItem('metodoPagamento', metodo);
+
     // Mapeamento de método → rota de destino
     const rotas = {
         credito: '/selecionarCartao.html',
