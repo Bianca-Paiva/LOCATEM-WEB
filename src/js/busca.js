@@ -12,17 +12,19 @@ const form = [
     document.getElementById("searchFormMobile")
 ]; // Seleciona o formulário, seja na versão desktop ou mobile
 
-form.forEach(form => {
-    if (form) {
-        form.addEventListener('submit', (e) => {
+form.forEach((formElement, index) => {
+    if (formElement) {
+        formElement.addEventListener('submit', (e) => {
             e.preventDefault();
-        pesquisa = busca.value.trim();
 
-        if (pesquisa) {
-            window.location.href = `busca.html?search=${encodeURIComponent(pesquisa)}`;
-        }
-    });
-}
+            pesquisa = busca[index].value.trim();
+
+            if (pesquisa) {
+                window.location.href =
+                    `busca.html?search=${encodeURIComponent(pesquisa)}`;
+            }
+        });
+    }
 });
 
 function IrparaBuscar() {
@@ -32,8 +34,12 @@ function IrparaBuscar() {
     const page = urlParams.get('page');
 
     if (searchQuery) {
-        busca.value = searchQuery;
-        pesquisa = searchQuery;
+        busca.forEach(input => {
+    if(input){
+        input.value = searchQuery;
+    }
+});
+       pesquisa = busca.find(input => input)?.value.trim();
     }
 
     if (page) {
@@ -74,32 +80,7 @@ async function buscarProduto(e) {
 
         dadosSalvos = dados.Search;
       
-        // Cria os cards para os filmes encontrados
-        // let cards = "";
 
-        // dados.Search.forEach(filme => {
-        //     const poster = filme.Poster !== "N/A"
-        //         ? filme.Poster
-        //         : "./src/images/sem-imagem.png";
-
-        //     cards += `
-        //     <li class="anuncio-card">
-        //          <div class="card-img">
-        //              <img src="${poster}" alt="${filme.Title}">
-        //          </div>
-
-        //          <div class="card-info">
-        //              <h3>${filme.Title}</h3>
-        //              <div class="proprietario">
-        //                  <h4>IMDb</h4>
-        //              </div>
-        //              <p>${filme.Year}</p>
-        //          </div>
-        //      </li>
-        //     `;
-        // });
-        
-        // lista.innerHTML = cards;
         renderizarLista(dadosSalvos);
 
       const totalPaginas = Math.ceil(dados.totalResults / 10); // A API retorna 10 resultados por página, então calculamos o total de páginas
