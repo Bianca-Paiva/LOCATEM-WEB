@@ -30,70 +30,231 @@
 /* BASE */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
 }
 
-body {
-    font-family: Arial, sans-serif;
-     width: 100%;
-    min-height: 100vh;
-    padding-bottom: 70px;
-}
+
 /*=========== HEADER =============*/
 /*Estilizado a parte*/
 /*=====================================*/
-main {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 10px;
+
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 70px;
+  
 }
 
-/*=================== sidebarChats ===================*/
-    
-.menu-lateral {
-     width: 500px;
-     max-width: 100%;
-     height: calc(100vh - 120px);  
-     overflow-y: auto;
-     background-color: var(--secondary-color-soft);
-     box-shadow: var(--shadow-card);
-     
+/* Layout principal */
+.chat-container{
+  display: flex;
+  padding: 20px;
 }
-.menu-lateral::-webkit-scrollbar {
+
+/* ================= CHAT ================= */
+
+.chat-area{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100vh;
+  background: var(--color-bg-card);
+}
+
+/* Topo */
+.chat-header{
+  height: 70px;
+  background: var(--color-bg-card);
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 20px;
+}
+
+.infoUsuarios{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #000;
+}
+
+.status{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.online-dot{
+  width: 8px;
+  height: 8px;
+  background: limegreen;
+  border-radius: 50%;
+}
+
+/* Mensagens */
+.messages{
+  flex: 1;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  overflow-y: auto;
+}
+
+/* Caixa da mensagem */
+.message{
+  max-width: 380px;
+  background: var(--secondary-color);
+  padding: 14px;
+  border-radius: 4px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message p{
+  font-size: 14px;
+}
+
+.message span{
+  font-size: 11px;
+  align-self: flex-end;
+}
+
+/* Recebida */
+.received{
+  align-self: flex-start;
+}
+
+/* Enviada */
+.sent{
+  align-self: flex-end;
+}
+
+
+/* Input */
+.chat-input{
+  height: 70px;
+  background: #fff;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 0 20px;
+}
+
+.chat-input input{
+  flex: 1;
+  height: 45px;
+  font-size: 15px;
+  font-weight: 200;
+
+  border: none;
+  outline: none;
+
+  background: var(--secondary-color-soft);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px var(--color-terciary);
+
+  padding: 0 15px;
+}
+
+.chat-input input:hover{
+   
+    transform: translateY(-2px)
+}
+
+.chat-input button{
+  width: 45px;
+  height: 45px;
+
+  border: none;
+  cursor: pointer;
+
+  background: transparent;
+  font-size: 22px;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    top: 120px;
+    right: 10px;
+  width: 450px;
+  max-width: 100%;
+  height: calc(100vh - 120px); 
+  background: var(--secondary-color);
+  overflow-y: auto;  
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  padding: 20px; 
+}
+.sidebar::-webkit-scrollbar {
     width: 8px;
 }
-.menu-Conteudo{
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-    gap: 15px;
-}
-.Listacontatos {
+
+.sidebar ul{
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px
-}
-.contato {
-    background-color: var(--secondary-color);
-    padding: 20px;
-    border-radius: var(--radius-input);
-}
-.contato a {
-    text-decoration: none;
-    color: var(--color-text-dark);
-    font-weight: 500;
+    gap: 12px;
+
 }
 
-/*=================== conteudo =============*/
-.Conversa{
-    display: flex;
-    flex-direction: column;
+
+.contato{
+  height: 70px;
+  background: var(--secondary-color-soft);
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 0 15px;
+
+  border-bottom: 1px solid var(--secondary-color);
+
+  cursor: pointer;
+
+  position: relative;
 }
-.cabecalho-conversa{
-    display: flex;
+
+.contato:hover{
     background-color: var(--secondary-color-soft);
-    width: 100vh;
-    padding: 25px;
-    
+    transform: translateY(-2px);
+
+}
+
+
+
+.contact-info h3{
+  font-size: 14px;
+}
+
+.time{
+  position: absolute;
+  right: 12px;
+  top: 12px;
+
+  font-size: 11px;
+  color: #555;
 }

@@ -7,7 +7,7 @@
     <title>LOCATEM</title>
     <link rel="shortcut icon" href="./src/images/LogoIcon.png" type="image/x-icon"/>
     <link rel="stylesheet" href="./src/css/reset.css">
-    <link rel="stylesheet" href="./src/css/busca.css">   
+     <!-- <link rel="stylesheet" href="./src/css/busca.css"> -->
     <link rel="stylesheet" href="./src/css/header style/header.css">
     <link rel="stylesheet" href="./src/css/chat.css">    
     
@@ -79,35 +79,113 @@
                 </button>
             </div>
         </header>
-        <main>
-            <div class="Conversa">
-                <div class="cabecalho-conversa">
-                    <img src="./src/images/usuario.png" alt="Foto do usuário" class="foto-usuario" />
-                    <h2>usuario</h2>
-                    <label for="status" class="status-label">Status</label>
-                </div>
-                <div class="mensagens">
-                    
-                    
-                </div>
-                <form class="input-mensagem">
-                    <input type="text" placeholder="Digite sua mensagem..." />
-                    <button type="submit">Enviar</button>
-                </form>
-            </div>
-        </main>
-        <aside class="menu-lateral">
-            <div class="menu-Conteudo">
-                <h2>mensagens</h2>
-                <ul class="Listacontatos">
-                    <li class="contato"><a href="#">usuario 1</a></li>
-                    <li class="contato"><a href="#">usuario 2</a></li>
-                    <li class="contato"><a href="#">usuario 3</a></li>
-                </ul>
-            </div>
-        </aside>
+      
+   
+  <main class="chat-container">
 
+    <!-- Área principal -->
+    <section class="chat-area">
+
+      <!-- Topo do chat -->
+      <div class="chat-header">
+        <div class="infoUsuarios">
+          <div class="avatar"></div>
+          <h2>usuario</h2>
+        </div>
+
+        <div class="status">
+          Online <span class="online-dot"></span>
+        </div>
+      </div>
+
+      <!-- Mensagens -->
+      <div class="messages">
+
+        <!-- Mensagem recebida -->
+        <div class="message received">
+          <p>Conteúdo da mensagem</p>
+          <span>Time</span>
+        </div>
+
+        <div class="message received small">
+          <p>Conteúdo da mensagem</p>
+          <span>Time</span>
+        </div>
+
+        <!-- Mensagens enviadas -->
+        <div class="message sent">
+          <p>Conteúdo da mensagem</p>
+          <span>Time</span>
+        </div>
+
+        <div class="message sent small">
+          <p>Conteúdo da mensagem</p>
+          <span>Time</span>
+        </div>
+
+        <div class="message sent small">
+          <p>Conteúdo da mensagem</p>
+          <span>Time</span>
+        </div>
+
+      </div>
+
+      <!-- Input -->
+      <form class="chat-input">
+        <input type="text" placeholder="Escreva sua mensagem">
+        <button type="submit">
+          ➤
+        </button>
+      </form>
+
+    </section>
+
+    <!-- Lista de conversas -->
+    <aside class="sidebar">
+        <h2>conversas</h2>
+        <ul>
+            <li>
+                <div class="contato">
+                    <div class="avatar"></div>
+
+                    <div class="contact-info">
+                    <h3>Marcos</h3>
+                    </div>
+
+                <span class="time">11:29</span>
+            </li>
+             <li>
+                <div class="contato">
+                    <div class="avatar"></div>
+
+                    <div class="contact-info">
+                    <h3>Marcos</h3>
+                    </div>
+
+                <span class="time">11:29</span>
+                </div>
+            </li>
+             <li>
+                <div class="contato">
+                    <div class="avatar"></div>
+
+                    <div class="contact-info">
+                    <h3>Marcos</h3>
+                    </div>
+
+                <span class="time">11:29</span>
+                </div>
+            </li>
+
+        
+
+        </ul>
+      
+    </aside>
+
+  </main>
 
     </div>
+
 </body>
 <script src="./src/js/busca.js"></script>
