@@ -256,10 +256,13 @@ main {
 /* ── CARROSSEL ── */
 .carrossel-produto {
   position: relative;
-  background: var(--color-gray-100);
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-  overflow: hidden;
+  background: var(--color-white);
+  border-radius: var(--spacing-lg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   margin-bottom: var(--spacing-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Botão de favoritar posicionado sobre o carrossel (canto superior direito) */
@@ -317,27 +320,32 @@ main {
   transition: transform .35s ease;
 }
 
+
+
 /* Cada slide ocupa 100% da largura; apenas o ".ativo" é exibido (via JS) */
 .carrossel-item {
-  min-width: 100%;
-  display: none;
+min-width: 100%;
+  display: none; 
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-md);
-  min-height: 220px;
+  padding: 40px; /* Espaço para a imagem não tocar nas setas */
+  height: 300px; /* Altura fixa para manter o aspecto do card */
 }
+
+
 .carrossel-item.ativo { display: flex; }
 .carrossel-item img {
-  max-height: 200px;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
-  margin: 0 auto;
 }
 
 /* ── INDICADORES DE SLIDE (pontos) ── */
 .indicadores {
   display: flex;
   justify-content: center;
-  padding: var(--spacing-sm) 0 var(--spacing-md);
+  padding: 0 0 var(--spacing-md) 0;
+  margin-top: -10px;
 }
 .circulos { display: flex; gap: 6px; }
 .circulo {
@@ -1211,9 +1219,9 @@ main {
   .app {
     background: linear-gradient(to bottom,
       var(--color-primary) 0%,
-      var(--color-primary-light) 3.5%,
-      var(--color-primary-soft) 5%,
-      var(--color-bg-main) 10%);
+      var(--color-primary-light) 3%,
+      var(--color-primary-soft) 4.5%,
+      var(--color-bg-main) 6%);
   }
 
   /* ── HEADER DESKTOP ──
@@ -1313,9 +1321,7 @@ main {
     justify-content: center;
     background: transparent;
     height: var(--nav-height-desktop);
-    padding: 0 clamp(32px, 5vw, 80px);
-    box-shadow: var(--shadow-sm);
-  }
+    padding: 0 clamp(32px, 5vw, 80px);  }
   .nav-desktop ul {
     display: flex;
     align-items: center;
@@ -1352,7 +1358,7 @@ main {
   main {
     padding: 32px clamp(32px, 5vw, 80px);
     max-width: var(--max-width);
-    margin: 0 auto;
+    margin: 50px;
     width: 100%;
     box-sizing: border-box;
   }
@@ -1368,26 +1374,44 @@ main {
     padding: 0 0 var(--spacing-xl);
   }
 
-  .carrossel-produto {
+  /* ============= CARROSSEL ========== */
+.carrossel-produto {
+    background: var(--color-white);
     border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     margin-bottom: 0;
+    align-self: start;
   }
+
   .carrossel-item {
-    min-height: 320px;
+    min-width: 100%;
+    height: 500px; /* Aumentamos a altura */
+    padding: 20px;
   }
+
+  .carrossel-item.ativo {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+  }
+
   .carrossel-item img {
-    max-height: 300px;
+    max-height: 500px;
+    width: auto;
+    max-width: 90%;
+    object-fit: contain;
   }
+
+
 
   /* Coluna de informações do produto alinhada à esquerda */
   .produto-info-desktop {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0 20px;
+    padding: 0 ;
     gap: 12px;
     width: 100%;
-    max-width: 600px;
   }
 
   .descricao-produto {
@@ -1397,10 +1421,11 @@ main {
   }
 
   .descricao-produto h1 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 400;
     color: var(--color-black);
-    line-height: 1.3;
+    line-height: 1.1;
+    margin-top: -4px;
   }
 
   .preco-produto {
