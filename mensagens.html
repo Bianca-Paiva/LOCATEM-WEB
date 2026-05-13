@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Locatem — Mensagens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./src/css/mensagens.css" />
+  <link rel="stylesheet" href="./src/css/header style/header.css">
+
+</head>
+<body>
+
+    <div class="app">
+
+      
+        <!-- ============== -->
+        <!-- HEADER MOBILE -->
+        <!-- ============== -->
+        <header class="header-mobile">
+            <!-- LINHA SUPERIOR -->
+            <div class="linha-topo-mobile">
+                <!-- AGRUPAMENTO ESQUERDO -->
+                <div class="lado-esquerdo">
+                    <button class="menu-btn">
+                        <img src="./src/images/menuHamburguer.png" alt="Menu" />
+                    </button>
+
+                    <a href="./principalPage.html" class="logo">
+                        <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+                        LOCATEM
+                    </a>
+                </div>
+
+                <!-- DIREITA -->
+                <a href="#" class="carrinho-btn">
+                    <img src="./src/images/carrinho.svg" alt="Carrinho" />
+                    <span class="quantidade-carrinho">2</span>
+                </a>
+            </div>
+
+            <!-- Barra de pesquisa -->
+            <form class="barra-pesquisa-mobile" id="searchFormMobile">
+                <img src="./src/images/lupa.png" alt="Buscar" />
+                <input type="search" placeholder="Qual ferramenta você precisa hoje?"
+                    aria-label="Pesquisar ferramentas" 
+                    id="searchInputMobile"/>
+            </form>
+        </header>
+
+        <!-- =============== -->
+        <!-- HEADER DESKTOP-->
+        <!-- =============== -->
+        <header class="header-desktop">
+            <div class="linha-topo-desktop">
+                <!-- Logo da LOCATEM com link para a página principal -->
+                <a href="./principalPage.html" class="logo">
+                    <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+                    LOCATEM
+                </a>
+
+                <!-- Barra de pesquisa -->
+                <form class="barra-pesquisa" id="searchForm">
+                    <button type="submit" class="lupa-btn">
+                        <img src="./src/images/lupa.png" alt="Buscar" />
+                    </button>
+                    <input type="search" placeholder="Qual ferramenta você precisa hoje?"
+                        aria-label="Pesquisar ferramentas" id="searchInput" />
+                </form>
+
+                <!-- Botão de acesso ao chat -->
+                <button class="chat">
+                    <img src="./src/images/chat.png" alt="Chat" />
+                </button>
+            </div>
+        </header>
+        
+<!-- ============================================================
+     TELA DE MENSAGENS
+     Estrutura pronta para integração via JavaScript / API
+     ============================================================ -->
+<section id="tela-mensagens">
+
+  <!-- ==========================================================
+       ÁREA PRINCIPAL DO CHAT
+       ========================================================== -->
+  <main id="area-chat">
+
+    <!-- Cabeçalho do chat ativo -->
+    <header id="cabecalho-chat" data-contato-id="">
+
+      <!-- Foto do usuário -->
+      <img
+        class="foto-usuario-chat"
+        src="./src/images/perfilPadrao.svg"
+        alt="Foto de Marcos"
+        data-src=""
+      />
+
+      <!-- Info do usuário -->
+      <div class="info-usuario-chat">
+        <span class="nome-usuario-chat">Marcos</span>
+        <span class="status-usuario-chat" data-status="online">Online</span>
+      </div>
+
+      <!-- Ações do cabeçalho (botões populados via JS) -->
+      <div class="acoes-cabecalho-chat">
+        <!-- Botão: chamada de voz -->
+        <button class="btn-acao-chat" aria-label="Chamada de voz" title="Ligar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.89 1.18 2 2 0 012.86.01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0121.99 15z"/>
+          </svg>
+        </button>
+        <!-- Botão: mais opções -->
+        <button class="btn-acao-chat" aria-label="Mais opções" title="Mais">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Área rolável de mensagens -->
+    <div id="area-mensagens" role="log" aria-live="polite" aria-label="Conversa">
+
+      <!-- Separador de data — renderizado via JS -->
+      <div class="separador-data">Hoje</div>
+
+      <!-- ---- Mensagens recebidas ---- -->
+      <article class="mensagem mensagem-recebida" data-mensagem-id="1" data-remetente-id="marcos">
+        <div class="bolha-mensagem">
+          <p class="texto-mensagem">Oi! Tudo bem com você? Preciso de ajuda com um pedido que fiz ontem.</p>
+          <time class="horario-mensagem" datetime="2026-05-12T11:20">11:20</time>
+        </div>
+      </article>
+
+      <article class="mensagem mensagem-recebida" data-mensagem-id="2" data-remetente-id="marcos">
+        <div class="bolha-mensagem">
+          <p class="texto-mensagem">Apareceu como entregue mas ainda não recebi nada aqui.</p>
+          <time class="horario-mensagem" datetime="2026-05-12T11:21">11:21</time>
+        </div>
+      </article>
+
+      <!-- ---- Mensagens enviadas ---- -->
+      <article class="mensagem mensagem-enviada" data-mensagem-id="3" data-remetente-id="eu">
+        <div class="bolha-mensagem">
+          <p class="texto-mensagem">Olá, Marcos! Deixa eu verificar o status do seu pedido agora mesmo.</p>
+          <time class="horario-mensagem" datetime="2026-05-12T11:22">
+            11:22
+            <!-- Indicador de lido (ícone duplo check renderizado via JS) -->
+            <span class="indicador-lido" aria-label="Lido">✓✓</span>
+          </time>
+        </div>
+      </article>
+
+      <!-- ---- Mais mensagens recebidas ---- -->
+      <article class="mensagem mensagem-recebida" data-mensagem-id="4" data-remetente-id="marcos">
+        <div class="bolha-mensagem">
+          <p class="texto-mensagem">Muito obrigado! Aqui está o número do pedido: #2026-04871.</p>
+          <time class="horario-mensagem" datetime="2026-05-12T11:24">11:24</time>
+        </div>
+      </article>
+
+      <!-- ---- Mais mensagens enviadas ---- -->
+      <article class="mensagem mensagem-enviada" data-mensagem-id="5" data-remetente-id="eu">
+        <div class="bolha-mensagem">
+          <p class="texto-mensagem">Encontrei aqui! O pedido saiu para entrega hoje às 09:15. O prazo estimado é até às 18h.</p>
+          <time class="horario-mensagem" datetime="2026-05-12T11:26">
+            11:26
+            <span class="indicador-lido" aria-label="Lido">✓✓</span>
+          </time>
+        </div>
+      </article>
+
+      <article class="mensagem mensagem-enviada" data-mensagem-id="6" data-remetente-id="eu">
+        <div class="bolha-mensagem">
+          <p class="texto-mensagem">Caso não chegue até lá, me avise e abro uma ocorrência para você!</p>
+          <time class="horario-mensagem" datetime="2026-05-12T11:27">
+            11:27
+            <span class="indicador-lido" aria-label="Lido">✓✓</span>
+          </time>
+        </div>
+      </article>
+
+      <article class="mensagem mensagem-recebida" data-mensagem-id="7" data-remetente-id="marcos">
+        <div class="bolha-mensagem">
+          <p class="texto-mensagem">Perfeito! Fico aguardando. Muito obrigado pelo atendimento rápido! 👍</p>
+          <time class="horario-mensagem" datetime="2026-05-12T11:29">11:29</time>
+        </div>
+      </article>
+
+    </div><!-- /area-mensagens -->
+
+    <!-- Campo de envio de mensagem -->
+    <footer id="campo-envio">
+
+      <!-- Botão de anexo -->
+      <button id="botaoAnexo" type="button" aria-label="Anexar arquivo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66L9.41 17.41a2 2 0 01-2.83-2.83l8.49-8.48"/>
+        </svg>
+      </button>
+
+      <!-- Input de texto -->
+      <input
+        type="text"
+        id="inputMensagem"
+        placeholder="Escreva sua mensagem..."
+        autocomplete="off"
+        aria-label="Campo de mensagem"
+        maxlength="2000"
+      />
+
+      <!-- Botão enviar -->
+      <button id="botaoEnviar" type="button" aria-label="Enviar mensagem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+
+    </footer>
+
+  </main><!-- /area-chat -->
+
+  <!-- ==========================================================
+       BARRA LATERAL DE CONTATOS
+       ========================================================== -->
+  <aside id="sidebar-contatos" aria-label="Lista de conversas">
+
+    <!-- Cabeçalho da sidebar -->
+    <div id="cabecalho-sidebar">
+      <h2>Conversas</h2>
+      <input
+        type="search"
+        id="buscaContatos"
+        placeholder="Buscar..."
+        aria-label="Buscar contatos"
+        autocomplete="off"
+      />
+    </div>
+
+    <!-- Lista de contatos — populada via JS futuramente -->
+    <ul class="lista-contatos" role="list">
+
+      <!-- Contato ativo -->
+      <li class="contato ativo" data-contato-id="marcos" role="listitem" tabindex="0">
+        <div class="foto-contato">
+          <span class="status-bolinha" aria-hidden="true"></span>
+        </div>
+        <div class="info-contato">
+          <div class="linha-superior-contato">
+            <span class="nome-contato">Marcos</span>
+            <time class="horario-contato">11:29</time>
+          </div>
+          <p class="preview-mensagem-contato">Muito obrigado pelo atendimento!</p>
+        </div>
+      </li>
+
+      <!-- Contato com não lidas -->
+      <li class="contato" data-contato-id="junior" role="listitem" tabindex="0">
+        <div class="foto-contato">
+          <span class="status-bolinha" aria-hidden="true"></span>
+        </div>
+        <div class="info-contato">
+          <div class="linha-superior-contato">
+            <span class="nome-contato">Junior</span>
+            <time class="horario-contato">11:15</time>
+          </div>
+          <p class="preview-mensagem-contato">Quando chega meu pedido?</p>
+        </div>
+        <span class="contador-nao-lidas" aria-label="3 mensagens não lidas">3</span>
+      </li>
+
+      <!-- Contato offline -->
+      <li class="contato" data-contato-id="leo" role="listitem" tabindex="0">
+        <div class="foto-contato">
+          <span class="status-bolinha ausente" aria-hidden="true"></span>
+        </div>
+        <div class="info-contato">
+          <div class="linha-superior-contato">
+            <span class="nome-contato">Léo</span>
+            <time class="horario-contato">10:52</time>
+          </div>
+          <p class="preview-mensagem-contato">Ok, entendido. Obrigado!</p>
+        </div>
+      </li>
+
+      <!-- Mais contatos adicionados dinamicamente via JS -->
+
+    </ul><!-- /lista-contatos -->
+
+  </aside><!-- /sidebar-contatos -->
+
+</section><!-- /tela-mensagens -->
+    </div>
+</body>
+
+</html>
+<script src="./src/js/mensagens.js"></script>
+<script src="./src/js/busca.js"></script>

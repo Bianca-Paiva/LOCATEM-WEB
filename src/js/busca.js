@@ -1,21 +1,66 @@
 let paginaAtual = 1;
 let pesquisa="";
-let DadosSalvos =[];
+let dadosSalvos =[];
 
-const busca = document.querySelector('#searchInput') || document.querySelector('#searchInputMobile'); // Seleciona o campo de busca, seja na versão desktop ou mobile
-const form = document.getElementById("searchForm") || document.getElementById("searchFormMobile"); // Seleciona o formulário, seja na versão desktop ou mobile
 
-form.addEventListener('submit', buscarProduto);
+const busca = [
+    document.querySelector('#searchInput'),
+    document.querySelector('#searchInputMobile')
+]
+const form = [
+    document.getElementById("searchForm"),
+    document.getElementById("searchFormMobile")
+]; // Seleciona o formulário, seja na versão desktop ou mobile
 
+form.forEach((formElement, index) => {
+    if (formElement) {
+        formElement.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            pesquisa = busca[index].value.trim();
+
+            if (pesquisa) {
+                window.location.href =
+                    `busca.html?search=${encodeURIComponent(pesquisa)}`;
+            }
+        });
+    }
+});
+
+function IrparaBuscar() {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const searchQuery = urlParams.get('search');
+    const page = urlParams.get('page');
+
+    if (searchQuery) {
+        busca.forEach(input => {
+    if(input){
+        input.value = searchQuery;
+    }
+});
+       pesquisa = busca.find(input => input)?.value.trim();
+    }
+
+    if (page) {
+        paginaAtual = Number(page);
+    }
+
+    if (pesquisa) {
+        buscarProduto();
+    }
+}
 
 async function buscarProduto(e) {
     if (e) e.preventDefault(); // Previne o comportamento padrão do formulário, mas permite que a função seja chamada sem um evento (para carregar mais resultados), usando da tecla Enter ou clicando no botão "Carregar mais"
+
 
     // realiza a pesquisa
     if (e) {
     pesquisa = busca.value.trim();
     paginaAtual = 1; // reset quando for nova busca
 }
+
     if (!pesquisa) return; // Verifica se a pesquisa não está vazia
 
     const lista = document.getElementById("grid-anuncios");
@@ -33,42 +78,19 @@ async function buscarProduto(e) {
             return;
         }
 
-        DadosSalvos = dados.Search;
+        dadosSalvos = dados.Search;
       
-        // Cria os cards para os filmes encontrados
-        // let cards = "";
 
-        // dados.Search.forEach(filme => {
-        //     const poster = filme.Poster !== "N/A"
-        //         ? filme.Poster
-        //         : "./src/images/sem-imagem.png";
+        renderizarLista(dadosSalvos);
 
-        //     cards += `
-        //     <li class="anuncio-card">
-        //          <div class="card-img">
-        //              <img src="${poster}" alt="${filme.Title}">
-        //          </div>
-
-        //          <div class="card-info">
-        //              <h3>${filme.Title}</h3>
-        //              <div class="proprietario">
-        //                  <h4>IMDb</h4>
-        //              </div>
-        //              <p>${filme.Year}</p>
-        //          </div>
-        //      </li>
-        //     `;
-        // });
-        
-        // lista.innerHTML = cards;
-        renderizarLista(DadosSalvos);
-
-      const totalPaginas = Math.ceil(dados.totalResults / 10); // A API retorna 20 resultados por página, então calculamos o total de páginas
+      const totalPaginas = Math.ceil(dados.totalResults / 10); // A API retorna 10 resultados por página, então calculamos o total de páginas
       
         const totalResultados = document.getElementById("totalResultados");
         totalResultados.textContent = `${dados.totalResults} resultados encontrados`;
         criarPaginacao(totalPaginas);
-    
+
+        const novaURL = `?search=${encodeURIComponent(pesquisa)}&page=${paginaAtual}`;
+        window.history.pushState({}, "", novaURL);
 
     } catch (error) {
         lista.innerHTML = "<p>Ocorreu um erro ao buscar os filmes. Tente novamente.</p>";
@@ -82,7 +104,7 @@ async function buscarProduto(e) {
 function ordenarComo() {
     const ordenar = document.getElementById("ordenar").value;
 
-    let listaOrdenada = [...DadosSalvos]; //copia a lista
+    let listaOrdenada = [...dadosSalvos]; //copia a lista
 
     if (ordenar === "1") {
         // a, b = servem para comparar os objetos
@@ -283,10 +305,14 @@ function limparFiltros() {
   document.querySelectorAll('input[type="checkbox"], input[type="radio"]')
     .forEach(el => el.checked = false);
 
-     renderizar(dadosSalvos); // volta ao normal
+     renderizarLista(dadosSalvos); // volta ao normal
 }
 
 function mostrarFiltros() {
     const sidebar = document.querySelector('.sidebar');
     sidebar.classList.toggle('aberta');
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    IrparaBuscar();
+});
