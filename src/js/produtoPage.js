@@ -113,6 +113,23 @@ const initQuantidade = () => {
   atualizar();
 };
 
+//=================ADICIONAR CARRINHO=====================
+const initAdicionarCarrinho = () => {
+
+  const btnAddCarrinho =
+    document.getElementById("btn-adicionar-carrinho");
+
+  if (!btnAddCarrinho) return;
+
+  btnAddCarrinho.addEventListener("click", () => {
+
+    window.location.href = "carrinho.html";
+
+  });
+
+};
+
+
 // ==================== SEÇÕES EXPANSÍVEIS ====================
 // Controla o expand/collapse das seções de Descrição e Especificações.
 // A animação usa max-height + opacity para transição suave.
@@ -228,6 +245,8 @@ const init = () => {
   initExpandiveis();
   initFeedbackUtil();
   initVerMais();
+
+  initAdicionarCarrinho();
 };
 
 if (document.readyState === 'loading') {
