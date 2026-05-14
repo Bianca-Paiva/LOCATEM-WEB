@@ -1,0 +1,1739 @@
+/*==================== ROOT ====================*/
+/*
+  Tokens de design globais do projeto Locatem.
+  Todas as cores, espaçamentos, sombras e tipografia
+  são centralizados aqui para facilitar manutenção e consistência.
+*/
+:root {
+  /* ── CORES PRINCIPAIS ── */
+  --color-primary:          #FFCA00;
+  --color-primary-light:    #ffe97a;
+  --color-primary-soft:     #fff6c7;
+  --color-secondary:        #f0c000c0;
+  --color-primary-dark:     #c99b00;
+
+  /* ── BACKGROUNDS ── */
+  --color-bg-main:          #F9FAFB;
+  --color-bg-card:          #ffffff;
+  --color-white:            #ffffff;
+
+  /* ── TEXTOS ── */
+  --color-text-dark:        #0A0A0A;
+  --color-text-secondary:   #8e8e93;
+  --color-text-muted:       #7a7a7a;
+  --color-text-desativado:  #A0A0A0;
+  --color-text-link:        #3A83FA;
+
+  /* Aliases semânticos — facilitam a leitura no CSS sem precisar memorizar hex */
+  --color-black:            var(--color-text-dark);
+  --color-dark:             #1F2937;
+  --color-gray-700:         #374151;
+  --color-gray-500:         var(--color-text-secondary);
+  --color-gray-300:         #D1D5DB;
+  --color-gray-100:         var(--color-bg-main);
+  --color-gold:             #FFD700;
+  --color-verified:         #705D00;
+
+  /* ── BORDAS ── */
+  --color-border-card:      #e5e7eb;
+  --color-linha-divisoria:  #a0a0a09a;
+
+  /* ── BORDER RADIUS ── */
+  --card-radius:            14px;
+  --radius-sm:              6px;
+  --radius-md:              var(--card-radius);
+  --radius-lg:              16px;
+  --radius-full:            9999px;
+
+  /* ── SOMBRAS ── */
+  --card-shadow:            0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-sm:              var(--card-shadow);
+  --shadow-md:              0 4px 12px rgba(0,0,0,.12);
+
+  /* ── TIPOGRAFIA ── */
+  --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* ── ESPAÇAMENTOS ── */
+  --spacing-xs:  4px;
+  --spacing-sm:  8px;
+  --spacing-md:  16px;
+  --spacing-lg:  24px;
+  --spacing-xl:  32px;
+
+  /* ── LAYOUT ── */
+  --max-width: 1280px;
+  --header-height-desktop: 64px;
+  --nav-height-desktop: 52px;
+}
+
+/* ========================================
+   BASE GERAL
+   ======================================== */
+body {
+  background-color: var(--color-bg-main);
+  color: var(--color-text-dark);
+  font-family: var(--font-sans);
+}
+
+/* ========================================
+   APP WRAPPER
+   Gradiente de fundo que vai do amarelo primário
+   até o cinza claro, criando a identidade visual do topo da página.
+   ======================================== */
+.app {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to bottom,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 2%,
+    var(--color-primary-soft) 3.5%,
+    var(--color-bg-main) 4.5%);
+}
+
+/* ========================================
+   HEADER — MOBILE (base)
+   Layout em coluna: linha superior + barra de pesquisa empilhadas.
+   No desktop, este componente é reestruturado para linha única via media query.
+   ======================================== */
+.header-mobile {
+  width: 100%;
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* Linha superior: distribui logo (esq), pesquisa (centro/desktop) e ações (dir) */
+.linha-topo-mobile {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Agrupa o botão menu + logo no lado esquerdo */
+.lado-esquerdo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── LOGO ── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--color-text-dark);
+  text-decoration: none;
+  font-size: clamp(16px, 4vw, 20px); /* Responsivo entre 16px e 20px */
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+.logo img {
+  height: 30px;
+  object-fit: contain;
+}
+
+/* ── BOTÕES DO HEADER (menu, carrinho, chat) ── */
+.menu-btn,
+.carrinho-btn,
+.btn-chat {
+  width: 42px;
+  height: 42px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.menu-btn img,
+.carrinho-btn img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+/* Carrinho com posicionamento relativo para o badge de quantidade */
+.carrinho-btn {
+  position: relative;
+  text-decoration: none;
+}
+
+/* Badge de quantidade sobre o ícone do carrinho */
+.quantidade-carrinho {
+  position: absolute;
+  top: -4px;
+  right: 0;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background-color: var(--color-secondary);
+  color: var(--color-text-dark);
+  font-size: clamp(10px, 2.5vw, 12px);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Agrupa carrinho e chat com espaçamento */
+.header-acoes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Chat e barra desktop: ocultos no mobile — exibidos no breakpoint desktop */
+.btn-chat {
+  display: none;
+}
+.barra-pesquisa-desktop {
+  display: none;
+}
+
+/* ── BARRA DE PESQUISA MOBILE ── */
+.barra-pesquisa-mobile {
+  width: 100%;
+  height: 54px;
+  background-color: var(--color-bg-card);
+  border-radius: 999px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+}
+.barra-pesquisa-mobile img {
+  width: 22px;
+  height: 22px;
+  opacity: 0.65;
+}
+.barra-pesquisa-mobile input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--color-text-dark);
+  font-size: 15px;
+}
+.barra-pesquisa-mobile input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* ========================================
+   NAV DESKTOP
+   Oculto no mobile; ativado a partir de 1024px.
+   ======================================== */
+.nav-desktop {
+  display: none;
+}
+
+/* ========================================
+   MAIN
+   ======================================== */
+main {
+  width: 100%;
+  margin: 0 auto;
+  padding: 8px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ========================================
+   HERO DO PRODUTO
+   Mobile: coluna única (carrossel + info empilhados).
+   Desktop: grid de 2 colunas via media query.
+   ======================================== */
+.produto-hero {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 var(--spacing-md);
+}
+
+/* ── CARROSSEL ── */
+.carrossel-produto {
+  position: relative;
+  background: var(--color-white);
+  border-radius: var(--spacing-lg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  margin-bottom: var(--spacing-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Botão de favoritar posicionado sobre o carrossel (canto superior direito) */
+.btn-favoritar {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  z-index: 10;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-full);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.btn-favoritar img { width: 18px; height: 18px; }
+
+/* Container das setas de navegação + lista de slides */
+.carrossel {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Setas de navegação: posicionadas absolutamente sobre o carrossel */
+.btn-anterior,
+.btn-proximo {
+  position: absolute;
+  z-index: 10;
+  background: transparent;
+  border-radius: var(--radius-full);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.btn-anterior { left: var(--spacing-sm); }
+.btn-proximo  { right: var(--spacing-sm); }
+
+/* Área de overflow do carrossel — esconde slides inativos */
+.carrossel-container {
+  width: 100%;
+  overflow: hidden;
+}
+.carrossel-lista {
+  display: flex;
+  transition: transform .35s ease;
+}
+
+
+
+/* Cada slide ocupa 100% da largura; apenas o ".ativo" é exibido (via JS) */
+.carrossel-item {
+  min-width: 100%;
+  aspect-ratio: 1 / 1; 
+  height: auto; 
+  padding: 20px;
+  display: none;
+}
+
+
+.carrossel-item.ativo { 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.carrossel-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ── INDICADORES DE SLIDE (pontos) ── */
+.indicadores {
+  display: flex;
+  justify-content: center;
+  padding: 0 0 var(--spacing-md) 0;
+  margin-top: -10px;
+}
+.circulos { display: flex; gap: 6px; }
+.circulo {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background: var(--color-gray-300);
+  transition: background .2s;
+}
+/* Ponto ativo sincronizado com o slide atual via JS */
+.circulo.ativo { background: var(--color-primary); }
+
+/* ── INFORMAÇÕES DO PRODUTO (mobile) ── */
+.descricao-produto {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+.descricao-produto h1 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-black);
+  line-height: 1.4;
+}
+
+/* Linha de avaliação: estrela + nota + total */
+.avaliacao {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--color-black);
+}
+.avaliacao span { font-weight: 400; color: var(--color-gray-500); }
+
+/* Preço principal do produto */
+.preco-produto {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--color-black);
+}
+.preco-produto span {
+  font-size: .9rem;
+  font-weight: 400;
+  color: var(--color-gray-500);
+}
+
+/* Alias legado: mantém compatibilidade com markup sem .produto-info-desktop como pai */
+.descricao-produto > p {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--color-black);
+}
+.descricao-produto > p span {
+  font-size: .9rem;
+  font-weight: 400;
+  color: var(--color-gray-500);
+}
+
+/* ── SELEÇÃO DE VOLTAGEM ── */
+.voltagem {
+  display: flex;
+  gap: 12px;
+  padding: 16px 0px;
+  flex-wrap: nowrap;
+}
+.btn-voltagem {
+  border: 1.5px solid var(--color-dark);
+  border-radius: var(--radius-sm);
+  padding: 5px 20px 5px 19px;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  background: var(--color-white);
+  cursor: pointer;
+  transition: border-color .15s, background .15s, color .15s;
+}
+/* Estado ativo: botão selecionado recebe destaque amarelo (controlado via JS) */
+.btn-voltagem.selecionado {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary-dark);
+  color: var(--color-text-dark);
+  font-weight: 700;
+}
+
+/* ── SELETORES DE TEMPO E QUANTIDADE ── */
+.container-seletores {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 20px;
+}
+.seletor-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.label-btn {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-dark);
+}
+
+/* Select customizado: seta nativa removida, substituída pelo .btn-tempo decorativo */
+.select-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+.select-wrapper select {
+  width: 100%;
+  height: 48px;
+  appearance: none; /* Remove a seta padrão do navegador */
+  background: #ffffff;
+  border: 1px solid var(--color-text-dark);
+  border-radius: 12px;
+  padding: 0 40px 0 12px;
+  font-size: 0.9rem;
+  color: #111827;
+  cursor: pointer;
+}
+
+/*
+  Ícone de seta decorativo posicionado sobre o select.
+  pointer-events: none garante que o clique passe para o <select> real.
+*/
+.btn-tempo {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+/* Controle de quantidade: botões nas pontas, valor centralizado */
+.controle-grupo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid var(--color-text-dark);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.btn-controle {
+  width: 44px;
+  height: 100%;
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  color: var(--color-text-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.btn-controle:hover { background: var(--color-bg-main); }
+.controle-valor {
+  flex: 1;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  /* padding: 0 8px; */
+}
+
+/* ── BOTÕES DE AÇÃO PRINCIPAL ── */
+.acoes-produto {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 26px;
+  margin-bottom: 25px;
+}
+
+/* Estilos base compartilhados pelos dois botões de ação */
+.btn-locar,
+.btn-adicionar-carrinho {
+  width: 100%;
+  height: 52px;
+  border-radius: var(--radius-full);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Botão primário: fundo amarelo sólido */
+.btn-locar {
+  background-color: var(--color-primary);
+  border: none;
+  color: var(--color-text-dark);
+}
+.btn-locar:hover { background-color: var(--color-primary-dark); }
+.btn-locar:active { transform: scale(0.98); }
+
+/* Botão secundário: fundo amarelo suave com borda */
+.btn-adicionar-carrinho {
+  background-color: #F5E3B3;
+  border: 1.5px solid var(--color-primary);
+  color: #6E5000;
+}
+.btn-adicionar-carrinho:hover {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary-dark);
+}
+.btn-adicionar-carrinho:active { transform: scale(0.98); }
+
+/* ========================================
+   CARD DA LOJA
+   Mobile: exibido como seção separada abaixo do produto.
+   Desktop: migrado para a sidebar (.col-lateral).
+   ======================================== */
+.loja-produto {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--card-shadow);
+  border-radius: 15px;
+  border-top: 8px solid var(--color-gray-100);
+  border-bottom: 8px solid var(--color-gray-100);
+}
+
+/* Versão desktop (sidebar): oculta no mobile */
+.col-lateral .loja-produto {
+  display: none;
+}
+
+/* Versão mobile: visível por padrão, ocultada no desktop */
+.loja-produto--mobile {
+  display: flex;
+}
+
+/* Logo quadrado da loja */
+.logo-loja {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-gray-100);
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-loja img { width: 100%; height: 100%; object-fit: cover; }
+
+.nome-loja {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.nome-loja h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-black);
+}
+.loja-locacoes {
+  font-size: 0.75rem;
+  color: 1F1B10;
+  margin-top: 2px;
+}
+
+/* Linha de avaliação da loja com badge "Locador Verificado" */
+.avaliacao-loja {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--color-verified);
+}
+.avaliacao-loja span {
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--color-gray-500);
+}
+
+.btn-ir-loja {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 33px;
+  height: 50px;
+
+  border: 2px solid #d2c8ab;
+  border-radius: 999px;
+
+  background: var(--color-white);
+
+  flex-shrink: 0;
+  text-decoration: none;
+
+  transition: all 0.2s ease;
+}
+.btn-ir-loja img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* ========================================
+   CARD GENÉRICO
+   Classe utilitária aplicada a seções que precisam
+   de fundo branco, borda arredondada e sombra.
+   ======================================== */
+.card-secao {
+  background: var(--color-bg-card);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+/* ========================================
+   SEÇÃO: DESCRIÇÃO DO PRODUTO
+   Expansível via JS — o botão .btn-expandir
+   controla a visibilidade do .descricao-conteudo.
+   ======================================== */
+.descricao-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-sm);
+}
+.descricao-cabecalho h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+/* Botão de expandir/recolher seções.
+   A classe ".aberto" mantém o SVG na posição padrão (apontando para cima).
+   Sem ".aberto", o SVG rotaciona 180° (apontando para baixo). */
+.btn-expandir {
+  padding: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform .2s;
+}
+.btn-expandir svg { transform: rotate(0deg); transition: transform .2s; }
+.btn-expandir:not(.aberto) svg { transform: rotate(180deg); }
+
+.descricao-conteudo p {
+  font-size: 0.9rem;
+  color: var(--color-text-dark);
+  line-height: 1.65;
+}
+
+/* overflow: hidden necessário para a animação de collapse funcionar corretamente */
+.descricao-conteudo,
+.especificacoes-conteudo {
+  overflow: hidden;
+}
+
+/* ========================================
+   SEÇÃO: ESPECIFICAÇÕES TÉCNICAS
+   Lista de definições (dt/dd) com separadores entre itens.
+   ======================================== */
+.especificacoes-produto {
+  /* herda card-secao */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+.especificacoes-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.especificacoes-cabecalho h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+.lista-especificacoes {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Cada par dt/dd em linha, com borda inferior como divisória */
+.lista-especificacoes > div {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-text-dark);
+  gap: var(--spacing-md);
+}
+.lista-especificacoes > div:last-child { border-bottom: none; }
+.lista-especificacoes dt {
+  font-size: 1rem;
+  color: var(--color-gray-500);
+  font-weight: 500;
+  flex: 1;
+}
+.lista-especificacoes dd {
+  font-size: 0.875rem;
+  color: var(--color-dark);
+  font-weight: 600;
+  text-align: right;
+  flex: 1;
+}
+
+/* ========================================
+   SEÇÃO: AVALIAÇÕES
+   ======================================== */
+.avaliacoes-produto {
+  padding: var(--spacing-md);
+  border-bottom: 8px solid var(--color-gray-100);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+.avaliacoes-produto > header h2 {
+  font-size: 1.725rem;
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+/* Resumo: nota geral (esq) + gráfico de barras (dir) */
+.avaliacoes-resumo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+.nota-geral {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.valor-nota {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-black);
+  line-height: 1;
+}
+.nota-geral p {
+  font-size: .75rem;
+  color: var(--color-gray-500);
+  white-space: nowrap;
+}
+
+/* Gráfico de barras: lista de 5 a 1 estrelas */
+.avaliacoes-grafico {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.avaliacoes-grafico li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.avaliacoes-grafico li > span {
+  font-size: .75rem;
+  color: var(--color-gray-500);
+  width: 8px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Barra de fundo cinza + preenchimento amarelo proporcional à nota */
+.barra-fundo {
+  flex: 1;
+  height: 6px;
+  background: var(--color-gray-300);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+.barra-preenchimento {
+  height: 100%;
+  background: var(--color-gold);
+  border-radius: var(--radius-full);
+}
+
+/* Larguras das barras por quantidade de estrelas (dados estáticos — ajustar ao integrar com backend) */
+.avaliacoes-grafico li:nth-child(1) .barra-preenchimento { width: 78%; }
+.avaliacoes-grafico li:nth-child(2) .barra-preenchimento { width: 15%; }
+.avaliacoes-grafico li:nth-child(3) .barra-preenchimento { width: 5%; }
+.avaliacoes-grafico li:nth-child(4) .barra-preenchimento { width: 1%; }
+.avaliacoes-grafico li:nth-child(5) .barra-preenchimento { width: 1%; }
+
+/* ── LISTA DE COMENTÁRIOS ── */
+.lista-comentarios {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+.comentario {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: var(--spacing-sm);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-gray-100);
+}
+.comentario:last-child { border-bottom: none; padding-bottom: 0; }
+
+/* Cabeçalho do comentário: avatar + nome + estrelas + data */
+.comentario-topo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+.comentario-topo > img {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: var(--color-gray-100); /* Placeholder enquanto a foto não carrega */
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.comentario-usuario { display: flex; flex-direction: column; gap: 1px; }
+.comentario-usuario h3 { font-size: 0.75rem; font-weight: 700; color: var(--color-black); }
+.comentario-usuario time { font-size: .75rem; color: var(--color-gray-500); }
+
+.comentario > p,
+.comentario-conteudo > p {
+  font-size: .85rem;
+  color: var(--color-gray-700);
+  line-height: 1.55;
+}
+
+/* Comentário com foto anexada: texto + imagem em coluna */
+.comentario-conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+.comentario-imagens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.comentario-imagens img {
+  width: 90px;
+  height: 90px;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+
+  flex-shrink: 0;
+}
+
+/* Feedback de utilidade: botão "Foi útil?" + contagem */
+.icone-fill{
+  display: none;
+}
+
+.btn-util.is-active .icone-outline {
+  display: none;
+}
+
+.btn-util.is-active .icone-fill {
+  display: block;
+}
+
+.feedback-util {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+.btn-util {
+  display: inline-flex; /* 'inline-flex' é mais semântico e seguro para botões que 'flex' */
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.875rem; /* Aumentado para 14px. .78rem (aprox 12px) dificulta a leitura (Acessibilidade) */
+  font-weight: 500; /* Um peso ligeiramente maior melhora o contraste do texto */
+  color: var(--color-gray-500);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-full);
+  padding: 6px 12px; /* Aumentando a área de clique para mobile */
+  background-color: transparent;
+  cursor: pointer;
+  outline: none; /* Remove bordas amarelas nativas/globais de focus */
+  transition: all 0.2s ease-in-out; /* Transição mais suave cobrindo background e transform */
+  -webkit-tap-highlight-color: transparent; /* Remove aquele quadrado azul/cinza ao clicar no mobile */
+}
+
+/* Tamanho do ícone */
+.btn-util img, 
+.btn-util svg {
+  width: 16px; 
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Agrupando Hover, Focus (Teclado) e o Estado Ativo (Clicado) */
+.btn-util:hover,
+.btn-util:focus-visible,
+.btn-util.is-active {
+  border-color: #D0C6AB;
+  color: #4D4732;
+  background-color: #FDFCF8; /* UX extra: um fundo muito sutil aumenta a percepção de clique/hover */
+}
+
+/* Feedback tátil exato no momento do clique (Mousedown) */
+.btn-util:active {
+  transform: scale(0.96);
+}
+
+.contagem-util {
+  font-size: 0.875rem; /* Consistência visual com o botão */
+  color: var(--color-gray-500);
+}
+
+/* Botão "Ver mais": revela comentários ocultos (.comentario--oculto) via JS */
+.btn-ver-mais {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  border: 1.5px solid var(--color-gray-300);
+  border-radius: var(--radius-full);
+  padding: 10px var(--spacing-xl);
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color .15s, color .15s;
+}
+.btn-ver-mais img { width: 10px; height: 6.17px; }
+
+/* Comentários ocultos por padrão — revelados pelo "Ver mais" via JS */
+.comentario--oculto { display: none; }
+
+/* ========================================
+   FERRAMENTAS SEMELHANTES
+   Mobile: grid de 2 colunas.
+   Desktop: grid de 4 colunas (via media query).
+   A versão "--topo" usa scroll horizontal no desktop.
+   ======================================== */
+.ferramentas-semelhantes {
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.ferramentas-semelhantes h3 {
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+/* Versão de topo (scroll horizontal): oculta no mobile, ativada no desktop */
+.ferramentas-semelhantes--topo {
+  display: none;
+}
+.ferramentas-semelhantes--rodape-desktop{
+  display: none;
+}
+
+/* Grid padrão: 2 colunas no mobile */
+.grid-produtos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.grid-produtos li { list-style: none; }
+
+/* Grade com scroll horizontal (usada na seção de topo do desktop) */
+.grid-produtos--scroll {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* Scroll suave em iOS */
+  padding-bottom: 8px;
+  scrollbar-width: none; /* Oculta scrollbar no Firefox */
+}
+.grid-produtos--scroll::-webkit-scrollbar { display: none; } /* Oculta scrollbar no Chrome/Safari */
+.grid-produtos--scroll li {
+  flex: 0 0 140px;
+  scroll-snap-align: start;
+}
+
+/* ── CARD DE PRODUTO ── */
+.card-produto {
+  border: 1px solid var(--color-gray-100);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .2s;
+  background: var(--color-bg-card);
+  box-sizing: border-box;
+}
+.card-produto:hover { box-shadow: var(--shadow-md); }
+
+/* Área da imagem do produto */
+.produto-foto {
+  background: var(--color-gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm);
+  height: 110px;
+}
+.produto-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Área de texto do card: nome, loja e rodapé */
+.produto-info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  height: 100%;
+}
+
+/* Título truncado em 2 linhas para manter a altura uniforme dos cards */
+.produto-info h3 {
+  font-size: 0.675rem;
+  font-weight: 700;
+  color: var(--color-black);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.produto-info > p {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.575rem;
+  color: var(--color-gray-500);
+}
+.produto-info > p img { width: 12px; height: 12px; }
+
+/* Rodapé do card: preço (esq) e avaliação (dir) */
+.produto-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 8px;
+  width: 100%;
+}
+
+/* Agrupamento de estrela + nota no rodapé do card */
+.avaliacao-card {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.avaliacao-card img {
+  width: 10px;
+  height: 10px;
+}
+
+.nota {
+  margin: 0;
+}
+
+.preco { 
+  font-size: 0.75rem; 
+  font-weight: 800;
+  color: var(--color-black); 
+}
+.preco span {
+  font-size: 0.6rem; 
+  font-weight: 400; 
+  color: var(--color-gray-500);
+}
+.nota { 
+  font-size: 0.7rem; 
+  font-weight: 700; 
+  color: var(--color-dark);
+}
+
+/* ========================================
+   BANNER LATERAL
+   Oculto no mobile; exibido na sidebar do desktop.
+   ======================================== */
+.banner-lateral {
+  display: none;
+}
+
+/* ========================================
+   WRAPPER DE 2 COLUNAS (desktop)
+   No mobile, comporta-se como coluna única.
+   O grid de 2 colunas é ativado no breakpoint 1024px.
+   ======================================== */
+.desktop-two-col {
+  display: flex;
+  flex-direction: column;
+}
+.col-principal {
+  display: flex;
+  flex-direction: column;
+}
+.col-lateral {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   BREAKPOINT: TABLET — 768px
+   Ajustes intermediários de tamanho e layout.
+   ============================================================ */
+@media (min-width: 768px) {
+
+  /* Gradiente de fundo mais suave no tablet */
+  .app {
+    background: linear-gradient(to bottom,
+      var(--color-primary) 0%,
+      var(--color-primary-light) 1.5%,
+      var(--color-primary-soft) 2.5%,
+      var(--color-bg-main) 3.5%);
+  }
+
+  .header-mobile {
+    padding: 20px 32px;
+    gap: 20px;
+  }
+
+  .barra-pesquisa-mobile {
+    height: 50px;
+  }
+
+  main {
+    padding: 16px 32px;
+  }
+
+  /* Carrossel mais alto no tablet */
+  .carrossel-item {
+    min-width: 100%;
+    aspect-ratio: unset; 
+    height: 300px; 
+    min-height: unset;
+    padding: 16px;
+  }
+    .carrossel-produto {
+    margin-bottom: 0;
+  }
+
+  .carrossel-item img {
+    max-height: 280px;
+  }
+
+  .descricao-produto h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .preco-produto,
+  .descricao-produto > p {
+    font-size: 1.6rem;
+  }
+
+  .acoes-produto {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  /* Grid de ferramentas semelhantes: 4 colunas no tablet */
+  .grid-produtos {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .grid-produtos--scroll li {
+    flex: 0 0 160px;
+  }
+
+  /* Ajustes de tamanho nos cards */
+  .produto-foto { height: 130px; }
+  .produto-foto img { max-height: 110px; }
+  .produto-info h3 { font-size: 0.75rem; }
+  .produto-info > p { font-size: 0.65rem; }
+  .preco { font-size: 0.65rem; }
+  .preco span { font-size: 0.65rem; }
+  .nota { font-size: 0.65rem; }
+
+  /* Seletores lado a lado com largura fixa — evita esticar ao infinito */
+  .container-seletores {
+    display: flex; 
+    justify-content: flex-start;
+    gap: 15px;
+    width: auto;
+  }
+  .seletor-item {
+    flex: none; 
+    width: 180px;
+  }
+  .select-wrapper { width: 180px; }
+  .select-wrapper select {
+    width: 100%;
+    padding: 0 35px 0 12px;
+  }
+  .controle-grupo {
+    width: 180px;
+  }
+
+  .avaliacoes-produto > header h2 {
+    font-size: 1.875rem;
+  }
+
+  /* Comentários em 2 colunas no tablet */
+  .lista-comentarios {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+  .comentario { width: 100%;}
+}
+
+/* ============================================================
+   BREAKPOINT: DESKTOP — 1024px
+   Layout principal de 2 colunas, nav desktop, sidebar e todos
+   os ajustes de escala para telas maiores.
+   ============================================================ */
+@media (min-width: 1024px) {
+
+  /* Gradiente mais suave e extendido no desktop */
+  .app {
+    background: linear-gradient(to bottom,
+      var(--color-primary) 0%,
+      var(--color-primary-light) 3%,
+      var(--color-primary-soft) 4.5%,
+      var(--color-bg-main) 6%);
+  }
+
+ 
+
+  /* ── HEADER DESKTOP ──
+     Reestrutura para linha única horizontal com altura fixa.
+  */
+  .header-mobile {
+    padding: 0 clamp(32px, 5vw, 80px);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height-desktop);
+    gap: 0;
+    position: static;
+    top: auto;
+    z-index: 100;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 1000;
+    white-space: nowrap;
+  }
+
+  /* Barra mobile oculta; barra desktop exibida */
+  .barra-pesquisa-mobile {
+    display: none;
+  }
+  .barra-pesquisa-desktop {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    max-width: 560px;
+    margin: 0 clamp(16px, 3vw, 40px);
+    height: 42px;
+    background: var(--color-white);
+    border-radius: var(--radius-full);
+    padding: 0 18px;
+    box-shadow: var(--shadow-sm);
+  }
+  .barra-pesquisa-desktop img {
+    width: 18px;
+    height: 18px;
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+  .barra-pesquisa-desktop input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: var(--color-text-dark);
+  }
+  .barra-pesquisa-desktop input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  /* Menu hamburguer: oculto no desktop */
+  .menu-btn {
+    display: none;
+  }
+
+  /* Botão de chat: exibido no desktop */
+  .btn-chat {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-chat img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  /* Ações do header com espaçamento maior no desktop */
+  .header-acoes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Ícone e badge do carrinho ocultos no desktop (navegação via nav-desktop) */
+  .carrinho-btn img, .quantidade-carrinho  {
+    display: none;
+  }
+
+  /* ── NAV DESKTOP ── */
+  .nav-desktop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    height: var(--nav-height-desktop);
+    padding: 0 clamp(32px, 5vw, 80px);  }
+  .nav-desktop ul {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: var(--max-width);
+    justify-content: center;
+  }
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 0.82rem;
+    font-weight: 900;
+    color: var(--color-dark);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  .nav-link img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  /* ── MAIN DESKTOP ── */
+  main {
+    padding: 32px clamp(32px, 5vw, 80px);
+    max-width: var(--max-width);
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HERO: GRID DE 2 COLUNAS ──
+     Coluna esquerda fixa em 420px (carrossel); direita flexível (info).
+  */
+  .produto-hero {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 40px;
+    align-items: start;
+    padding: 0 0 var(--spacing-xl);
+  }
+
+  /* ============= CARROSSEL ========== */
+.carrossel-produto {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin-bottom: 0;
+    align-self: start;
+  }
+
+  .carrossel-item {
+     min-width: 100%;
+    aspect-ratio: 1 / 1;
+    height: 500px;
+    padding: 10px;
+  }
+
+  .carrossel-item.ativo {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carrossel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+
+
+  /* Coluna de informações do produto alinhada à esquerda */
+  .produto-info-desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 ;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .descricao-produto {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .descricao-produto h1 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--color-black);
+    line-height: 1.1;
+    margin-top: -4px;
+  }
+
+  .preco-produto {
+    font-size: 1.75rem;
+    margin-top: 8px;
+  }
+
+  .voltagem {
+    padding: 10px 0;
+    gap: 12px;
+  }
+  .btn-voltagem {
+    font-size: 0.875rem;
+    padding: 8px 30px;
+    flex: 1;
+    max-width: 120px;
+  }
+
+  /* Seletores em linha, cada um ocupando metade do espaço disponível */
+  .container-seletores {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 0;
+  }
+  .seletor-item {
+    flex: 1;
+  }
+  .select-wrapper select {
+    width: 100%;
+    max-width: none;
+  }
+
+  /* Botões de ação empilhados, ocupando largura total da coluna */
+  .acoes-produto {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 20px;
+  }
+  .btn-locar,
+  .btn-adicionar-carrinho {
+    width: 100%;
+    max-width: 100%; 
+    height: 52px;
+    font-size: 1.1rem;
+  }
+
+  /* ── FERRAMENTAS SEMELHANTES — TOPO (scroll horizontal) ── */
+  .ferramentas-semelhantes--topo {
+    display: flex;
+    padding: 0 0 var(--spacing-xl);
+  }
+
+  .ferramentas-semelhantes--topo h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .grid-produtos--scroll {
+    gap: 14px;
+  }
+  .grid-produtos--scroll li {
+    flex: 0 0 150px;
+  }
+
+  /* Tamanho dos cards no scroll horizontal */
+  .grid-produtos--scroll .produto-foto { height: 120px; }
+  .grid-produtos--scroll .produto-foto img { max-height: 100px; }
+  .grid-produtos--scroll .produto-info h3 { font-size: 0.7rem; }
+  .grid-produtos--scroll .produto-info > p { font-size: 0.6rem; }
+  .grid-produtos--scroll .preco { font-size: 0.6rem; }
+  .grid-produtos--scroll .preco span { font-size: 0.6rem; }
+  .grid-produtos--scroll .nota { font-size: 0.6rem; }
+
+  /* ── LAYOUT DE 2 COLUNAS (col principal + sidebar) ── */
+  .desktop-two-col {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 32px;
+    width: 100%;
+    align-items: start;
+  }
+
+  /* ── CARD DA LOJA: troca mobile pela versão sidebar ── */
+  .loja-produto--mobile {
+    display: none;
+  }
+  .col-lateral .loja-produto {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top: none;
+    border-bottom: none;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+  }
+  .col-lateral .loja-produto .logo-loja {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 4px;
+    align-self: center;
+  }
+  .col-lateral .loja-produto .nome-loja {
+    align-self: stretch;
+  }
+  .col-lateral .loja-produto .btn-ir-loja {
+    align-self: center;
+  }
+
+  /* ── BANNER LATERAL ── */
+  .banner-lateral {
+    display: flex;
+    width: 100%;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    margin-top: var(--spacing-sm);
+    box-shadow: var(--card-shadow);
+  }
+  .img-banner-render {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── AVALIAÇÕES NO DESKTOP ── */
+  .avaliacoes-produto {
+    border-bottom: none;
+    border-radius: var(--card-radius);
+    background: var(--color-bg-card);
+    box-shadow: var(--card-shadow);
+    padding: var(--spacing-lg);
+  }
+
+  /* Comentários voltam para 1 coluna dentro da col principal */
+  .lista-comentarios {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+  .comentario {
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+
+  
+
+  /* ── FERRAMENTAS SEMELHANTES — RODAPÉ DESKTOP ── */
+
+
+.ferramentas-semelhantes--rodape-desktop {
+  display: flex;
+  padding: var(--spacing-xl) 0 0;
+}
+
+.ferramentas-semelhantes--rodape-desktop h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.ferramentas-semelhantes--rodape-desktop .grid-produtos {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+  /* ========================= VISIBILIDADE RODAPE MOBILE ========================= */
+  .ferramentas-semelhantes--rodape-mobile { display: none; }
+
+  /* Cards maiores no desktop */
+  .produto-foto { height: 140px; }
+  .produto-foto img { max-height: 120px; }
+  .produto-info h3 { font-size: 0.8rem; }
+  .produto-info > p { font-size: 0.7rem; }
+  .preco { font-size: 0.75rem; }
+  .preco span { font-size: 0.75rem; }
+  .nota { font-size: 0.75rem; }
+}
+
+/* ============================================================
+   BREAKPOINT: DESKTOP LARGO — 1280px
+   Pequenos ajustes para telas grandes: carrossel mais alto,
+   sidebar um pouco mais larga e cards de scroll maiores.
+   ============================================================ */
+@media (min-width: 1280px) {
+
+  /* Coluna do carrossel mais larga */
+  .produto-hero {
+    grid-template-columns: 500px 1fr;
+    gap: 56px;
+  }
+
+  .carrossel-item {
+    min-height: 380px;
+  }
+  .carrossel-item img {
+    max-height: 360px;
+  }
+
+  /* Sidebar ligeiramente mais larga */
+  .desktop-two-col {
+    grid-template-columns: 1fr 360px;
+    gap: 32px;
+  }
+
+  /* Cards do scroll horizontal maiores */
+  .grid-produtos--scroll li {
+    flex: 0 0 170px;
+  }
+  .grid-produtos--scroll .produto-foto { height: 130px; }
+  .grid-produtos--scroll .produto-foto img { max-height: 110px; }
+}
