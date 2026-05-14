@@ -4,11 +4,11 @@
 // Controla a navegação entre slides do produto.
 // Suporta: botões de seta, clique nos indicadores e swipe touch.
 const initCarrossel = () => {
-  const lista    = document.querySelector('.carrossel-lista');
-  const itens    = document.querySelectorAll('.carrossel-item');
+  const lista = document.querySelector('.carrossel-lista');
+  const itens = document.querySelectorAll('.carrossel-item');
   const circulos = document.querySelectorAll('.circulo');
   const btnAntes = document.querySelector('.btn-anterior');
-  const btnProx  = document.querySelector('.btn-proximo');
+  const btnProx = document.querySelector('.btn-proximo');
 
   // Aborta se o carrossel não existir na página
   if (!lista || itens.length === 0) return;
@@ -27,7 +27,7 @@ const initCarrossel = () => {
   };
 
   btnAntes?.addEventListener('click', () => irPara(indexAtual - 1));
-  btnProx?.addEventListener('click',  () => irPara(indexAtual + 1));
+  btnProx?.addEventListener('click', () => irPara(indexAtual + 1));
 
   // ── SWIPE TOUCH ──
   // Detecta a direção do arrasto e navega de acordo.
@@ -96,8 +96,8 @@ const initQuantidade = () => {
   const grupo = document.querySelector('.controle-grupo');
   if (!grupo) return;
 
-  const btnDecr   = grupo.querySelector('[data-action="decrement"]');
-  const btnIncr   = grupo.querySelector('[data-action="increment"]');
+  const btnDecr = grupo.querySelector('[data-action="decrement"]');
+  const btnIncr = grupo.querySelector('[data-action="increment"]');
   const valorSpan = grupo.querySelector('.controle-valor');
   const MIN = 1, MAX = 99;
   let quantidade = parseInt(valorSpan?.textContent, 10) || 1;
@@ -124,7 +124,7 @@ const initExpandiveis = () => {
   const secoes = document.querySelectorAll('.card-secao, .especificacoes-produto');
 
   secoes.forEach((secao) => {
-    const btn      = secao.querySelector('.btn-expandir');
+    const btn = secao.querySelector('.btn-expandir');
     const conteudo = secao.querySelector('.descricao-conteudo, .especificacoes-conteudo');
     if (!btn || !conteudo) return;
 
@@ -136,8 +136,8 @@ const initExpandiveis = () => {
     const aplicarEstado = (animado = false) => {
       if (animado) conteudo.style.transition = 'max-height 0.3s ease, opacity 0.3s ease';
       conteudo.style.maxHeight = aberto ? conteudo.scrollHeight + 'px' : '0';
-      conteudo.style.opacity   = aberto ? '1' : '0';
-      conteudo.style.overflow  = aberto ? 'visible' : 'hidden';
+      conteudo.style.opacity = aberto ? '1' : '0';
+      conteudo.style.overflow = aberto ? 'visible' : 'hidden';
       btn.classList.toggle('aberto', aberto);
       btn.setAttribute('aria-expanded', String(aberto));
     };
@@ -148,27 +148,46 @@ const initExpandiveis = () => {
 };
 
 // ==================== FEEDBACK "FOI ÚTIL" ====================
-// Permite ao usuário marcar um comentário como útil uma única vez por sessão.
-// Ao votar: destaca o botão, impede novo voto e incrementa o contador.
+// Permite marcar comentários como úteis.
+// Ao clicar:
+// - ativa estado visual
+// - impede múltiplos votos
+// - incrementa contador
+
 const initFeedbackUtil = () => {
+
   document.querySelectorAll('.btn-util').forEach((btn) => {
+
     btn.addEventListener('click', () => {
-      // Impede múltiplos votos no mesmo comentário
-      if (btn.dataset.votou === 'true') return;
 
-      btn.dataset.votou     = 'true';
-      btn.style.borderColor = 'var(--color-primary)';
-      btn.style.color       = 'var(--color-primary-dark)';
+      // Impede múltiplos votos
+      if (btn.classList.contains('is-active')) return;
 
-      // Extrai o número atual do texto e incrementa em 1
-      const contagem = btn.closest('.feedback-util')?.querySelector('.contagem-util');
-      if (contagem) {
-        const match = contagem.textContent.match(/\d+/);
-        if (match) contagem.textContent =
-          contagem.textContent.replace(/\d+/, parseInt(match[0], 10) + 1);
-      }
+      // Ativa estado visual
+      btn.classList.add('is-active');
+
+      // Busca contador relacionado
+      const feedbackContainer = btn.closest('.feedback-util');
+
+      if (!feedbackContainer) return;
+
+      const contagem =
+        feedbackContainer.querySelector('.contagem-util');
+
+      if (!contagem) return;
+
+      // Extrai número atual
+      const numeroAtual =
+        parseInt(contagem.textContent.match(/\d+/)?.[0] || 0, 10);
+
+      // Atualiza contador
+      contagem.textContent =
+        contagem.textContent.replace(/\d+/, numeroAtual + 1);
+
     });
+
   });
+
 };
 
 // ==================== VER MAIS COMENTÁRIOS ====================
