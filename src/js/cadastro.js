@@ -9,6 +9,12 @@ const documentoInput = document.getElementById("documento");
 const labelDocumento = document.getElementById("labelDocumento");
 
 
+window.addEventListener("DOMContentLoaded", () => {
+    atualizarTipoDocumento();
+});
+
+
+
 // Aplica máscara de CPF no formato 000.000.000-00
 function aplicarMascaraCPF(valor) {
 
@@ -239,18 +245,18 @@ function validarFormulario() {
 
 
 // Bloqueia envio do formulário se houver erro
-const form = document.querySelector("form");
+//const form = document.querySelector("form");
 
-form.addEventListener("submit", function (e) {
+// form.addEventListener("submit", function (e) {
 
-    const senhaForte = verificarForcaSenha(senha.value);
-    const senhasIguais = senha.value === confirmarSenha.value;
+//     const senhaForte = verificarForcaSenha(senha.value);
+//     const senhasIguais = senha.value === confirmarSenha.value;
 
-    if (!senhaForte || !senhasIguais) {
-        e.preventDefault();
-        validarFormulario();
-    }
-});
+//     if (!senhaForte || !senhasIguais) {
+//         e.preventDefault();
+//         validarFormulario();
+//     }
+// });
 
 
 // Atualiza validação enquanto digita
@@ -374,3 +380,48 @@ function validarTelefone() {
 
 // Valida ao sair do campo
 telefoneInput.addEventListener("blur", validarTelefone);
+
+const form = document.getElementById("formCadastro");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const tipoSelecionado = document.querySelector('input[name="tipo"]:checked').value;
+
+    const dados = {
+        nome: document.getElementById("nome").value,
+        email: document.getElementById("email").value,
+        senha: document.getElementById("senha").value,
+        confirmarSenha: document.getElementById("confirmarSenha").value,
+        telefone: document.getElementById("telefone").value.replace(/\D/g, ""),
+        documento: document.getElementById("documento").value.replace(/\D/g, ""),
+        tipoUsuario: tipoSelecionado === "locador" ? 2 : 1
+    };
+
+    console.log("ENVIANDO:", dados);
+
+    try {
+        const response = await fetch("https://localhost:7127/api/Cadastro/CriarUsuario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(dados)
+        });
+
+        const resData = await response.json();
+
+        console.log("RESPOSTA:", resData);
+
+        if (response.ok) {
+            alert("Conta criada com sucesso!");
+            window.location.href = "./login.html";
+        } else {
+            alert(JSON.stringify(resData));
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert("Erro ao conectar com a API");
+    }
+});
