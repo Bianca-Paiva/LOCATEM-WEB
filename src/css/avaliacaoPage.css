@@ -66,9 +66,8 @@
 ============================================================ */
 .content-area {
     width: 100%;
-    padding: 8px 18px 48px;
+    padding: 30px 18px 48px;
 }
-
 
 /* ============================================================
     TABS (Pendentes / Realizadas)
@@ -895,10 +894,6 @@
     /* App volta ao fluxo normal (block) — sem flex lateral */
     .app {
         display: block;
-    }
-
-    .menu-navegacao-desktop {
-        display: flex !important;
     }
 
     /* Área de conteúdo — agora ocupa largura total */

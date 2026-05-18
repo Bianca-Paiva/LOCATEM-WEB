@@ -19,9 +19,7 @@
     /* ============================= */
     --color-text-primary: #222;
     --color-text-secondary: #666;
-    --color-text-terciary: #555
-    --color-text-security: #777
-    --color-text-muted: #999;
+    --color-text-terciary: #555 --color-text-security: #777 --color-text-muted: #999;
     --color-text-dark: #000;
 
     /* ============================= */
@@ -47,49 +45,47 @@ body {
 .app {
     width: 100%;
     min-height: 100vh;
-
-    /* Gradiente do topo (identidade visual LOCATEM) */
     background: linear-gradient(to bottom,
             var(--color-primary) 0%,
-            var(--color-primary-light) 4%,
-            var(--color-primary-soft) 7%,
-            var(--color-bg-main) 10%);
+            var(--color-primary-light) 8.5%,
+            var(--color-primary-soft) 13.5%,
+            var(--color-bg-main) 17%);
 }
 
 /* ============================= */
 /* HEADER */
 /* ============================= */
-.topo {
-    padding: 14px 16px 30px;
+.header-desktop {
+    width: 100%;
+    padding: 15px 20px 24px;
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.linha-topo {
+.linha-topo-desktop {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 7px;
-
+    font-size: clamp(16px, 4.5vw, 20px);
+    font-weight: 800;
+    letter-spacing: -0.4px;
     color: var(--color-text-dark);
     text-decoration: none;
-
-    font-size: clamp(16px, 4vw, 20px);
-    /* Responsivo */
-    font-weight: 750;
-    letter-spacing: -0.5px;
 }
 
 .logo img {
-    height: 30px;
+    height: 28px;
     object-fit: contain;
-    /* Mantém proporção */
 }
 
 /* ============================= */
@@ -97,29 +93,17 @@ body {
 /* ============================= */
 
 main {
-    min-height: calc(100vh - 90px);
-    /* Ocupa toda a tela menos a altura do header */
-
+    padding: 0 16px 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     /* Centraliza o conteúdo verticalmente */
-
-    background-color: var(--color-bg-main);
 }
 
 /* ============================= */
 /* BLOCO SUPERIOR */
 /* ============================= */
-
-.topo {
-    text-align: center;
-    /* Centraliza textos */
-
-    margin-bottom: 35px;
-    /* Espaço entre o topo e o card */
-}
 
 .titulo {
     display: flex;
@@ -127,7 +111,7 @@ main {
     align-items: center;
     justify-content: center;
     font-size: 30px;
-    padding: 30px;
+    padding: 0 0 30px;
 }
 
 

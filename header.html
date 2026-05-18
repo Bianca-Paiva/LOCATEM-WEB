@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Familia tipografica Inter — usada em toda a interface -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,7 +13,7 @@
 
     <!-- Reset de estilos -->
     <link rel="stylesheet" href="./src/css/reset.css" />
-    <!-- Estilos exclusivos da pagina de carrinho -->
+    <!-- Estilos exclusivos do header -->
     <link rel="stylesheet" href="./src/css/header style/header.css" />
 
     <title>TESTE HEADER</title>
@@ -23,11 +22,10 @@
 <body>
     <div class="app">
 
-        <!-- ================================================================================================================= -->
+        <!-- =========================================================== -->
         <!-- SECAO: HEADER MOBILE   -->
         <!-- Exibido apenas em telas pequenas (controlado por CSS).  -->
-        <!-- Contem: botao de menu hamburguer, logo, icone de carrinho e barra de pesquisa dedicada (linha separada do topo).  -->
-        <!-- ================================================================================================================= -->
+        <!-- =========================================================== -->
         <header class="header-mobile">
             <div class="linha-topo-mobile">
                 <div class="lado-esquerdo">
@@ -58,68 +56,6 @@
                     aria-label="Pesquisar ferramentas" />
             </form>
         </header>
-
-        <!-- ============================================================ -->
-        <!-- SECAO: HEADER DESKTOP                                         -->
-        <!-- Exibido apenas em telas maiores (controlado por CSS).         -->
-        <!-- Contem: logo, barra de pesquisa central e botao de chat.      -->
-        <!-- ============================================================ -->
-        <header class="header-desktop">
-            <div class="linha-topo-desktop">
-                <!-- Logo clicavel — redireciona para a pagina principal -->
-                <a href="./principalPage.html" class="logo">
-                    <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
-                    LOCATEM
-                </a>
-
-                <!-- Barra de pesquisa central do desktop. -->
-                <form class="barra-pesquisa">
-                    <button type="submit" class="lupa-btn">
-                        <img src="./src/images/lupa.png" alt="Buscar" />
-                    </button>
-                    <input type="search" name="busca" placeholder="Qual ferramenta você precisa hoje?"
-                        aria-label="Pesquisar ferramentas" />
-                </form>
-
-                <!-- Botao de acesso ao chat de suporte (comportamento via JS) -->
-                <a href="./mensagens.html" class="chat">
-                    <img src="./src/images/chat.png" alt="Chat" />
-                </a>
-            </div>
-        </header>
-
-        <!-- ============================================================ -->
-        <!-- SECAO: NAVEGACAO LATERAL (DESKTOP)                            -->
-        <!-- Menu de navegacao principal visivel apenas no desktop.        -->
-        <!-- Cada link contem um icone + label de texto.                   -->
-        <!-- Links com href="#" sao placeholders — funcionalidade pendente. -->
-        <!-- ============================================================ -->
-        <nav class="menu-navegacao-desktop">
-            <a href="./principalPage.html">
-                <img src="./src/images/home.png" alt="Ícone Início" />Início
-            </a>
-            <a href="./carrinho.html">
-                <img src="./src/images/carrinho.svg" alt="Ícone Carrinho" />Carrinho
-            </a>
-            <a href="#">
-                <img src="./src/images/relogio.png" alt="Ícone Histórico" />Histórico
-            </a>
-            <a href="#">
-                <img src="./src/images/calendario.png" alt="Ícone Agendamento" />Agendamento
-            </a>
-            <a href="#">
-                <img src="./src/images/notificacoes.png" alt="Ícone Notificações" />Notificações
-            </a>
-            <a href="./avaliacaoPage.html">
-                <img src="./src/images/Star.png" alt="Ícone Avaliações" />Avaliações
-            </a>
-            <a href="#">
-                <img src="./src/images/suporte.png" alt="Ícone Suporte" />Suporte
-            </a>
-            <a href="./login.html">
-                <img src="./src/images/usuario.png" alt="Ícone Entrar" />Entrar
-            </a>
-        </nav>
 
         <!-- =================================== -->
         <!-- MENU LATERAL MOBILE -->
@@ -224,7 +160,6 @@
                         <img src="./src/images/usuario.png" alt="" />
                         Entrar
                     </a>
-
                 </nav>
 
                 <!-- ========================= -->
@@ -305,6 +240,68 @@
                 Sair da conta
             </a>
         </aside>
+
+
+        <!-- ======================================================== -->
+        <!-- SECAO: HEADER DESKTOP -->
+        <!-- Exibido apenas em telas maiores (controlado por CSS). -->
+        <!-- ======================================================== -->
+        <header class="header-desktop">
+            <div class="linha-topo-desktop">
+
+                <!-- Logo clicavel — redireciona para a pagina principal -->
+                <a href="./principalPage.html" class="logo">
+                    <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+                    LOCATEM
+                </a>
+
+                <!-- Barra de pesquisa central do desktop. -->
+                <form class="barra-pesquisa">
+                    <button type="submit" class="lupa-btn">
+                        <img src="./src/images/lupa.png" alt="Buscar" />
+                    </button>
+                    <input type="search" name="busca" placeholder="Qual ferramenta você precisa hoje?"
+                        aria-label="Pesquisar ferramentas" />
+                </form>
+
+                <a href="./mensagens.html" class="chat">
+                    <img src="./src/images/chat.png" alt="Chat" />
+                </a>
+            </div>
+        </header>
+
+        <!-- =========================================================== -->
+        <!-- SECAO: NAVEGACAO (DESKTOP) -->
+        <!-- Menu de navegacao principal visivel apenas no desktop. -->
+        <!-- Cada link contem um icone + label de texto. -->
+        <!-- Links com href="#" sao placeholders — funcionalidade pendente -->
+        <!-- =========================================================== -->
+        <nav class="menu-navegacao-desktop">
+            <a href="./principalPage.html">
+                <img src="./src/images/home.png" alt="Ícone Início" />Início
+            </a>
+            <a href="./carrinho.html">
+                <img src="./src/images/carrinho.svg" alt="Ícone Carrinho" />Carrinho
+            </a>
+            <a href="#">
+                <img src="./src/images/relogio.png" alt="Ícone Histórico" />Histórico
+            </a>
+            <a href="#">
+                <img src="./src/images/calendario.png" alt="Ícone Agendamento" />Agendamento
+            </a>
+            <a href="#">
+                <img src="./src/images/notificacoes.png" alt="Ícone Notificações" />Notificações
+            </a>
+            <a href="./avaliacaoPage.html">
+                <img src="./src/images/Star.png" alt="Ícone Avaliações" />Avaliações
+            </a>
+            <a href="#">
+                <img src="./src/images/suporte.png" alt="Ícone Suporte" />Suporte
+            </a>
+            <a href="./login.html">
+                <img src="./src/images/usuario.png" alt="Ícone Entrar" />Entrar
+            </a>
+        </nav>
 
     </div><!-- /app -->
 

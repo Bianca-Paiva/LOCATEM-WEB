@@ -44,9 +44,9 @@ body {
     min-height: 100vh;
     background: linear-gradient(to bottom,
             var(--color-primary) 0%,
-            var(--color-primary-light) 11.5%,
-            var(--color-primary-soft) 16.5%,
-            var(--color-bg-main) 20%);
+            var(--color-primary-light) 10.5%,
+            var(--color-primary-soft) 15.5%,
+            var(--color-bg-main) 19%);
 }
 
 /* ============================= */
@@ -61,12 +61,12 @@ body {
 
 /* ============================= */
 /* HEADER MOBILE                 */
-/* Layout principal para telas pequenas                         */
+/* Layout principal para telas pequenas */
 /* ============================= */
 
 .header-mobile {
     width: 100%;
-    padding: 18px var(--spacing-md) 28px;
+    padding: 18px 16px 38px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -603,7 +603,6 @@ body {
 }
 
 @media (min-width: 768px) {
-
     .app {
         width: 100%;
         min-height: 100vh;
@@ -675,19 +674,16 @@ body {
     .drawer-overlay {
         display: none !important;
     }
-    
 
+    /* ============================= */
+    /* HEADER DESKTOP                */
+    /* ============================= */
     .header-desktop {
         display: flex;
         flex-direction: column;
         width: 100%;
         padding: 20px 0 0;
     }
-
-
-    /* ============================= */
-    /* HEADER DESKTOP                */
-    /* ============================= */
 
     .linha-topo-desktop {
         display: flex;

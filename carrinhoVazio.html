@@ -1,154 +1,340 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"/>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    
-    <link rel="stylesheet" href="./src/css/reset.css" />
-    <link rel="stylesheet" href="./src/css/carrinhoVazio.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet" />
 
-    <title>LOCATEM</title>
-  </head>
 
-  <body>
-    <div class="app">
-      <!-- ============== -->
-      <!-- HEADER MOBILE -->
-      <!-- ============== -->
-      <header class="header-mobile">
-        <!-- LINHA SUPERIOR -->
-        <div class="linha-topo-mobile">
-          <!-- AGRUPAMENTO ESQUERDO -->
-          <div class="lado-esquerdo">
-            <button class="menu-btn">
-              <img src="./src/images/menuHamburguer.png" alt="Menu" />
-            </button>
+  <link rel="stylesheet" href="./src/css/reset.css" />
+  <link rel="stylesheet" href="./src/css/carrinhoVazio.css" />
+  <link rel="stylesheet" href="./src/css/header style/header.css" />
 
-            <a href="./principalPage.html" class="logo">
-              <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
-              LOCATEM
-            </a>
-          </div>
+  <title>LOCATEM</title>
+</head>
 
-          <!-- DIREITA -->
-          <a href="#" class="carrinho-btn">
-            <img src="./src/images/carrinho.svg" alt="Carrinho" />
-            <span class="quantidade-carrinho">2</span>
-          </a>
-        </div>
-
-        <!-- Barra de pesquisa -->
-        <form class="barra-pesquisa-mobile">
-          <img src="./src/images/lupa.png" alt="Buscar" />
-          <input
-            type="search"
-            placeholder="Qual ferramenta você precisa hoje?"
-            aria-label="Pesquisar ferramentas"
-          />
-        </form>
-      </header>
-
-      <!-- =============== -->
-      <!-- HEADER DESKTOP-->
-      <!-- =============== -->
-      <header class="header-desktop">
-        <div class="linha-topo-desktop">
-          <!-- Logo da LOCATEM com link para a página principal -->
-          <a href="./principalPage.html" class="logo">
-            <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+<body>
+  <div class="app">
+    <!-- =========================================================== -->
+    <!-- SECAO: HEADER MOBILE   -->
+    <!-- Exibido apenas em telas pequenas (controlado por CSS).  -->
+    <!-- =========================================================== -->
+    <header class="header-mobile">
+      <div class="linha-topo-mobile">
+        <div class="lado-esquerdo">
+          <!-- Botao que abre o menu lateral (drawer) em mobile -->
+          <button class="menu-btn" id="btnAbrirMenu" aria-label="Abrir menu lateral">
+            <img src="./src/images/menuHamburguer.png" alt="Ícone de menu hamburguer" />
+          </button>
+          <!-- Logo clicavel — redireciona para a pagina principal -->
+          <a href="./principalPage.html" class="logo" aria-label="Ir para página inicial da Locatem">
+            <img src="./src/images/LogoIcon.png" alt="Logo da LOCATEM" />
             LOCATEM
           </a>
-
-          <!-- Barra de pesquisa -->
-          <form class="barra-pesquisa">
-            <button type="submit" class="lupa-btn">
-              <img src="./src/images/lupa.png" alt="Buscar" />
-            </button>
-            <input
-              type="search"
-              placeholder="Qual ferramenta você precisa hoje?"
-              aria-label="Pesquisar ferramentas"
-            />
-          </form>
-
-          <!-- Botão de acesso ao chat -->
-          <button class="chat">
-            <img src="./src/images/chat.png" alt="Chat" />
-          </button>
         </div>
-      </header>
 
-      <!-- Nav desktop fica abaixo da linha superior -->
-      <nav class="menu-navegacao-desktop">
-        <a href="./principalPage.html">
-          <img src="./src/images/home.png" alt="Ícone Início" />
-          Início
+        <!-- Icone do carrinho com badge de quantidade.
+                    ATENCAO: valor hardcoded neste HTML de demonstracao. -->
+        <a href="./carrinho.html" class="carrinho-btn">
+          <img src="./src/images/carrinho.svg" alt="Carrinho" />
+          <span class="quantidade-carrinho">2</span>
         </a>
-        <a href="#">
-          <img src="./src/images/carrinho.png" alt="Ícone Carrinho" />
-          Carrinho
-        </a>
-        <a href="#">
-          <img src="./src/images/relogio.png" alt="Ícone Histórico" />
-          Histórico
-        </a>
-        <a href="#">
-          <img src="./src/images/calendario.png" alt="Ícone Agendamento" />
-          Agendamento
-        </a>
-        <a href="#">
-          <img src="./src/images/notificacoes.png" alt="Ícone Notificações" />
-          Notificações
-        </a>
-        <a href="#">
-          <img src="./src/images/Star.png" alt="Ícone Avaliações" />
-          Avaliações
-        </a>
-        <a href="#">
-          <img src="./src/images/suporte.png" alt="Ícone Suporte" />
-          Suporte
-        </a>
-        <a href="./login.html">
-          <img src="./src/images/usuario.png" alt="Ícone Entrar" />
-          Entrar
-        </a>
-      </nav>
+      </div>
 
-      <!-- ============== -->
-      <!-- MAIN MOBILE -->
-      <!-- ============== -->
-      <main class="main-mobile">
-        <div class="cabecalho">
-          <a href="./principalPage.html" class="icon-voltar">
-            <img src="./src/images/setaVoltar.png" alt="Ícone de seta para voltar"/>
+      <!-- Barra de pesquisa exclusiva do header mobile.
+                O input usa type="search" para ativar o botao de limpar nativo do navegador (X) em mobile. -->
+      <form class="barra-pesquisa-mobile">
+        <img src="./src/images/lupa.png" alt="Buscar" />
+        <input type="search" name="busca" placeholder="Qual ferramenta você precisa hoje?"
+          aria-label="Pesquisar ferramentas" />
+      </form>
+    </header>
+
+    <!-- =================================== -->
+    <!-- MENU LATERAL MOBILE -->
+    <!-- =================================== -->
+
+    <!-- Fundo escurecido -->
+    <div class="menu-lateral-overlay" id="menuLateralOverlay"></div>
+
+    <!-- Painel lateral -->
+    <aside class="menu-lateral" id="menuLateral" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+
+      <!-- Cabeçalho -->
+      <div class="menu-lateral-cabecalho">
+
+        <a href="./principalPage.html" class="menu-lateral-logo">
+          <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+          LOCATEM
+        </a>
+
+        <button class="menu-lateral-btn-fechar" id="btnFecharMenu" aria-label="Fechar menu">
+          ✕
+        </button>
+
+      </div>
+
+      <!-- =========================== -->
+      <!-- PERFIL DO USUÁRIO -->
+      <!-- =========================== -->
+
+      <a href="./perfil.html" class="menu-lateral-perfil" id="menuLateralPerfil">
+
+        <!-- Avatar -->
+        <img class="menu-lateral-perfil-avatar" src="./src/images/usuario.png" alt="Foto do usuário" />
+
+        <!-- Informações -->
+        <div class="menu-lateral-perfil-info">
+
+          <div class="menu-lateral-perfil-nome" id="menuLateralNome">
+            Olá, João!
+          </div>
+
+          <div class="menu-lateral-perfil-email" id="menuLateralEmail">
+            joao.silva@email.com
+          </div>
+
+          <div class="menu-lateral-perfil-badge">
+            Cliente desde 2023
+          </div>
+
+        </div>
+
+        <!-- Seta -->
+        <div class="menu-lateral-perfil-seta"></div>
+      </a>
+
+      <!-- =================================== -->
+      <!-- CONTEÚDO ROLÁVEL -->
+      <!-- =================================== -->
+
+      <div class="menu-lateral-conteudo">
+
+        <!-- Navegação -->
+        <nav class="menu-lateral-nav">
+
+          <a href="./principalPage.html" class="ativo">
+            <img src="./src/images/home.png" alt="" />
+            Início
           </a>
-          <h1>Carrinho</h1>
-        </div>
 
-        <section class="checkout-container">
-          <article class="card card-carrinho">
-            <img src="./src/images/carrinho2.png" alt="Icone Carrinho" />
+          <a href="./mensagens.html">
+            <img src="./src/images/chat.png" alt="" />
+            Chat
+          </a>
 
-            <div class="conteudo-carrinho">
-              <h2>Seu carrinho está vazio</h2>
-              <a href="./busca.html">Conferir Produtos</a>
-            </div>
-          </article>
+          <a href="#">
+            <img src="./src/images/relogio.png" alt="" />
+            Histórico
+          </a>
 
-          <aside class="card card-resumo">
-            <h3>Resumo do Pedido</h3>
-            <div class="linha-divisoria"></div>
-            <p>
-              Aqui você encontrará os valores da sua compra assim que adicionar produtos.
-            </p>
-          </aside>
+          <a href="#">
+            <img src="./src/images/calendario.png" alt="" />
+            Agendamento
+          </a>
+
+          <a href="#">
+            <img src="./src/images/notificacoes.png" alt="" />
+            Notificações
+          </a>
+
+          <a href="./avaliacaoPage.html">
+            <img src="./src/images/Star.png" alt="" />
+            Avaliações
+          </a>
+
+          <a href="#">
+            <img src="./src/images/suporte.png" alt="" />
+            Suporte
+          </a>
+
+          <!-- Apenas quando NÃO logado -->
+          <a href="./login.html" id="menuLateralItemEntrar">
+            <img src="./src/images/usuario.png" alt="" />
+            Entrar
+          </a>
+        </nav>
+
+        <!-- ========================= -->
+        <!-- ÁREA LOGADO -->
+        <!-- ========================= -->
+
+        <section class="menu-lateral-logado" id="menuLateralLogado">
+
+          <a href="#">
+            <img src="./src/images/usuario.png" alt="" />
+            Minha conta
+            <span class="menu-lateral-seta">›</span>
+          </a>
+
+          <a href="#">
+            <img src="./src/images/Star.png" alt="" />
+            Cupons e benefícios
+            <span class="menu-lateral-seta">›</span>
+          </a>
         </section>
-      </main>
-    </div>
-  </body>
+
+        <!-- =================== -->
+        <!-- CARDS -->
+        <!-- =================== -->
+
+        <div class="menu-lateral-cards">
+
+          <!-- Card chat -->
+          <a href="#" class="menu-lateral-card">
+
+            <div class="menu-lateral-card-icone">
+              <img src="./src/images/chatAmarelo.png" alt="" />
+            </div>
+
+            <div class="menu-lateral-card-texto">
+
+              <div class="menu-lateral-card-titulo">
+                Fale com a Locatem
+              </div>
+
+              <div class="menu-lateral-card-descricao">
+                Tire dúvidas ou peça ajuda pelo nosso chat
+              </div>
+            </div>
+
+            <div class="menu-lateral-card-seta">
+              ›
+            </div>
+          </a>
+
+          <!-- Card qualidade -->
+          <div class="menu-lateral-card">
+
+            <div class="menu-lateral-card-icone">
+              <img src="./src/images/verificadoAmarelo.png" alt="" />
+            </div>
+
+            <div class="menu-lateral-card-texto">
+
+              <div class="menu-lateral-card-titulo">
+                Equipamentos de qualidade
+              </div>
+
+              <div class="menu-lateral-card-descricao">
+                Segurança e confiança para o seu projeto
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================== -->
+      <!-- SAIR -->
+      <!-- ======================== -->
+
+      <a href="#" class="menu-lateral-sair" id="menuLateralSair">
+        <img src="./src/images/sair.svg" alt="" />
+        Sair da conta
+      </a>
+    </aside>
+
+
+    <!-- ======================================================== -->
+    <!-- SECAO: HEADER DESKTOP -->
+    <!-- Exibido apenas em telas maiores (controlado por CSS). -->
+    <!-- ======================================================== -->
+    <header class="header-desktop">
+      <div class="linha-topo-desktop">
+
+        <!-- Logo clicavel — redireciona para a pagina principal -->
+        <a href="./principalPage.html" class="logo">
+          <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+          LOCATEM
+        </a>
+
+        <!-- Barra de pesquisa central do desktop. -->
+        <form class="barra-pesquisa">
+          <button type="submit" class="lupa-btn">
+            <img src="./src/images/lupa.png" alt="Buscar" />
+          </button>
+          <input type="search" name="busca" placeholder="Qual ferramenta você precisa hoje?"
+            aria-label="Pesquisar ferramentas" />
+        </form>
+
+        <a href="./mensagens.html" class="chat">
+          <img src="./src/images/chat.png" alt="Chat" />
+        </a>
+      </div>
+    </header>
+
+    <!-- =========================================================== -->
+    <!-- SECAO: NAVEGACAO (DESKTOP) -->
+    <!-- Menu de navegacao principal visivel apenas no desktop. -->
+    <!-- Cada link contem um icone + label de texto. -->
+    <!-- Links com href="#" sao placeholders — funcionalidade pendente -->
+    <!-- =========================================================== -->
+    <nav class="menu-navegacao-desktop">
+      <a href="./principalPage.html">
+        <img src="./src/images/home.png" alt="Ícone Início" />Início
+      </a>
+      <a href="./carrinho.html">
+        <img src="./src/images/carrinho.svg" alt="Ícone Carrinho" />Carrinho
+      </a>
+      <a href="#">
+        <img src="./src/images/relogio.png" alt="Ícone Histórico" />Histórico
+      </a>
+      <a href="#">
+        <img src="./src/images/calendario.png" alt="Ícone Agendamento" />Agendamento
+      </a>
+      <a href="#">
+        <img src="./src/images/notificacoes.png" alt="Ícone Notificações" />Notificações
+      </a>
+      <a href="./avaliacaoPage.html">
+        <img src="./src/images/Star.png" alt="Ícone Avaliações" />Avaliações
+      </a>
+      <a href="#">
+        <img src="./src/images/suporte.png" alt="Ícone Suporte" />Suporte
+      </a>
+      <a href="./login.html">
+        <img src="./src/images/usuario.png" alt="Ícone Entrar" />Entrar
+      </a>
+    </nav>
+
+    <!-- ============== -->
+    <!-- MAIN MOBILE -->
+    <!-- ============== -->
+    <main class="main-mobile">
+      <div class="cabecalho">
+        <a href="./principalPage.html" class="icon-voltar">
+          <img src="./src/images/setaVoltar.png" alt="Ícone de seta para voltar" />
+        </a>
+        <h1>Carrinho</h1>
+      </div>
+
+      <section class="checkout-container">
+        <article class="card card-carrinho">
+          <img src="./src/images/carrinho2.png" alt="Icone Carrinho" />
+
+          <div class="conteudo-carrinho">
+            <h2>Seu carrinho está vazio</h2>
+            <a href="./busca.html">Conferir Produtos</a>
+          </div>
+        </article>
+
+        <aside class="card card-resumo">
+          <h3>Resumo do Pedido</h3>
+          <div class="linha-divisoria"></div>
+          <p>
+            Aqui você encontrará os valores da sua compra assim que adicionar produtos.
+          </p>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script src="./src/js/header.js"></script>
+</body>
+
 </html>

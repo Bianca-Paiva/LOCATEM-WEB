@@ -3,13 +3,6 @@
 /* ============================= */
 
 :root {
-    /* — Cores Principais — */
-    --color-primary: #FFCA00;
-    /* Cor principal da marca */
-    --color-primary-light: #ffe97a;
-    /* Variação mais clara (gradientes) */
-    --color-primary-soft: #fff6c7;
-    /* Fundo suave */
     --color-secondary: #f0c000c0;
     /* Hover / destaque */
 
@@ -22,8 +15,6 @@
     /* Fundo da área de imagem do card */
     --color-bg-placeholder: #ececec;
     /* Fundo do placeholder de imagem */
-    --color-bg-chat-hover: rgba(0, 0, 0, 0.13);
-    /* Hover do botão de chat */
 
     /* — Texto — */
     --color-text-dark: #111827;
@@ -51,10 +42,6 @@
     --color-arrow: #ffffff;
     /* Setas de navegação do banner */
 
-    /* — Barra de pesquisa — */
-    --color-search-focus-ring: rgba(255, 202, 0, 0.4);
-    /* Anel de foco */
-
     /* — Border Radius — */
     --radius-sm: 8px;
     --radius-md: 12px;
@@ -64,7 +51,6 @@
 
     /* — Sombras — */
     --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.09), 0 1px 2px rgba(0, 0, 0, 0.06);
-    --shadow-search: 0 1px 6px rgba(0, 0, 0, 0.12);
     --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.13);
 
     /* — Espaçamento base — */
@@ -108,164 +94,6 @@ img {
     BASE MOBILE (padrão — aplicado a qualquer largura)
     Projetado para ~320px e acima
 ===================================================================== */
-
-/* ============================= */
-/* APP WRAPPER                   */
-/* ============================= */
-
-.app {
-    width: 100%;
-    min-height: 100vh;
-    background: linear-gradient(to bottom,
-            var(--color-primary) 0%,
-            var(--color-primary-light) 5%,
-            var(--color-primary-soft) 9%,
-            var(--color-bg-main) 14%);
-}
-
-
-/* ============================= */
-/* HEADER DESKTOP (oculto no mobile) */
-/* ============================= */
-
-.header-desktop,
-.menu-navegacao-desktop {
-    display: none;
-}
-
-
-/* ============================= */
-/* HEADER MOBILE                 */
-/* Layout principal para telas pequenas                                  */
-/* ============================= */
-
-.header-mobile {
-    width: 100%;
-    padding: 18px var(--spacing-md) 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-/* Linha topo: hamburguer + logo + carrinho */
-.linha-topo-mobile {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-/* Agrupa botão menu + logo */
-.lado-esquerdo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-
-/* ============================= */
-/* LOGO                          */
-/* ============================= */
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-size: clamp(16px, 4.5vw, 20px);
-    font-weight: 800;
-    letter-spacing: -0.4px;
-    color: var(--color-text-dark);
-    text-decoration: none;
-}
-
-.logo img {
-    height: 28px;
-    object-fit: contain;
-}
-
-
-/* ============================= */
-/* BOTÕES DO HEADER              */
-/* ============================= */
-
-.menu-btn,
-.carrinho-btn {
-    width: 40px;
-    height: 40px;
-    border: none;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-.menu-btn img,
-.carrinho-btn img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-}
-
-/* Carrinho com badge */
-.carrinho-btn {
-    position: relative;
-    text-decoration: none;
-}
-
-/* Badge de quantidade */
-.quantidade-carrinho {
-    position: absolute;
-    top: -3px;
-    right: -3px;
-    min-width: 18px;
-    height: 18px;
-    padding: 0 4px;
-    border-radius: var(--radius-pill);
-    background-color: var(--color-secondary);
-    color: var(--color-text-dark);
-    font-size: 11px;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-/* ============================= */
-/* BARRA DE PESQUISA MOBILE      */
-/* ============================= */
-
-.barra-pesquisa-mobile {
-    width: 100%;
-    height: 43px;
-    background-color: var(--color-bg-card);
-    box-shadow: var(--shadow-search);
-    border-radius: var(--radius-pill);
-    padding: 0 var(--spacing-md);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.barra-pesquisa-mobile img {
-    width: 20px;
-    height: 20px;
-    opacity: 0.55;
-    flex-shrink: 0;
-}
-
-.barra-pesquisa-mobile input {
-    flex: 1;
-    border: none;
-    outline: none;
-    background: transparent;
-    color: var(--color-text-muted);
-    font-size: clamp(13px, 3.5vw, 15px);
-    font-family: inherit;
-}
-
 
 /* ============================= */
 /* BANNER                        */
@@ -538,28 +366,11 @@ main h2 {
 
 
 /* =====================================================================
-   BREAKPOINT — MOBILE PEQUENO (320px)
-   Ajustes de proporção para telas muito estreitas
-   ===================================================================== */
+    BREAKPOINT — MOBILE PEQUENO (320px)
+    Ajustes de proporção para telas muito estreitas
+===================================================================== */
 
 @media (min-width: 320px) {
-
-    .header-mobile {
-        padding: 16px 14px 24px;
-        gap: 15px;
-    }
-
-    .barra-pesquisa-mobile {
-        height: 35px;
-    }
-
-    .barra-pesquisa-mobile img {
-        width: 15px;
-        height: 15px;
-        opacity: 0.55;
-        flex-shrink: 0;
-    }
-
     section {
         padding: 0 14px 0;
     }
@@ -588,46 +399,11 @@ main h2 {
 
 
 /* =====================================================================
-   BREAKPOINT — TABLET (768px+)
-   Ajuste intermediário entre mobile e desktop
-   ===================================================================== */
+    BREAKPOINT — TABLET (768px+)
+    Ajuste intermediário entre mobile e desktop
+===================================================================== */
 
-@media (min-width: 768px) {
-
-    /* ============================= */
-    /* HEADER MOBILE                 */
-    /* ============================= */
-
-    .header-mobile {
-        padding: 20px 24px 30px;
-        gap: 20px;
-    }
-
-    .logo {
-        font-size: 20px;
-    }
-
-    .logo img {
-        height: 30px;
-    }
-
-    .barra-pesquisa-mobile {
-        height: 45px;
-        padding: 0 18px;
-    }
-
-    .barra-pesquisa-mobile img {
-        width: 20px;
-        height: 20px;
-        opacity: 0.55;
-        flex-shrink: 0;
-    }
-
-    .barra-pesquisa-mobile input {
-        font-size: 15px;
-    }
-
-
+@media (min-width: 768px) {   
     /* ============================= */
     /* BANNER                        */
     /* ============================= */
@@ -652,7 +428,6 @@ main h2 {
         height: 7px;
     }
 
-
     /* ============================= */
     /* MAIN                          */
     /* ============================= */
@@ -664,7 +439,6 @@ main h2 {
     main h2 {
         font-size: 22px;
     }
-
 
     /* ============================= */
     /* CATEGORIAS                    */
@@ -679,7 +453,6 @@ main h2 {
         padding: 8px 16px;
         font-size: 13px;
     }
-
 
     /* ============================= */
     /* GRID DE CARDS                 */
@@ -735,175 +508,6 @@ main h2 {
 ===================================================================== */
 
 @media (min-width: 1024px) {
-
-    /* ============================= */
-    /* APP WRAPPER — gradiente mais suave no desktop */
-    /* ============================= */
-
-    .app {
-        background: linear-gradient(to bottom,
-                var(--color-primary) 0%,
-                var(--color-primary-light) 8%,
-                var(--color-primary-soft) 12%,
-                var(--color-bg-main) 17%);
-    }
-
-
-    /* ============================= */
-    /* VISIBILIDADE — Desktop vs Mobile */
-    /* ============================= */
-
-    .header-mobile {
-        display: none;
-    }
-
-    .header-desktop {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        padding: 20px 0 0;
-    }
-
-
-    /* ============================= */
-    /* HEADER DESKTOP                */
-    /* ============================= */
-
-    .linha-topo-desktop {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        max-width: 1360px;
-        margin: 0 auto;
-        padding: 0 var(--spacing-xl);
-    }
-
-    .logo {
-        font-size: clamp(20px, 1.5vw, 26px);
-        font-weight: 800;
-        flex-shrink: 0;
-    }
-
-    .logo img {
-        height: 32px;
-    }
-
-    /* Barra de pesquisa desktop */
-    .barra-pesquisa {
-        flex: 1;
-        max-width: 900px;
-        height: 35px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        background: var(--color-bg-card);
-        border-radius: var(--radius-pill);
-        padding: 0 var(--spacing-md);
-        margin: 0 var(--spacing-lg);
-        box-shadow: var(--shadow-search);
-        transition: box-shadow var(--transition-fast);
-    }
-
-    .barra-pesquisa:focus-within {
-        box-shadow: 0 0 0 3px var(--color-search-focus-ring), var(--shadow-search);
-    }
-
-    .barra-pesquisa button {
-        border: none;
-        background: none;
-        display: flex;
-        align-items: center;
-        flex-shrink: 0;
-        padding: 0;
-    }
-
-    .barra-pesquisa img {
-        width: 18px;
-        height: 18px;
-        opacity: 0.5;
-    }
-
-    .barra-pesquisa input {
-        flex: 1;
-        border: none;
-        outline: none;
-        background: transparent;
-        font-size: clamp(14px, 1vw, 16px);
-        color: var(--color-text-dark);
-    }
-
-    .barra-pesquisa input::placeholder {
-        color: var(--color-text-muted);
-    }
-
-    /* Botão de chat */
-    .chat {
-        width: clamp(38px, 3vw, 46px);
-        height: clamp(38px, 3vw, 46px);
-        border-radius: 50%;
-        border: none;
-        background: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        transition: background var(--transition-fast);
-        text-decoration: none;
-    }
-
-    .chat:hover {
-        background: var(--color-bg-chat-hover);
-    }
-
-    .chat img {
-        width: 55%;
-        height: 55%;
-        object-fit: contain;
-    }
-
-
-    /* ============================= */
-    /* NAVEGAÇÃO DESKTOP             */
-    /* ============================= */
-
-    .menu-navegacao-desktop {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: clamp(14px, 2vw, 40px);
-        padding: 16px var(--spacing-xl) 4px;
-        width: 100%;
-        max-width: 1360px;
-        margin: 0 auto;
-    }
-
-    .menu-navegacao-desktop a {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: clamp(13px, 0.95vw, 16px);
-        font-weight: 600;
-        color: var(--color-text-dark);
-        text-decoration: none;
-        padding: 4px 2px;
-        border-bottom: 2px solid transparent;
-        transition: border-color var(--transition-fast), color var(--transition-fast);
-    }
-
-    .menu-navegacao-desktop a:hover {
-        border-color: var(--color-text-dark);
-    }
-
-    .menu-navegacao-desktop img {
-        width: 18px;
-        height: 18px;
-        object-fit: contain;
-        opacity: 0.8;
-    }
-
-
     /* ============================= */
     /* BANNER DESKTOP                */
     /* ============================= */

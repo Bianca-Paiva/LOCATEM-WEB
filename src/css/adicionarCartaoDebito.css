@@ -10,6 +10,7 @@
   --color-bg-main: #F9FAFB;
   --color-bg-card: #ffffff;
   --color-bg-input-erro: #fff5f7;
+  --color-bg-chat-hover: rgba(0, 0, 0, 0.13);
 
   /* TEXTOS */
   --color-text-primary: #0A0A0A;
@@ -33,6 +34,9 @@
   --radius-card: 16px;
   --radius-input: 10px;
   --radius-btn: 8px;
+
+  /* — Transições — */
+    --transition-fast: 0.18s ease;
 }
 
 /* ============================= */
@@ -43,7 +47,6 @@ body {
   color: var(--color-text-primary);
 }
 
-/* GRADIENTE AMARELO */
 /* GRADIENTE AMARELO */
 .app {
   width: 100%;
@@ -58,7 +61,7 @@ body {
 /* ============================= */
 /* HEADER */
 /* ============================= */
-.header {
+.header-desktop {
   width: 100%;
   padding: 15px 20px 24px;
   display: flex;
@@ -66,43 +69,53 @@ body {
   justify-content: space-between;
 }
 
+.linha-topo-desktop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
 .logo {
   display: flex;
   align-items: center;
   gap: 7px;
-
+  font-size: clamp(16px, 4.5vw, 20px);
+  font-weight: 800;
+  letter-spacing: -0.4px;
   color: var(--color-text-dark);
   text-decoration: none;
-
-  font-size: clamp(16px, 4vw, 20px);
-  /* Responsivo */
-  font-weight: 750;
-  letter-spacing: -0.5px;
 }
 
 .logo img {
-  height: 30px;
+  height: 28px;
   object-fit: contain;
-  /* Mantém proporção */
 }
 
+/* Botão de chat */
 .chat {
-  background: transparent;
-  border: 2px solid var(--color-text-dark);
+  width: clamp(38px, 3vw, 46px);
+  height: clamp(38px, 3vw, 46px);
   border-radius: 50%;
-  width: clamp(36px, 3vw, 48px);
-  height: clamp(36px, 3vw, 48px);
+  border: none;
+  background: none;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  cursor: pointer;
-  border: none;
+  transition: background var(--transition-fast);
+  text-decoration: none;
+}
+
+.chat:hover {
+  background: var(--color-bg-chat-hover);
 }
 
 .chat img {
-  width: 60%;
-  height: 60%;
+  width: 55%;
+  height: 55%;
   object-fit: contain;
 }
 
