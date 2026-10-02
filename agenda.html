@@ -13,185 +13,192 @@
     <link rel="stylesheet" href="./src/css/reset.css">
     <link rel="stylesheet" href="./src/css/header style/header.css">
     <link rel="stylesheet" href="./src/css/agenda.css">    
-    
 </head>
+
 <body>
 
-    <div class="app">
+<div class="app">
 
-      
-        <!-- ============== -->
-        <!-- HEADER MOBILE -->
-        <!-- ============== -->
-        <header class="header-mobile">
-            <!-- LINHA SUPERIOR -->
-            <div class="linha-topo-mobile">
-                <!-- AGRUPAMENTO ESQUERDO -->
-                <div class="lado-esquerdo">
-                    <button class="menu-btn">
-                        <img src="./src/images/menuHamburguer.png" alt="Menu" />
-                    </button>
+<!-- HEADER MOBILE -->
+<header class="header-mobile">
+    <div class="linha-topo-mobile">
 
-                    <a href="./principalPage.html" class="logo">
-                        <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
-                        LOCATEM
-                    </a>
-                </div>
+        <div class="lado-esquerdo">
+            <button class="menu-btn">
+                <img src="./src/images/menuHamburguer.png" alt="Menu" />
+            </button>
 
-                <!-- DIREITA -->
-                <a href="#" class="carrinho-btn">
-                    <img src="./src/images/carrinho.svg" alt="Carrinho" />
-                    <span class="quantidade-carrinho">2</span>
-                </a>
-            </div>
+            <a href="./principalPage.html" class="logo">
+                <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+                LOCATEM
+            </a>
+        </div>
 
-            <!-- Barra de pesquisa -->
-            <form class="barra-pesquisa-mobile" id="searchFormMobile">
+        <a href="#" class="carrinho-btn">
+            <img src="./src/images/carrinho.svg" alt="Carrinho" />
+            <span class="quantidade-carrinho">2</span>
+        </a>
+
+    </div>
+
+    <form class="barra-pesquisa-mobile">
+        <img src="./src/images/lupa.png" alt="Buscar" />
+        <input type="search" placeholder="Qual ferramenta você precisa hoje?" />
+    </form>
+</header>
+
+<!-- HEADER DESKTOP -->
+<header class="header-desktop">
+    <div class="linha-topo-desktop">
+
+        <a href="./principalPage.html" class="logo">
+            <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+            LOCATEM
+        </a>
+
+        <form class="barra-pesquisa">
+            <button type="submit" class="lupa-btn">
                 <img src="./src/images/lupa.png" alt="Buscar" />
-                <input type="search" placeholder="Qual ferramenta você precisa hoje?"
-                    aria-label="Pesquisar ferramentas" 
-                    id="searchInputMobile"/>
-            </form>
-        </header>
+            </button>
+            <input type="search" placeholder="Qual ferramenta você precisa hoje?" />
+        </form>
 
-        <!-- =============== -->
-        <!-- HEADER DESKTOP-->
-        <!-- =============== -->
-        <header class="header-desktop">
-            <div class="linha-topo-desktop">
-                <!-- Logo da LOCATEM com link para a página principal -->
-                <a href="./principalPage.html" class="logo">
-                    <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
-                    LOCATEM
-                </a>
+        <a href="./mensagens.html" class="chat">
+            <img src="./src/images/chat.png" alt="Chat" />
+        </a>
 
-                <!-- Barra de pesquisa -->
-                <form class="barra-pesquisa" id="searchForm">
-                    <button type="submit" class="lupa-btn">
-                        <img src="./src/images/lupa.png" alt="Buscar" />
-                    </button>
-                    <input type="search" placeholder="Qual ferramenta você precisa hoje?"
-                        aria-label="Pesquisar ferramentas" id="searchInput" />
-                </form>
+    </div>
+</header>
 
-                <!-- Botão de acesso ao chat -->
-                <a href="./mensagens.html" class="chat">
-                    <img src="./src/images/chat.png" alt="Chat" />
-                </a>
-            </div>
-        </header>
-        <section name="area-Agenda">
-            <div class="tituloPage">
-               
-                <h1>Agenda</h1>
-                <h2>Acompanhe suas Locações e prazos de devoluções</h2>
-            </div>
-            <div class="area-calendario">
-                </div>
-                
-                    <div class="estrutura-agenda">
-                       
-                        <button id="prev">‹</button>
-                        <div class="calendario-montado">
+<!-- CONTEÚDO -->
+<main class="conteudo">
 
-                            <div class="header-calendario">
-                                 <h2 id="mes" class="mes"> </h2>
-                                <div class="defi-marcacao">
-                                    <span class="marcacao-atual">Hoje</span> 
-                                    <span class="marcacao-devol">Devolução</span>                     
-                                </div>
-                            </div>
-                            <div class="calendario">
-                                <div class="week-days">
-                                        <span>DOM</span>
-                                        <span>SEG</span>
-                                        <span>TER</span>
-                                        <span>QUA</span>
-                                        <span>QUI</span>
-                                        <span>SEX</span>
-                                        <span>SAB</span>
-                                </div>
-                                <div class="days" id="days"></div>
-                            </div>           
-                        </div>
-                          
-                                  
-                        <button id="next">›</button>
-                    </div>              
-                
-                </div>
-            </div>
-        </section>
-        <section name="area-locacoes">
-            <div class="ferramentas">
-                <h2>Minhas Locações</h2>
-                <div class="grid-produtos">
-                    <div class="anuncios">
-                        <ul>
-                           <li class="anuncio-card">
-                                    <div class="card-img">
-                                        <img src="./src//images/Furadeira2.webp" alt="Furadeira Bosch">
-                                    </div>
+    <!-- HEADER DA PÁGINA -->
+    <section class="cabecalho-pagina">
+        <h1>Agenda</h1>
+        <p>Acompanhe suas locações e prazos de devoluções</p>
+    </section>
 
-                                    <div class="card-info">
-                                        <h3>Furadeira De Impacto Bosch GSB 450 RE 450W 10mm Com Brocas e Buchas</h3>
-                                        <div class="proprietario">
-                                            <h4>WZ Ferramentas</h4>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                                class="bi bi-patch-check-fill" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
-                                            </svg>
-                                        </div>
-                                        <p>R$30,00<span>/dia</span></p>
-                                    </div>
-                             </li>
-                             <li class="anuncio-card">
-                                    <div class="card-img">
-                                        <img src="./src//images/Furadeira2.webp" alt="Furadeira Bosch">
-                                    </div>
+    <!-- LAYOUT PRINCIPAL (NOVO) -->
+    <div class="container-principal">
 
-                                    <div class="card-info">
-                                        <h3>Furadeira De Impacto Bosch GSB 450 RE 450W 10mm Com Brocas e Buchas</h3>
-                                        <div class="proprietario">
-                                            <h4>WZ Ferramentas</h4>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                                class="bi bi-patch-check-fill" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
-                                            </svg>
-                                        </div>
-                                        <p>R$30,00<span>/dia</span></p>
-                                    </div>
-                             </li>
-                             <li class="anuncio-card">
-                                    <div class="card-img">
-                                        <img src="./src//images/Furadeira2.webp" alt="Furadeira Bosch">
-                                    </div>
+        <!-- CALENDÁRIO -->
+        <section class="secao-calendario">
 
-                                    <div class="card-info">
-                                        <h3>Furadeira De Impacto Bosch GSB 450 RE 450W 10mm Com Brocas e Buchas</h3>
-                                        <div class="proprietario">
-                                            <h4>WZ Ferramentas</h4>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                                class="bi bi-patch-check-fill" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
-                                            </svg>
-                                        </div>
-                                        <p>R$30,00<span>/dia</span></p>
-                                    </div>
-                             </li>
-                             
-                        </ul>
+            <div class="topo-calendario">
+
+                <h2 id="mes"></h2>
+
+                <div class="legendas">
+
+                    <div class="legenda">
+                        <span class="cor-legenda azul"></span>
+                        <p>Hoje</p>
                     </div>
+
+                    <div class="legenda">
+                        <span class="cor-legenda amarelo"></span>
+                        <p>Devolução</p>
+                    </div>
+
                 </div>
+
             </div>
-            
+
+            <div class="calendario">
+
+                <div class="dias-semana">
+                    <div>DOM</div>
+                    <div>SEG</div>
+                    <div>TER</div>
+                    <div>QUA</div>
+                    <div>QUI</div>
+                    <div>SEX</div>
+                    <div>SAB</div>
+                </div>
+
+                <!-- NÃO MEXI NO JS -->
+                <div id="days" class="grid-dias"></div>
+
+            </div>
+
+        </section>
+
+        <!-- LOCAÇÕES -->
+        <section class="secao-locacoes">
+
+            <h2>Minhas Locações</h2>
+
+            <div class="grid-cards">
+
+                <!-- CARD 1 -->
+                <article class="card-locacao">
+                    <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=800" />
+                    <div class="conteudo-card">
+                        <h3>Parafusadeira e Furadeira</h3>
+                        <p class="localizacao">📍 São Paulo, SP</p>
+                        <p class="devolucao">
+                            Devolver até:
+                            <span class="texto-critico">21/11/2026</span>
+                        </p>
+                        <div class="barra-container">
+                            <div class="barra critico"></div>
+                        </div>
+                        <p class="texto-critico">2 dias para devolução</p>
+                    </div>
+                </article>
+
+                <!-- CARD 2 -->
+                <article class="card-locacao">
+                    <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=800" />
+                    <div class="conteudo-card">
+                        <h3>Kit Ferramentas</h3>
+                        <p class="localizacao">📍 São Paulo, SP</p>
+                        <p class="devolucao">
+                            Devolver até:
+                            <span class="texto-alerta">24/11/2026</span>
+                        </p>
+                        <div class="barra-container">
+                            <div class="barra alerta"></div>
+                        </div>
+                        <p class="texto-alerta">7 dias para devolução</p>
+                    </div>
+                </article>
+
+                <!-- CARD 3 -->
+                <article class="card-locacao">
+                    <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=800" />
+                    <div class="conteudo-card">
+                        <h3>Furadeira Industrial</h3>
+                        <p class="localizacao">📍 São Paulo, SP</p>
+                        <p class="devolucao">
+                            Devolver até:
+                            <span class="texto-normal">30/11/2026</span>
+                        </p>
+                        <div class="barra-container">
+                            <div class="barra normal"></div>
+                        </div>
+                        <p class="texto-normal">15 dias para devolução</p>
+                    </div>
+                </article>
+
+                <!-- CARD ADICIONAR -->
+                <article class="card-adicionar">
+                    <div class="icone-adicionar">+</div>
+                    <p>Alugar nova ferramenta</p>
+                </article>
+
+            </div>
+
         </section>
 
     </div>
+
+</main>
+
+<script src="./src/js/agenda.js"></script>
+
+</div>
+
 </body>
 </html>
-<script src="./src/js/agenda.js"></script>
-<script src="./src/js/busca.js"></script>

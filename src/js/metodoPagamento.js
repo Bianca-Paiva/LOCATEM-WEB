@@ -145,9 +145,9 @@ function processarContinuarPagamento() {
 
     // Mapeamento de método → rota de destino
     const rotas = {
-        credito: '/selecionarCartao.html',
-        debito: '/selecionarCartao.html',
-        pix: '/pagamentoPix.html'
+        credito: './selecionarCartao.html',
+        debito: './selecionarCartao.html',
+        pix: './pagamentoPix.html'
     };
 
     const destino = rotas[metodo];
