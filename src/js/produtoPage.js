@@ -264,7 +264,6 @@ const parametros = new URLSearchParams(window.location.search);
 
 const id = parametros.get('id');
 
-console.log(id);
 
 // ==================== INICIALIZAÇÃO ====================
 // Chama todos os módulos em sequência.

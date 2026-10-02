@@ -655,7 +655,7 @@ function renderizarLinhaDesconto(desconto) {
     @param {Element[]} cardsRestantes - array de cards ainda presentes no DOM */
 function verificarCarrinhoVazio(cardsRestantes) {
     if (cardsRestantes.length === 0) {
-        window.location.href = '/carrinhoVazio.html';
+        window.location.href = './carrinhoVazio.html';
     }
 }
 
@@ -1503,7 +1503,7 @@ function handleContinuarPagamento() {
 
     /* Todas as validacoes passaram — limpa erros e redireciona */
     setCepErro(false);
-    window.location.href = '/metodoPagamento.html';
+    window.location.href = './metodoPagamento.html';
 }
 
 
@@ -1535,8 +1535,6 @@ document.addEventListener('DOMContentLoaded', () => {
     verificarCarrinhoVazio(getTodosCards());
 
     /* Confirmacao no console de que a inicializacao ocorreu com sucesso */
-    console.log('[LOCATEM] Carrinho inicializado ✓');
-    console.log('Cupons disponíveis:', Object.keys(CUPONS).join(', '));
 });
 
 

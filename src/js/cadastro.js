@@ -398,7 +398,6 @@ form.addEventListener("submit", async (e) => {
         tipoUsuario: tipoSelecionado === "locador" ? 2 : 1
     };
 
-    console.log("ENVIANDO:", dados);
 
     try {
         const response = await fetch("https://localhost:7127/api/Cadastro/CriarUsuario", {
@@ -411,7 +410,6 @@ form.addEventListener("submit", async (e) => {
 
         const resData = await response.json();
 
-        console.log("RESPOSTA:", resData);
 
         if (response.ok) {
             alert("Conta criada com sucesso!");

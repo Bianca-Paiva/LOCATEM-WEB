@@ -220,8 +220,8 @@ function adicionarNovoCartao() {
 
     // Rotas de cadastro conforme o tipo do cartão
     const rotasCadastro = {
-        credito : '/adicionarCartaoCredito.html',
-        debito  : '/adicionarCartaoDebito.html'
+        credito : './adicionarCartaoCredito.html',
+        debito  : './adicionarCartaoDebito.html'
     };
 
     const destino = rotasCadastro[metodoPagamento];
@@ -254,8 +254,8 @@ function obterRadioSelecionado() {
     * Mapeamento de método de pagamento para a rota de destino.
 */
 const rotasPorMetodo = {
-    credito : '/processandoPagamento.html',
-    debito  : '/processandoPagamento.html'
+    credito : './processandoPagamento.html',
+    debito  : './processandoPagamento.html'
 };
 
 /**
