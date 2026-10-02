@@ -17,3 +17,46 @@ eyeBtn.addEventListener("click", () => {
     // (ex: mostrar olho aberto ou fechado)
     eyeBtn.classList.toggle("active");
 });
+
+const form = document.getElementById("formLogin");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
+
+    const dados = {
+        email: email,
+        senha: senha
+    };
+
+    try {
+        const response = await fetch("https://localhost:7127/api/Login/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(dados)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            // salva token
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("nome", data.nome);
+
+            alert("Login realizado com sucesso!");
+
+            window.location.href = "./principalPage.html";
+
+        } else {
+            alert(data.mensagem || "Erro ao fazer login");
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert("Erro ao conectar com o servidor");
+    }
+});

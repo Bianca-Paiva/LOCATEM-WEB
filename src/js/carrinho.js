@@ -105,33 +105,33 @@ const refs = {};
 function inicializarRefs() {
     /* Referências ao painel de resumo do pedido */
     refs.elSubtotal = document.querySelector('.resumo-linha strong');      // exibe o subtotal
-    refs.elTotal    = document.querySelector('.resumo-total strong');      // exibe o total final
+    refs.elTotal = document.querySelector('.resumo-total strong');      // exibe o total final
     refs.elFreteTopo = document.querySelector('.resumo-frete-topo');       // exibe o valor do frete
-    refs.cardResumo  = document.querySelector('.card-resumo');             // painel inteiro do resumo
+    refs.cardResumo = document.querySelector('.card-resumo');             // painel inteiro do resumo
 
     /* Campos de entrada */
-    refs.inputCep   = document.querySelector('.input-cep');               // input de CEP
+    refs.inputCep = document.querySelector('.input-cep');               // input de CEP
     refs.inputCupom = document.querySelector('.input-cupom');             // input de cupom
 
     /* Botoes da sidebar */
-    refs.btnUsar      = document.querySelector('.btn-usar');              // calcula frete
-    refs.btnAplicar   = document.querySelector('.btn-aplicar');           // aplica cupom
-    refs.btnRemover   = document.querySelector('.btn-remover-cupom');     // remove cupom ativo
+    refs.btnUsar = document.querySelector('.btn-usar');              // calcula frete
+    refs.btnAplicar = document.querySelector('.btn-aplicar');           // aplica cupom
+    refs.btnRemover = document.querySelector('.btn-remover-cupom');     // remove cupom ativo
     refs.btnContinuar = document.querySelector('.btn-continuar');         // avança para pagamento
 
     /* Container pai de todos os produtos (ponto de delegação de eventos) */
     refs.colunaProdutos = document.querySelector('.coluna-produtos');
 
     /* Região de toast global de acessibilidade */
-    refs.avisoGlobal    = document.getElementById('aviso-global');
+    refs.avisoGlobal = document.getElementById('aviso-global');
 
     /* Container e mensagem de erro/sucesso do campo de CEP */
     refs.campoCep = document.querySelector('.campo-cep');
-    refs.erroCep  = document.getElementById('erro-cep');
+    refs.erroCep = document.getElementById('erro-cep');
 
     /* Container e mensagem de erro/sucesso do campo de cupom */
     refs.campoCupom = document.querySelector('.campo-cupom');
-    refs.erroCupom  = document.getElementById('erro-cupom');
+    refs.erroCupom = document.getElementById('erro-cupom');
 }
 
 
@@ -356,6 +356,96 @@ const getTodosCards = () =>
     6. RENDERIZACAO
 ======================================================== */
 
+// Dentro de carrinho.js
+
+/**
+ * Lê o carrinho do localStorage e injeta os cards no DOM.
+ * Se não houver itens salvos, mantém os cards hardcoded do HTML
+ * (útil para desenvolvimento).
+ */
+function renderizarCarrinhoDoStorage() {
+    const itens = lerCarrinho();
+    if (!itens.length) return; // Sem dados: usa o HTML estático
+
+    const coluna = document.querySelector('.coluna-produtos');
+    if (!coluna) return;
+
+    // Remove grupos hardcoded do HTML
+    coluna.innerHTML = '';
+
+    // Agrupa todos os itens num único grupo (expanda futuramente por loja)
+    const grupo = document.createElement('article');
+    grupo.className = 'card grupo-loja';
+    grupo.innerHTML = `
+    <div class="grupo-loja-header">
+        <h2>Meu Carrinho</h2>
+    </div>
+    <div class="lista-produtos"></div>
+`;
+
+    const lista = grupo.querySelector('.lista-produtos');
+
+    itens.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'card-produto';
+        card.dataset.precoDia = item.precoDia;
+        card.dataset.estoque = item.estoque;
+
+        card.innerHTML = `
+        <div class="produto-linha-topo">
+
+            <img src="${item.imagem}" alt="${item.nome}" class="produto-imagem">
+
+            <div class="produto-infos">
+
+                <div class="produto_nome-row">
+                    <span class="produto_nome">${item.nome}</span>
+                    <button class="btn-lixeira" aria-label="Remover produto" data-action="remover">
+                        <img src="./src/images/lixo.svg" alt="Remover produto">
+                    </button>
+                </div>
+
+                <span class="produto-aluguel">${item.dias} ${item.dias === 1 ? 'dia' : 'dias'} de aluguel</span>
+
+                <div class="produto_valores">
+
+                    <span class="produto_preco"></span>
+                    <span class="produto_total"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto-controles">
+
+            <div class="controle-grupo">
+                <button class="btn-controle" aria-label="Diminuir dias" data-action="decrement">−</button>
+
+                <span class="controle-valor">${item.dias} ${item.dias === 1 ? 'dia' : 'dias'}</span>
+
+                <button class="btn-controle" aria-label="Aumentar dias" data-action="increment">+</button>
+            </div>
+
+            <span class="controle-label-max">Máx. 30</span>
+
+            <div class="controle-grupo controle-unidade">
+
+                <button class="btn-controle" aria-label="Diminuir unidades" data-action="decrement">−</button>
+
+                <span class="controle-valor">${item.unidades} ${item.unidades === 1 ? 'unidade' : 'unidades'}</span>
+
+                <button class="btn-controle" aria-label="Aumentar unidades" data-action="increment">+</button>
+            </div>
+            
+            <span class="controle-label-disp">+${item.estoque - item.unidades} disponíveis</span>
+        </div>
+    `;
+
+        lista.appendChild(card);
+    });
+
+    coluna.appendChild(grupo);
+}
+
 /* formatarMoeda(valor)
     Formata um numero como moeda brasileira usando a API nativa do navegador.
     Exemplo: 1234.5 → "R$\u00a01.234,50"
@@ -379,17 +469,17 @@ const formatarMoeda = (valor) =>
     @param {Element[]} todosCards  - array de todos os cards (para contexto global)
     @param {number}    totalGlobal - soma de unidades ja calculada pelo chamador */
 function atualizarCardProduto(card, todosCards, totalGlobal) {
-    const dias      = getDias(card);
-    const unidades  = getUnidades(card);
-    const precoDia  = getPrecoDia(card);
+    const dias = getDias(card);
+    const unidades = getUnidades(card);
+    const precoDia = getPrecoDia(card);
     const totalCard = calcularTotalCard(card);
 
     /* ── Atualiza label de disponibilidade em estoque ── */
     const labelDisp = card.querySelector('.controle-label-disp');
 
     if (labelDisp) {
-        const estoque    = getEstoque(card);
-        const unidades   = getUnidades(card);
+        const estoque = getEstoque(card);
+        const unidades = getUnidades(card);
         /* Disponivel = total em estoque menos unidades ja selecionadas */
         const disponivel = estoque - unidades;
 
@@ -483,20 +573,20 @@ function setBotaoEstado(btn, desabilitado) {
     Side effect: altera o DOM (refs.elSubtotal, refs.elTotal,
     refs.elFreteTopo) e o localStorage. */
 function atualizarResumo() {
-    const cards    = getTodosCards();
+    const cards = getTodosCards();
     const subtotal = calcularSubtotal(cards);
     const desconto = calcularDesconto(subtotal);
 
     /* Verifica se o cupom ativo e do tipo 'frete' para zerar o frete. Desacoplado do nome do cupom — consulta o tipo via CUPONS. */
     const freteIsento = cupomAtualIsFreteGratis();
-    const freteReal   = freteIsento ? 0 : estado.frete;
+    const freteReal = freteIsento ? 0 : estado.frete;
 
     /* Garante que o total nunca seja negativo */
     const total = Math.max(0, subtotal + freteReal - desconto);
 
     /* Atualiza os textos do painel usando refs (sem querySelector) */
     if (refs.elSubtotal) refs.elSubtotal.textContent = formatarMoeda(subtotal);
-    if (refs.elTotal)    refs.elTotal.textContent    = formatarMoeda(total);
+    if (refs.elTotal) refs.elTotal.textContent = formatarMoeda(total);
 
     /* Cria, atualiza ou remove a linha de desconto dinamicamente */
     renderizarLinhaDesconto(desconto);
@@ -534,7 +624,7 @@ function atualizarResumo() {
     @param {number} desconto - valor do desconto em reais */
 function renderizarLinhaDesconto(desconto) {
     const divisor = refs.cardResumo?.querySelector('.linha-divisoria');
-    let linhaEl   = refs.cardResumo?.querySelector('.resumo-linha--desconto');
+    let linhaEl = refs.cardResumo?.querySelector('.resumo-linha--desconto');
 
     /* Sem desconto: remove a linha se ela existir */
     if (desconto <= 0) {
@@ -565,7 +655,7 @@ function renderizarLinhaDesconto(desconto) {
     @param {Element[]} cardsRestantes - array de cards ainda presentes no DOM */
 function verificarCarrinhoVazio(cardsRestantes) {
     if (cardsRestantes.length === 0) {
-        window.location.href = '/carrinhoVazio.html';
+        window.location.href = './carrinhoVazio.html';
     }
 }
 
@@ -606,8 +696,8 @@ function formatarParaStorage(valor) {
     @param {number} desconto - valor do desconto */
 function salvarResumoNoLocalStorage(subtotal, frete, total, desconto) {
     localStorage.setItem('subtotal', formatarParaStorage(subtotal));
-    localStorage.setItem('frete',    formatarParaStorage(frete));
-    localStorage.setItem('total',    formatarParaStorage(total));
+    localStorage.setItem('frete', formatarParaStorage(frete));
+    localStorage.setItem('total', formatarParaStorage(total));
     localStorage.setItem('desconto', formatarParaStorage(desconto));
 }
 
@@ -640,11 +730,15 @@ function handleRemoverProduto(btn) {
 
     /* Inicia animacao de fade-out */
     card.style.transition = 'opacity .25s';
-    card.style.opacity    = '0';
+    card.style.opacity = '0';
 
     setTimeout(() => {
         const grupoPai = card.closest('.lista-produtos');
         card.remove();
+
+        const nomeProduto = card.querySelector('.produto_nome')?.textContent.trim();
+        const carrinhoAtual = lerCarrinho().filter((p) => p.nome !== nomeProduto);
+        salvarCarrinho(carrinhoAtual);
 
         /* Se a lista ficou vazia, remove o grupo de loja inteiro */
         if (grupoPai && !grupoPai.querySelector('.card-produto')) {
@@ -686,10 +780,10 @@ function handleRemoverProduto(btn) {
     @param {Element} btn - botão de controle clicado (increment ou decrement) */
 function handleControle(btn) {
     const grupo = btn.closest('.controle-grupo');
-    const card  = btn.closest('.card-produto');
+    const card = btn.closest('.card-produto');
     if (!grupo || !card) return;
 
-    const tipo  = grupo.dataset.type;
+    const tipo = grupo.dataset.type;
     const delta = btn.dataset.action === 'increment' ? 1 : -1;
 
     const todosCards = getTodosCards();
@@ -706,8 +800,8 @@ function handleControle(btn) {
 
         unidades: () => {
             if (delta > 0) {
-                const estoque  = getEstoque(card);
-                const novaQtd  = getUnidades(card) + 1;
+                const estoque = getEstoque(card);
+                const novaQtd = getUnidades(card) + 1;
 
                 /* REGRA DE NEGÓCIO:
                     Não permite adicionar mais unidades que o estoque disponível.
@@ -977,7 +1071,7 @@ function handleAplicarCupom() {
 
             /* Restaura o botao antes de retornar */
             if (refs.btnAplicar) {
-                refs.btnAplicar.disabled    = false;
+                refs.btnAplicar.disabled = false;
                 refs.btnAplicar.textContent = 'Aplicar';
                 refs.btnAplicar.classList.remove('btn-loading');
             }
@@ -986,7 +1080,7 @@ function handleAplicarCupom() {
 
         /* Cupom valido: atualiza o estado global */
         estado.cupomAplicado = true;
-        estado.cupomCodigo   = codigo;
+        estado.cupomCodigo = codigo;
 
         /* Limpa qualquer erro inline anterior */
         setCupomErro(false);
@@ -1044,10 +1138,10 @@ function handleRemoverCupom() {
     if (refs.btnAplicar) refs.btnAplicar.disabled = false;
 
     estado.cupomAplicado = false;
-    estado.cupomCodigo   = '';
+    estado.cupomCodigo = '';
 
     if (refs.inputCupom) {
-        refs.inputCupom.value    = '';
+        refs.inputCupom.value = '';
         refs.inputCupom.disabled = false;
         refs.inputCupom.classList.remove('input--sucesso', 'input--erro');
     }
@@ -1263,9 +1357,9 @@ function registrarListenersProdutos() {
         if (!btn) return;
 
         switch (btn.dataset.action) {
-            case 'remover':    handleRemoverProduto(btn); break;
+            case 'remover': handleRemoverProduto(btn); break;
             case 'increment':
-            case 'decrement':  handleControle(btn);       break;
+            case 'decrement': handleControle(btn); break;
         }
     });
 }
@@ -1352,10 +1446,10 @@ function registrarListenersResumo() {
 */
 function salvarProdutosNoLocalStorage() {
     const produtos = getTodosCards().map((card) => ({
-        nome:      card.querySelector('.produto_nome')?.textContent.trim() ?? '',
-        imagem:    card.querySelector('.produto-imagem')?.src             ?? '',
-        dias:      getDias(card),
-        unidades:  getUnidades(card),
+        nome: card.querySelector('.produto_nome')?.textContent.trim() ?? '',
+        imagem: card.querySelector('.produto-imagem')?.src ?? '',
+        dias: getDias(card),
+        unidades: getUnidades(card),
     }));
 
     localStorage.setItem('produtos', JSON.stringify(produtos));
@@ -1406,10 +1500,10 @@ function handleContinuarPagamento() {
     }
 
     salvarProdutosNoLocalStorage();
-    
+
     /* Todas as validacoes passaram — limpa erros e redireciona */
     setCepErro(false);
-    window.location.href = '/metodoPagamento.html';
+    window.location.href = './metodoPagamento.html';
 }
 
 
@@ -1432,6 +1526,7 @@ function handleContinuarPagamento() {
 document.addEventListener('DOMContentLoaded', () => {
     injetarEstilosJS();
     inicializarRefs();
+    renderizarCarrinhoDoStorage();
     inicializarProdutos();
     registrarListenersProdutos();
     registrarListenersResumo();
@@ -1440,8 +1535,6 @@ document.addEventListener('DOMContentLoaded', () => {
     verificarCarrinhoVazio(getTodosCards());
 
     /* Confirmacao no console de que a inicializacao ocorreu com sucesso */
-    console.log('[LOCATEM] Carrinho inicializado ✓');
-    console.log('Cupons disponíveis:', Object.keys(CUPONS).join(', '));
 });
 
 

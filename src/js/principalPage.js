@@ -37,5 +37,18 @@ indicadores.forEach((ind, index) => {
     });
 });
 
+const cards = document.querySelectorAll('.anuncio-card');
+
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+
+        // pega o id do produto
+        const idProduto = card.dataset.id;
+
+        // redireciona para página do produto
+        window.location.href = `produtoPage.html?id=${idProduto}`;
+    });
+});
+
 // inicializa no primeiro slide
 mostrarSlide(atual);

@@ -5,7 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Familia tipografica Inter — usada em toda a interface -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,6 +15,8 @@
     <link rel="stylesheet" href="./src/css/reset.css" />
     <!-- Estilos exclusivos da pagina de carrinho -->
     <link rel="stylesheet" href="./src/css/carrinho.css" />
+    <!-- Estilos exclusivos do header -->
+    <link rel="stylesheet" href="./src/css/header style/header.css" />
 
     <title>LOCATEM</title>
 </head>
@@ -25,21 +26,20 @@
         A classe "app" envolve toda a pagina. Permite aplicar estilos globais de layout (ex: flex column) sem poluir o body diretamente. -->
     <div class="app">
 
-        <!-- ================================================================================================================= -->
-        <!-- SECAO: HEADER MOBILE                                                                                              -->
-        <!-- Exibido apenas em telas pequenas (controlado por CSS).                                                            -->
-        <!-- Contem: botao de menu hamburguer, logo, icone de carrinho e barra de pesquisa dedicada (linha separada do topo).  -->
-        <!-- ================================================================================================================= -->
+        <!-- =========================================================== -->
+        <!-- SECAO: HEADER MOBILE   -->
+        <!-- Exibido apenas em telas pequenas (controlado por CSS).  -->
+        <!-- =========================================================== -->
         <header class="header-mobile">
             <div class="linha-topo-mobile">
                 <div class="lado-esquerdo">
                     <!-- Botao que abre o menu lateral (drawer) em mobile -->
-                    <button class="menu-btn">
-                        <img src="./src/images/menuHamburguer.png" alt="Menu" />
+                    <button class="menu-btn" id="btnAbrirMenu" aria-label="Abrir menu lateral">
+                        <img src="./src/images/menuHamburguer.png" alt="Ícone de menu hamburguer" />
                     </button>
                     <!-- Logo clicavel — redireciona para a pagina principal -->
-                    <a href="./principalPage.html" class="logo">
-                        <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+                    <a href="./principalPage.html" class="logo" aria-label="Ir para página inicial da Locatem">
+                        <img src="./src/images/LogoIcon.png" alt="Logo da LOCATEM" />
                         LOCATEM
                     </a>
                 </div>
@@ -56,18 +56,203 @@
                 O input usa type="search" para ativar o botao de limpar nativo do navegador (X) em mobile. -->
             <form class="barra-pesquisa-mobile">
                 <img src="./src/images/lupa.png" alt="Buscar" />
-                <input type="search" placeholder="Qual ferramenta você precisa hoje?"
+                <input type="search" name="busca" placeholder="Qual ferramenta você precisa hoje?"
                     aria-label="Pesquisar ferramentas" />
             </form>
         </header>
 
-        <!-- ============================================================ -->
-        <!-- SECAO: HEADER DESKTOP                                         -->
-        <!-- Exibido apenas em telas maiores (controlado por CSS).         -->
-        <!-- Contem: logo, barra de pesquisa central e botao de chat.      -->
-        <!-- ============================================================ -->
+        <!-- =================================== -->
+        <!-- MENU LATERAL MOBILE -->
+        <!-- =================================== -->
+
+        <!-- Fundo escurecido -->
+        <div class="menu-lateral-overlay" id="menuLateralOverlay"></div>
+
+        <!-- Painel lateral -->
+        <aside class="menu-lateral" id="menuLateral" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+
+            <!-- Cabeçalho -->
+            <div class="menu-lateral-cabecalho">
+
+                <a href="./principalPage.html" class="menu-lateral-logo">
+                    <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+                    LOCATEM
+                </a>
+
+                <button class="menu-lateral-btn-fechar" id="btnFecharMenu" aria-label="Fechar menu">
+                    ✕
+                </button>
+
+            </div>
+
+            <!-- =========================== -->
+            <!-- PERFIL DO USUÁRIO -->
+            <!-- =========================== -->
+
+            <a href="./perfil.html" class="menu-lateral-perfil" id="menuLateralPerfil">
+
+                <!-- Avatar -->
+                <img class="menu-lateral-perfil-avatar" src="./src/images/usuario.png" alt="Foto do usuário" />
+
+                <!-- Informações -->
+                <div class="menu-lateral-perfil-info">
+
+                    <div class="menu-lateral-perfil-nome" id="menuLateralNome">
+                        Olá, João!
+                    </div>
+
+                    <div class="menu-lateral-perfil-email" id="menuLateralEmail">
+                        joao.silva@email.com
+                    </div>
+
+                    <div class="menu-lateral-perfil-badge">
+                        Cliente desde 2023
+                    </div>
+
+                </div>
+
+                <!-- Seta -->
+                <div class="menu-lateral-perfil-seta"></div>
+            </a>
+
+            <!-- =================================== -->
+            <!-- CONTEÚDO ROLÁVEL -->
+            <!-- =================================== -->
+
+            <div class="menu-lateral-conteudo">
+
+                <!-- Navegação -->
+                <nav class="menu-lateral-nav">
+
+                    <a href="./principalPage.html" class="ativo">
+                        <img src="./src/images/home.png" alt="" />
+                        Início
+                    </a>
+
+                    <a href="./mensagens.html">
+                        <img src="./src/images/chat.png" alt="" />
+                        Chat
+                    </a>
+
+                    <a href="#">
+                        <img src="./src/images/relogio.png" alt="" />
+                        Histórico
+                    </a>
+
+                    <a href="#">
+                        <img src="./src/images/calendario.png" alt="" />
+                        Agendamento
+                    </a>
+
+                    <a href="#">
+                        <img src="./src/images/notificacoes.png" alt="" />
+                        Notificações
+                    </a>
+
+                    <a href="./avaliacaoPage.html">
+                        <img src="./src/images/Star.png" alt="" />
+                        Avaliações
+                    </a>
+
+                    <a href="#">
+                        <img src="./src/images/suporte.png" alt="" />
+                        Suporte
+                    </a>
+
+                    <!-- Apenas quando NÃO logado -->
+                    <a href="./login.html" id="menuLateralItemEntrar">
+                        <img src="./src/images/usuario.png" alt="" />
+                        Entrar
+                    </a>
+                </nav>
+
+                <!-- ========================= -->
+                <!-- ÁREA LOGADO -->
+                <!-- ========================= -->
+
+                <section class="menu-lateral-logado" id="menuLateralLogado">
+
+                    <a href="#">
+                        <img src="./src/images/usuario.png" alt="" />
+                        Minha conta
+                        <span class="menu-lateral-seta">›</span>
+                    </a>
+
+                    <a href="#">
+                        <img src="./src/images/Star.png" alt="" />
+                        Cupons e benefícios
+                        <span class="menu-lateral-seta">›</span>
+                    </a>
+                </section>
+
+                <!-- =================== -->
+                <!-- CARDS -->
+                <!-- =================== -->
+
+                <div class="menu-lateral-cards">
+
+                    <!-- Card chat -->
+                    <a href="#" class="menu-lateral-card">
+
+                        <div class="menu-lateral-card-icone">
+                            <img src="./src/images/chatAmarelo.png" alt="" />
+                        </div>
+
+                        <div class="menu-lateral-card-texto">
+
+                            <div class="menu-lateral-card-titulo">
+                                Fale com a Locatem
+                            </div>
+
+                            <div class="menu-lateral-card-descricao">
+                                Tire dúvidas ou peça ajuda pelo nosso chat
+                            </div>
+                        </div>
+
+                        <div class="menu-lateral-card-seta">
+                            ›
+                        </div>
+                    </a>
+
+                    <!-- Card qualidade -->
+                    <div class="menu-lateral-card">
+
+                        <div class="menu-lateral-card-icone">
+                            <img src="./src/images/verificadoAmarelo.png" alt="" />
+                        </div>
+
+                        <div class="menu-lateral-card-texto">
+
+                            <div class="menu-lateral-card-titulo">
+                                Equipamentos de qualidade
+                            </div>
+
+                            <div class="menu-lateral-card-descricao">
+                                Segurança e confiança para o seu projeto
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======================== -->
+            <!-- SAIR -->
+            <!-- ======================== -->
+
+            <a href="#" class="menu-lateral-sair" id="menuLateralSair">
+                <img src="./src/images/sair.svg" alt="" />
+                Sair da conta
+            </a>
+        </aside>
+
+
+        <!-- ======================================================== -->
+        <!-- SECAO: HEADER DESKTOP -->
+        <!-- Exibido apenas em telas maiores (controlado por CSS). -->
+        <!-- ======================================================== -->
         <header class="header-desktop">
             <div class="linha-topo-desktop">
+
                 <!-- Logo clicavel — redireciona para a pagina principal -->
                 <a href="./principalPage.html" class="logo">
                     <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
@@ -79,23 +264,22 @@
                     <button type="submit" class="lupa-btn">
                         <img src="./src/images/lupa.png" alt="Buscar" />
                     </button>
-                    <input type="search" placeholder="Qual ferramenta você precisa hoje?"
+                    <input type="search" name="busca" placeholder="Qual ferramenta você precisa hoje?"
                         aria-label="Pesquisar ferramentas" />
                 </form>
 
-                <!-- Botao de acesso ao chat de suporte (comportamento via JS) -->
-                <button class="chat">
+                <a href="./mensagens.html" class="chat">
                     <img src="./src/images/chat.png" alt="Chat" />
-                </button>
+                </a>
             </div>
         </header>
 
-        <!-- ============================================================ -->
-        <!-- SECAO: NAVEGACAO LATERAL (DESKTOP)                            -->
-        <!-- Menu de navegacao principal visivel apenas no desktop.        -->
-        <!-- Cada link contem um icone + label de texto.                   -->
-        <!-- Links com href="#" sao placeholders — funcionalidade pendente. -->
-        <!-- ============================================================ -->
+        <!-- =========================================================== -->
+        <!-- SECAO: NAVEGACAO (DESKTOP) -->
+        <!-- Menu de navegacao principal visivel apenas no desktop. -->
+        <!-- Cada link contem um icone + label de texto. -->
+        <!-- Links com href="#" sao placeholders — funcionalidade pendente -->
+        <!-- =========================================================== -->
         <nav class="menu-navegacao-desktop">
             <a href="./principalPage.html">
                 <img src="./src/images/home.png" alt="Ícone Início" />Início
@@ -112,7 +296,7 @@
             <a href="#">
                 <img src="./src/images/notificacoes.png" alt="Ícone Notificações" />Notificações
             </a>
-            <a href="#">
+            <a href="./avaliacaoPage.html">
                 <img src="./src/images/Star.png" alt="Ícone Avaliações" />Avaliações
             </a>
             <a href="#">
@@ -123,12 +307,6 @@
             </a>
         </nav>
 
-        <!-- ============================================================ -->
-        <!-- SECAO: CONTEUDO PRINCIPAL (MAIN)                             -->
-        <!-- Criada a partir do conceito de mobile-first, envolve:        -->
-        <!-- cabecalho interno com titulo, lista de produtos agrupados    -->
-        <!-- por loja e o painel lateral de resumo do pedido.             -->
-        <!-- ============================================================ -->
         <main class="main">
 
             <!-- Contém o botao "voltar" (seta) e o titulo "Carrinho". -->
@@ -278,212 +456,9 @@
                                     <span class="controle-label-disp">+50 disponíveis</span>
                                 </div><!-- /produto-controles -->
 
-                            </div><!-- /card-produto (Produto 1) -->
-
-
-                            <!-- ======================================================== -->
-                            <!-- CARD DE PRODUTO 2 — Pistola de Pintura Profissional       -->
-                            <!-- Segue a mesma estrutura do Produto 1.                    -->
-                            <!-- data-preco-dia="12" → R$12,00 por dia de aluguel.        -->
-                            <!-- data-estoque="5"    → 5 unidades disponiveis no estoque. -->
-                            <!-- ======================================================== -->
-                            <div class="card-produto" data-preco-dia="12" data-estoque="5">
-                                <div class="produto-linha-topo">
-                                    <img class="produto-imagem" src="./src/images/pistolaPintura.png"
-                                        alt="Pistola de Pintura">
-                                    <div class="produto-infos">
-                                        <div class="produto_nome-row">
-                                            <span class="produto_nome">Pistola de Pintura Profissional The Black
-                                                Tools</span>
-                                            <button class="btn-lixeira" aria-label="Remover produto"
-                                                data-action="remover">
-                                                <img src="./src/images/lixo.svg" alt="Remover produto">
-                                            </button>
-                                        </div>
-                                        <span class="produto-aluguel">2 dias de aluguel</span>
-                                        <div class="produto_valores">
-                                            <!-- Valores iniciais — sobrescritos pelo JS apos inicializacao -->
-                                            <span class="produto_preco">R$12,00/dia × 1 dia</span>
-                                            <span class="produto_total">Total: R$12,00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="produto-controles">
-                                    <!-- Controle de dias (tipo identificado pelo JS via ausencia de "controle-unidade") -->
-                                    <div class="controle-grupo">
-                                        <button class="btn-controle" aria-label="Diminuir dias"
-                                            data-action="decrement">−</button>
-                                        <span class="controle-valor">1 dias</span>
-                                        <button class="btn-controle" aria-label="Aumentar dias"
-                                            data-action="increment">+</button>
-                                    </div>
-                                    <span class="controle-label-max">Máx. 30</span>
-                                    <!-- Controle de unidades (tipo identificado pelo JS via classe "controle-unidade") -->
-                                    <div class="controle-grupo controle-unidade">
-                                        <button class="btn-controle" aria-label="Diminuir unidades"
-                                            data-action="decrement">−</button>
-                                        <span class="controle-valor">1 unidade</span>
-                                        <button class="btn-controle" aria-label="Aumentar unidades"
-                                            data-action="increment">+</button>
-                                    </div>
-                                    <!-- Disponibilidade reescrita em runtime pelo JS -->
-                                    <span class="controle-label-disp">+50 disponíveis</span>
-                                </div>
-                            </div><!-- /card-produto (Produto 2) -->
-
-
-                            <!-- ======================================================== -->
-                            <!-- CARD DE PRODUTO 3 — Parafusadeira Furadeira Hanabi       -->
-                            <!-- Segue a mesma estrutura dos produtos anteriores.         -->
-                            <!-- ======================================================== -->
-                            <div class="card-produto" data-preco-dia="28" data-estoque="5">
-                                <div class="produto-linha-topo">
-                                    <img class="produto-imagem" src="./src/images/Furadeira3.webp" alt="Parafusadeira">
-                                    <div class="produto-infos">
-                                        <div class="produto_nome-row">
-                                            <span class="produto_nome">Parafusadeira Furadeira Elétrica Hanabi</span>
-                                            <button class="btn-lixeira" aria-label="Remover produto"
-                                                data-action="remover">
-                                                <img src="./src/images/lixo.svg" alt="Remover produto">
-                                            </button>
-                                        </div>
-                                        <span class="produto-aluguel">2 dias de aluguel</span>
-                                        <div class="produto_valores">
-                                            <!-- Valores iniciais — sobrescritos pelo JS apos inicializacao -->
-                                            <span class="produto_preco">R$28,00/dia × 2 dias</span>
-                                            <span class="produto_total">Total: R$56,00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="produto-controles">
-                                    <div class="controle-grupo">
-                                        <button class="btn-controle" aria-label="Diminuir dias"
-                                            data-action="decrement">−</button>
-                                        <span class="controle-valor">2 dias</span>
-                                        <button class="btn-controle" aria-label="Aumentar dias"
-                                            data-action="increment">+</button>
-                                    </div>
-                                    <span class="controle-label-max">Máx. 30</span>
-                                    <div class="controle-grupo controle-unidade">
-                                        <button class="btn-controle" aria-label="Diminuir unidades"
-                                            data-action="decrement">−</button>
-                                        <span class="controle-valor">1 unidade</span>
-                                        <button class="btn-controle" aria-label="Aumentar unidades"
-                                            data-action="increment">+</button>
-                                    </div>
-                                    <span class="controle-label-disp">+50 disponíveis</span>
-                                </div>
-                            </div><!-- /card-produto (Produto 3) -->
-
+                            </div><!-- /card-produto -->
                         </div><!-- /lista-produtos -->
-                    </article><!-- /grupo-loja 1 -->
-
-
-                    <!-- ======================================================== -->
-                    <!-- GRUPO DE LOJA 2 — JB Ferramentas                         -->
-                    <!-- Segundo agrupamento de produtos, mesmo vendedor.         -->
-                    <!-- Estrutura identica ao Grupo 1.                           -->
-                    <!-- ======================================================== -->
-                    <article class="card grupo-loja">
-
-                        <div class="grupo-loja-header">
-                            <h2>Produto de JB Ferramentas</h2>
-                            <div class="loja-oficial">
-                                Loja oficial Dewalt
-                                <img src="./src/images/verificado.png" alt="Verificado" class="icone-verificado">
-                            </div>
-                        </div>
-
-                        <div class="lista-produtos">
-
-                            <!-- ======================================================== -->
-                            <!-- CARD DE PRODUTO 4 — Furadeira Eletrica WAP               -->
-                            <!-- ======================================================== -->
-                            <div class="card-produto" data-preco-dia="18" data-estoque="10">
-                                <div class="produto-linha-topo">
-                                    <img class="produto-imagem" src="./src/images/Furadeira4.webp" alt="Furadeira WAP">
-                                    <div class="produto-infos">
-                                        <div class="produto_nome-row">
-                                            <span class="produto_nome">Furadeira Elétrica WAP</span>
-                                            <button class="btn-lixeira" aria-label="Remover produto"
-                                                data-action="remover">
-                                                <img src="./src/images/lixo.svg" alt="Remover produto">
-                                            </button>
-                                        </div>
-                                        <span class="produto-aluguel">2 dias de aluguel</span>
-                                        <div class="produto_valores">
-                                            <!-- Valores iniciais — sobrescritos pelo JS apos inicializacao -->
-                                            <span class="produto_preco">R$18,00/dia × 2 dias</span>
-                                            <span class="produto_total">Total: R$36,00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="produto-controles">
-                                    <div class="controle-grupo">
-                                        <button class="btn-controle" aria-label="Diminuir dias"
-                                            data-action="decrement">−</button>
-                                        <span class="controle-valor">2 dias</span>
-                                        <button class="btn-controle" aria-label="Aumentar dias"
-                                            data-action="increment">+</button>
-                                    </div>
-                                    <span class="controle-label-max">Máx. 30</span>
-                                    <div class="controle-grupo controle-unidade">
-                                        <button class="btn-controle" aria-label="Diminuir unidades"
-                                            data-action="decrement">−</button>
-                                        <span class="controle-valor">1 unidade</span>
-                                        <button class="btn-controle" aria-label="Aumentar unidades"
-                                            data-action="increment">+</button>
-                                    </div>
-                                    <span class="controle-label-disp">+50 disponíveis</span>
-                                </div>
-                            </div><!-- /card-produto (Produto 4) -->
-
-                            <!-- ======================================================== -->
-                            <!-- CARD DE PRODUTO 5 — Serra Circular Profissional          -->
-                            <!-- ======================================================== -->
-                            <div class="card-produto" data-preco-dia="25" data-estoque="7">
-                                <div class="produto-linha-topo">
-                                    <img class="produto-imagem" src="./src/images/serraCircularProfissional.png"
-                                        alt="Serra Circular">
-                                    <div class="produto-infos">
-                                        <div class="produto_nome-row">
-                                            <span class="produto_nome">Serra Circular Profissional</span>
-                                            <button class="btn-lixeira" aria-label="Remover produto"
-                                                data-action="remover">
-                                                <img src="./src/images/lixo.svg" alt="Remover produto">
-                                            </button>
-                                        </div>
-                                        <span class="produto-aluguel">2 dias de aluguel</span>
-                                        <div class="produto_valores">
-                                            <!-- Valores iniciais — sobrescritos pelo JS apos inicializacao -->
-                                            <span class="produto_preco">R$25,00/dia × 2 dias</span>
-                                            <span class="produto_total">Total: R$50,00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="produto-controles">
-                                    <div class="controle-grupo">
-                                        <button class="btn-controle" aria-label="Diminuir dias"
-                                            data-action="decrement">−</button>
-                                        <span class="controle-valor">2 dias</span>
-                                        <button class="btn-controle" aria-label="Aumentar dias"
-                                            data-action="increment">+</button>
-                                    </div>
-                                    <span class="controle-label-max">Máx. 30</span>
-                                    <div class="controle-grupo controle-unidade">
-                                        <button class="btn-controle" aria-label="Diminuir unidades"
-                                            data-action="decrement">−</button>
-                                        <span class="controle-valor">1 unidade</span>
-                                        <button class="btn-controle" aria-label="Aumentar unidades"
-                                            data-action="increment">+</button>
-                                    </div>
-                                    <span class="controle-label-disp">+50 disponíveis</span>
-                                </div>
-                            </div><!-- /card-produto (Produto 5) -->
-
-                        </div><!-- /lista-produtos -->
-                    </article><!-- /grupo-loja 2 -->
-
+                    </article><!-- /grupo-loja -->
                 </div><!-- /coluna-produtos -->
 
 
@@ -647,6 +622,8 @@
         são injetados dinamicamente pelo JS em injetarEstilosJS(). -->
     <div id="aviso-global" role="status" aria-live="polite" aria-atomic="true"></div>
 
+    <script src="./src/js/header.js"></script>
+    <script src="./src/js/carrinhoStorage.js"></script>
     <script src="./src/js/carrinho.js"></script>
 </body>
 

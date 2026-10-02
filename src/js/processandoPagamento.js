@@ -17,5 +17,5 @@ const TEMPO_PROCESSAMENTO = 2000;
 // ============================================================
 
 setTimeout(() => {
-    window.location.href = '/pagamentoAprovado.html';
+    window.location.href = './pagamentoAprovado.html';
 }, TEMPO_PROCESSAMENTO);

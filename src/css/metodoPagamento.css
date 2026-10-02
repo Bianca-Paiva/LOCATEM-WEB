@@ -48,84 +48,85 @@ body {
 .app {
     width: 100%;
     min-height: 100vh;
-
-    /* Gradiente do topo (identidade visual LOCATEM) */
     background: linear-gradient(to bottom,
             var(--color-primary) 0%,
-            var(--color-primary-light) 6.5%,
-            var(--color-primary-soft) 9.5%,
-            var(--color-bg-main) 12.5%);
+            var(--color-primary-light) 5.5%,
+            var(--color-primary-soft) 8.5%,
+            var(--color-bg-main) 12%);
 }
 
 /* ============================= */
-/* HEADER */
+/* HEADER DESKTOP                */
 /* ============================= */
-
-.header {
+.header-desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    padding: 22px 20px 34px;
+    padding: 20px 0 0;
+}
 
+.linha-topo-desktop {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* ============================= */
-/* LOGO */
-/* ============================= */
-
 .logo {
-    display: flex;
-    align-items: center;
+    font-size: clamp(20px, 1.5vw, 26px);
+    font-weight: 800;
+    flex-shrink: 0;
     gap: 7px;
-
+    letter-spacing: -0.4px;
     color: var(--color-text-dark);
     text-decoration: none;
-
-    font-size: clamp(16px, 4vw, 20px);
-    /* Responsivo */
-    font-weight: 750;
-    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
 }
 
 .logo img {
-    height: 30px;
-    object-fit: contain;
-    /* Mantém proporção */
+    height: 32px;
 }
 
-/* ============================= */
-/* CHAT */
-/* ============================= */
+/* Botão de chat */
 .chat {
-    background: transparent;
-    border: 2px solid var(--color-text-dark);
+    width: clamp(38px, 3vw, 46px);
+    height: clamp(38px, 3vw, 46px);
     border-radius: 50%;
-    width: clamp(36px, 3vw, 48px);
-    height: clamp(36px, 3vw, 48px);
+    border: none;
+    background: none;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    cursor: pointer;
-    border: none;
+    transition: background var(--transition-fast);
+    text-decoration: none;
 }
 
 .chat img {
-    width: 60%;
-    height: 60%;
+    width: 55%;
+    height: 55%;
     object-fit: contain;
 }
-
 
 /* ============================= */
 /* MAIN (LAYOUT PRINCIPA) */
 /* ============================= */
 .main-mobile {
     width: 100%;
-    min-height: 100vh;
-    margin: 0 auto;
+    max-width: 960px;
+
+    margin: 40px 0 auto;
     padding: 8px 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
 }
 
 /* ── Cabeçalho ── */
@@ -166,6 +167,7 @@ body {
     border: 1px solid var(--color-border-card);
     box-shadow: var(--shadow-card);
 
+    width: 100%;
     padding: 25px;
 }
 
@@ -352,23 +354,6 @@ body {
 /* TELAS MUITO PEQUENAS — max-width: 380px   */
 /* ========================================= */
 @media (max-width: 380px) {
-    .header {
-        padding: 16px 14px 20px;
-    }
-
-    .logo {
-        font-size: 15px;
-        gap: 5px;
-    }
-
-    .logo img {
-        height: 26px;
-    }
-
-    .chat img {
-        height: 20px;
-    }
-
     .main-mobile {
         padding: 6px 12px;
     }
@@ -469,20 +454,9 @@ body {
         min-height: 100vh;
         background: linear-gradient(to bottom,
                 var(--color-primary) 0%,
-                var(--color-primary-light) 7%,
-                var(--color-primary-soft) 9.2%,
-                var(--color-bg-main) 14%);
-    }
-
-    /* ── Header ─────────────────────────────────── */
-    .header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        justify-content: space-between;
-        margin: 0 auto;
-        width: 100%;
-        padding: 20px 40px 16px;
+                var(--color-primary-light) 5%,
+                var(--color-primary-soft) 8%,
+                var(--color-bg-main) 13%);
     }
 
     .logo {

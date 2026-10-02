@@ -1,0 +1,921 @@
+/* ============================================================
+   VARIÁVEIS GLOBAIS
+   Centralizadas aqui para facilitar manutenção de cores,
+   sombras, bordas e raios usados em toda a página.
+   ============================================================ */
+:root {
+    /* Superfícies */
+    --bg: #f9fafb;
+    --white: #ffffff;
+
+    /* Bordas */
+    --border: #e0ddd6;
+
+    /* Textos */
+    --text-primary: #1a1814;
+    --text-secondary: #6b6860;
+    --text-muted: #a09e99;
+
+    /* Ação (botão, texto/link) */
+    --accent: #1554F0;
+    --accent-dark: #0e3fcc;
+    --accent-light: #eef1fd;
+    --accent-shadow: rgba(21, 84, 240, 0.35);
+
+    /* Estrelas */
+    --star-active: #1554F0;
+    --star-inactive: #dddbd5;
+
+    /* Erro */
+    --erro: #e03e2d;
+    --erro-light: rgba(224, 62, 45, 0.2);
+
+    /* Sombras */
+    --shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --shadow-toast: 0 8px 24px rgba(0, 0, 0, 0.25);
+
+    /* Overlay */
+    --overlay-bg: rgba(15, 14, 12, 0.45);
+
+    /* Forma */
+    --radius: 12px;
+}
+
+.app {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to bottom,
+            var(--color-primary) 0%,
+            var(--color-primary-light) 7.5%,
+            var(--color-primary-soft) 12.5%,
+            var(--color-bg-main) 16%);
+}
+
+.tituloPage {
+    margin-bottom: 28px;
+}
+
+.tituloPage h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+}
+
+.tituloPage p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+/* ============================================================
+    ÁREA DE CONTEÚDO
+    Em mobile: ocupa 100% da tela com padding interno.
+    Em desktop: recua à direita da nav lateral.
+============================================================ */
+.content-area {
+    width: 100%;
+    padding: 30px 18px 48px;
+}
+
+/* ============================================================
+    TABS (Pendentes / Realizadas)
+    Linha horizontal com indicador azul animado no tab ativo.
+============================================================ */
+.tabs {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 24px;
+}
+
+/* Botão de tab individual */
+.tab-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    padding: 12px 24px;
+    position: relative;
+    transition: color .2s;
+}
+
+/* Linha indicadora abaixo do tab — aparece só no ativo */
+.tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform .25s cubic-bezier(.4, 0, .2, 1);
+}
+
+.tab-btn.active {
+    color: var(--accent);
+}
+
+.tab-btn.active::after {
+    transform: scaleX(1);
+}
+
+
+/* ============================================================
+    BADGE DA LOJA
+    Linha com logo da loja, nome e ícone de verificado.
+============================================================ */
+.store-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Container da logo da loja — tamanho responsivo com clamp */
+.store-badge .dot {
+    width: clamp(30px, 7vw, 48px);
+    height: clamp(18px, 4vw, 26px);
+    background: transparent;
+    border-radius: 4px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.store-badge .dot svg {
+    width: 60%;
+    height: 60%;
+    fill: var(--white);
+}
+
+/* Logo da loja como imagem — ocupa o container inteiro */
+.store-badge .dot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 2px;
+}
+
+.store-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.store-link:hover {
+    text-decoration: underline;
+}
+
+.verified-icon {
+    color: var(--accent);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Ícone de verificado como imagem */
+.verified-icon img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
+
+/* ============================================================
+    CARD DE PRODUTO
+    Área clicável que exibe imagem, nome, data e estrelas.
+============================================================ */
+.card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: box-shadow .2s, transform .2s;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+/* Layout interno: imagem à esquerda, info à direita */
+.card-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Imagem do produto no card */
+.card-img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: var(--bg);
+    flex-shrink: 0;
+    padding: 3px;
+}
+
+.card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.card-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 4px;
+
+    /* Corta texto longo com reticências em mobile */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-date {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+
+/* ============================================================
+    ESTRELAS — lista de cards
+    Clicáveis apenas nos pendentes; hover acende as anteriores.
+============================================================ */
+.stars-row {
+    display: flex;
+    gap: 6px;
+}
+
+.stars-row .star {
+    font-size: 1.4rem;
+    color: var(--star-inactive);
+    cursor: pointer;
+    line-height: 1;
+    user-select: none;
+    transition: color .15s, transform .15s;
+}
+
+.stars-row .star:hover,
+.stars-row .star.active {
+    color: var(--star-active);
+}
+
+.stars-row .star:hover {
+    transform: scale(1.2);
+}
+
+
+/* ============================================================
+    AGRUPADOR DE SEÇÃO
+    Envolve badge da loja + card para manter espaçamento correto.
+============================================================ */
+.section-group {
+    margin-bottom: 8px;
+}
+
+
+/* ============================================================
+    ESTADO VAZIO
+    Exibido quando não há itens na tab.
+============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+}
+
+.empty-state .icon {
+    color: var(--text-primary);
+    opacity: 0.8;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    font-size: 0.8125rem;
+}
+
+
+/* ============================================================
+    TAB PANELS
+    Só o painel ativo é visível.
+============================================================ */
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+
+/* ============================================================
+    MODAL — OVERLAY
+    Cobre toda a tela com fundo semitransparente e blur.
+    Oculto por padrão; classe `.open` o torna visível.
+============================================================ */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--overlay-bg);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Caixa do modal — anima entrada com spring */
+.modal {
+    background: var(--white);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 620px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transform: translateY(24px) scale(.97);
+    transition: transform .3s cubic-bezier(.34, 1.56, .64, 1), opacity .25s;
+}
+
+.modal-overlay.open .modal {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+
+/* ============================================================
+    MODAL — CABEÇALHO
+    Botão voltar + badge da loja alinhados na mesma linha.
+============================================================ */
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 24px 0;
+    flex-wrap: wrap;
+}
+
+/* Botão "← Voltar" */
+.modal-back {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding: 6px 0;
+    transition: color .15s;
+}
+
+.modal-back:hover {
+    color: var(--text-primary);
+}
+
+
+/* ============================================================
+    MODAL — PRODUTO
+    Layout em coluna: topo tem foto+título lado a lado, sub-avaliações ficam abaixo ocupando 100% da largura.
+============================================================ */
+
+/* Container geral — em coluna */
+.modal-product {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Linha superior: foto à esquerda, nome+data à direita */
+.modal-product-topo {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.modal-product-topo>img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 3px;
+    flex-shrink: 0;
+}
+
+.modal-product-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.modal-product-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 4px;
+}
+
+.modal-product-date {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+/* Bloco inferior: sub-avaliações em 100% da largura do modal */
+.modal-product-avaliacoes {
+    width: 100%;
+}
+
+
+/* ============================================================
+    SUB-AVALIAÇÕES (Locador / Entrega / Produto)
+    Sempre em linha, distribuídas igualmente em 100% da largura.
+============================================================ */
+.sub-ratings {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* Cada coluna ocupa espaço igual */
+.sub-rating {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.sub-rating-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+/* Quadrado com ícone/imagem representando a categoria */
+.sub-rating-icon {
+    width: 46px;
+    height: 46px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: var(--bg);
+    overflow: hidden;
+}
+
+.sub-rating-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 5px;
+}
+
+/* Estrelas menores usadas dentro do modal */
+.sub-stars {
+    display: flex;
+    gap: 3px;
+}
+
+.sub-stars .star {
+    font-size: 1.05rem;
+    color: var(--star-inactive);
+    cursor: pointer;
+    user-select: none;
+    transition: color .12s, transform .12s;
+}
+
+.sub-stars .star:hover,
+.sub-stars .star.active {
+    color: var(--star-active);
+}
+
+.sub-stars .star:hover {
+    transform: scale(1.2);
+}
+
+
+/* ============================================================
+    OBSERVAÇÕES
+    Botão toggle que exibe/oculta o textarea de comentário.
+============================================================ */
+.modal-obs {
+    padding: 20px 24px;
+}
+
+/* Botão que mostra/oculta o textarea */
+.obs-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding: 0;
+    margin-bottom: 14px;
+    transition: color .15s;
+}
+
+.obs-toggle:hover {
+    color: var(--text-primary);
+}
+
+/* Seta que gira quando o painel está aberto */
+.obs-toggle .chevron {
+    display: inline-block;
+    transition: transform .2s;
+}
+
+.obs-toggle.expanded .chevron {
+    transform: rotate(180deg);
+}
+
+/* Textarea de comentário */
+.obs-textarea {
+    width: 100%;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    background: var(--bg);
+    resize: vertical;
+    min-height: 90px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.obs-textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+
+/* ============================================================
+    RODAPÉ DO MODAL
+    Contém apenas o botão "Enviar" alinhado à direita.
+============================================================ */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 24px 24px;
+}
+
+/* Botão de envio da avaliação */
+.btn-enviar {
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    padding: 13px 36px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: background .2s, transform .15s, box-shadow .2s;
+}
+
+.btn-enviar:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px var(--accent-shadow);
+}
+
+.btn-enviar:active {
+    transform: none;
+}
+
+
+/* ============================================================
+    CARROSSEL DO MODAL
+    Faixa horizontal com outros produtos pendentes de avaliação.
+============================================================ */
+.modal-carousel-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0 24px;
+    margin-bottom: 10px;
+}
+
+.modal-carousel {
+    display: flex;
+    gap: 10px;
+    padding: 0 24px 24px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+/* Card miniatura dentro do carrossel */
+.carousel-card {
+    flex-shrink: 0;
+    width: 130px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: box-shadow .2s;
+}
+
+.carousel-card:hover {
+    box-shadow: var(--shadow);
+}
+
+.carousel-card img {
+    width: 100%;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 6px;
+}
+
+.carousel-card-name {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 4px;
+
+    /* Limita a 2 linhas */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.carousel-card-date {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.carousel-stars {
+    display: flex;
+    gap: 2px;
+}
+
+.carousel-stars .star {
+    font-size: 0.75rem;
+    color: var(--star-inactive);
+}
+
+.carousel-stars .star.active {
+    color: var(--star-active);
+}
+
+
+/* ============================================================
+    VALIDAÇÃO — Sub-avaliações obrigatórias
+    Destaca em vermelho a categoria não preenchida ao tentar enviar.
+============================================================ */
+.sub-rating.obrigatorio-erro .sub-rating-icon {
+    border-color: var(--erro);
+    box-shadow: 0 0 0 2px var(--erro-light);
+}
+
+.sub-rating.obrigatorio-erro .sub-rating-label {
+    color: var(--erro);
+}
+
+/* Animação de shake para chamar atenção */
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-5px);
+    }
+
+    40% {
+        transform: translateX(5px);
+    }
+
+    60% {
+        transform: translateX(-4px);
+    }
+
+    80% {
+        transform: translateX(4px);
+    }
+}
+
+.sub-rating.obrigatorio-erro {
+    animation: shake 0.4s ease;
+}
+
+/* Mensagem de erro abaixo das sub-avaliações */
+.erro-avaliacao {
+    font-size: 0.72rem;
+    color: var(--erro);
+    font-weight: 600;
+    margin-top: 8px;
+    display: none;
+}
+
+.erro-avaliacao.visivel {
+    display: block;
+}
+
+
+/* ============================================================
+    TOAST DE CONFIRMAÇÃO
+    Aparece na base da tela após enviar avaliação.
+    Classe `.show` ativa a transição de entrada.
+============================================================ */
+.toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--text-primary);
+    color: var(--white);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 100px;
+    box-shadow: var(--shadow-toast);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 200;
+    white-space: nowrap;
+    transition: opacity .3s, transform .3s;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+
+/* ============================================================
+    BREAKPOINT — MOBILE PEQUENO (≤ 425px)
+    Reduz padding e tamanhos dentro do modal.
+    A estrutura em coluna já é o padrão — só afina aqui.
+============================================================ */
+@media (max-width: 425px) {
+
+    .modal-product {
+        padding: 16px 18px;
+        gap: 12px;
+    }
+
+    /* Foto ligeiramente menor */
+    .modal-product-topo>img {
+        width: 76px;
+        height: 76px;
+        object-fit: contain;
+    }
+
+    /* Label menor para caber nas 3 colunas */
+    .sub-rating-label {
+        font-size: 0.58rem;
+        letter-spacing: 0.02em;
+    }
+
+    /* Ícone menor */
+    .sub-rating-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    /* Estrelas menores */
+    .sub-stars .star {
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================================================
+    BREAKPOINT — TELAS MUITO PEQUENAS (≤ 359px / 320px)
+    Afina ainda mais para 320px sem quebrar o layout.
+============================================================ */
+@media (max-width: 359px) {
+    .content-area {
+        padding: 8px 12px 48px;
+    }
+
+    .tab-btn {
+        padding: 12px 16px;
+        font-size: 0.82rem;
+    }
+
+    .card-img {
+        width: 72px;
+        height: 72px;
+    }
+
+    .card-name {
+        font-size: 0.82rem;
+    }
+
+    .modal-header {
+        padding: 14px 16px 0;
+    }
+
+    .modal-product {
+        padding: 14px 16px;
+        gap: 16px;
+    }
+
+    .modal-product-topo>img {
+        width: 64px;
+        height: 64px;
+    }
+
+    .modal-obs,
+    .modal-footer {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .modal-carousel,
+    .modal-carousel-title {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* Ícone ainda menor em 320px */
+    .sub-rating-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .sub-rating-label {
+        font-size: 0.52rem;
+    }
+
+    .sub-stars .star {
+        font-size: 0.75rem;
+    }
+}
+
+
+/* ============================================================
+    BREAKPOINT — DESKTOP (≥ 1024px)
+    Nav vira barra horizontal abaixo do header (como na imagem).
+    Conteúdo ocupa 100% da largura abaixo da nav.
+============================================================ */
+@media (min-width: 1024px) {
+
+    /* App volta ao fluxo normal (block) — sem flex lateral */
+    .app {
+        display: block;
+    }
+
+    /* Área de conteúdo — agora ocupa largura total */
+    .content-area {
+        width: 100%;
+        max-width: 1350px;
+        margin: 0 auto;
+        padding: 24px 32px 64px;
+    }
+
+    /* Modal levemente mais largo no desktop */
+    .modal {
+        max-width: 680px;
+    }
+}

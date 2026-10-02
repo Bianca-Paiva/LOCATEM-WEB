@@ -1,35 +1,74 @@
+:root {
+    /* ============================= */
+    /* CORES PRINCIPAIS */
+    /* ============================= */
+    --color-primary: #FFD600;
+    --color-primary-hover: #f2cb00;
+    --color-primary-light: #ffe97a;
+    --color-primary-soft: #fff6c7;
+
+    /* ============================= */
+    /* BACKGROUNDS */
+    /* ============================= */
+    --color-bg-main: #F9FAFB;
+    --color-bg-card: #ffffff;
+    --color-bg-input: #f8f8f8;
+
+    --color-text-dark: #000;
+}
+
+/* ============================= */
+/* BASE GERAL */
+/* ============================= */
+body {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-dark);
+}
+
+.app {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to bottom,
+            var(--color-primary) 0%,
+            var(--color-primary-light) 4.5%,
+            var(--color-primary-soft) 9.5%,
+            var(--color-bg-main) 13%);
+}
+
 /* ============================= */
 /* HEADER */
 /* ============================= */
-
-header {
-    width: 100%; /* ocupa toda largura da tela */
-    height: 90px; /* altura fixa da faixa superior */
-
+.header-desktop {
+    width: 100%;
+    padding: 15px 20px 24px;
     display: flex;
-    align-items: center; /* centraliza conteúdo verticalmente */
-    
-    padding-left: 30px; /* espaço da logo até a borda esquerda */
+    align-items: center;
+    justify-content: space-between;
+}
 
-    gap: 6px;
-    /* Degradê do amarelo para branco */
-    background: linear-gradient(to bottom,
-            #FFCA00 0%, /* amarelo forte no topo */
-            #FFE580 70%, /* transição suave */
-            #ffffff 100% /* termina branco */
-        );
+.linha-topo-desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 2000px;
+    margin: 0 auto;
 }
 
 .logo {
-    height: 40px; /* controla o tamanho da logo */
-    object-fit: contain; /* mantém proporção sem distorcer */
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: clamp(16px, 4.5vw, 20px);
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    color: var(--color-text-dark);
     text-decoration: none;
 }
 
-header h3 {
-    font-weight: bold;
-    font-size: clamp(16px, 5vw, 20px);
-    color: #000;
+.logo img {
+    height: 28px;
+    object-fit: contain;
 }
 
 /* ============================= */
@@ -37,15 +76,13 @@ header h3 {
 /* ============================= */
 
 main {
-    min-height: calc(100vh - 90px); /* ocupa tela inteira descontando o header */
-    
+    min-height: calc(100vh - 90px);
+
     display: flex;
     flex-direction: column;
-    align-items: center; /* centraliza horizontal */
-    justify-content: center; /* centraliza vertical */
+    align-items: center;
 
-    background-color: #ffffff;
-    padding: 40px 20px; /* respiro interno */
+    padding: 100px 20px 40px;
 }
 
 .topo {
@@ -76,7 +113,7 @@ main {
     padding: 40px 30px;
 
     border-radius: 20px;
-    background-color: #ffffff;
+    background-color: var(--color-bg-card);;
 
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* sombra elegante */
 
@@ -183,7 +220,7 @@ main {
     margin-top: 10px;
     margin-bottom: 30px;
 
-    background-color: #fff;
+    background-color: var(--color-bg-card);
     transition: 0.2s;
 }
 

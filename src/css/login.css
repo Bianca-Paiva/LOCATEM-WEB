@@ -5,7 +5,7 @@
     --color-primary: #FFD600;
     --color-primary-hover: #f2cb00;
     --color-primary-light: #ffe97a;
-    --color-primary-soft: #fff3b0;
+    --color-primary-soft: #fff6c7;
 
     /* ============================= */
     /* BACKGROUNDS */
@@ -19,8 +19,8 @@
     /* ============================= */
     --color-text-primary: #222;
     --color-text-secondary: #666;
-    --color-text-terciary: #555
-    --color-text-security: #777
+    --color-text-terciary: #555;
+    --color-text-security: #777;
     --color-text-muted: #999;
     --color-text-dark: #000;
 
@@ -41,54 +41,53 @@
 /* ============================= */
 body {
     background-color: var(--color-bg-main);
-    color: var(--color-text-primary);
+    color: var(--color-text-dark);
 }
 
 .app {
     width: 100%;
-    max-width: 1280px;
     min-height: 100vh;
-    background: linear-gradient(
-        to bottom,
-        var(--color-primary) 0%,
-        var(--color-primary-light) 3%,
-        var(--color-primary-soft) 5%,
-        var(--color-bg-main) 8%
-    );
+    background: linear-gradient(to bottom,
+            var(--color-primary) 0%,
+            var(--color-primary-light) 8.5%,
+            var(--color-primary-soft) 13.5%,
+            var(--color-bg-main) 17%);
 }
 
 /* ============================= */
 /* HEADER */
 /* ============================= */
-.topo {
-    padding: 14px 16px 30px;
+.header-desktop {
+    width: 100%;
+    padding: 15px 20px 24px;
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.linha-topo {
+.linha-topo-desktop {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    max-width: 2000px;
+    margin: 0 auto;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-weight: 795;
-    font-size: clamp(16px, 5vw, 20px);
+    gap: 7px;
+    font-size: clamp(16px, 4.5vw, 20px);
+    font-weight: 800;
+    letter-spacing: -0.4px;
     color: var(--color-text-dark);
-    flex-shrink: 0;
     text-decoration: none;
 }
 
 .logo img {
-    height: 30px;
-    width: auto;
+    height: 28px;
     object-fit: contain;
-    display: block;
 }
 
 /* ============================= */
@@ -96,29 +95,36 @@ body {
 /* ============================= */
 
 main {
-    min-height: calc(100vh - 90px);
-    /* Ocupa toda a tela menos a altura do header */
+    min-height: calc(100vh - 80px);
 
     display: flex;
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
-    /* Centraliza o conteúdo verticalmente */
 
-    background-color: var(--color-bg-main);
+    padding: 0 16px 32px;
+}
+
+/* Cor padrão dos textos dentro do main */
+main p {
+    color: #333333d7;
+}
+
+/* Estilo padrão dos links */
+main a {
+    color: var(--color-text-dark);
+    text-decoration: none;
+}
+
+/* Hover geral dos links */
+main a:hover {
+    text-decoration: underline;
 }
 
 /* ============================= */
 /* BLOCO SUPERIOR */
 /* ============================= */
-
-.topo {
-    text-align: center;
-    /* Centraliza textos */
-
-    margin-bottom: 35px;
-    /* Espaço entre o topo e o card */
-}
 
 .titulo {
     display: flex;
@@ -126,7 +132,7 @@ main {
     align-items: center;
     justify-content: center;
     font-size: 30px;
-    padding: 30px;
+    padding: 0 0 30px;
 }
 
 
@@ -310,18 +316,247 @@ form a:hover {
     font-size: 14px;
 }
 
-/* Cor padrão dos textos dentro do main */
-main p {
-    color: #333333d7;
+/* ========================================================= */
+/* MOBILE PEQUENO — 320px */
+/* ========================================================= */
+
+@media (max-width: 320px) {
+
+    .header-desktop {
+        padding: 14px 16px 20px;
+    }
+
+    .logo {
+        font-size: 15px;
+        gap: 5px;
+    }
+
+    .logo img {
+        height: 22px;
+    }
+
+    main {
+        padding: 10px 12px 24px;
+    }
+
+    .titulo {
+        font-size: 22px;
+        text-align: center;
+        line-height: 1.2;
+        padding-bottom: 24px;
+    }
+
+    .card {
+        width: 92%;
+        max-width: 280px;
+        padding: 24px 18px;
+        border-radius: 18px;
+    }
+
+    .label {
+        font-size: 13px;
+    }
+
+    .input {
+        height: 46px;
+        font-size: 13px;
+        padding: 0 14px;
+        margin-top: 8px;
+        margin-bottom: 24px;
+        border-radius: 12px;
+    }
+
+    .input::placeholder {
+        font-size: 13px;
+    }
+
+    .eyeBtn {
+        right: 8px;
+        top: 33px;
+    }
+
+    .btnEntrar {
+        height: 50px;
+        margin-top: 16px;
+        font-size: 15px;
+        border-radius: 14px;
+    }
+
+    .recuperarSenha {
+        font-size: 12px;
+    }
+
+    .criarConta {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 4px;
+        margin-top: 18px;
+        font-size: 12px;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .criarConta p,
+    .criarConta a {
+        white-space: nowrap;
+    }
 }
 
-/* Estilo padrão dos links */
-main a {
-    color: black;
-    text-decoration: none;
+/* ========================================================= */
+/* TABLET — 728px */
+/* ========================================================= */
+
+@media (max-width: 728px) {
+
+    .header-desktop {
+        padding: 16px 20px 22px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .logo img {
+        height: 24px;
+    }
+
+    main {
+        padding: 20px 18px 32px;
+    }
+
+    .titulo {
+        font-size: 28px;
+        padding-bottom: 28px;
+        text-align: center;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 380px;
+        padding: 32px 24px;
+        border-radius: 18px;
+    }
+
+    .label {
+        font-size: 14px;
+    }
+
+    .input {
+        height: 48px;
+        font-size: 14px;
+        margin-top: 8px;
+        margin-bottom: 24px;
+    }
+
+    .input::placeholder {
+        font-size: 14px;
+    }
+
+    .eyeBtn {
+        top: 34px;
+    }
+
+    .recuperarSenha {
+        font-size: 13px;
+    }
+
+    .btnEntrar {
+        height: 52px;
+        font-size: 15px;
+        margin-top: 18px;
+    }
+
+    .criarConta {
+        gap: 4px;
+        margin-top: 18px;
+        font-size: 13px;
+        text-align: center;
+    }
 }
 
-/* Hover geral dos links */
-main a:hover {
-    text-decoration: underline;
+/* ========================================================= */
+/* DESKTOP — 1024px+ */
+/* ========================================================= */
+
+@media (min-width: 1024px) {
+
+    .header-desktop {
+        padding: 18px 32px 28px;
+    }
+
+    .logo {
+        font-size: 20px;
+        gap: 8px;
+    }
+
+    .logo img {
+        height: 30px;
+    }
+
+    main {
+        padding: 32px;
+    }
+
+    .titulo {
+        font-size: 38px;
+        padding-bottom: 36px;
+        line-height: 1.1;
+    }
+
+    .card {
+        max-width: 460px;
+        
+        padding: 42px 36px;
+
+        border-radius: 22px;
+    }
+
+    .label {
+        font-size: 15px;
+    }
+
+    .input {
+        height: 54px;
+
+        font-size: 15px;
+
+        margin-top: 10px;
+        margin-bottom: 28px;
+
+        border-radius: 16px;
+    }
+
+    .input::placeholder {
+        font-size: 15px;
+    }
+
+    .eyeBtn {
+        top: 38px;
+        right: 12px;
+    }
+
+    .recuperarSenha {
+        font-size: 14px;
+    }
+
+    .btnEntrar {
+        height: 56px;
+
+        margin-top: 20px;
+
+        font-size: 16px;
+
+        border-radius: 16px;
+    }
+
+    .criarConta {
+        margin-top: 22px;
+
+        gap: 6px;
+
+        font-size: 14px;
+    }
 }

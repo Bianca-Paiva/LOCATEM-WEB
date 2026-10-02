@@ -1,234 +1,214 @@
+/* ============================= */
+/* VARIÁVEIS CSS 
+/* ============================= */
+
+:root {
+    --color-secondary: #f0c000c0;
+    /* Hover / destaque */
+
+    /* — Backgrounds — */
+    --color-bg-main: #F9FAFB;
+    /* Fundo geral da aplicação */
+    --color-bg-card: #ffffff;
+    /* Fundo dos cards */
+    --color-bg-card-img: #ffffff;
+    /* Fundo da área de imagem do card */
+    --color-bg-placeholder: #ececec;
+    /* Fundo do placeholder de imagem */
+
+    /* — Texto — */
+    --color-text-dark: #111827;
+    /* Texto escuro principal */
+    --color-text-muted: #6B7280;
+    /* Texto secundário / placeholder */
+    --color-text-owner: #444444;
+    /* Nome do proprietário no card */
+    --color-text-price-tag: #037233;
+    /* Tag de preço / frete grátis */
+    --color-text-placeholder: #bbbbbb;
+    /* Ícone do placeholder de imagem */
+
+    /* — Ícones / Badges — */
+    --color-icon-verified: #0077FF;
+    /* Ícone de verificado no proprietário */
+
+    /* — Banner — */
+    --color-banner-bg: #c8c8c8;
+    /* Fundo padrão do banner */
+    --color-indicator: rgba(255, 255, 255, 0.55);
+    /* Indicador inativo */
+    --color-indicator-active: #ffffff;
+    /* Indicador ativo */
+    --color-arrow: #ffffff;
+    /* Setas de navegação do banner */
+
+    /* — Border Radius — */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-pill: 999px;
+    /* Totalmente arredondado (badge, search) */
+
+    /* — Sombras — */
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.09), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.13);
+
+    /* — Espaçamento base — */
+    --spacing-xs: 6px;
+    --spacing-sm: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    /* — Transições — */
+    --transition-fast: 0.18s ease;
+    --transition-mid: 0.28s ease;
+}
+
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #F9FAFB;
+    background-color: var(--color-bg-main);
+    color: var(--color-text-dark);
 }
 
-.app {
-    width: 100%;
-    min-height: 100vh;
-    background: linear-gradient(
-        to bottom,
-        #FFD600 0%,
-        #ffe97a 3%,
-        #fff3b0 5%,
-        #F9FAFB 8%
-    );
-    padding-bottom: 70px;
+ul,
+ol {
+    list-style: none;
 }
 
-/* HEADER */
-header {
-    padding: 14px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-.navegacaoDesktop {
-    display: none;
-}
-
-.search-bar-desktop {
-    display: none;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 600;
-    font-size: 1rem;
-    color: #000;
-}
-
-.logo img {
-    height: 25px;
-    width: auto;
-    object-fit: contain;
-    display: block;
-}
-
-header button {
-    background-color: transparent;
-    border: none;
-}
-
-.chat img {
-    width: auto;
-    height: 20px;
-    display: block;
-    object-fit: contain;
+button {
     cursor: pointer;
 }
 
-/* SEARCH */
-.search-bar-carrinho {
-    padding: 0 20px 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    width: 100%;
-    box-sizing: border-box;
+img {
+    display: block;
+    max-width: 100%;
 }
 
-.search-bar {
-    display: flex;
-    align-items: center;
-    background: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);;
-    border-radius: 999px;
-    padding: 0 20px;
-    flex: 1;
-    min-width: 0;
-}
 
-.search-bar input {
-    flex: 1;
-    width: 100%;
-    min-width: 0;
-    padding: 9px 12px;
-    border-radius: 20px;
-    border: none;
-    font-size: clamp(12px, 3.5vw, 14px);
-    background-color: #fff;
-    outline: none;
-}
+/* =====================================================================
+    BASE MOBILE (padrão — aplicado a qualquer largura)
+    Projetado para ~320px e acima
+===================================================================== */
 
-.search-bar button {
-    background: none;
-    border: none;
-    font-size: clamp(18px, 5.5vw, 22px);
-    cursor: pointer;
-    flex-shrink: 0;
-}
+/* ============================= */
+/* BANNER                        */
+/* ============================= */
 
-.search-bar img {
-    width: clamp(16px, 4vw, 20px);
-    height: clamp(16px, 4vw, 20px);
-    flex-shrink: 0;
-}
-
-.carrinho {
-    display: flex;
-    width: clamp(18px, 5vw, 25px);
-    height: clamp(18px, 5vw, 25px);
-    border: none;
-    background-color: transparent;
-    flex-shrink: 0;
-}
-
-/* BANNER */
 section {
-    padding: 14px 16px 0;
+    padding: 0 var(--spacing-md) 0;
 }
 
 .banner {
-    background-color: #a0a0a0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.117);
-    border-radius: 12px;
-    height: clamp(110px, 32vw, 160px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    background-color: var(--color-banner-bg);
+    box-shadow: var(--shadow-card);
+    border-radius: var(--radius-md);
+    height: clamp(110px, 30vw, 160px);
     position: relative;
     overflow: hidden;
-    /* corta a imagem nos cantos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* Slides do banner */
 .anuncio-img {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     display: none;
-    /* JS mostra o ativo */
+    /* JS revela o ativo */
 }
 
 .anuncio-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* preenche sem distorcer */
     display: block;
 }
 
-.banner-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    color: #555;
-}
-
+/* Setas de navegação */
 .setas {
     position: absolute;
     top: 50%;
-    left: 25px;
-    right: 25px;
+    left: var(--spacing-sm);
+    right: var(--spacing-sm);
+    transform: translateY(-50%);
     display: flex;
     justify-content: space-between;
-    transform: translateY(-50%);
     z-index: 10;
+    pointer-events: none;
 }
 
-/* Botões das setas */
 .seta-btn {
-    font-size: 15px;
-    /* tamanho da seta */
-    width: 10px;
-    height: 10px;
-    color: #f4f4f4;
+    pointer-events: all;
+    font-size: 14px;
+    color: var(--color-arrow);
     border: none;
-    background: transparent;
-    cursor: pointer;
-    position: relative;
+    background: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition-fast);
 }
 
+/* Indicadores de slide */
 .indicadores {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     gap: 6px;
-    margin-top: 130px;
-    position: relative;
-    /* sai de baixo do absolute */
-    z-index: 1;
+    z-index: 5;
 }
 
 .indicadores span {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: #ffffff99
+    background: var(--color-indicator);
+    transition: background var(--transition-fast);
 }
 
 .indicadores span.ativo {
-    background-color: #ffffff;
+    background: var(--color-indicator-active);
 }
 
-/* FERRAMENTAS */
+
+/* ============================= */
+/* MAIN — ÁREA DE FERRAMENTAS    */
+/* ============================= */
+
 main {
-    padding: 16px 16px 0;
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-lg);
 }
 
 main h2 {
-    font-size: clamp(17px, 4.5vw, 20px);
-    font-weight: bold;
-    margin-bottom: 12px;
+    font-size: clamp(16px, 4.5vw, 20px);
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-bottom: 2px;
 }
 
-/* CATEGORIAS */
+
+/* ============================= */
+/* CATEGORIAS (carrossel horizontal) */
+/* ============================= */
+
 .categorias {
     display: flex;
-    gap: 8px;
+    gap: var(--spacing-xs);
     overflow-x: auto;
-    padding-bottom: 12px;
-    list-style: none;
+    padding: 12px 0;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
 }
 
 .categorias::-webkit-scrollbar {
@@ -240,142 +220,402 @@ main h2 {
 }
 
 .categorias li button {
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px #0000001e;
+    background-color: var(--color-bg-card);
+    box-shadow: var(--shadow-card);
     border: none;
-    border-radius: 20px;
+    border-radius: var(--radius-pill);
     padding: 7px 14px;
-    font-size: clamp(11px, 3.2vw, 13px);
-    font-weight: bold;
-    cursor: pointer;
+    font-size: clamp(11px, 3vw, 13px);
+    font-weight: 600;
     white-space: nowrap;
+    color: var(--color-text-dark);
+    transition: background var(--transition-fast), transform var(--transition-fast);
 }
 
-.categorias li button:hover{
-    background-color: #F2F0EF;
+.categorias li button:hover,
+.categorias li button:focus-visible {
+    transform: translateY(-1px);
 }
 
-/* GRID DE ANÚNCIOS */
+.categorias li button:active {
+    transform: translateY(0);
+}
+
+
+/* ============================= */
+/* GRID DE ANÚNCIOS              */
+/* ============================= */
+
 .anuncios {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: clamp(10px, 3vw, 14px);
-    margin-top: 8px;
-    list-style: none;
 }
 
+/* Card individual */
 .anuncio-card {
-    background-color: #ffffff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.224);
-    border-radius: 12px;
+    background-color: var(--color-bg-card);
+    box-shadow: var(--shadow-card);
+    border-radius: var(--radius-md);
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    overflow: hidden;
+    transition: transform var(--transition-mid), box-shadow var(--transition-mid);
     cursor: pointer;
 }
 
+.anuncio-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Área da imagem do card */
 .card-img {
-    height: 180px;
+    height: clamp(100px, 38vw, 150px);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 10px;
-}
-
-/* quando src está vazio */
-.card-img img[src=""] {
-    display: none;
-    /* esconde a img quebrada */
-}
-
-/* mostra placeholder quando img está escondida */
-.card-img:has(img[src=""]) {
-    background-color: #f0f0f0;
-    border-radius: 8px;
-}
-
-.card-img:has(img[src=""])::after {
-    content: 'imagem';
-    font-size: 28px;
-    color: #bbb;
+    background-color: var(--color-bg-card-img);
 }
 
 .card-img img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    transition: transform var(--transition-mid);
 }
 
+.anuncio-card:hover .card-img img {
+    transform: scale(1.04);
+}
+
+/* Placeholder quando src está vazio */
+.card-img img[src=""] {
+    display: none;
+}
+
+.card-img:has(img[src=""]) {
+    background-color: var(--color-bg-placeholder);
+    border-radius: 0;
+}
+
+.card-img:has(img[src=""])::after {
+    content: '📷';
+    font-size: 28px;
+    color: var(--color-text-placeholder);
+}
+
+/* Informações do card */
 .card-info {
-    padding: 12px 16px;
+    padding: 8px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
 }
 
 .card-info h3 {
-    font-size: 14px;
+    font-size: clamp(12px, 3vw, 14px);
     font-weight: 500;
-    color: #222;
-    margin-bottom: 6px;
+    color: var(--color-text-dark);
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
+/* Proprietário com badge */
 .proprietario {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
 }
 
 .proprietario h4 {
-    font-size: 14px;
-    font-weight: bolder;
-    color: #222;
-    margin-bottom: 6px;
+    font-size: clamp(11px, 2.8vw, 13px);
+    font-weight: 700;
+    color: var(--color-text-owner);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .proprietario svg {
     width: auto;
-    height: 12px;
-    color: #0077FF;
-    transform: translateY(-2px); 
+    height: 11px;
+    color: var(--color-icon-verified);
+    flex-shrink: 0;
 }
 
+/* Preço */
 .card-info p {
-    font-size: 22px;
-    font-weight: 550;
-    color: #000;
+    font-size: clamp(18px, 4.5vw, 22px);
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-top: 2px;
 }
 
 .card-info span {
-    font-size: 12px;
-    color: #037233;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text-price-tag);
 }
 
-/* BOTTOM NAV */
-.navegacaoMobile {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-    border-top: 1px solid #e0e0e0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 0;
+
+/* =====================================================================
+    BREAKPOINT — MOBILE PEQUENO (320px)
+    Ajustes de proporção para telas muito estreitas
+===================================================================== */
+
+@media (min-width: 320px) {
+    section {
+        padding: 0 14px 0;
+    }
+
+    main {
+        padding: 14px 14px var(--spacing-md);
+    }
+
+    .anuncios {
+        gap: 10px;
+    }
+
+    .card-img {
+        height: clamp(100px, 35vw, 130px);
+        padding: 8px;
+    }
+
+    .card-info {
+        padding: 6px 10px 10px;
+    }
+
+    .card-info p {
+        font-size: 18px;
+    }
 }
 
-.navegacaoMobile img {
-    width: 100%;
-    height: 24px;
+
+/* =====================================================================
+    BREAKPOINT — TABLET (768px+)
+    Ajuste intermediário entre mobile e desktop
+===================================================================== */
+
+@media (min-width: 768px) {   
+    /* ============================= */
+    /* BANNER                        */
+    /* ============================= */
+
+    section {
+        padding: 0 24px 0;
+    }
+
+    .banner {
+        height: clamp(180px, 28vw, 260px);
+        border-radius: 14px;
+    }
+
+    .seta-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 18px;
+    }
+
+    .indicadores span {
+        width: 7px;
+        height: 7px;
+    }
+
+    /* ============================= */
+    /* MAIN                          */
+    /* ============================= */
+
+    main {
+        padding: 20px 24px 28px;
+    }
+
+    main h2 {
+        font-size: 22px;
+    }
+
+    /* ============================= */
+    /* CATEGORIAS                    */
+    /* ============================= */
+
+    .categorias {
+        gap: 10px;
+        padding: 16px 0;
+    }
+
+    .categorias li button {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    /* ============================= */
+    /* GRID DE CARDS                 */
+    /* ============================= */
+
+    .anuncios {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    .anuncio-card {
+        border-radius: 14px;
+    }
+
+    .card-img {
+        height: 180px;
+        padding: 12px;
+    }
+
+    .card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transform: scale(1.08);
+    }
+
+    .card-info {
+        padding: 10px 14px 14px;
+        gap: 5px;
+    }
+
+    .card-info h3 {
+        font-size: 15px;
+    }
+
+    .proprietario h4 {
+        font-size: 13px;
+    }
+
+    .card-info p {
+        font-size: 24px;
+    }
+
+    .card-info span {
+        font-size: 12px;
+    }
 }
 
-.navegacaoMobile a {
-    text-decoration: none;
-    color: #333;
-    font-size: clamp(20px, 6vw, 26px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.navegacaoMobile a.ativo {
-    color: #FFD600;
+/* =====================================================================
+    BREAKPOINT — DESKTOP (1024px+)
+    Layout amplo, navegação lateral, grid elegante
+===================================================================== */
+
+@media (min-width: 1024px) {
+    /* ============================= */
+    /* BANNER DESKTOP                */
+    /* ============================= */
+
+    section {
+        padding: 32px var(--spacing-xl) 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .banner {
+        width: 100%;
+        max-width: 1300px;
+        height: clamp(200px, 26vw, 400px);
+        border-radius: var(--radius-lg);
+    }
+
+    .seta-btn {
+        font-size: 22px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    .setas {
+        left: var(--spacing-md);
+        right: var(--spacing-md);
+    }
+
+    .indicadores {
+        bottom: 16px;
+    }
+
+    .indicadores span {
+        width: 8px;
+        height: 8px;
+    }
+
+
+    /* ============================= */
+    /* MAIN DESKTOP                  */
+    /* ============================= */
+
+    main {
+        max-width: 1360px;
+        margin: 0 auto;
+        padding: 24px var(--spacing-xl) var(--spacing-xl);
+    }
+
+    main h2 {
+        font-size: clamp(20px, 1.5vw, 24px);
+        padding-bottom: 4px;
+    }
+
+
+    /* ============================= */
+    /* CATEGORIAS DESKTOP            */
+    /* ============================= */
+
+    .categorias {
+        padding: 16px 0 20px;
+        gap: 10px;
+    }
+
+    .categorias li button {
+        padding: 8px 18px;
+        font-size: clamp(13px, 0.95vw, 15px);
+        border-radius: var(--radius-pill);
+    }
+
+
+    /* ============================= */
+    /* GRID DE CARDS DESKTOP         */
+    /* 4 colunas adaptativas, com mínimo de 220px por card */
+    /* ============================= */
+
+    .anuncios {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: clamp(14px, 1.5vw, 22px);
+    }
+
+    .card-img {
+        height: clamp(80px, 18vw, 160px);
+        padding: 14px;
+    }
+
+    .card-info {
+        padding: 10px 16px 16px;
+        gap: 6px;
+    }
+
+    .card-info h3 {
+        font-size: clamp(13px, 0.9vw, 15px);
+    }
+
+    .proprietario h4 {
+        font-size: 13px;
+    }
+
+    .proprietario svg {
+        height: 13px;
+    }
+
+    .card-info p {
+        font-size: clamp(20px, 1.5vw, 24px);
+    }
+
+    .card-info span {
+        font-size: 12px;
+    }
 }

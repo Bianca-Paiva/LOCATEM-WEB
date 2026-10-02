@@ -8,201 +8,212 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"/>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet" />
 
-    <link rel="shortcut icon" href="./src/images/LogoIcon.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="./src/images/LogoIcon.png" type="image/x-icon" />
     <link rel="stylesheet" href="./src/css/reset.css" />
-    <link rel="stylesheet" href="./src/css/responsivoLogin.css" />
     <link rel="stylesheet" href="./src/css/cadastro.css" />
 </head>
 
 <body>
-    <!-- HEADER COM LOGO -->
-    <header>
-        <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" class="logo" />
-        <!-- alt melhora acessibilidade -->
-        <h3>LOCATEM</h3>
-    </header>
+    <div class="app">
+        <header class="header-desktop">
+            <div class="linha-topo-desktop">
 
-    <main>
-        <!-- BLOCO SUPERIOR COM TÍTULO -->
-        <div class="topo">
-            <h1 class="titulo">Crie sua conta</h1>
-            <p class="paragrafo">Escolha como você deseja usar o site</p>
-        </div>
-
-        <!-- CARD CENTRAL DO CADASTRO -->
-        <div class="card">
-
-            <!-- SELEÇÃO DO TIPO DE CONTA -->
-            <div class="tipoConta">
-                <div class="tipoConta">
-
-                    <!-- OPÇÃO LOCADOR -->
-                    <input type="radio" id="locador" name="tipo" value="locador" checked>
-                    <!-- checked = opção padrão selecionada -->
-
-                    <label for="locador" class="cardTipo">
-                        <!-- Label funciona como botão clicável -->
-
-                        <div class="icone">
-                            <!-- Ícone ferramentas -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-tools" viewBox="0 0 16 16">
-                                <path
-                                    d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
-                            </svg>
-                        </div>
-                        <h3>Locador</h3>
-                        <p>Quero anunciar ferramentas</p>
-                    </label>
-
-                    <!-- OPÇÃO LOCATÁRIO -->
-                    <input type="radio" id="locatario" name="tipo" value="locatario">
-                    <!-- Mesmo name="tipo" permite apenas uma seleção -->
-                    <label for="locatario" class="cardTipo">
-                        <div class="icone">
-                            <!-- Ícone usuário -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-person-fill" viewBox="0 0 16 16">
-                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                            </svg>
-                        </div>
-                        <h3>Locatário</h3>
-                        <p>Quero alugar ferramentas</p>
-                    </label>
-
-                </div>
+                <!-- Logo clicavel — redireciona para a pagina principal -->
+                <a href="./principalPage.html" class="logo">
+                    <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+                    LOCATEM
+                </a>
             </div>
+        </header>
+
+        <main>
+            <!-- BLOCO SUPERIOR COM TÍTULO -->
+            <div class="topo">
+                <h1 class="titulo">Crie sua conta</h1>
+                <p class="paragrafo">Escolha como você deseja usar o site</p>
+            </div>
+
+            <!-- CARD CENTRAL DO CADASTRO -->
+            <div class="card">
+
+                <!-- SELEÇÃO DO TIPO DE CONTA -->
+                <div class="tipoConta">
+                    <div class="tipoConta">
+
+                        <!-- OPÇÃO LOCADOR -->
+                        <input type="radio" id="locador" name="tipo" value="locador" checked>
+                        <!-- checked = opção padrão selecionada -->
+
+                        <label for="locador" class="cardTipo">
+                            <!-- Label funciona como botão clicável -->
+
+                            <div class="icone">
+                                <!-- Ícone ferramentas -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-tools" viewBox="0 0 16 16">
+                                    <path
+                                        d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
+                                </svg>
+                            </div>
+                            <h3>Locador</h3>
+                            <p>Quero anunciar ferramentas</p>
+                        </label>
+
+                        <!-- OPÇÃO LOCATÁRIO -->
+                        <input type="radio" id="locatario" name="tipo" value="locatario">
+                        <!-- Mesmo name="tipo" permite apenas uma seleção -->
+                        <label for="locatario" class="cardTipo">
+                            <div class="icone">
+                                <!-- Ícone usuário -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-person-fill" viewBox="0 0 16 16">
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                                </svg>
+                            </div>
+                            <h3>Locatário</h3>
+                            <p>Quero alugar ferramentas</p>
+                        </label>
+
+                    </div>
+                </div>
 
             <!-- FORMULÁRIO DE CADASTRO -->
-            <form action="#" method="post">
-                <!-- action="#" ainda não envia para backend -->
+            <form id="formCadastro">
 
-                <!-- CAMPO NOME COMPLETO -->
-                <div>
-                    <label for="nome" class="label">Nome completo</label>
+                    <!-- CAMPO NOME COMPLETO -->
+                    <div>
+                        <label for="nome" class="label">Nome completo</label>
 
-                    <input type="text" id="nome" name="nomeCompleto" placeholder="Digite seu nome completo" required
-                        class="input" />
+                        <input type="text" id="nome" name="nomeCompleto" placeholder="Digite seu nome completo" required
+                            class="input" />
 
-                    <!-- Área para mensagem de erro -->
-                    <small id="erroNome" class="erroSenha"></small>
-                </div>
-
-                <!-- CAMPO EMAIL -->
-                <div>
-                    <label for="email" class="label">E-mail</label>
-
-                    <input type="email" id="email" name="email" placeholder="seu@email.com" required class="input" />
-                </div>
-
-                <!-- CAMPO TELEFONE -->
-                <div>
-                    <label for="telefone" class="label">Telefone</label>
-
-                    <input type="tel" id="telefone" name="telefone" placeholder="(11) 91234-5678" inputmode="numeric"
-                        required class="input" />
-                    <!-- type="tel" otimiza teclado no mobile -->
-                    <!-- inputmode="numeric" sugere teclado numérico -->
-
-                    <!-- Área para mensagem de erro -->
-                    <small id="erroTelefone" class="erroSenha"></small>
-                </div>
-
-                <!-- CAMPO SENHA -->
-                <div class="campoSenha">
-                    <label for="senha" class="label">Senha</label>
-
-                    <div class="inputWrapper">
-                        <input type="password" id="senha" name="senha" placeholder="Crie uma senha segura" required
-                            class="input senhaInput" />
-
-                        <!-- BOTÃO MOSTRAR / OCULTAR SENHA -->
-                        <button type="button" class="eyeBtn">
-                            <!-- type="button" evita envio do form -->
-
-                            <!-- Ícone olho aberto -->
-                            <span class="olhoAberto">
-                                <img src="./src/images/olhoAberto.svg">
-                            </span>
-                            <span class="olhoFechado">
-                                <!-- Ícone olho fechado -->
-                                <img src="./src/images/olhoFechado.svg">
-                            </span>
-                        </button>
+                        <!-- Área para mensagem de erro -->
+                        <small id="erroNome" class="erroSenha"></small>
                     </div>
 
-                    <!-- INDICADOR DE FORÇA DA SENHA -->
-                    <small id="forcaSenha" class="forcaSenha"></small>
+                    <!-- CAMPO EMAIL -->
+                    <div>
+                        <label for="email" class="label">E-mail</label>
 
-                    <!-- LISTA DE REQUISITOS PARA SENHA FORTE -->
-                    <ul id="requisitosSenha" class="requisitos">
-                        <li id="reqTamanho">Mínimo 8 caracteres</li>
-                        <li id="reqMinuscula">Letra minúscula</li>
-                        <li id="reqMaiuscula">Letra maiúscula</li>
-                        <li id="reqNumero">Número</li>
-                        <li id="reqEspecial">Caractére especial</li>
-                    </ul>
-                </div>
-
-                <!-- CAMPO CONFIRMAR SENHA -->
-                <div class="campoSenha">
-                    <label for="confirmarSenha" class="label">Confirmar senha</label>
-
-                    <div class="inputWrapper">
-                        <input type="password" id="confirmarSenha" name="confirmarSenha"
-                            placeholder="Digite a senha novamente" required class="input senhaInput" />
-
-                        <button type="button" class="eyeBtn">
-                            <span class="olhoAberto"><svg>...</svg></span>
-                            <span class="olhoFechado"><svg>...</svg></span>
-                        </button>
+                        <input type="email" id="email" name="email" placeholder="seu@email.com" required
+                            class="input" />
                     </div>
 
-                    <!-- Mensagem de erro caso senhas não coincidam -->
-                    <small id="erroSenha" class="erroSenha"></small>
+                    <!-- CAMPO TELEFONE -->
+                    <div>
+                        <label for="telefone" class="label">Telefone</label>
+
+                        <input type="tel" id="telefone" name="telefone" placeholder="(11) 91234-5678"
+                            inputmode="numeric" required class="input" />
+                        <!-- type="tel" otimiza teclado no mobile -->
+                        <!-- inputmode="numeric" sugere teclado numérico -->
+
+                        <!-- Área para mensagem de erro -->
+                        <small id="erroTelefone" class="erroSenha"></small>
+                    </div>
+
+                    <!-- CAMPO SENHA -->
+                    <div class="campoSenha">
+                        <label for="senha" class="label">Senha</label>
+
+                        <div class="inputWrapper">
+                            <input type="password" id="senha" name="senha" placeholder="Crie uma senha segura" required
+                                class="input senhaInput" />
+
+                            <!-- BOTÃO MOSTRAR / OCULTAR SENHA -->
+                            <button type="button" class="eyeBtn">
+                                <!-- type="button" evita envio do form -->
+
+                                <!-- Ícone olho aberto -->
+                                <span class="olhoAberto">
+                                    <img src="./src/images/olhoAberto.svg">
+                                </span>
+                                <span class="olhoFechado">
+                                    <!-- Ícone olho fechado -->
+                                    <img src="./src/images/olhoFechado.svg">
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- INDICADOR DE FORÇA DA SENHA -->
+                        <small id="forcaSenha" class="forcaSenha"></small>
+
+                        <!-- LISTA DE REQUISITOS PARA SENHA FORTE -->
+                        <ul id="requisitosSenha" class="requisitos">
+                            <li id="reqTamanho">Mínimo 8 caracteres</li>
+                            <li id="reqMinuscula">Letra minúscula</li>
+                            <li id="reqMaiuscula">Letra maiúscula</li>
+                            <li id="reqNumero">Número</li>
+                            <li id="reqEspecial">Caractére especial</li>
+                        </ul>
+                    </div>
+
+                    <!-- CAMPO CONFIRMAR SENHA -->
+                    <div class="campoSenha">
+                        <label for="confirmarSenha" class="label">Confirmar senha</label>
+
+                        <div class="inputWrapper">
+                            <input type="password" id="confirmarSenha" name="confirmarSenha"
+                                placeholder="Digite a senha novamente" required class="input senhaInput" />
+
+                            <button type="button" class="eyeBtn">
+                                <span class="olhoAberto">
+                                    <img src="./src/images/olhoAberto.svg">
+                                </span>
+                                <span class="olhoFechado">
+                                    <!-- Ícone olho fechado -->
+                                    <img src="./src/images/olhoFechado.svg">
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- Mensagem de erro caso senhas não coincidam -->
+                        <small id="erroSenha" class="erroSenha"></small>
+                    </div>
+
+                    <!-- CAMPO DOCUMENTO (CPF ou CNPJ DINÂMICO) -->
+                    <div>
+                        <label for="documento" class="label" id="labelDocumento">CNPJ</label>
+                        <!-- Texto pode ser alterado via JS dependendo do tipo de conta -->
+
+                        <input type="text" id="documento" name="documento" inputmode="numeric"
+                            placeholder="00.000.000/0000-00" required class="input" />
+
+                        <!-- Área de erro do documento -->
+                        <small id="erroDocumento" class="erroSenha" style="display:none;"></small>
+                    </div>
+
+                    <!-- CAMPO ENDEREÇO -->
+                    <div>
+                        <label for="endereco" class="label">Endereço</label>
+
+                        <input type="text" id="endereco" name="endereco" placeholder="Digite seu endereço completo"
+                            required class="input" />
+                    </div>
+
+                    <!-- BOTÃO CRIAR CONTA -->
+                    <button type="submit" id="btnCriarConta" class="btnCriarConta" disabled>
+                        Criar conta
+                    </button>
+                </form>
+
+                <!-- LINK PARA LOGIN -->
+                <div class="contaExistente">
+                    <p>Já tem uma conta?</p>
+                    <a href="./login.html">Entrar</a>
                 </div>
 
-                <!-- CAMPO DOCUMENTO (CPF ou CNPJ DINÂMICO) -->
-                <div>
-                    <label for="documento" class="label" id="labelDocumento">CNPJ</label>
-                    <!-- Texto pode ser alterado via JS dependendo do tipo de conta -->
-
-                    <input type="text" id="documento" name="documento" inputmode="numeric"
-                        placeholder="00.000.000/0000-00" required class="input" />
-
-                    <!-- Área de erro do documento -->
-                    <small id="erroDocumento" class="erroSenha" style="display:none;"></small>
-                </div>
-
-                <!-- CAMPO ENDEREÇO -->
-                <div>
-                    <label for="endereco" class="label">Endereço</label>
-
-                    <input type="text" id="endereco" name="endereco" placeholder="Digite seu endereço completo" required
-                        class="input" />
-                </div>
-
-                <!-- BOTÃO CRIAR CONTA -->
-                <button type="submit" id="btnCriarConta" class="btnCriarConta" disabled>
-                    Criar conta
-                </button>
-            </form>
-
-            <!-- LINK PARA LOGIN -->
-            <div class="contaExistente">
-                <p>Já tem uma conta?</p>
-                <a href="./login.html">Entrar</a>
             </div>
-
-        </div>
-    </main>
-
-</body>
+        </main>
+    </div>
 
 <!-- SCRIPT JS DA PÁGINA DE CADASTRO -->
-<script src="./src/js/cadastro.js"></script>
+<script src="./src/js/cadastro.js" defer></script>
 <!-- Responsável por validações, máscara de CPF/CNPJ, força da senha etc -->
 
+</body>
 </html>

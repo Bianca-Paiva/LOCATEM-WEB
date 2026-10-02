@@ -8,73 +8,310 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"/>
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet" />
+
     <link rel="shortcut icon" href="./src/images/LogoIcon.png" type="image/x-icon" />
     <link rel="stylesheet" href="./src/css/reset.css">
+    <link rel="stylesheet" href="./src/css/header style/header.css" />
     <link rel="stylesheet" href="./src/css/principalPage.css">
-    <link rel="stylesheet" href="./src/css/responsivoPrincipalPage.css">
 </head>
 
 <body>
-
     <div class="app">
 
-        <!-- HEADER -->
-        <header>
-            <div class="logo">
-                <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM">
-                LOCATEM
+        <!-- =========================================================== -->
+        <!-- SECAO: HEADER MOBILE   -->
+        <!-- Exibido apenas em telas pequenas (controlado por CSS).  -->
+        <!-- =========================================================== -->
+        <header class="header-mobile">
+            <div class="linha-topo-mobile">
+                <div class="lado-esquerdo">
+                    <!-- Botao que abre o menu lateral (drawer) em mobile -->
+                    <button class="menu-btn" id="btnAbrirMenu" aria-label="Abrir menu lateral">
+                        <img src="./src/images/menuHamburguer.png" alt="Ícone de menu hamburguer" />
+                    </button>
+                    <!-- Logo clicavel — redireciona para a pagina principal -->
+                    <a href="./principalPage.html" class="logo" aria-label="Ir para página inicial da Locatem">
+                        <img src="./src/images/LogoIcon.png" alt="Logo da LOCATEM" />
+                        LOCATEM
+                    </a>
+                </div>
+
+                <!-- Icone do carrinho com badge de quantidade.
+                    ATENCAO: valor hardcoded neste HTML de demonstracao. -->
+                <a href="./carrinho.html" class="carrinho-btn">
+                    <img src="./src/images/carrinho.svg" alt="Carrinho" />
+                    <span class="quantidade-carrinho">2</span>
+                </a>
             </div>
 
-            <!-- Barra de pesquisa desktop -->
-            <form class="search-bar-desktop">
-                <input type="search" placeholder="Pesquisar..." aria-label="Pesquisar ferramentas" />
-                <button type="submit" class="lupa-btn">
-                    <img src="./src/images/lupa.png" alt="Buscar">
-                </button>
+            <!-- Barra de pesquisa exclusiva do header mobile.
+                O input usa type="search" para ativar o botao de limpar nativo do navegador (X) em mobile. -->
+            <form class="barra-pesquisa-mobile">
+                <img src="./src/images/lupa.png" alt="Buscar" />
+                <input type="search" name="busca" placeholder="Qual ferramenta você precisa hoje?"
+                    aria-label="Pesquisar ferramentas" />
             </form>
-
-            <button aria-label="Mensagens" class="chat">
-                <img src="./src/images/chat.png" alt="Chat">
-            </button>
         </header>
 
-        <!-- Nav desktop fica abaixo da linha superior -->
-        <nav class="navegacaoDesktop">
-            <a href="./principalPage.html"><img src="./src/images/home.png" alt="">Início</a>
-            <a href="#"><img src="./src/images/carrinho.png" alt="">Carrinho</a>
-            <a href="#"><img src="./src/images/relogio.png" alt="">Histórico</a>
-            <a href="#"><img src="./src/images/calendario.png" alt="">Agendamento</a>
-            <a href="#"><img src="./src/images/notificacoes.png" alt="">Notificações</a>
-            <a href="#"><img src="./src/images/Star.png" alt="">Avaliações</a>
-            <a href="#"><img src="./src/images/suporte.png" alt="">Suporte</a>
-            <a href="./login.html"><img src="./src/images/usuario.png" alt="">Entrar</a>
-        </nav>
+        <!-- =================================== -->
+        <!-- MENU LATERAL MOBILE -->
+        <!-- =================================== -->
 
-        <!-- BARRA DE BUSCA -->
-        <div class="search-bar-carrinho">
-            <form class="search-bar">
-                <input type="search" placeholder="Pesquisar..." aria-label="Pesquisar ferramentas" />
-                <button type="submit" class="lupa-btn">
-                    <img src="./src/images/lupa.png" alt="Buscar">
+        <!-- Fundo escurecido -->
+        <div class="menu-lateral-overlay" id="menuLateralOverlay"></div>
+
+        <!-- Painel lateral -->
+        <aside class="menu-lateral" id="menuLateral" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+
+            <!-- Cabeçalho -->
+            <div class="menu-lateral-cabecalho">
+
+                <a href="./principalPage.html" class="menu-lateral-logo">
+                    <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+                    LOCATEM
+                </a>
+
+                <button class="menu-lateral-btn-fechar" id="btnFecharMenu" aria-label="Fechar menu">
+                    ✕
                 </button>
-            </form>
 
-            <button aria-label="Carrinho" class="carrinho">
-                <img src="./src/images/carrinho.png" alt="Carrinho">
-            </button>
-        </div>
+            </div>
+
+            <!-- =========================== -->
+            <!-- PERFIL DO USUÁRIO -->
+            <!-- =========================== -->
+
+            <a href="./perfil.html" class="menu-lateral-perfil" id="menuLateralPerfil">
+
+                <!-- Avatar -->
+                <img class="menu-lateral-perfil-avatar" src="./src/images/usuario.png" alt="Foto do usuário" />
+
+                <!-- Informações -->
+                <div class="menu-lateral-perfil-info">
+
+                    <div class="menu-lateral-perfil-nome" id="menuLateralNome">
+                        Olá, João!
+                    </div>
+
+                    <div class="menu-lateral-perfil-email" id="menuLateralEmail">
+                        joao.silva@email.com
+                    </div>
+
+                    <div class="menu-lateral-perfil-badge">
+                        Cliente desde 2023
+                    </div>
+
+                </div>
+
+                <!-- Seta -->
+                <div class="menu-lateral-perfil-seta"></div>
+            </a>
+
+            <!-- =================================== -->
+            <!-- CONTEÚDO ROLÁVEL -->
+            <!-- =================================== -->
+
+            <div class="menu-lateral-conteudo">
+
+                <!-- Navegação -->
+                <nav class="menu-lateral-nav">
+
+                    <a href="./principalPage.html" class="ativo">
+                        <img src="./src/images/home.png" alt="" />
+                        Início
+                    </a>
+
+                    <a href="./mensagens.html">
+                        <img src="./src/images/chat.png" alt="" />
+                        Chat
+                    </a>
+
+                    <a href="#">
+                        <img src="./src/images/relogio.png" alt="" />
+                        Histórico
+                    </a>
+
+                    <a href="#">
+                        <img src="./src/images/calendario.png" alt="" />
+                        Agendamento
+                    </a>
+
+                    <a href="#">
+                        <img src="./src/images/notificacoes.png" alt="" />
+                        Notificações
+                    </a>
+
+                    <a href="./avaliacaoPage.html">
+                        <img src="./src/images/Star.png" alt="" />
+                        Avaliações
+                    </a>
+
+                    <a href="#">
+                        <img src="./src/images/suporte.png" alt="" />
+                        Suporte
+                    </a>
+
+                    <!-- Apenas quando NÃO logado -->
+                    <a href="./login.html" id="menuLateralItemEntrar">
+                        <img src="./src/images/usuario.png" alt="" />
+                        Entrar
+                    </a>
+
+                </nav>
+
+                <!-- ========================= -->
+                <!-- ÁREA LOGADO -->
+                <!-- ========================= -->
+
+                <section class="menu-lateral-logado" id="menuLateralLogado">
+
+                    <a href="#">
+                        <img src="./src/images/usuario.png" alt="" />
+                        Minha conta
+                        <span class="menu-lateral-seta">›</span>
+                    </a>
+
+                    <a href="#">
+                        <img src="./src/images/Star.png" alt="" />
+                        Cupons e benefícios
+                        <span class="menu-lateral-seta">›</span>
+                    </a>
+                </section>
+
+                <!-- =================== -->
+                <!-- CARDS -->
+                <!-- =================== -->
+
+                <div class="menu-lateral-cards">
+
+                    <!-- Card chat -->
+                    <a href="#" class="menu-lateral-card">
+
+                        <div class="menu-lateral-card-icone">
+                            <img src="./src/images/chatAmarelo.png" alt="" />
+                        </div>
+
+                        <div class="menu-lateral-card-texto">
+
+                            <div class="menu-lateral-card-titulo">
+                                Fale com a Locatem
+                            </div>
+
+                            <div class="menu-lateral-card-descricao">
+                                Tire dúvidas ou peça ajuda pelo nosso chat
+                            </div>
+                        </div>
+
+                        <div class="menu-lateral-card-seta">
+                            ›
+                        </div>
+                    </a>
+
+                    <!-- Card qualidade -->
+                    <div class="menu-lateral-card">
+
+                        <div class="menu-lateral-card-icone">
+                            <img src="./src/images/verificadoAmarelo.png" alt="" />
+                        </div>
+
+                        <div class="menu-lateral-card-texto">
+
+                            <div class="menu-lateral-card-titulo">
+                                Equipamentos de qualidade
+                            </div>
+
+                            <div class="menu-lateral-card-descricao">
+                                Segurança e confiança para o seu projeto
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======================== -->
+            <!-- SAIR -->
+            <!-- ======================== -->
+
+            <a href="#" class="menu-lateral-sair" id="menuLateralSair">
+                <img src="./src/images/sair.svg" alt="" />
+                Sair da conta
+            </a>
+        </aside>
+
+
+        <!-- ======================================================== -->
+        <!-- SECAO: HEADER DESKTOP -->
+        <!-- Exibido apenas em telas maiores (controlado por CSS). -->
+        <!-- ======================================================== -->
+        <header class="header-desktop">
+            <div class="linha-topo-desktop">
+
+                <!-- Logo clicavel — redireciona para a pagina principal -->
+                <a href="./principalPage.html" class="logo">
+                    <img src="./src/images/LogoIcon.png" alt="Logo LOCATEM" />
+                    LOCATEM
+                </a>
+
+                <!-- Barra de pesquisa central do desktop. -->
+                <form class="barra-pesquisa">
+                    <button type="submit" class="lupa-btn">
+                        <img src="./src/images/lupa.png" alt="Buscar" />
+                    </button>
+                    <input type="search" name="busca" placeholder="Qual ferramenta você precisa hoje?"
+                        aria-label="Pesquisar ferramentas" />
+                </form>
+
+                <a href="./mensagens.html" class="chat">
+                    <img src="./src/images/chat.png" alt="Chat" />
+                </a>
+            </div>
+        </header>
+
+        <!-- =========================================================== -->
+        <!-- SECAO: NAVEGACAO (DESKTOP) -->
+        <!-- Menu de navegacao principal visivel apenas no desktop. -->
+        <!-- Cada link contem um icone + label de texto. -->
+        <!-- Links com href="#" sao placeholders — funcionalidade pendente -->
+        <!-- =========================================================== -->
+        <nav class="menu-navegacao-desktop">
+            <a href="./principalPage.html">
+                <img src="./src/images/home.png" alt="Ícone Início" />Início
+            </a>
+            <a href="./carrinho.html">
+                <img src="./src/images/carrinho.svg" alt="Ícone Carrinho" />Carrinho
+            </a>
+            <a href="#">
+                <img src="./src/images/relogio.png" alt="Ícone Histórico" />Histórico
+            </a>
+            <a href="#">
+                <img src="./src/images/calendario.png" alt="Ícone Agendamento" />Agendamento
+            </a>
+            <a href="#">
+                <img src="./src/images/notificacoes.png" alt="Ícone Notificações" />Notificações
+            </a>
+            <a href="./avaliacaoPage.html">
+                <img src="./src/images/Star.png" alt="Ícone Avaliações" />Avaliações
+            </a>
+            <a href="#">
+                <img src="./src/images/suporte.png" alt="Ícone Suporte" />Suporte
+            </a>
+            <a href="./login.html">
+                <img src="./src/images/usuario.png" alt="Ícone Entrar" />Entrar
+            </a>
+        </nav>
 
         <!-- BANNER -->
         <section aria-label="Banner de anúncio">
             <div class="banner">
                 <div class="anuncio-img">
-                    <img src="./src/images/anuncio locatem 1.png" alt="Anúncio 1">
+                    <img src="./src/images/anuncioLocador1.png" alt="Anúncio locador">
                 </div>
 
                 <div class="anuncio-img">
-                    <img src="" alt="Anúncio 2">
+                    <img src="./src//images/anuncioLocatem.png" alt="Anúncio locatem">
                 </div>
 
                 <div class="setas">
@@ -100,22 +337,24 @@
 
             <!-- CATEGORIAS -->
             <ul class="categorias" aria-label="Categorias de ferramentas">
-                <li><button>Furadeira</button></li>
-                <li><button>Parafusadeira</button></li>
-                <li><button>Lixadeira</button></li>
-                <li><button>Serra elétrica</button></li>
-                <li><button>Gerador</button></li>
+                <li><button>Construção Civil</button></li>
+                <li><button>Reformas e Manutenção</button></li>
+                <li><button>Jardim e Paisagismo</button></li>
+                <li><button>Pintura e Acabamento</button></li>
+                <li><button>Transporte</button></li>
+                <li><button>Ferramentas Elétricas</button></li>
+                <li><button>Corte e Desgaste</button></li>
             </ul>
 
             <!-- GRID DE ANÚNCIOS -->
             <ul class="anuncios" aria-label="Anúncios de ferramentas">
-                <li class="anuncio-card">
+                <li class="anuncio-card" data-id="1">
                     <div class="card-img">
                         <img src="./src/images/Furadeira1.webp" alt="Furadeira">
                     </div>
 
                     <div class="card-info">
-                        <h3>Furadeira Parafusadeira Sem Fio A Bateria Tb-12e 12v 3/8 10mm Com Maleta E Acessórios The
+                        <h3>Furadeira Parafusadeira The
                             Black Tools</h3>
                         <div class="proprietario">
                             <h4>MS Ferramentas</h4>
@@ -128,13 +367,13 @@
                         <p>R$15,00<span>/dia</span></p>
                     </div>
                 </li>
-                <li class="anuncio-card">
+                <li class="anuncio-card" data-id="1">
                     <div class="card-img">
-                        <img src="./src//images/Furadeira2.webp" alt="Furadeira Bosch">
+                        <img src="./src//images/pistolaPintura.png" alt="Furadeira Bosch">
                     </div>
 
                     <div class="card-info">
-                        <h3>Furadeira De Impacto Bosch GSB 450 RE 450W 10mm Com Brocas e Buchas</h3>
+                        <h3>Pistola de Pintura The Black Tools</h3>
                         <div class="proprietario">
                             <h4>WZ Ferramentas</h4>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -146,14 +385,13 @@
                         <p>R$30,00<span>/dia</span></p>
                     </div>
                 </li>
-                <li class="anuncio-card">
+                <li class="anuncio-card" data-id="1">
                     <div class="card-img">
                         <img src="./src/images/Furadeira3.webp" alt="Furadeira Hanabi">
                     </div>
 
                     <div class="card-info">
-                        <h3>Parafusadeira Furadeira de Impacto Hanabi CY-3003 Brushless 2 Baterias 21v Cor Azul-petróleo
-                            Frequência 60hz</h3>
+                        <h3>Parafusadeira Furadeira de Impacto Hanabi</h3>
                         <div class="proprietario">
                             <h4>João Ferramentas</h4>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -165,14 +403,13 @@
                         <p>R$28,00<span>/dia</span></p>
                     </div>
                 </li>
-                <li class="anuncio-card">
+                <li class="anuncio-card" data-id="1">
                     <div class="card-img">
-                        <img src="./src//images/Furadeira4.webp" alt="Furadeira Wap">
+                        <img src="./src//images/aparadorGrama.webp" alt="Furadeira Wap">
                     </div>
 
                     <div class="card-info">
-                        <h3>Parafusadeira E Furadeira A Bateria Li-ion Wap Wf 12k3.2 Carregador Com Maleta E Kit De 11
-                            Acessórios</h3>
+                        <h3>Aparador De Grama Bipartido Tramontina</h3>
                         <div class="proprietario">
                             <h4>JB Ferramentas</h4>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -186,28 +423,10 @@
                 </li>
             </ul>
         </main>
-
-        <!-- BOTTOM NAV -->
-        <nav aria-label="Navegação principal" class="navegacaoMobile">
-            <a href="#" class="ativo" aria-label="Início" aria-current="page">
-                <img src="./src/images/home.png" alt="Início">
-            </a>
-            <a href="#" aria-label="Histórico">
-                <img src="./src/images/relogio.png" alt="Histórico">
-            </a>
-            <a href="#" aria-label="Calendário">
-                <img src="./src/images/calendario.png" alt="Agendamentos">
-            </a>
-            <a href="#" aria-label="Favoritos">
-                <img src="./src/images/Star.png" alt="Favoritos">
-            </a>
-            <a href="./login.html" aria-label="Perfil">
-                <img src="./src/images/usuario.png" alt="Usuário">
-            </a>
-        </nav>
     </div>
-</body>
 
-<script src="./src/js/principalPage.js"></script>
+    <script src="./src/js/header.js"></script>
+    <script src="./src/js/principalPage.js"></script>
+</body>
 
 </html>

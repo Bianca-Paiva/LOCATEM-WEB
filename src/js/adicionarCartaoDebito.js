@@ -21,12 +21,12 @@ let pagamentoEmProcessamento = false;
     Relaciona o nome detectado da bandeira com o caminho do ícone.
 ========================================================= */
 const mapaBandeiras = {
-    VISA: "/src/images/bandeiras/visa.png",
-    MASTER: "/src/images/bandeiras/master.png",
-    AMEX: "/src/images/bandeiras/amex.png",
-    ELO: "/src/images/bandeiras/elo.png",
-    DISCOVER: "/src/images/bandeiras/discover.png",
-    DINERS: "/src/images/bandeiras/diners.png"
+    VISA: "./src/images/bandeiras/visa.png",
+    MASTER: "./src/images/bandeiras/master.png",
+    AMEX: "./src/images/bandeiras/amex.png",
+    ELO: "./src/images/bandeiras/elo.png",
+    DISCOVER: "./src/images/bandeiras/discover.png",
+    DINERS: "./src/images/bandeiras/diners.png"
 };
 
 /* =========================================================
